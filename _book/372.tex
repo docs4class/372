@@ -1,0 +1,420 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\title{A Minimal Book Example}
+\author{John Doe}
+\date{2022-01-19}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={A Minimal Book Example},
+  pdfauthor={John Doe},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{about}{%
+\chapter{About}\label{about}}
+
+This is a \emph{sample} book written in \textbf{Markdown}. You can use anything that Pandoc's Markdown supports; for example, a math equation \(a^2 + b^2 = c^2\).
+
+\hypertarget{usage}{%
+\section{Usage}\label{usage}}
+
+Each \textbf{bookdown} chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter \emph{must} start with a first-level heading: \texttt{\#\ A\ good\ chapter}, and can contain one (and only one) first-level heading.
+
+Use second-level and higher headings within chapters like: \texttt{\#\#\ A\ short\ section} or \texttt{\#\#\#\ An\ even\ shorter\ section}.
+
+The \texttt{index.Rmd} file is required, and is also your first book chapter. It will be the homepage when you render the book.
+
+\hypertarget{render-book}{%
+\section{Render book}\label{render-book}}
+
+You can render the HTML version of this example book without changing anything:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find the \textbf{Build} pane in the RStudio IDE, and
+\item
+  Click on \textbf{Build Book}, then select your output format, or select ``All formats'' if you'd like to use multiple formats from the same book source files.
+\end{enumerate}
+
+Or build the book from the R console:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{render\_book}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+To render this example to PDF as a \texttt{bookdown::pdf\_book}, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): \url{https://yihui.org/tinytex/}.
+
+\hypertarget{preview-book}{%
+\section{Preview book}\label{preview-book}}
+
+As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in ``Preview book'', or from the R console:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{serve\_book}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{syllabus}{%
+\chapter{Syllabus}\label{syllabus}}
+
+Instructor: Tobin Turner
+
+Office Hours: mutually convenient time arranged by email e-mail: \href{mailto:jtturner@presby.edu}{\nolinkurl{jtturner@presby.edu}}
+
+\hypertarget{course-objectives-and-learning-outcomes}{%
+\section{Course Objectives and Learning Outcomes}\label{course-objectives-and-learning-outcomes}}
+
+This course is designed to introduce to data science. Students will apply statistical knowledge and techniques to both business and non-business contexts.
+
+At the end of this course students should be able to:
+
+By the end of the course, you will be able to\ldots{}
+
+\begin{itemize}
+\tightlist
+\item
+  gain insight from data
+\item
+  gain insight from data, reproducibly
+\item
+  gain insight from data, reproducibly, using modern programming tools and techniques
+\item
+  gain insight from data, reproducibly and collaboratively, using modern programming tools and techniques
+\item
+  gain insight from data, reproducibly (with literate programming and version control) and collaboratively, using modern programming tools and techniques
+\item
+  communicate results effectively
+\end{itemize}
+
+This course will be focused on both understanding and applying key business analytical concepts. Although the text serves as a useful foundation for the concepts covered in the class, simple memorization of the material in the text will not be sufficient. Class participation, discussion, and application are critical.
+
+\hypertarget{text-and-resources}{%
+\section{Text and Resources}\label{text-and-resources}}
+
+\begin{itemize}
+\tightlist
+\item
+  This course website (primary resource)
+\item
+  \href{https://r4ds.had.co.nz/}{R for Data Science}
+\item
+  \href{https://trevorhastie.github.io/ISLR/}{An Introduction to Statistical Learning with Applications in R}
+\item
+  \href{https://datasciencebox.org/}{Data Science in a Box}
+\item
+  \href{https://stackoverflow.com/questions/4862178/remove-rows-with-all-or-some-nas-missing-values-in-data-frame?rq=1}{stackoverflow.com, for example}
+\item
+  Other free, publicly available datasets and publications.
+\end{itemize}
+
+\hypertarget{performance-evaluation-grading}{%
+\section{Performance Evaluation (Grading)}\label{performance-evaluation-grading}}
+
+\begin{itemize}
+\tightlist
+\item
+  Quizzes and Assignments - 40\%
+\item
+  Exam 1 - 20\%
+\item
+  Exam 2 - 20\%
+\item
+  Final Exam - 20\%
+\end{itemize}
+
+\hypertarget{exams}{%
+\subsection{Exams}\label{exams}}
+
+Exams will cover assigned chapters in the textbook, other assigned readings, lectures, class exercises, class discussions, videos, and guest speakers. I will typically allocate time prior to each exam to clearly identify the body of knowledge each test will cover and to answer questions about the format and objectives of the exam.
+
+\hypertarget{quizzes-dont-miss-class}{%
+\subsection{\texorpdfstring{Quizzes -- \textbf{DON'T MISS CLASS}}{Quizzes -- DON'T MISS CLASS}}\label{quizzes-dont-miss-class}}
+
+\begin{itemize}
+\tightlist
+\item
+  The average of all quizzes and assignments will comprise the Quizzes and Assignments - 40\% portion of your final grade
+\item
+  Quizzes and Assignments are designed to prepare you for your exams and to ensure you stay up with the course material
+\item
+  \textbf{Missed Quizzes and Assignments cannot be made up later. Be present.}
+\end{itemize}
+
+Quizzes rule. \textbf{LISTEN.}
+- \textbf{Missed Quizzes and Assignments cannot be made up later. Be present.}
+
+\hypertarget{final-average}{%
+\subsection{Final Average}\label{final-average}}
+
+\begin{itemize}
+\tightlist
+\item
+  Final Average Grade
+
+  \begin{itemize}
+  \tightlist
+  \item
+    90-100 A
+  \item
+    88-89 B+
+  \item
+    82-87 B+
+  \item
+    80-81 B-
+  \item
+    78-79 C+
+  \item
+    72-77 C+
+  \item
+    70-71 C-
+  \item
+    60-69 D
+  \item
+    59 and below F
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{class-participation}{%
+\section{Class Participation:}\label{class-participation}}
+
+I will frequently give readings or assignments for you to complete prior to the next class meeting. I expect you to fully engage the material: answer questions, pose questions, provide insightful observations. Keep in mind that quality is an important component in ``participation.'' Periodic cold calls will take place. I will also put students in the ``hot seat'' on occasion. In these class sessions, I may select a random group of students to lead us in the discussion and debate. Because the selection of participants will not be announced until class begins, everyone will be expected to prepare for the discussion. Reading the assigned chapters and articles are the best way to prepare for the discussion. If you have concerns about being called on in class, please see me to discuss. The purpose of the ``hot seat'' is not to stress or embarrass students, but to encourage students to actively engage the material.
+
+\hypertarget{phones}{%
+\section{Phones}\label{phones}}
+
+\textbf{Phones are not allowed to be used in class without the instructor's prior consent.} If you have a need of a phone during class please let me know before class. Unauthorized use of electronic devices may result in the lowering of the grade or dismissal from the class. \textbf{I mean this.}
+
+\textbf{The phone thing? I mean this.}
+
+\hypertarget{attendance}{%
+\section{Attendance}\label{attendance}}
+
+You are expected to be regular and punctual in your class attendance. Students are responsible for all the material missed and homework assignments made. If class is missed, notes/homework should be obtained from another student. If I am more than 15 minutes late, class is considered cancelled. No more than 4 absences are allowed during a semester. Exceeding the absence policy may result in receiving an F for the course. The professors roll is the official roll and students not present when roll is taken will be counted as absent. If a student must miss an exam, she or he must work out an agreeable time with the instructor to take the test prior to the exam being given. If a student misses a test due to an emergency, the student must inform the instructor as soon as is possible. In special cases, the instructor may allow the student to take a make-up exam.
+
+\hypertarget{accommodations}{%
+\section{Accommodations}\label{accommodations}}
+
+Presbyterian College is committed to providing reasonable accommodations for all students with documented disabilities. If you are seeking academic accommodations under the Americans with Disabilities Act, you must register with the Academic Success Office, located on 5th Avenue (beside Campus Police). To receive these accommodations, please obtain the proper Accommodations Approval Form from that office, and then meet with me at the beginning of the semester to discuss how we may deliver your approved accommodations. I especially encourage you to meet with me well in advance of the actual accommodations being provided, as it may not be feasible to offer immediate accommodations without sufficient advance notice (such as in the case of tests). I can assure you that all discussions will remain confidential. Disability Services information is located at this link \url{http://bit.ly/PCdisabilityservices}
+
+Additionally, it is the student's responsibility to give the instructor one week's notice prior to each instance where accommodation will be required.
+
+\hypertarget{honor-code-and-plagiarism}{%
+\section{Honor Code and Plagiarism:}\label{honor-code-and-plagiarism}}
+
+All assignments/exams must be your own work. Any copying or use of unauthorized assistance will be treated as a violation of PC's Honor Code. If you are unsure of what resources are allowed, please ask. Please note that all text longer than 7 words taken from ANY other source must be placed in quotations and cited. Also, summarizing ANY other source must also be cited. Using ANY other source and showing work to be your own is a violation of plagiarism and the honor code.
+
+\hypertarget{first-generation-version}{%
+\section{First-Generation Version:}\label{first-generation-version}}
+
+I am a Presby First+ Advocate. I am here to support our current first-generation students. At Presbyterian College, first-generation students are those in which neither parent nor legal guardian graduated from a four-year higher education institution with a bachelor's degree. If you are a first-generation college student, please contact me. For more information about support for first-generation college students on our campus visit our Presby First+ webpage.
+
+\hypertarget{continuing-advocate-version}{%
+\section{Continuing Advocate Version}\label{continuing-advocate-version}}
+
+I am a Presby First+ Advocate. I am committed to supporting first-generation students at Presbyterian College. At Presbyterian College, first-generation students are those in which neither parent nor legal guardian graduated from a four-year higher education institution with a bachelor's degree. If you are a first-generation college student, please contact me anytime or visit me during my office hours. For more information about support for first-generation college students on our campus visit our Presby First+ webpage.
+
+\hypertarget{our-class-rhythm}{%
+\chapter{Our Class Rhythm}\label{our-class-rhythm}}
+
+\textbf{Monday:} Wrap up previous topic and introduce what you've pre-read about. Chat. Play. Work some examples. Make sure the topics applies to real-life.
+
+\textbf{Wednesday:} Work more examples. Chat as needed. \textbf{Live our best lives. :)}.
+
+\textbf{Friday:} Apply what we've learned -- demonstrate your mastery (typically in the form of a quiz, lab, or assignment). Rinse. Repeat.
+
+\hypertarget{end-in-mind}{%
+\chapter{End in Mind}\label{end-in-mind}}
+
+\textbf{Dana Simmons:} ``Can you predict which students will enroll at PC?''
+
+\textbf{Christina Miller:} ??? Well, can you? ???
+
+\hypertarget{schedule}{%
+\chapter{Schedule}\label{schedule}}
+
+This is a tentative schedule, and it will change. \textbf{BUT} I will do my very best to review this often so that we all stay on the same page and so that you may plan accordingly!
+
+\hypertarget{spring-2022}{%
+\section*{Spring 2022}\label{spring-2022}}
+\addcontentsline{toc}{section}{Spring 2022}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Date & Topic \\
+\midrule
+\endhead
+Monday, January 10, 2022 & Intro and A1 review \\
+Wednesday, January 12, 2022 & Rmarkdown \\
+Friday, January 14, 2022 & QUIZ 1: Assignment 1 in Rmarkdown \\
+Monday, January 17, 2022 & MLK Holiday \\
+Wednesday, January 19, 2022 & ggplot \\
+Friday, January 21, 2022 & Quiz 2 \\
+Monday, January 24, 2022 & ggplot \\
+Wednesday, January 26, 2022 & ggplot \\
+Friday, January 28, 2022 & ggplot QUIZ \\
+Monday, January 31, 2022 & TIDY SPREAD AND GATHER (R4DS CH 9 DPLYR) \\
+Wednesday, February 2, 2022 & RELATIONAL DATA (R4DS CH 10 DPLYR) \\
+Friday, February 4, 2022 & QUIZ \\
+Monday, February 7, 2022 & STRINGS (R4DS CH 11 stringr) \\
+Wednesday, February 9, 2022 & STRINGS (R4DS CH 12 factors) \\
+Friday, February 11, 2022 & QUIZ \\
+Monday, February 14, 2022 & Dates and Times \\
+Wednesday, February 16, 2022 & Dates and Times \\
+Friday, February 18, 2022 & QUIZ \\
+Monday, February 21, 2022 & Functions \\
+Wednesday, February 23, 2022 & Functions \\
+Friday, February 25, 2022 & QUIZ \\
+Monday, February 28, 2022 & Itertation \\
+Wednesday, March 2, 2022 & Itertation \\
+Friday, March 4, 2022 & QUIZ \\
+Monday, March 7, 2022 & LAUNCH PROJECT \\
+Wednesday, March 9, 2022 & INDEPENDENT PROJECT \\
+Friday, March 11, 2022 & INDEPENDENT PROJECT \\
+Monday, March 14, 2022 & SPRING BREAK \\
+Wednesday, March 16, 2022 & SPRING BREAK \\
+Friday, March 18, 2022 & SPRING BREAK \\
+Monday, March 21, 2022 & INDEPENDENT PROJECT \\
+Wednesday, March 23, 2022 & PRESENTATIONS \\
+Friday, March 25, 2022 & PRESENTATIONS \\
+Monday, March 28, 2022 & Model Builiding/ADVISING WEEK \\
+Wednesday, March 30, 2022 & Model Builiding/ADVISING WEEK \\
+Friday, April 1, 2022 & QUIZ \\
+Monday, April 4, 2022 & regrssion \\
+Wednesday, April 6, 2022 & stepwise addition/deletion \\
+Friday, April 8, 2022 & QUIZ \\
+Monday, April 11, 2022 & logistic regression \\
+Wednesday, April 13, 2022 & trees \& forests \\
+Friday, April 15, 2022 & Easter Holidays \\
+Monday, April 18, 2022 & Easter Holidays \\
+Wednesday, April 20, 2022 & Model Builiding \\
+Friday, April 22, 2022 & QUIZ \\
+Monday, April 25, 2022 & PRESENTATIONS \\
+Wednesday, April 27, 2022 & PRESENTATIONS \\
+Friday, April 29, 2022 & LAST DAY \\
+Monday, May 2, 2022 & Final Exam 8:30 p.m. -- F period \\
+\bottomrule
+\end{longtable}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}
