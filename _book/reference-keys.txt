@@ -1,7 +1,4 @@
-about
-usage
-render-book
-preview-book
+about-this-course
 syllabus
 course-objectives-and-learning-outcomes
 text-and-resources
@@ -19,3 +16,5 @@ continuing-advocate-version
 our-class-rhythm
 end-in-mind
 schedule
+assignment-1-in-rmarkdown
+r-markdown

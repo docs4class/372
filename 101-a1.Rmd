@@ -1,0 +1,98 @@
+# Assignment 1 in Rmarkdown
+
+## R Markdown
+
+```{r, message=FALSE, warning=FALSE}
+library(dplyr)
+```
+
+
+1. Who is the tallest individual? Shortest?
+
+```{r echo=FALSE}
+summary(starwars$height)
+```
+
+2. How many homeworlds are there?
+
+```{r echo=FALSE}
+(starwars %>% distinct(homeworld))
+```
+
+
+3. Which homeworld has the most individuals? Fewest? Average # of individuals per homeworld?
+
+```{r echo=FALSE}
+(starwars %>% 
+  group_by(homeworld) %>% 
+  tally %>% 
+  arrange(desc(n)))
+
+(starwars %>% 
+  group_by(homeworld) %>% 
+  tally %>% 
+  arrange(n))
+```
+
+4-6. Make a plot of all individuals with mass on the x axis and height on the y axis. Put a best fit line on this plot.  Who is the biggest outlier in this dataset?
+
+```{r echo=FALSE}
+plot(starwars$mass, starwars$height)
+m1 <- lm(height ~ mass, data = starwars)
+abline(m1)
+(starwars %>% select(name, mass, height) %>% filter(mass > 1200))
+```
+
+7. Calculate BMI for all these individuals. What is the average BMI for all individuals?
+
+> Via google: With the metric system, the formula for BMI is weight in kilograms divided by height in meters squared. Since height is commonly measured in centimeters, an alternate calculation formula, dividing the weight in kilograms by the height in centimeters squared, and then multiplying the result by 10,000, can be used
+
+```{r echo=FALSE}
+starwars %>% filter(!is.na(mass)) %>% 
+  filter(!is.na(height)) %>% 
+  mutate(BMI = (mass/height^2)*10000) %>% 
+  select(name, BMI, height, mass) 
+
+starwars %>% filter(!is.na(mass)) %>% 
+  filter(!is.na(height)) %>% 
+  mutate(BMI = (mass/height^2)*10000) %>% 
+  select(name, BMI, height, mass) %>% 
+  summarise(mean(BMI))
+
+```
+
+8. What is the average BMI for each homeworld?
+    
+```{r echo=FALSE}
+starwars %>% filter(!is.na(mass)) %>% 
+  filter(!is.na(height)) %>% 
+  mutate(BMI = (mass/height^2)*10000) %>% 
+  select(name, BMI, height, mass, homeworld) %>% 
+  group_by(homeworld) %>% 
+  summarise(avg.BMI = mean(BMI)) %>% 
+  arrange(desc(avg.BMI))
+
+```
+  
+9. Which homeworlds have the greatest percentage of individuals with BMI’s greater than the average you found in #8 above?
+    How many individuals have no missing data? Which variables have the most missing data?
+    
+```{r echo =FALSE}
+starwars %>% filter(!is.na(mass)) %>% 
+  filter(!is.na(height)) %>% 
+  mutate(BMI = (mass/height^2)*10000) %>% 
+  select(name, BMI, height, mass, homeworld) %>% 
+  group_by(homeworld) %>% 
+  summarise(avg.BMI = mean(BMI)) %>% 
+  arrange(desc(avg.BMI)) %>% 
+  filter(avg.BMI > 32)
+```
+    
+10. How many individuals have no missing data? Which variables have the most missing data?
+
+> Via google: https://stackoverflow.com/questions/22353633/filter-for-complete-cases-in-data-frame-using-dplyr-case-wise-deletion
+
+```{r echo=FALSE}
+starwars %>% na.omit
+```
+
