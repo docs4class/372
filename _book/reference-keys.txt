@@ -16,9 +16,10 @@ continuing-advocate-version
 our-class-rhythm
 end-in-mind
 schedule
-assignment-1-in-rmarkdown
+lab-1-excercises
+lab-1-in-rmarkdown
 r-markdown
-lets-make-some-meaningful-but-pretty-pictures
+lab-2-pretty-pictures
 ggplot-package-and-code
 packages
 excercises
@@ -27,4 +28,3 @@ learning-goals
 data
 instructional-staff-employment-trends
 more-excercises
-assignment-1
