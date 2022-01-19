@@ -8,13 +8,13 @@ Date | Topic |
 |:-------|:------				
 | 	Monday, January 10, 2022	| 	Intro and A1 review	| 
 | 	Wednesday, January 12, 2022	| 	Rmarkdown	| 
-| 	Friday, January 14, 2022	| 	QUIZ 1: Assignment 1 in Rmarkdown	| 
+| 	Friday, January 14, 2022	| 	Lab 1: Rmarkdown	| 
 | 	Monday, January 17, 2022	| 	MLK Holiday	| 
 | 	Wednesday, January 19, 2022	| 	ggplot	| 
-| 	Friday, January 21, 2022	| 	Quiz 2	| 
-| 	Monday, January 24, 2022	| 	ggplot	| 
-| 	Wednesday, January 26, 2022	| 	ggplot	| 
-| 	Friday, January 28, 2022	| 	ggplot QUIZ	| 
+| 	Friday, January 21, 2022	| 	Lab 2: ggplot	| 
+| 	Monday, January 24, 2022	| 	EDA & ggplot	| 
+| 	Wednesday, January 26, 2022	| 	EDA & ggplot	| 
+| 	Friday, January 28, 2022	| 	Lab 3: EDA & ggplot	| 
 | 	Monday, January 31, 2022	| 	TIDY SPREAD AND GATHER (R4DS CH 9 DPLYR)	| 
 | 	Wednesday, February 2, 2022	| 	RELATIONAL DATA  (R4DS CH 10 DPLYR)	| 
 | 	Friday, February 4, 2022	| 	QUIZ	| 
