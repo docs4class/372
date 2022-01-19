@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 Let’s make some meaningful (but pretty!) pictures! | BADM 372 Applied Analytics</title>
+<meta name="author" content="BADM 372">
+<meta name="description" content="Please make sure you have read and understood R4DS Chapter on data visulization. Also check out the Data Visualization with ggplot2 Cheat Sheet from RStudio. and  Think DEEPLY: Why is being able...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 7 Let’s make some meaningful (but pretty!) pictures! | BADM 372 Applied Analytics">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Please make sure you have read and understood R4DS Chapter on data visulization. Also check out the Data Visualization with ggplot2 Cheat Sheet from RStudio. and  Think DEEPLY: Why is being able...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 Let’s make some meaningful (but pretty!) pictures! | BADM 372 Applied Analytics">
+<meta name="twitter:description" content="Please make sure you have read and understood R4DS Chapter on data visulization. Also check out the Data Visualization with ggplot2 Cheat Sheet from RStudio. and  Think DEEPLY: Why is being able...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">BADM 372 Applied Analytics</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> About this course</a></li>
+<li><a class="" href="syllabus.html"><span class="header-section-number">2</span> Syllabus</a></li>
+<li><a class="" href="our-class-rhythm.html"><span class="header-section-number">3</span> Our Class Rhythm</a></li>
+<li><a class="" href="end-in-mind.html"><span class="header-section-number">4</span> End in Mind</a></li>
+<li><a class="" href="schedule.html"><span class="header-section-number">5</span> Schedule</a></li>
+<li><a class="" href="assignment-1-in-rmarkdown.html"><span class="header-section-number">6</span> Assignment 1 in Rmarkdown</a></li>
+<li><a class="active" href="lets-make-some-meaningful-but-pretty-pictures.html"><span class="header-section-number">7</span> Let’s make some meaningful (but pretty!) pictures!</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lets-make-some-meaningful-but-pretty-pictures" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> Let’s make some meaningful (but pretty!) pictures!<a class="anchor" aria-label="anchor" href="#lets-make-some-meaningful-but-pretty-pictures"><i class="fas fa-link"></i></a>
+</h1>
+<blockquote>
+<p>Please make sure you have read and understood R4DS Chapter
+on data visulization. Also check out the <em>Data
+Visualization with ggplot2 Cheat Sheet</em> from RStudio.
+and</p>
+</blockquote>
+<blockquote>
+<p><strong>Think DEEPLY:</strong> Why is being able to generate good data vislization in R important <em>even</em> with awesome tools like PowerBI and Tableau around?</p>
+</blockquote>
+<div id="ggplot-package-and-code" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> ggplot package and code<a class="anchor" aria-label="anchor" href="#ggplot-package-and-code"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="lets-make-some-meaningful-but-pretty-pictures.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> ___, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> ___)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="lets-make-some-meaningful-but-pretty-pictures.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> ___) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="lets-make-some-meaningful-but-pretty-pictures.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>___)</span>
+<span id="cb10-4"><a href="lets-make-some-meaningful-but-pretty-pictures.html#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="lets-make-some-meaningful-but-pretty-pictures.html#cb10-5" aria-hidden="true" tabindex="-1"></a>Let<span class="st">'s deconstruct this code: </span></span>
+<span id="cb10-6"><a href="lets-make-some-meaningful-but-pretty-pictures.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="st">- `ggplot()` is the function we are using to build our plot, in layers.</span></span>
+<span id="cb10-7"><a href="lets-make-some-meaningful-but-pretty-pictures.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="st">- In the first layer we always define the data frame as the first argument. Then, we define the mappings between the variables in the dataset and the **aes**thetics of the plot (e.g. x and y coordinates, colors, etc.). </span></span>
+<span id="cb10-8"><a href="lets-make-some-meaningful-but-pretty-pictures.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="st">- In the next layer we represent the data with **geom**etric shapes, in this case with a histogram. You should decide what makes a reasonable bin width for the histogram by trying out a few options.</span></span>
+<span id="cb10-9"><a href="lets-make-some-meaningful-but-pretty-pictures.html#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="st">- In the final layer we facet the data by neighbourhood.</span></span></code></pre></div>
+</div>
+<div id="packages" class="section level2" number="7.2">
+<h2>
+<span class="header-section-number">7.2</span> Packages<a class="anchor" aria-label="anchor" href="#packages"><i class="fas fa-link"></i></a>
+</h2>
+<p>We’ll use the <strong>tidyverse</strong> packages for this analysis, and the data is in the <strong>dsbox</strong> package. Run the following code in the Console to load these packages.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio-education.github.io/dsbox">dsbox</a></span><span class="op">)</span></code></pre></div>
+</div>
+<div id="excercises" class="section level2" number="7.3">
+<h2>
+<span class="header-section-number">7.3</span> Excercises<a class="anchor" aria-label="anchor" href="#excercises"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li>Create these figures using the data sets <code>mpg</code> or <code>diamonds</code> as needed:</li>
+</ol>
+<div class="inline-figure"><img src="102-ggplot_Lab_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
+<div class="inline-figure"><img src="102-ggplot_Lab_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+<div class="inline-figure"><img src="102-ggplot_Lab_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
+</div>
+<div id="airbnb-listings-in-edinburgh" class="section level2" number="7.4">
+<h2>
+<span class="header-section-number">7.4</span> Airbnb listings in Edinburgh<a class="anchor" aria-label="anchor" href="#airbnb-listings-in-edinburgh"><i class="fas fa-link"></i></a>
+</h2>
+<p>This data comes from the <code>dsbox</code> package. Recent development in Edinburgh regarding the growth of Airbnb and its impact on the housing market means a better understanding of the Airbnb listings is needed. Using data provided by Airbnb, we can explore how Airbnb availability and prices vary by neighborhood.</p>
+<p>The data come from the <a href="https://www.kaggle.com/thoroc/edinburgh-inside-airbnb/version/2">Kaggle database</a>. It’s
+been modified to better serve the goals of this exploration.</p>
+<div id="learning-goals" class="section level3" number="7.4.1">
+<h3>
+<span class="header-section-number">7.4.1</span> Learning goals<a class="anchor" aria-label="anchor" href="#learning-goals"><i class="fas fa-link"></i></a>
+</h3>
+<p>The goal of this assignment is not to conduct a thorough analysis of Airbnb listings in Edinburgh (yet?), but instead to give you a chance to practice your workflow, data visualization, and interpretation skills.</p>
+</div>
+<div id="data" class="section level3" number="7.4.2">
+<h3>
+<span class="header-section-number">7.4.2</span> Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
+</h3>
+<ol start="2" style="list-style-type: decimal">
+<li>The dataset you’ll be using is called <code>edibnb</code> the data is in the <strong>dsbox</strong> package. Run <code>View(edibnb)</code> in your Console to view the data in the data viewer. What does each row in the dataset represent?</li>
+</ol>
+<pre class="marginfigure"><code>**Hint:** The Markdown, ggplot2, and dplyr Quick Reference sheets has an example of inline R code that might be helpful. You can access it from the Help menu in RStudio.</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>How many observations (rows) does the dataset have? What interesting data is present? What was the purpose of this data being collected in the first place? Visit the kaggle site if needed.</li>
+</ol>
+<p>Each column represents a variable. We can get a list of the variables in the data frame using the <code><a href="https://rdrr.io/r/base/names.html">names()</a></code> function. How else can we find out details of about these variables?</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">edibnb</span><span class="op">)</span>
+<span class="co">#&gt;  [1] "id"                   "price"               </span>
+<span class="co">#&gt;  [3] "neighbourhood"        "accommodates"        </span>
+<span class="co">#&gt;  [5] "bathrooms"            "bedrooms"            </span>
+<span class="co">#&gt;  [7] "beds"                 "review_scores_rating"</span>
+<span class="co">#&gt;  [9] "number_of_reviews"    "listing_url"</span></code></pre></div>
+<p>You can find descriptions of each of the variables in the help file for the dataset, which you can access by running <code><a href="https://rstudii-education.github.io/dsbox/reference/edibnb.html">?edibnb</a></code> in your Console.</p>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Create a faceted histogram where each facet represents a neighborhood and displays the distribution of Airbnb prices in that neighborhood. Your histogram may be similar (or better! than the example below.)</p></li>
+<li><p>Create a faceted histogram where each facet represents a neighborhood and displays the distribution of Airbnb prices in that neighborhood. You histogram may be similar (or better! than the example below.)</p></li>
+</ol>
+<pre class="marginfigure"><code>**Note:** The plot will give a warning about some observations with non-finite values for price being removed. Don't worry about the warning, it simply means that 199 listings in the data didn't have prices available, so they can't be plotted.</code></pre>
+<pre><code>#&gt; Warning: Removed 199 rows containing non-finite values
+#&gt; (stat_bin).</code></pre>
+<div class="inline-figure"><img src="102-ggplot_Lab_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
+<ol start="6" style="list-style-type: decimal">
+<li><p>Create a similar visualization, this time showing the distribution of review scores (<code>review_scores_rating</code>) across neighborhoods. In your answer, include a brief interpretation of how Airbnb guests rate properties in general and how the neighborhoods compare to each other in terms of their ratings.</p></li>
+<li><p>Create another informative visualization of your choosing. Be prepared to share it with the class – although the visualization should need no explaining!</p></li>
+</ol>
+</div>
+</div>
+<div id="instructional-staff-employment-trends" class="section level2" number="7.5">
+<h2>
+<span class="header-section-number">7.5</span> Instructional staff employment trends<a class="anchor" aria-label="anchor" href="#instructional-staff-employment-trends"><i class="fas fa-link"></i></a>
+</h2>
+<p>The next dataset is about instructional staff employee hiring trends between 1975 and 2011.</p>
+<p>The dataset is called <code>instructors</code> found in <code>dsbox</code>. You can find descriptions of each of the variables in the help file for the dataset, which you can access by running <code><a href="https://rstudii-education.github.io/dsbox/reference/instructors.html">?instructors</a></code> in your Console.</p>
+<p>The American Association of University Professors (AAUP) is a nonprofit membership association of faculty and other academic professionals. <a href="https://www.aaup.org/sites/default/files/files/AAUP_Report_InstrStaff-75-11_apr2013.pdf">This report</a> compiled by the AAUP shows trends in instructional staff employees between 1975 and 2011, and contains an image very similar to the one given below.</p>
+</div>
+<div id="more-excercises" class="section level2" number="7.6">
+<h2>
+<span class="header-section-number">7.6</span> More Excercises<a class="anchor" aria-label="anchor" href="#more-excercises"><i class="fas fa-link"></i></a>
+</h2>
+<ol start="8" style="list-style-type: decimal">
+<li><p>Recreate a graph similar to the one above.</p></li>
+<li><p>Discuss how you would improve upon this visualization if the main objective was to communicate that the proportion of part-time faculty have gone up over time compared to other instructional staff types.Implement the improvements and provide your improved visualization as part of your answer. Also write a few sentences about why you chose to make these improvements and how they address the main goal stated above.</p></li>
+</ol>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="assignment-1-in-rmarkdown.html"><span class="header-section-number">6</span> Assignment 1 in Rmarkdown</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#lets-make-some-meaningful-but-pretty-pictures"><span class="header-section-number">7</span> Let’s make some meaningful (but pretty!) pictures!</a></li>
+<li><a class="nav-link" href="#ggplot-package-and-code"><span class="header-section-number">7.1</span> ggplot package and code</a></li>
+<li><a class="nav-link" href="#packages"><span class="header-section-number">7.2</span> Packages</a></li>
+<li><a class="nav-link" href="#excercises"><span class="header-section-number">7.3</span> Excercises</a></li>
+<li>
+<a class="nav-link" href="#airbnb-listings-in-edinburgh"><span class="header-section-number">7.4</span> Airbnb listings in Edinburgh</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#learning-goals"><span class="header-section-number">7.4.1</span> Learning goals</a></li>
+<li><a class="nav-link" href="#data"><span class="header-section-number">7.4.2</span> Data</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#instructional-staff-employment-trends"><span class="header-section-number">7.5</span> Instructional staff employment trends</a></li>
+<li><a class="nav-link" href="#more-excercises"><span class="header-section-number">7.6</span> More Excercises</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/102-ggplot_Lab.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/102-ggplot_Lab.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-01-19.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

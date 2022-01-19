@@ -18,3 +18,12 @@ end-in-mind
 schedule
 assignment-1-in-rmarkdown
 r-markdown
+lets-make-some-meaningful-but-pretty-pictures
+ggplot-package-and-code
+packages
+excercises
+airbnb-listings-in-edinburgh
+learning-goals
+data
+instructional-staff-employment-trends
+more-excercises
