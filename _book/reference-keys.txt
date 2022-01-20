@@ -28,3 +28,6 @@ learning-goals
 data
 instructional-staff-employment-trends
 more-excercises
+lab-2-ggplot-without-dsbox
+excercises-using-the-data-sets-mpg-or-diamonds
+palmerpenguins

@@ -6,7 +6,7 @@
 ]{book}
 \title{BADM 372 Applied Analytics}
 \author{BADM 372}
-\date{2022-01-19}
+\date{2022-01-20}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -629,6 +629,26 @@ Via google: \url{https://stackoverflow.com/questions/22353633/filter-for-complet
 #> #   birth_year <dbl>, sex <chr>, gender <chr>,
 #> #   homeworld <chr>, species <chr>, films <list>,
 #> #   vehicles <list>, starships <list>
+#> Warning: `funs()` was deprecated in dplyr 0.8.0.
+#> Please use a list of either functions or lambdas: 
+#> 
+#>   # Simple named list: 
+#>   list(mean = mean, median = median)
+#> 
+#>   # Auto named with `tibble::lst()`: 
+#>   tibble::lst(mean, median)
+#> 
+#>   # Using lambdas
+#>   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))
+#> This warning is displayed once every 8 hours.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
+#> # A tibble: 1 x 14
+#>    name height  mass hair_color skin_color eye_color
+#>   <int>  <int> <int>      <int>      <int>     <int>
+#> 1     0      6    28          5          0         0
+#> # ... with 8 more variables: birth_year <int>, sex <int>,
+#> #   gender <int>, homeworld <int>, species <int>,
+#> #   films <int>, vehicles <int>, starships <int>
 \end{verbatim}
 
 \hypertarget{lab-2-pretty-pictures}{%
@@ -790,6 +810,81 @@ The American Association of University Professors (AAUP) is a nonprofit membersh
 \item
   Discuss how you would improve upon this visualization if the main objective was to communicate that the proportion of part-time faculty have gone up over time compared to other instructional staff types.Implement the improvements and provide your improved visualization as part of your answer. Also write a few sentences about why you chose to make these improvements and how they address the main goal stated above.
 \end{enumerate}
+
+\hypertarget{lab-2-ggplot-without-dsbox}{%
+\chapter{\texorpdfstring{Lab 2 -- ggplot without \texttt{dsbox}}{Lab 2 -- ggplot without dsbox}}\label{lab-2-ggplot-without-dsbox}}
+
+\hypertarget{excercises-using-the-data-sets-mpg-or-diamonds}{%
+\section{\texorpdfstring{Excercises using the data sets \texttt{mpg} or \texttt{diamonds}}{Excercises using the data sets mpg or diamonds}}\label{excercises-using-the-data-sets-mpg-or-diamonds}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create these figures using the data sets \texttt{mpg} or \texttt{diamonds} as needed:
+\end{enumerate}
+
+\includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\hypertarget{palmerpenguins}{%
+\section{palmerpenguins}\label{palmerpenguins}}
+
+\texttt{palmerpenguins} is a realtively new package on CRAN, so you can install it from CRAN instead of Github.
+
+Install it like a normal package. After successful installation, you can find out that there are two datasets attached with the package -- penguins and penguins\_raw. You can check out their help page (?penguins\_raw and ?penguins\_raw) to understand more about respective datasets.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Please make a well-labeled, meangingful plot that show how many missing variables there are for each variable in the dataset. Your results shoud look something like this:
+\end{enumerate}
+
+\includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Make a plot showing a count of penguins of each species.
+\end{enumerate}
+
+\includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Create a plot that illustrates the relationship between flipper\_length\_mm and body\_mass\_g with respect to each species.
+\end{enumerate}
+
+\includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Create a plot that illustrates the relationship between flipper\_length\_mm and body\_mass\_g with respect to each species for each island.
+\end{enumerate}
+
+\includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Create a few plots of your own using new/interesting geoms and make sure the plots have meangiful, imprmfative labels, too. For possible examples:
+\end{enumerate}
+
+\includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-8-1.pdf} \includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-8-2.pdf}
 
   \bibliography{book.bib,packages.bib}
 

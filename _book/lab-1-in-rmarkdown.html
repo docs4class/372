@@ -47,6 +47,7 @@
 <li><a class="" href="lab-1-excercises.html"><span class="header-section-number">6</span> Lab 1 Excercises</a></li>
 <li><a class="active" href="lab-1-in-rmarkdown.html"><span class="header-section-number">7</span> Lab 1 in Rmarkdown</a></li>
 <li><a class="" href="lab-2-pretty-pictures.html"><span class="header-section-number">8</span> Lab 2: Pretty pictures!</a></li>
+<li><a class="" href="lab-2-ggplot-without-dsbox.html"><span class="header-section-number">9</span> Lab 2 – ggplot without dsbox</a></li>
 </ul>
 
         <div class="book-extra">
@@ -198,7 +199,27 @@ How many individuals have no missing data? Which variables have the most missing
 #&gt; # ... with 19 more rows, and 8 more variables:
 #&gt; #   birth_year &lt;dbl&gt;, sex &lt;chr&gt;, gender &lt;chr&gt;,
 #&gt; #   homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
-#&gt; #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+#&gt; #   vehicles &lt;list&gt;, starships &lt;list&gt;
+#&gt; Warning: `funs()` was deprecated in dplyr 0.8.0.
+#&gt; Please use a list of either functions or lambdas: 
+#&gt; 
+#&gt;   # Simple named list: 
+#&gt;   list(mean = mean, median = median)
+#&gt; 
+#&gt;   # Auto named with `tibble::lst()`: 
+#&gt;   tibble::lst(mean, median)
+#&gt; 
+#&gt;   # Using lambdas
+#&gt;   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))
+#&gt; This warning is displayed once every 8 hours.
+#&gt; Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
+#&gt; # A tibble: 1 x 14
+#&gt;    name height  mass hair_color skin_color eye_color
+#&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt;      &lt;int&gt;      &lt;int&gt;     &lt;int&gt;
+#&gt; 1     0      6    28          5          0         0
+#&gt; # ... with 8 more variables: birth_year &lt;int&gt;, sex &lt;int&gt;,
+#&gt; #   gender &lt;int&gt;, homeworld &lt;int&gt;, species &lt;int&gt;,
+#&gt; #   films &lt;int&gt;, vehicles &lt;int&gt;, starships &lt;int&gt;</code></pre>
 
 </div>
 </div>
@@ -227,7 +248,7 @@ How many individuals have no missing data? Which variables have the most missing
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-01-19.</p>
+    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-01-20.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

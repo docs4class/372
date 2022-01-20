@@ -1,0 +1,150 @@
+# Lab 2 -- ggplot without `dsbox`
+
+## Excercises using the data sets `mpg` or `diamonds`
+
+1. Create these figures using the data sets `mpg` or `diamonds` as needed:
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+library(palmerpenguins)
+library(tidyverse)
+ggplot(data = mpg) +
+  labs(title ="First Cool BADM 372 Visualization") +
+  geom_smooth(
+    mapping = aes(x = displ, y = hwy, colour = drv),
+    show.legend = TRUE)
+```
+
+```{r,echo=FALSE, message=FALSE}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy, colour = drv)) +
+  labs(title ="Second Cool BADM 372 Visualization") +
+  geom_point() +
+  geom_smooth()
+```
+
+```{r, echo=FALSE}
+ggplot(data = diamonds) + 
+  labs(title ="This AWESOME plot uses the diamonds dataset") +
+  geom_bar(aes(x = cut, y = ..count.. / sum(..count..), fill = color))
+```
+
+
+## palmerpenguins
+
+`palmerpenguins` is a realtively new package on CRAN, so you can install it from CRAN instead of Github.
+
+Install it like a normal package.  After successful installation, you can find out that there are two datasets attached with the package – penguins and penguins_raw. You can check out their help page (?penguins_raw and ?penguins_raw) to understand more about respective datasets.
+
+1. Please make a well-labeled, meangingful plot that show how many missing variables there are for each variable in the dataset. Your results shoud look something like this:
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+library(palmerpenguins)
+library(tidyverse)
+
+# my source: https://www.r-bloggers.com/2020/06/penguins-dataset-overview-iris-alternative-in-r/
+
+penguins %>%
+  #group_by(species) %>%
+  select(everything()) %>% 
+  summarise_all(funs(sum(is.na(.)))) %>%
+  pivot_longer(cols = 1:7, names_to = 'columns', values_to = 'NA_count') %>%
+  arrange(desc(NA_count)) %>%
+  ggplot(aes(y = columns, x = NA_count)) + geom_col(fill = 'darkorange') +
+  geom_label(aes(label = NA_count)) +
+  #   scale_fill_manual(values = c("darkorange","purple","cyan4")) +
+  theme_minimal() +
+  labs(title = 'Penguins - NA Count')
+```
+
+2. Make a plot showing a count of penguins of each species.
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+penguins %>%
+  count(species) %>%
+  ggplot() + geom_col(aes(x = species, y = n, fill = species)) +
+  geom_label(aes(x = species, y = n, label = n)) +
+  scale_fill_manual(values = c("darkorange","purple","cyan4")) +
+  theme_minimal() +
+  labs(title = 'Penguins Species & Count')
+```
+
+3. Create a plot that illustrates the relationship between flipper_length_mm and body_mass_g with respect to each species.
+
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+library(tidyverse)
+ggplot(data = penguins, 
+                       aes(x = flipper_length_mm,
+                           y = body_mass_g)) +
+  geom_point(aes(color = island, 
+                 shape = species),
+             size = 3,
+             alpha = 0.8) +
+  #theme_minimal() +
+  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  labs(title = "Penguin size, Palmer Station LTER",
+       subtitle = "Flipper length and body mass for each island",
+       x = "Flipper length (mm)",
+       y = "Body mass (g)",
+       color = "Penguin island",
+       shape = "Penguin species") +
+  theme_minimal()
+```
+
+4. Create a plot that illustrates the relationship between flipper_length_mm and body_mass_g with respect to each species for each island.
+
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+library(tidyverse)
+ggplot(data = penguins, 
+                       aes(x = flipper_length_mm,
+                           y = body_mass_g)) +
+  geom_point(aes(color = island, 
+                 shape = species),
+             size = 3,
+             alpha = 0.8) +
+  #theme_minimal() +
+  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  labs(title = "Penguin size, Palmer Station LTER",
+       subtitle = "Flipper length and body mass for each island",
+       x = "Flipper length (mm)",
+       y = "Body mass (g)",
+       color = "Penguin island",
+       shape = "Penguin species") +
+  theme_minimal()
+
+```
+
+5.  Create a few plots of your own using new/interesting geoms and make sure the plots have meangiful, imprmfative labels, too.  For possible examples:
+
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+
+# source: https://www.r-bloggers.com/2020/10/the-good-the-bad-and-the-ugly-how-not-to-visualize-data/
+
+penguins %>%
+    remove_missing() %>%
+    ggplot(aes(x = species, y = body_mass_g,
+               fill = sex)) +
+    geom_violin(scale = "area") +
+      labs(x = "Species", 
+           y = "Body mass (in g)",
+          title = "Violinplot", 
+          subtitle = "Body mass of three penguin species per sex")
+
+
+penguins %>%
+    remove_missing() %>%
+    ggplot(aes(x = species, y = body_mass_g,
+               fill = sex, color = sex)) +
+    geom_dotplot(method = "dotdensity", alpha = 0.7,
+                 binaxis = 'y', stackdir = 'center',
+                 position = position_dodge(1)) +
+      labs(x = "Species", 
+           y = "Body mass (in g)",
+          title = "Violinplot with points (dotplot)", 
+          subtitle = "Body mass of three penguin species per sex")
+
+
+```
+
+

@@ -93,6 +93,11 @@ starwars %>% filter(!is.na(mass)) %>%
 > Via google: https://stackoverflow.com/questions/22353633/filter-for-complete-cases-in-data-frame-using-dplyr-case-wise-deletion
 
 ```{r echo=FALSE}
+
+# Single Variable Considered: 
 starwars %>% na.omit
+# All Variables Considered:
+starwars %>%
+  summarise_all(funs(sum(is.na(.))))
 ```
 
