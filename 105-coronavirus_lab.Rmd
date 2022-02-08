@@ -1,0 +1,104 @@
+# Lab 3: `coronavirus` visualization, data wrangling, and dates
+
+The package is available on GitHub [here](https://github.com/RamiKrispin/coronavirus) and is updated daily.
+
+
+## show some neat visuals.  Perhaps for the US, China, Russia, Spain, and Venezuela:
+
+- COVID cases over time
+- COVID rates over time
+- COVID deaths over time
+- COVID death rates over time
+
+
+```{r setup, message=FALSE, warning=FALSE}
+library(coronavirus)
+head(coronavirus)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+df1 <- coronavirus %>% 
+  filter(country=="Russia"|country=="US"|country=="Spain"|country=="Venezuela", type == "death") %>% 
+  rename(deaths = cases) %>% 
+  select(date, country, deaths)
+df1 %>% count(country)
+head(df1)
+df2 <- coronavirus %>% 
+  filter(country=="Russia"|country=="US"|country=="Spain"|country=="Venezuela", type == "confirmed") %>% 
+  rename(confirmed = cases) %>% 
+  select(date, country, confirmed)
+df2 %>% count(country)
+head(df2)
+df3 <- full_join(df1, df2, keep = FALSE)
+head(df3)
+df3 %>% count(country)
+df3 <- df3 %>% 
+  #  group_by(country,date) %>% 
+  #  summarise(tot_cases = sum(cases)) %>% 
+  arrange(country, date) %>% 
+  mutate(cumulative_cases = cumsum(confirmed)) %>% 
+  mutate(cumulative_deaths = cumsum(deaths))  %>% 
+  mutate(rate = if_else(confirmed == 0, 0, (deaths/confirmed)))
+
+
+ggplot(data = df3,
+       mapping = aes(x = date,
+                     y = cumulative_cases,
+                     color = country)) +
+  geom_line()
+ggplot(data = df3,
+       mapping = aes(x = date,
+                     y = cumulative_cases,
+                     color = country)) +
+  geom_line()
+ggplot(data = df3,
+       mapping = aes(x = date,
+                     y = cumulative_deaths,
+                     color = country)) +
+  geom_line()
+ggplot(data = df3,
+       mapping = aes(x = date,
+                     y = rate,
+                     color = country)) +
+  geom_line()
+summary(df3)
+library(scales)
+library(ggrepel)
+library(glue)
+library(lubridate)
+as_of_date <- df3 %>% 
+  summarise(max(date)) %>% 
+  pull()
+as_of_date_formatted <- glue("{wday(as_of_date, label = TRUE)}, {month(as_of_date, label = TRUE)} {day(as_of_date)}, {year(as_of_date)}")
+
+ggplot(data = df3,
+       mapping = aes(x = date, 
+                     y = cumulative_cases, 
+                     color = country)) +
+  # represent cumulative cases with lines
+  geom_line(size = 0.7, alpha = 0.8) +
+  # add points to line endings
+  geom_point() +
+  # add country labels, nudged above the lines
+  # geom_label_repel(nudge_y = 1, direction = "y", hjust = 1) + 
+  # turn off legend
+  guides(color = FALSE) +
+  # use pretty colors
+  scale_color_viridis_d() +
+  # better formatting for y-axis
+  scale_y_continuous(labels = label_comma()) +
+  # use minimal theme
+  theme_minimal() +
+  # customize labels
+  labs(
+    x = "My pretty Lab 3 visual",
+    y = "Cumulative number of deaths",
+    title = "Cumulative deaths from COVID-19, selected countries",
+    subtitle = glue("Data as of", as_of_date_formatted, .sep = " "),
+    caption = "Source: github.com/RamiKrispin/coronavirus"
+  )
+```
+

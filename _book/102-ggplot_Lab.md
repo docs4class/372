@@ -61,9 +61,8 @@ The goal of this assignment is not to conduct a thorough analysis of Airbnb list
 2. The dataset you'll be using is called `edibnb` the data is in the **dsbox** package. Run `View(edibnb)` in your Console to view the data in the data viewer. What does each row in the dataset represent?
 
 
-```marginfigure
-**Hint:** The Markdown, ggplot2, and dplyr Quick Reference sheets has an example of inline R code that might be helpful. You can access it from the Help menu in RStudio.
-```
+> **Hint:** The Markdown, ggplot2, and dplyr Quick Reference sheets has an example of inline R code that might be helpful. You can access it from the Help menu in RStudio.
+
 
 3. How many observations (rows) does the dataset have? What interesting data is present?  What was the purpose of this data being collected in the first place?  Visit the kaggle site if needed.
 
@@ -89,9 +88,8 @@ You can find descriptions of each of the variables in the help file for the data
 5. Create a faceted histogram where each facet represents a neighborhood and displays the distribution of Airbnb prices in that neighborhood. You histogram may be similar (or better! than the example below.)
 
 
-```marginfigure
-**Note:** The plot will give a warning about some observations with non-finite values for price being removed. Don't worry about the warning, it simply means that 199 listings in the data didn't have prices available, so they can't be plotted.
-```
+> **Note:** The plot will give a warning about some observations with non-finite values for price being removed. Don't worry about the warning, it simply means that 199 listings in the data didn't have prices available, so they can't be plotted.
+
 
 
 
@@ -101,7 +99,7 @@ You can find descriptions of each of the variables in the help file for the data
 #> (stat_bin).
 ```
 
-![](102-ggplot_Lab_files/figure-epub3/unnamed-chunk-8-1.png)<!-- -->
+![](102-ggplot_Lab_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
 
 6. Create a similar visualization, this time showing the distribution of review scores (`review_scores_rating`) across neighborhoods. In your answer, include a brief interpretation of how Airbnb guests rate properties in general and how the neighborhoods compare to each other in terms of their ratings.
 

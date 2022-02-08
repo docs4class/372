@@ -6,7 +6,7 @@
 ]{book}
 \title{BADM 372 Applied Analytics}
 \author{BADM 372}
-\date{2022-01-20}
+\date{2022-02-08}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -734,9 +734,9 @@ The goal of this assignment is not to conduct a thorough analysis of Airbnb list
   The dataset you'll be using is called \texttt{edibnb} the data is in the \textbf{dsbox} package. Run \texttt{View(edibnb)} in your Console to view the data in the data viewer. What does each row in the dataset represent?
 \end{enumerate}
 
-\begin{verbatim}
-**Hint:** The Markdown, ggplot2, and dplyr Quick Reference sheets has an example of inline R code that might be helpful. You can access it from the Help menu in RStudio.
-\end{verbatim}
+\begin{quote}
+\textbf{Hint:} The Markdown, ggplot2, and dplyr Quick Reference sheets has an example of inline R code that might be helpful. You can access it from the Help menu in RStudio.
+\end{quote}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -770,16 +770,16 @@ You can find descriptions of each of the variables in the help file for the data
   Create a faceted histogram where each facet represents a neighborhood and displays the distribution of Airbnb prices in that neighborhood. You histogram may be similar (or better! than the example below.)
 \end{enumerate}
 
-\begin{verbatim}
-**Note:** The plot will give a warning about some observations with non-finite values for price being removed. Don't worry about the warning, it simply means that 199 listings in the data didn't have prices available, so they can't be plotted.
-\end{verbatim}
+\begin{quote}
+\textbf{Note:} The plot will give a warning about some observations with non-finite values for price being removed. Don't worry about the warning, it simply means that 199 listings in the data didn't have prices available, so they can't be plotted.
+\end{quote}
 
 \begin{verbatim}
 #> Warning: Removed 199 rows containing non-finite values
 #> (stat_bin).
 \end{verbatim}
 
-\includegraphics{102-ggplot_Lab_files/figure-latex/unnamed-chunk-8-1.pdf}
+\includegraphics{102-ggplot_Lab_files/figure-latex/unnamed-chunk-6-1.pdf}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -849,42 +849,134 @@ Install it like a normal package. After successful installation, you can find ou
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{1}
-\tightlist
 \item
   Make a plot showing a count of penguins of each species.
-\end{enumerate}
-
-\includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-5-1.pdf}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
 \item
   Create a plot that illustrates the relationship between flipper\_length\_mm and body\_mass\_g with respect to each species.
-\end{enumerate}
-
-\includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-6-1.pdf}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
-\tightlist
 \item
   Create a plot that illustrates the relationship between flipper\_length\_mm and body\_mass\_g with respect to each species for each island.
-\end{enumerate}
-
-\includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-7-1.pdf}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
-\tightlist
 \item
   Create a few plots of your own using new/interesting geoms and make sure the plots have meangiful, imprmfative labels, too. For possible examples:
 \end{enumerate}
 
 \includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-8-1.pdf} \includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-8-2.pdf}
+
+\hypertarget{lab-3-coronavirus-visualization-data-wrangling-and-dates}{%
+\chapter{\texorpdfstring{Lab 3: \texttt{coronavirus} visualization, data wrangling, and dates}{Lab 3: coronavirus visualization, data wrangling, and dates}}\label{lab-3-coronavirus-visualization-data-wrangling-and-dates}}
+
+The package is available on GitHub \href{https://github.com/RamiKrispin/coronavirus}{here} and is updated daily.
+
+\hypertarget{show-some-neat-visuals.-perhaps-for-the-us-china-russia-spain-and-venezuela}{%
+\section{show some neat visuals. Perhaps for the US, China, Russia, Spain, and Venezuela:}\label{show-some-neat-visuals.-perhaps-for-the-us-china-russia-spain-and-venezuela}}
+
+\begin{itemize}
+\tightlist
+\item
+  COVID cases over time
+\item
+  COVID rates over time
+\item
+  COVID deaths over time
+\item
+  COVID death rates over time
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(coronavirus)}
+\FunctionTok{head}\NormalTok{(coronavirus)}
+\CommentTok{\#\textgreater{}         date province country     lat      long      type}
+\CommentTok{\#\textgreater{} 1 2020{-}01{-}22  Alberta  Canada 53.9333 {-}116.5765 confirmed}
+\CommentTok{\#\textgreater{} 2 2020{-}01{-}23  Alberta  Canada 53.9333 {-}116.5765 confirmed}
+\CommentTok{\#\textgreater{} 3 2020{-}01{-}24  Alberta  Canada 53.9333 {-}116.5765 confirmed}
+\CommentTok{\#\textgreater{} 4 2020{-}01{-}25  Alberta  Canada 53.9333 {-}116.5765 confirmed}
+\CommentTok{\#\textgreater{} 5 2020{-}01{-}26  Alberta  Canada 53.9333 {-}116.5765 confirmed}
+\CommentTok{\#\textgreater{} 6 2020{-}01{-}27  Alberta  Canada 53.9333 {-}116.5765 confirmed}
+\CommentTok{\#\textgreater{}   cases   uid iso2 iso3 code3    combined\_key population}
+\CommentTok{\#\textgreater{} 1     0 12401   CA  CAN   124 Alberta, Canada    4413146}
+\CommentTok{\#\textgreater{} 2     0 12401   CA  CAN   124 Alberta, Canada    4413146}
+\CommentTok{\#\textgreater{} 3     0 12401   CA  CAN   124 Alberta, Canada    4413146}
+\CommentTok{\#\textgreater{} 4     0 12401   CA  CAN   124 Alberta, Canada    4413146}
+\CommentTok{\#\textgreater{} 5     0 12401   CA  CAN   124 Alberta, Canada    4413146}
+\CommentTok{\#\textgreater{} 6     0 12401   CA  CAN   124 Alberta, Canada    4413146}
+\CommentTok{\#\textgreater{}   continent\_name continent\_code}
+\CommentTok{\#\textgreater{} 1  North America             NA}
+\CommentTok{\#\textgreater{} 2  North America             NA}
+\CommentTok{\#\textgreater{} 3  North America             NA}
+\CommentTok{\#\textgreater{} 4  North America             NA}
+\CommentTok{\#\textgreater{} 5  North America             NA}
+\CommentTok{\#\textgreater{} 6  North America             NA}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#>     country   n
+#> 1    Russia 748
+#> 2     Spain 748
+#> 3        US 748
+#> 4 Venezuela 748
+#>         date country deaths
+#> 1 2020-01-22  Russia      0
+#> 2 2020-01-23  Russia      0
+#> 3 2020-01-24  Russia      0
+#> 4 2020-01-25  Russia      0
+#> 5 2020-01-26  Russia      0
+#> 6 2020-01-27  Russia      0
+#>     country   n
+#> 1    Russia 748
+#> 2     Spain 748
+#> 3        US 748
+#> 4 Venezuela 748
+#>         date country confirmed
+#> 1 2020-01-22  Russia         0
+#> 2 2020-01-23  Russia         0
+#> 3 2020-01-24  Russia         0
+#> 4 2020-01-25  Russia         0
+#> 5 2020-01-26  Russia         0
+#> 6 2020-01-27  Russia         0
+#>         date country deaths confirmed
+#> 1 2020-01-22  Russia      0         0
+#> 2 2020-01-23  Russia      0         0
+#> 3 2020-01-24  Russia      0         0
+#> 4 2020-01-25  Russia      0         0
+#> 5 2020-01-26  Russia      0         0
+#> 6 2020-01-27  Russia      0         0
+#>     country   n
+#> 1    Russia 748
+#> 2     Spain 748
+#> 3        US 748
+#> 4 Venezuela 748
+\end{verbatim}
+
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-1-1.pdf} \includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-1-2.pdf} \includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-1-3.pdf} \includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-1-4.pdf}
+
+\begin{verbatim}
+#>       date              country              deaths       
+#>  Min.   :2020-01-22   Length:2992        Min.   :-1918.0  
+#>  1st Qu.:2020-07-26   Class :character   1st Qu.:    5.0  
+#>  Median :2021-01-29   Mode  :character   Median :  122.0  
+#>  Mean   :2021-01-29                      Mean   :  446.1  
+#>  3rd Qu.:2021-08-04                      3rd Qu.:  632.2  
+#>  Max.   :2022-02-07                      Max.   : 4442.0  
+#>    confirmed       cumulative_cases    cumulative_deaths
+#>  Min.   : -74937   Min.   :        0   Min.   :      0  
+#>  1st Qu.:    450   1st Qu.: 12782791   1st Qu.: 329264  
+#>  Median :   7723   Median : 23178262   Median : 423834  
+#>  Mean   :  33599   Mean   : 41557773   Mean   : 660872  
+#>  3rd Qu.:  27682   3rd Qu.:100031030   3rd Qu.:1329377  
+#>  Max.   :1369637   Max.   :100527313   Max.   :1334864  
+#>       rate         
+#>  Min.   :-3.00000  
+#>  1st Qu.: 0.00458  
+#>  Median : 0.01281  
+#>  Mean   : 0.02253  
+#>  3rd Qu.: 0.02342  
+#>  Max.   : 5.15591
+\end{verbatim}
+
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-1-5.pdf}
 
   \bibliography{book.bib,packages.bib}
 

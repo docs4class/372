@@ -48,6 +48,7 @@
 <li><a class="" href="lab-1-in-rmarkdown.html"><span class="header-section-number">7</span> Lab 1 in Rmarkdown</a></li>
 <li><a class="active" href="lab-2-pretty-pictures.html"><span class="header-section-number">8</span> Lab 2: Pretty pictures!</a></li>
 <li><a class="" href="lab-2-ggplot-without-dsbox.html"><span class="header-section-number">9</span> Lab 2 – ggplot without dsbox</a></li>
+<li><a class="" href="lab-3-coronavirus-visualization-data-wrangling-and-dates.html"><span class="header-section-number">10</span> Lab 3: coronavirus visualization, data wrangling, and dates</a></li>
 </ul>
 
         <div class="book-extra">
@@ -122,12 +123,14 @@ been modified to better serve the goals of this exploration.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>The dataset you’ll be using is called <code>edibnb</code> the data is in the <strong>dsbox</strong> package. Run <code>View(edibnb)</code> in your Console to view the data in the data viewer. What does each row in the dataset represent?</li>
 </ol>
-<pre class="marginfigure"><code>**Hint:** The Markdown, ggplot2, and dplyr Quick Reference sheets has an example of inline R code that might be helpful. You can access it from the Help menu in RStudio.</code></pre>
+<blockquote>
+<p><strong>Hint:</strong> The Markdown, ggplot2, and dplyr Quick Reference sheets has an example of inline R code that might be helpful. You can access it from the Help menu in RStudio.</p>
+</blockquote>
 <ol start="3" style="list-style-type: decimal">
 <li>How many observations (rows) does the dataset have? What interesting data is present? What was the purpose of this data being collected in the first place? Visit the kaggle site if needed.</li>
 </ol>
 <p>Each column represents a variable. We can get a list of the variables in the data frame using the <code><a href="https://rdrr.io/r/base/names.html">names()</a></code> function. How else can we find out details of about these variables?</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">edibnb</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "id"                   "price"               </span>
 <span class="co">#&gt;  [3] "neighbourhood"        "accommodates"        </span>
@@ -139,10 +142,12 @@ been modified to better serve the goals of this exploration.</p>
 <li><p>Create a faceted histogram where each facet represents a neighborhood and displays the distribution of Airbnb prices in that neighborhood. Your histogram may be similar (or better! than the example below.)</p></li>
 <li><p>Create a faceted histogram where each facet represents a neighborhood and displays the distribution of Airbnb prices in that neighborhood. You histogram may be similar (or better! than the example below.)</p></li>
 </ol>
-<pre class="marginfigure"><code>**Note:** The plot will give a warning about some observations with non-finite values for price being removed. Don't worry about the warning, it simply means that 199 listings in the data didn't have prices available, so they can't be plotted.</code></pre>
+<blockquote>
+<p><strong>Note:</strong> The plot will give a warning about some observations with non-finite values for price being removed. Don’t worry about the warning, it simply means that 199 listings in the data didn’t have prices available, so they can’t be plotted.</p>
+</blockquote>
 <pre><code>#&gt; Warning: Removed 199 rows containing non-finite values
 #&gt; (stat_bin).</code></pre>
-<div class="inline-figure"><img src="102-ggplot_Lab_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
+<div class="inline-figure"><img src="102-ggplot_Lab_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
 <ol start="6" style="list-style-type: decimal">
 <li><p>Create a similar visualization, this time showing the distribution of review scores (<code>review_scores_rating</code>) across neighborhoods. In your answer, include a brief interpretation of how Airbnb guests rate properties in general and how the neighborhoods compare to each other in terms of their ratings.</p></li>
 <li><p>Create another informative visualization of your choosing. Be prepared to share it with the class – although the visualization should need no explaining!</p></li>
@@ -202,7 +207,7 @@ been modified to better serve the goals of this exploration.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-01-20.</p>
+    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-02-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

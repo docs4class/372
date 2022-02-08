@@ -23,17 +23,17 @@ Install it like a normal package.  After successful installation, you can find o
 
 2. Make a plot showing a count of penguins of each species.
 
-![](103-ggplot_Lab_no_dsbox_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
+
 
 3. Create a plot that illustrates the relationship between flipper_length_mm and body_mass_g with respect to each species.
 
 
-![](103-ggplot_Lab_no_dsbox_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
+
 
 4. Create a plot that illustrates the relationship between flipper_length_mm and body_mass_g with respect to each species for each island.
 
 
-![](103-ggplot_Lab_no_dsbox_files/figure-epub3/unnamed-chunk-7-1.png)<!-- -->
+
 
 5.  Create a few plots of your own using new/interesting geoms and make sure the plots have meangiful, imprmfative labels, too.  For possible examples:
 

@@ -57,7 +57,7 @@ penguins %>%
 
 2. Make a plot showing a count of penguins of each species.
 
-```{r, message=FALSE, warning=FALSE, echo=FALSE}
+```{r, eval=FALSE,message=FALSE, warning=FALSE, echo=FALSE}
 penguins %>%
   count(species) %>%
   ggplot() + geom_col(aes(x = species, y = n, fill = species)) +
@@ -70,7 +70,7 @@ penguins %>%
 3. Create a plot that illustrates the relationship between flipper_length_mm and body_mass_g with respect to each species.
 
 
-```{r, message=FALSE, warning=FALSE, echo=FALSE}
+```{r, eval=FALSE,message=FALSE, warning=FALSE, echo=FALSE}
 library(tidyverse)
 ggplot(data = penguins, 
                        aes(x = flipper_length_mm,
@@ -93,7 +93,7 @@ ggplot(data = penguins,
 4. Create a plot that illustrates the relationship between flipper_length_mm and body_mass_g with respect to each species for each island.
 
 
-```{r, message=FALSE, warning=FALSE, echo=FALSE}
+```{r, eval=FALSE,message=FALSE, warning=FALSE, echo=FALSE}
 library(tidyverse)
 ggplot(data = penguins, 
                        aes(x = flipper_length_mm,
