@@ -90,7 +90,7 @@ ggplot(data = rate.over.time, mapping = aes(x=date, y=covid.rate, color = countr
 
 ```{r essage=FALSE, warning=FALSE, echo=FALSE}
 cases <- coronavirus %>% 
-  filter(country=="China"|country=="Russia"|country=="Spain"|country=="Venezuela"|country=="US") %>%
+  filter(country=="Russia"|country=="Spain"|country=="Venezuela"|country=="US") %>%
   filter(type=="confirmed") %>% filter(cases>!0) %>% 
   select(date,country, cases,type) %>% group_by(date,country) %>% 
   mutate("total cases"= sum(cases)) %>% 
@@ -107,14 +107,18 @@ ggplot(data = cases, mapping = aes(date,`cumulative cases`, color=country))+
   subtitle = "Cumulative covid cases by country")
 ```
 
-6.  With a litte more time and a few extra packages, we **could** make a graph prettier.  Try.
+6.  With a little more time and a few extra packages, we **could** make a graph prettier.  Try.
 
-
-```{r message=FALSE, warning=FALSE, echo=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(scales)
 library(ggrepel)
 library(glue)
 library(lubridate)
+```
+
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+
 
 df1 <- coronavirus %>% 
   filter(country=="Russia"|country=="US"|country=="Spain"|country=="Venezuela", type == "death") %>%

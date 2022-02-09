@@ -966,10 +966,19 @@ For example, what does this summary let us know?
 \setcounter{enumi}{5}
 \tightlist
 \item
-  With a litte more time and a few extra packages, we \textbf{could} make a graph prettier. Try.
+  With a little more time and a few extra packages, we \textbf{could} make a graph prettier. Try.
 \end{enumerate}
 
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-7-1.pdf}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(scales)}
+\FunctionTok{library}\NormalTok{(ggrepel)}
+\FunctionTok{library}\NormalTok{(glue)}
+\FunctionTok{library}\NormalTok{(lubridate)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-8-1.pdf}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1053,7 +1062,7 @@ Let's add some cumulative statistics as well.
 
 Now we can plot some more fun stuff.
 
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-13-1.pdf}
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-14-1.pdf}
 
 \begin{verbatim}
 #>       date              country              deaths      
@@ -1082,7 +1091,7 @@ Now we can plot some more fun stuff.
 #>  NA's   :4
 \end{verbatim}
 
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-13-2.pdf}
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-14-2.pdf}
 
   \bibliography{book.bib,packages.bib}
 

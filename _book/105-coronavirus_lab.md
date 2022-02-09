@@ -71,10 +71,18 @@ Also, why might `filter(cases >= 0)` be worth using?
 
 ![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
 
-6.  With a litte more time and a few extra packages, we **could** make a graph prettier.  Try.
+6.  With a little more time and a few extra packages, we **could** make a graph prettier.  Try.
 
 
-![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-7-1.png)<!-- -->
+```r
+library(scales)
+library(ggrepel)
+library(glue)
+library(lubridate)
+```
+
+
+![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-8-1.png)<!-- -->
 
 
 7. Now let's **really** have some fun.  Let's illustrate death rates relative to confirmed cases.  Why is this more challenging than anything we've done so far in this lab?  We're going to have to make this data **tidy**.  
@@ -161,7 +169,7 @@ Let's add some cumulative statistics as well.
 Now we can plot some more fun stuff.
 
 
-![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-13-1.png)<!-- -->
+![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-14-1.png)<!-- -->
 
 ```
 #>       date              country              deaths      
@@ -190,5 +198,5 @@ Now we can plot some more fun stuff.
 #>  NA's   :4
 ```
 
-![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-13-2.png)<!-- -->
+![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-14-2.png)<!-- -->
 
