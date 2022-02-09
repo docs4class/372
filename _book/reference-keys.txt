@@ -32,4 +32,4 @@ lab-2-ggplot-without-dsbox
 excercises-using-the-data-sets-mpg-or-diamonds
 palmerpenguins
 lab-3-coronavirus-visualization-data-wrangling-and-dates
-show-some-neat-visuals.-perhaps-for-the-us-china-russia-spain-and-venezuela
+letslook-like-applied-analytics-superstars-and-make-some-neat-visuals.

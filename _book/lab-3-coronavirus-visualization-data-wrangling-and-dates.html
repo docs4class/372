@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 10 Lab 3: coronavirus visualization, data wrangling, and dates | BADM 372 Applied Analytics</title>
 <meta name="author" content="BADM 372">
-<meta name="description" content="The package is available on GitHub here and is updated daily.  10.1 show some neat visuals. Perhaps for the US, China, Russia, Spain, and Venezuela: COVID cases over time COVID rates over time...">
+<meta name="description" content="The package is available on GitHub here and is updated daily. I use the coronavirus package and use the coronavirus::update_data() function to keep the data current.  10.1 Let’slook like Applied...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 10 Lab 3: coronavirus visualization, data wrangling, and dates | BADM 372 Applied Analytics">
 <meta property="og:type" content="book">
-<meta property="og:description" content="The package is available on GitHub here and is updated daily.  10.1 show some neat visuals. Perhaps for the US, China, Russia, Spain, and Venezuela: COVID cases over time COVID rates over time...">
+<meta property="og:description" content="The package is available on GitHub here and is updated daily. I use the coronavirus package and use the coronavirus::update_data() function to keep the data current.  10.1 Let’slook like Applied...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 10 Lab 3: coronavirus visualization, data wrangling, and dates | BADM 372 Applied Analytics">
-<meta name="twitter:description" content="The package is available on GitHub here and is updated daily.  10.1 show some neat visuals. Perhaps for the US, China, Russia, Spain, and Venezuela: COVID cases over time COVID rates over time...">
+<meta name="twitter:description" content="The package is available on GitHub here and is updated daily. I use the coronavirus package and use the coronavirus::update_data() function to keep the data current.  10.1 Let’slook like Applied...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -61,16 +61,13 @@
 <span class="header-section-number">10</span> Lab 3: <code>coronavirus</code> visualization, data wrangling, and dates<a class="anchor" aria-label="anchor" href="#lab-3-coronavirus-visualization-data-wrangling-and-dates"><i class="fas fa-link"></i></a>
 </h1>
 <p>The package is available on GitHub <a href="https://github.com/RamiKrispin/coronavirus">here</a> and is updated daily.</p>
-<div id="show-some-neat-visuals.-perhaps-for-the-us-china-russia-spain-and-venezuela" class="section level2" number="10.1">
+<blockquote>
+<p>I use the <code>coronavirus</code> package and use the <code>coronavirus::update_data()</code> function to keep the data current.</p>
+</blockquote>
+<div id="letslook-like-applied-analytics-superstars-and-make-some-neat-visuals." class="section level2" number="10.1">
 <h2>
-<span class="header-section-number">10.1</span> show some neat visuals. Perhaps for the US, China, Russia, Spain, and Venezuela:<a class="anchor" aria-label="anchor" href="#show-some-neat-visuals.-perhaps-for-the-us-china-russia-spain-and-venezuela"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.1</span> Let’slook like Applied Analytics Superstars and make some neat visuals.<a class="anchor" aria-label="anchor" href="#letslook-like-applied-analytics-superstars-and-make-some-neat-visuals."><i class="fas fa-link"></i></a>
 </h2>
-<ul>
-<li>COVID cases over time</li>
-<li>COVID rates over time</li>
-<li>COVID deaths over time</li>
-<li>COVID death rates over time</li>
-</ul>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/RamiKrispin/coronavirus">coronavirus</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span>
@@ -97,12 +94,60 @@
 <span class="co">#&gt; 6  North America             NA</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
-<pre><code>#&gt;     country   n
-#&gt; 1    Russia 748
-#&gt; 2     Spain 748
-#&gt; 3        US 748
-#&gt; 4 Venezuela 748
-#&gt;         date country deaths
+<p>I’d recommend you always start by trying to understand a bit about the data.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span>
+<span class="co">#&gt;         date province country     lat      long      type</span>
+<span class="co">#&gt; 1 2020-01-22  Alberta  Canada 53.9333 -116.5765 confirmed</span>
+<span class="co">#&gt; 2 2020-01-23  Alberta  Canada 53.9333 -116.5765 confirmed</span>
+<span class="co">#&gt; 3 2020-01-24  Alberta  Canada 53.9333 -116.5765 confirmed</span>
+<span class="co">#&gt; 4 2020-01-25  Alberta  Canada 53.9333 -116.5765 confirmed</span>
+<span class="co">#&gt; 5 2020-01-26  Alberta  Canada 53.9333 -116.5765 confirmed</span>
+<span class="co">#&gt; 6 2020-01-27  Alberta  Canada 53.9333 -116.5765 confirmed</span>
+<span class="co">#&gt;   cases   uid iso2 iso3 code3    combined_key population</span>
+<span class="co">#&gt; 1     0 12401   CA  CAN   124 Alberta, Canada    4413146</span>
+<span class="co">#&gt; 2     0 12401   CA  CAN   124 Alberta, Canada    4413146</span>
+<span class="co">#&gt; 3     0 12401   CA  CAN   124 Alberta, Canada    4413146</span>
+<span class="co">#&gt; 4     0 12401   CA  CAN   124 Alberta, Canada    4413146</span>
+<span class="co">#&gt; 5     0 12401   CA  CAN   124 Alberta, Canada    4413146</span>
+<span class="co">#&gt; 6     0 12401   CA  CAN   124 Alberta, Canada    4413146</span>
+<span class="co">#&gt;   continent_name continent_code</span>
+<span class="co">#&gt; 1  North America             NA</span>
+<span class="co">#&gt; 2  North America             NA</span>
+<span class="co">#&gt; 3  North America             NA</span>
+<span class="co">#&gt; 4  North America             NA</span>
+<span class="co">#&gt; 5  North America             NA</span>
+<span class="co">#&gt; 6  North America             NA</span></code></pre></div>
+<p>For exmple, what does this summary let us know?</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">cases</span><span class="op">)</span>
+<span class="co">#&gt;      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. </span>
+<span class="co">#&gt; -30974748         0         0       651        30   1369637</span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li>Can you create a visual showing the cases over time for China, Russia, Spain, US, and Venezuela?
+Also, why might <code>filter(cases &gt;= 0)</code> be worth using?</li>
+</ol>
+<div class="inline-figure"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Can you show deaths over time for Russia, Spain, US, and Venezuela? And can you play with your geoms and make something neat?</li>
+</ol>
+<div class="inline-figure"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Now lets do a plot of COVID rate (# cases / population). Something like this.</li>
+</ol>
+<div class="inline-figure"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
+<ol start="4" style="list-style-type: decimal">
+<li><p>What is not useful about the previous illustration?</p></li>
+<li><p>Make a chart with cumulative cases. Something like this:</p></li>
+</ol>
+<div class="inline-figure"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
+<ol start="6" style="list-style-type: decimal">
+<li><p>Now let’s <strong>really</strong> have some fun. Let’s illustrate death rates relative to confirmed cases. Why is this more challenging than anything we’ve done so far in this lab? We’re going to have to make this data <strong>tidy</strong>.</p></li>
+<li><p>One way to play this game.</p></li>
+</ol>
+<p>knitr::opts_chunk$set(echo = FALSE)</p>
+<p>Let’s make a little table of just deaths.</p>
+<pre><code>#&gt;         date country deaths
 #&gt; 1 2020-01-22  Russia      0
 #&gt; 2 2020-01-23  Russia      0
 #&gt; 3 2020-01-24  Russia      0
@@ -110,6 +155,12 @@
 #&gt; 5 2020-01-26  Russia      0
 #&gt; 6 2020-01-27  Russia      0
 #&gt;     country   n
+#&gt; 1    Russia 748
+#&gt; 2     Spain 745
+#&gt; 3        US 748
+#&gt; 4 Venezuela 747</code></pre>
+<p>Let’s make a little table of just confirmed cases.</p>
+<pre><code>#&gt;     country   n
 #&gt; 1    Russia 748
 #&gt; 2     Spain 748
 #&gt; 3        US 748
@@ -120,8 +171,9 @@
 #&gt; 3 2020-01-24  Russia         0
 #&gt; 4 2020-01-25  Russia         0
 #&gt; 5 2020-01-26  Russia         0
-#&gt; 6 2020-01-27  Russia         0
-#&gt;         date country deaths confirmed
+#&gt; 6 2020-01-27  Russia         0</code></pre>
+<p>Let’s join these together. I use <code>left_join</code>.</p>
+<pre><code>#&gt;         date country deaths confirmed
 #&gt; 1 2020-01-22  Russia      0         0
 #&gt; 2 2020-01-23  Russia      0         0
 #&gt; 3 2020-01-24  Russia      0         0
@@ -133,29 +185,41 @@
 #&gt; 2     Spain 748
 #&gt; 3        US 748
 #&gt; 4 Venezuela 748</code></pre>
-<p><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-1-1.png" width="672"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-1-2.png" width="672"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-1-3.png" width="672"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-1-4.png" width="672"></p>
-<pre><code>#&gt;       date              country              deaths       
-#&gt;  Min.   :2020-01-22   Length:2992        Min.   :-1918.0  
-#&gt;  1st Qu.:2020-07-26   Class :character   1st Qu.:    5.0  
-#&gt;  Median :2021-01-29   Mode  :character   Median :  122.0  
-#&gt;  Mean   :2021-01-29                      Mean   :  446.1  
-#&gt;  3rd Qu.:2021-08-04                      3rd Qu.:  632.2  
-#&gt;  Max.   :2022-02-07                      Max.   : 4442.0  
+<div class="inline-figure"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
+<pre><code>#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+#&gt;       0   16728   97790  132138  240231  358016    2120
+#&gt;         date province country lat long      type   cases
+#&gt; 1 2022-01-10     &lt;NA&gt;      US  40 -100 confirmed 1369637
+#&gt;   uid iso2 iso3 code3 combined_key population
+#&gt; 1 840   US  USA   840           US  329466283
+#&gt;   continent_name continent_code
+#&gt; 1  North America             NA</code></pre>
+<p><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-10-2.png" width="672"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-10-3.png" width="672"></p>
+<pre><code>#&gt;       date              country              deaths      
+#&gt;  Min.   :2020-01-22   Length:2992        Min.   :   0.0  
+#&gt;  1st Qu.:2020-07-26   Class :character   1st Qu.:   5.0  
+#&gt;  Median :2021-01-29   Mode  :character   Median : 123.0  
+#&gt;  Mean   :2021-01-29                      Mean   : 447.5  
+#&gt;  3rd Qu.:2021-08-04                      3rd Qu.: 633.0  
+#&gt;  Max.   :2022-02-07                      Max.   :4442.0  
+#&gt;                                          NA's   :4       
 #&gt;    confirmed       cumulative_cases    cumulative_deaths
-#&gt;  Min.   : -74937   Min.   :        0   Min.   :      0  
-#&gt;  1st Qu.:    450   1st Qu.: 12782791   1st Qu.: 329264  
-#&gt;  Median :   7723   Median : 23178262   Median : 423834  
-#&gt;  Mean   :  33599   Mean   : 41557773   Mean   : 660872  
-#&gt;  3rd Qu.:  27682   3rd Qu.:100031030   3rd Qu.:1329377  
-#&gt;  Max.   :1369637   Max.   :100527313   Max.   :1334864  
-#&gt;       rate         
-#&gt;  Min.   :-3.00000  
-#&gt;  1st Qu.: 0.00458  
-#&gt;  Median : 0.01281  
-#&gt;  Mean   : 0.02253  
-#&gt;  3rd Qu.: 0.02342  
-#&gt;  Max.   : 5.15591</code></pre>
-<div class="inline-figure"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-1-5.png" width="672"></div>
+#&gt;  Min.   : -74937   Min.   :        0   Min.   :     0   
+#&gt;  1st Qu.:    450   1st Qu.: 12782791   1st Qu.: 16728   
+#&gt;  Median :   7723   Median : 23178262   Median : 97790   
+#&gt;  Mean   :  33599   Mean   : 41557773   Mean   :132138   
+#&gt;  3rd Qu.:  27682   3rd Qu.:100031030   3rd Qu.:240231   
+#&gt;  Max.   :1369637   Max.   :100527313   Max.   :358016   
+#&gt;                                        NA's   :2120     
+#&gt;       rate          
+#&gt;  Min.   :-0.036576  
+#&gt;  1st Qu.: 0.004592  
+#&gt;  Median : 0.012829  
+#&gt;  Mean   : 0.021843  
+#&gt;  3rd Qu.: 0.023418  
+#&gt;  Max.   : 3.840391  
+#&gt;  NA's   :4</code></pre>
+<div class="inline-figure"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-10-4.png" width="672"></div>
 
 </div>
 </div>
@@ -166,7 +230,7 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#lab-3-coronavirus-visualization-data-wrangling-and-dates"><span class="header-section-number">10</span> Lab 3: coronavirus visualization, data wrangling, and dates</a></li>
-<li><a class="nav-link" href="#show-some-neat-visuals.-perhaps-for-the-us-china-russia-spain-and-venezuela"><span class="header-section-number">10.1</span> show some neat visuals. Perhaps for the US, China, Russia, Spain, and Venezuela:</a></li>
+<li><a class="nav-link" href="#letslook-like-applied-analytics-superstars-and-make-some-neat-visuals."><span class="header-section-number">10.1</span> Let’slook like Applied Analytics Superstars and make some neat visuals.</a></li>
 </ul>
 
       <div class="book-extra">
@@ -184,7 +248,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-02-08.</p>
+    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-02-09.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

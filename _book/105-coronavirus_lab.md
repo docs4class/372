@@ -2,14 +2,12 @@
 
 The package is available on GitHub [here](https://github.com/RamiKrispin/coronavirus) and is updated daily.
 
+> I use the `coronavirus` package and use the `coronavirus::update_data()` function to keep the data current.
 
-## show some neat visuals.  Perhaps for the US, China, Russia, Spain, and Venezuela:
 
-- COVID cases over time
-- COVID rates over time
-- COVID deaths over time
-- COVID death rates over time
+## Let'slook like Applied Analytics Superstars and make some neat visuals.
 
+ 
 
 
 ```r
@@ -40,13 +38,74 @@ library(dplyr)
 library(ggplot2)
 ```
 
+I'd recommend you always start by trying to understand a bit about the data.
+
+
+```r
+head(coronavirus)
+#>         date province country     lat      long      type
+#> 1 2020-01-22  Alberta  Canada 53.9333 -116.5765 confirmed
+#> 2 2020-01-23  Alberta  Canada 53.9333 -116.5765 confirmed
+#> 3 2020-01-24  Alberta  Canada 53.9333 -116.5765 confirmed
+#> 4 2020-01-25  Alberta  Canada 53.9333 -116.5765 confirmed
+#> 5 2020-01-26  Alberta  Canada 53.9333 -116.5765 confirmed
+#> 6 2020-01-27  Alberta  Canada 53.9333 -116.5765 confirmed
+#>   cases   uid iso2 iso3 code3    combined_key population
+#> 1     0 12401   CA  CAN   124 Alberta, Canada    4413146
+#> 2     0 12401   CA  CAN   124 Alberta, Canada    4413146
+#> 3     0 12401   CA  CAN   124 Alberta, Canada    4413146
+#> 4     0 12401   CA  CAN   124 Alberta, Canada    4413146
+#> 5     0 12401   CA  CAN   124 Alberta, Canada    4413146
+#> 6     0 12401   CA  CAN   124 Alberta, Canada    4413146
+#>   continent_name continent_code
+#> 1  North America             NA
+#> 2  North America             NA
+#> 3  North America             NA
+#> 4  North America             NA
+#> 5  North America             NA
+#> 6  North America             NA
+```
+
+For exmple, what does this summary let us know?
+
+
+```r
+summary(coronavirus$cases)
+#>      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+#> -30974748         0         0       651        30   1369637
+```
+
+1. Can you create a visual showing the cases over time for China, Russia, Spain, US, and Venezuela?
+Also, why might `filter(cases >= 0)` be worth using? 
+
+![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-3-1.png)<!-- -->
+
+2. Can you show deaths over time for Russia, Spain, US, and Venezuela?  And can you play with your geoms and make something neat?
+
+![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-4-1.png)<!-- -->
+
+3. Now lets do a plot of COVID rate (# cases / population).  Something like this. 
+
+![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
+
+4. What is not useful about the previous illustration?  
+
+5. Make a chart with cumulative cases.  Something like this:
+
+![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
+
+6.  Now let's **really** have some fun.  Let's illustrate death rates relative to confirmed cases.  Why is this more challenging than anything we've done so far in this lab?  We're going to have to make this data **tidy**.
+
+7. One way to play this game.
+
+knitr::opts_chunk$set(echo = FALSE)
+
+
+
+Let's make a little table of just deaths.
+
 
 ```
-#>     country   n
-#> 1    Russia 748
-#> 2     Spain 748
-#> 3        US 748
-#> 4 Venezuela 748
 #>         date country deaths
 #> 1 2020-01-22  Russia      0
 #> 2 2020-01-23  Russia      0
@@ -54,6 +113,17 @@ library(ggplot2)
 #> 4 2020-01-25  Russia      0
 #> 5 2020-01-26  Russia      0
 #> 6 2020-01-27  Russia      0
+#>     country   n
+#> 1    Russia 748
+#> 2     Spain 745
+#> 3        US 748
+#> 4 Venezuela 747
+```
+
+Let's make a little table of just confirmed cases.
+
+
+```
 #>     country   n
 #> 1    Russia 748
 #> 2     Spain 748
@@ -66,6 +136,13 @@ library(ggplot2)
 #> 4 2020-01-25  Russia         0
 #> 5 2020-01-26  Russia         0
 #> 6 2020-01-27  Russia         0
+```
+
+Let's join these together. I use `left_join`.  
+
+
+
+```
 #>         date country deaths confirmed
 #> 1 2020-01-22  Russia      0         0
 #> 2 2020-01-23  Russia      0         0
@@ -80,31 +157,47 @@ library(ggplot2)
 #> 4 Venezuela 748
 ```
 
-![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-1-1.png)<!-- -->![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-1-2.png)<!-- -->![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-1-3.png)<!-- -->![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-1-4.png)<!-- -->
+![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
 
 ```
-#>       date              country              deaths       
-#>  Min.   :2020-01-22   Length:2992        Min.   :-1918.0  
-#>  1st Qu.:2020-07-26   Class :character   1st Qu.:    5.0  
-#>  Median :2021-01-29   Mode  :character   Median :  122.0  
-#>  Mean   :2021-01-29                      Mean   :  446.1  
-#>  3rd Qu.:2021-08-04                      3rd Qu.:  632.2  
-#>  Max.   :2022-02-07                      Max.   : 4442.0  
+#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+#>       0   16728   97790  132138  240231  358016    2120
+#>         date province country lat long      type   cases
+#> 1 2022-01-10     <NA>      US  40 -100 confirmed 1369637
+#>   uid iso2 iso3 code3 combined_key population
+#> 1 840   US  USA   840           US  329466283
+#>   continent_name continent_code
+#> 1  North America             NA
+```
+
+![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-10-2.png)<!-- -->![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-10-3.png)<!-- -->
+
+```
+#>       date              country              deaths      
+#>  Min.   :2020-01-22   Length:2992        Min.   :   0.0  
+#>  1st Qu.:2020-07-26   Class :character   1st Qu.:   5.0  
+#>  Median :2021-01-29   Mode  :character   Median : 123.0  
+#>  Mean   :2021-01-29                      Mean   : 447.5  
+#>  3rd Qu.:2021-08-04                      3rd Qu.: 633.0  
+#>  Max.   :2022-02-07                      Max.   :4442.0  
+#>                                          NA's   :4       
 #>    confirmed       cumulative_cases    cumulative_deaths
-#>  Min.   : -74937   Min.   :        0   Min.   :      0  
-#>  1st Qu.:    450   1st Qu.: 12782791   1st Qu.: 329264  
-#>  Median :   7723   Median : 23178262   Median : 423834  
-#>  Mean   :  33599   Mean   : 41557773   Mean   : 660872  
-#>  3rd Qu.:  27682   3rd Qu.:100031030   3rd Qu.:1329377  
-#>  Max.   :1369637   Max.   :100527313   Max.   :1334864  
-#>       rate         
-#>  Min.   :-3.00000  
-#>  1st Qu.: 0.00458  
-#>  Median : 0.01281  
-#>  Mean   : 0.02253  
-#>  3rd Qu.: 0.02342  
-#>  Max.   : 5.15591
+#>  Min.   : -74937   Min.   :        0   Min.   :     0   
+#>  1st Qu.:    450   1st Qu.: 12782791   1st Qu.: 16728   
+#>  Median :   7723   Median : 23178262   Median : 97790   
+#>  Mean   :  33599   Mean   : 41557773   Mean   :132138   
+#>  3rd Qu.:  27682   3rd Qu.:100031030   3rd Qu.:240231   
+#>  Max.   :1369637   Max.   :100527313   Max.   :358016   
+#>                                        NA's   :2120     
+#>       rate          
+#>  Min.   :-0.036576  
+#>  1st Qu.: 0.004592  
+#>  Median : 0.012829  
+#>  Mean   : 0.021843  
+#>  3rd Qu.: 0.023418  
+#>  Max.   : 3.840391  
+#>  NA's   :4
 ```
 
-![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-1-5.png)<!-- -->
+![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-10-4.png)<!-- -->
 

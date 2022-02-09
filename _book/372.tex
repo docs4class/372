@@ -6,7 +6,7 @@
 ]{book}
 \title{BADM 372 Applied Analytics}
 \author{BADM 372}
-\date{2022-02-08}
+\date{2022-02-09}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -866,20 +866,12 @@ Install it like a normal package. After successful installation, you can find ou
 
 The package is available on GitHub \href{https://github.com/RamiKrispin/coronavirus}{here} and is updated daily.
 
-\hypertarget{show-some-neat-visuals.-perhaps-for-the-us-china-russia-spain-and-venezuela}{%
-\section{show some neat visuals. Perhaps for the US, China, Russia, Spain, and Venezuela:}\label{show-some-neat-visuals.-perhaps-for-the-us-china-russia-spain-and-venezuela}}
+\begin{quote}
+I use the \texttt{coronavirus} package and use the \texttt{coronavirus::update\_data()} function to keep the data current.
+\end{quote}
 
-\begin{itemize}
-\tightlist
-\item
-  COVID cases over time
-\item
-  COVID rates over time
-\item
-  COVID deaths over time
-\item
-  COVID death rates over time
-\end{itemize}
+\hypertarget{letslook-like-applied-analytics-superstars-and-make-some-neat-visuals.}{%
+\section{Let'slook like Applied Analytics Superstars and make some neat visuals.}\label{letslook-like-applied-analytics-superstars-and-make-some-neat-visuals.}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -911,12 +903,100 @@ The package is available on GitHub \href{https://github.com/RamiKrispin/coronavi
 \end{Highlighting}
 \end{Shaded}
 
+I'd recommend you always start by trying to understand a bit about the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(coronavirus)}
+\CommentTok{\#\textgreater{}         date province country     lat      long      type}
+\CommentTok{\#\textgreater{} 1 2020{-}01{-}22  Alberta  Canada 53.9333 {-}116.5765 confirmed}
+\CommentTok{\#\textgreater{} 2 2020{-}01{-}23  Alberta  Canada 53.9333 {-}116.5765 confirmed}
+\CommentTok{\#\textgreater{} 3 2020{-}01{-}24  Alberta  Canada 53.9333 {-}116.5765 confirmed}
+\CommentTok{\#\textgreater{} 4 2020{-}01{-}25  Alberta  Canada 53.9333 {-}116.5765 confirmed}
+\CommentTok{\#\textgreater{} 5 2020{-}01{-}26  Alberta  Canada 53.9333 {-}116.5765 confirmed}
+\CommentTok{\#\textgreater{} 6 2020{-}01{-}27  Alberta  Canada 53.9333 {-}116.5765 confirmed}
+\CommentTok{\#\textgreater{}   cases   uid iso2 iso3 code3    combined\_key population}
+\CommentTok{\#\textgreater{} 1     0 12401   CA  CAN   124 Alberta, Canada    4413146}
+\CommentTok{\#\textgreater{} 2     0 12401   CA  CAN   124 Alberta, Canada    4413146}
+\CommentTok{\#\textgreater{} 3     0 12401   CA  CAN   124 Alberta, Canada    4413146}
+\CommentTok{\#\textgreater{} 4     0 12401   CA  CAN   124 Alberta, Canada    4413146}
+\CommentTok{\#\textgreater{} 5     0 12401   CA  CAN   124 Alberta, Canada    4413146}
+\CommentTok{\#\textgreater{} 6     0 12401   CA  CAN   124 Alberta, Canada    4413146}
+\CommentTok{\#\textgreater{}   continent\_name continent\_code}
+\CommentTok{\#\textgreater{} 1  North America             NA}
+\CommentTok{\#\textgreater{} 2  North America             NA}
+\CommentTok{\#\textgreater{} 3  North America             NA}
+\CommentTok{\#\textgreater{} 4  North America             NA}
+\CommentTok{\#\textgreater{} 5  North America             NA}
+\CommentTok{\#\textgreater{} 6  North America             NA}
+\end{Highlighting}
+\end{Shaded}
+
+For exmple, what does this summary let us know?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(coronavirus}\SpecialCharTok{$}\NormalTok{cases)}
+\CommentTok{\#\textgreater{}      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. }
+\CommentTok{\#\textgreater{} {-}30974748         0         0       651        30   1369637}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Can you create a visual showing the cases over time for China, Russia, Spain, US, and Venezuela?
+  Also, why might \texttt{filter(cases\ \textgreater{}=\ 0)} be worth using?
+\end{enumerate}
+
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Can you show deaths over time for Russia, Spain, US, and Venezuela? And can you play with your geoms and make something neat?
+\end{enumerate}
+
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Now lets do a plot of COVID rate (\# cases / population). Something like this.
+\end{enumerate}
+
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\item
+  What is not useful about the previous illustration?
+\item
+  Make a chart with cumulative cases. Something like this:
+\end{enumerate}
+
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\item
+  Now let's \textbf{really} have some fun. Let's illustrate death rates relative to confirmed cases. Why is this more challenging than anything we've done so far in this lab? We're going to have to make this data \textbf{tidy}.
+\item
+  One way to play this game.
+\end{enumerate}
+
+knitr::opts\_chunk\$set(echo = FALSE)
+
+Let's make a little table of just deaths.
+
 \begin{verbatim}
-#>     country   n
-#> 1    Russia 748
-#> 2     Spain 748
-#> 3        US 748
-#> 4 Venezuela 748
 #>         date country deaths
 #> 1 2020-01-22  Russia      0
 #> 2 2020-01-23  Russia      0
@@ -924,6 +1004,16 @@ The package is available on GitHub \href{https://github.com/RamiKrispin/coronavi
 #> 4 2020-01-25  Russia      0
 #> 5 2020-01-26  Russia      0
 #> 6 2020-01-27  Russia      0
+#>     country   n
+#> 1    Russia 748
+#> 2     Spain 745
+#> 3        US 748
+#> 4 Venezuela 747
+\end{verbatim}
+
+Let's make a little table of just confirmed cases.
+
+\begin{verbatim}
 #>     country   n
 #> 1    Russia 748
 #> 2     Spain 748
@@ -936,6 +1026,11 @@ The package is available on GitHub \href{https://github.com/RamiKrispin/coronavi
 #> 4 2020-01-25  Russia         0
 #> 5 2020-01-26  Russia         0
 #> 6 2020-01-27  Russia         0
+\end{verbatim}
+
+Let's join these together. I use \texttt{left\_join}.
+
+\begin{verbatim}
 #>         date country deaths confirmed
 #> 1 2020-01-22  Russia      0         0
 #> 2 2020-01-23  Russia      0         0
@@ -950,33 +1045,49 @@ The package is available on GitHub \href{https://github.com/RamiKrispin/coronavi
 #> 4 Venezuela 748
 \end{verbatim}
 
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-1-1.pdf} \includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-1-2.pdf} \includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-1-3.pdf} \includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-1-4.pdf}
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-10-1.pdf}
 
 \begin{verbatim}
-#>       date              country              deaths       
-#>  Min.   :2020-01-22   Length:2992        Min.   :-1918.0  
-#>  1st Qu.:2020-07-26   Class :character   1st Qu.:    5.0  
-#>  Median :2021-01-29   Mode  :character   Median :  122.0  
-#>  Mean   :2021-01-29                      Mean   :  446.1  
-#>  3rd Qu.:2021-08-04                      3rd Qu.:  632.2  
-#>  Max.   :2022-02-07                      Max.   : 4442.0  
-#>    confirmed       cumulative_cases    cumulative_deaths
-#>  Min.   : -74937   Min.   :        0   Min.   :      0  
-#>  1st Qu.:    450   1st Qu.: 12782791   1st Qu.: 329264  
-#>  Median :   7723   Median : 23178262   Median : 423834  
-#>  Mean   :  33599   Mean   : 41557773   Mean   : 660872  
-#>  3rd Qu.:  27682   3rd Qu.:100031030   3rd Qu.:1329377  
-#>  Max.   :1369637   Max.   :100527313   Max.   :1334864  
-#>       rate         
-#>  Min.   :-3.00000  
-#>  1st Qu.: 0.00458  
-#>  Median : 0.01281  
-#>  Mean   : 0.02253  
-#>  3rd Qu.: 0.02342  
-#>  Max.   : 5.15591
+#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+#>       0   16728   97790  132138  240231  358016    2120
+#>         date province country lat long      type   cases
+#> 1 2022-01-10     <NA>      US  40 -100 confirmed 1369637
+#>   uid iso2 iso3 code3 combined_key population
+#> 1 840   US  USA   840           US  329466283
+#>   continent_name continent_code
+#> 1  North America             NA
 \end{verbatim}
 
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-1-5.pdf}
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-10-2.pdf} \includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-10-3.pdf}
+
+\begin{verbatim}
+#>       date              country              deaths      
+#>  Min.   :2020-01-22   Length:2992        Min.   :   0.0  
+#>  1st Qu.:2020-07-26   Class :character   1st Qu.:   5.0  
+#>  Median :2021-01-29   Mode  :character   Median : 123.0  
+#>  Mean   :2021-01-29                      Mean   : 447.5  
+#>  3rd Qu.:2021-08-04                      3rd Qu.: 633.0  
+#>  Max.   :2022-02-07                      Max.   :4442.0  
+#>                                          NA's   :4       
+#>    confirmed       cumulative_cases    cumulative_deaths
+#>  Min.   : -74937   Min.   :        0   Min.   :     0   
+#>  1st Qu.:    450   1st Qu.: 12782791   1st Qu.: 16728   
+#>  Median :   7723   Median : 23178262   Median : 97790   
+#>  Mean   :  33599   Mean   : 41557773   Mean   :132138   
+#>  3rd Qu.:  27682   3rd Qu.:100031030   3rd Qu.:240231   
+#>  Max.   :1369637   Max.   :100527313   Max.   :358016   
+#>                                        NA's   :2120     
+#>       rate          
+#>  Min.   :-0.036576  
+#>  1st Qu.: 0.004592  
+#>  Median : 0.012829  
+#>  Mean   : 0.021843  
+#>  3rd Qu.: 0.023418  
+#>  Max.   : 3.840391  
+#>  NA's   :4
+\end{verbatim}
+
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-10-4.pdf}
 
   \bibliography{book.bib,packages.bib}
 
