@@ -867,37 +867,15 @@ Install it like a normal package. After successful installation, you can find ou
 The package is available on GitHub \href{https://github.com/RamiKrispin/coronavirus}{here} and is updated daily.
 
 \begin{quote}
-I use the \texttt{coronavirus} package and use the \texttt{coronavirus::update\_data()} function to keep the data current.
+I use the \texttt{coronavirus} package and use the \texttt{coronavirus::update\_data()} function to keep the data current. This also has the dates preformatted which can be nice.
 \end{quote}
 
-\hypertarget{letslook-like-applied-analytics-superstars-and-make-some-neat-visuals.}{%
-\section{Let'slook like Applied Analytics Superstars and make some neat visuals.}\label{letslook-like-applied-analytics-superstars-and-make-some-neat-visuals.}}
+\hypertarget{lets-look-like-applied-analytics-superstars-and-make-some-neat-visuals.}{%
+\section{Let's look like Applied Analytics Superstars and make some neat visuals.}\label{lets-look-like-applied-analytics-superstars-and-make-some-neat-visuals.}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(coronavirus)}
-\FunctionTok{head}\NormalTok{(coronavirus)}
-\CommentTok{\#\textgreater{}         date province country     lat      long      type}
-\CommentTok{\#\textgreater{} 1 2020{-}01{-}22  Alberta  Canada 53.9333 {-}116.5765 confirmed}
-\CommentTok{\#\textgreater{} 2 2020{-}01{-}23  Alberta  Canada 53.9333 {-}116.5765 confirmed}
-\CommentTok{\#\textgreater{} 3 2020{-}01{-}24  Alberta  Canada 53.9333 {-}116.5765 confirmed}
-\CommentTok{\#\textgreater{} 4 2020{-}01{-}25  Alberta  Canada 53.9333 {-}116.5765 confirmed}
-\CommentTok{\#\textgreater{} 5 2020{-}01{-}26  Alberta  Canada 53.9333 {-}116.5765 confirmed}
-\CommentTok{\#\textgreater{} 6 2020{-}01{-}27  Alberta  Canada 53.9333 {-}116.5765 confirmed}
-\CommentTok{\#\textgreater{}   cases   uid iso2 iso3 code3    combined\_key population}
-\CommentTok{\#\textgreater{} 1     0 12401   CA  CAN   124 Alberta, Canada    4413146}
-\CommentTok{\#\textgreater{} 2     0 12401   CA  CAN   124 Alberta, Canada    4413146}
-\CommentTok{\#\textgreater{} 3     0 12401   CA  CAN   124 Alberta, Canada    4413146}
-\CommentTok{\#\textgreater{} 4     0 12401   CA  CAN   124 Alberta, Canada    4413146}
-\CommentTok{\#\textgreater{} 5     0 12401   CA  CAN   124 Alberta, Canada    4413146}
-\CommentTok{\#\textgreater{} 6     0 12401   CA  CAN   124 Alberta, Canada    4413146}
-\CommentTok{\#\textgreater{}   continent\_name continent\_code}
-\CommentTok{\#\textgreater{} 1  North America             NA}
-\CommentTok{\#\textgreater{} 2  North America             NA}
-\CommentTok{\#\textgreater{} 3  North America             NA}
-\CommentTok{\#\textgreater{} 4  North America             NA}
-\CommentTok{\#\textgreater{} 5  North America             NA}
-\CommentTok{\#\textgreater{} 6  North America             NA}
 \FunctionTok{library}\NormalTok{(dplyr)}
 \FunctionTok{library}\NormalTok{(ggplot2)}
 \end{Highlighting}
@@ -932,7 +910,7 @@ I'd recommend you always start by trying to understand a bit about the data.
 \end{Highlighting}
 \end{Shaded}
 
-For exmple, what does this summary let us know?
+For example, what does this summary let us know?
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -946,7 +924,7 @@ For exmple, what does this summary let us know?
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Can you create a visual showing the cases over time for China, Russia, Spain, US, and Venezuela?
+  Can you create a visual showing the cases over time for Russia, Spain, US, and Venezuela?
   Also, why might \texttt{filter(cases\ \textgreater{}=\ 0)} be worth using?
 \end{enumerate}
 
@@ -967,7 +945,7 @@ For exmple, what does this summary let us know?
 \setcounter{enumi}{2}
 \tightlist
 \item
-  Now lets do a plot of COVID rate (\# cases / population). Something like this.
+  Now let's do a plot of COVID rate (\# confirmed cases / population). Something like this.
 \end{enumerate}
 
 \includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-5-1.pdf}
@@ -976,7 +954,7 @@ For exmple, what does this summary let us know?
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{3}
 \item
-  What is not useful about the previous illustration?
+  What is and \textbf{is not} useful about the previous illustration?
 \item
   Make a chart with cumulative cases. Something like this:
 \end{enumerate}
@@ -986,15 +964,24 @@ For exmple, what does this summary let us know?
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{5}
+\tightlist
 \item
-  Now let's \textbf{really} have some fun. Let's illustrate death rates relative to confirmed cases. Why is this more challenging than anything we've done so far in this lab? We're going to have to make this data \textbf{tidy}.
-\item
-  One way to play this game.
+  With a litte more time and a few extra packages, we \textbf{could} make a graph prettier. Try.
 \end{enumerate}
 
-knitr::opts\_chunk\$set(echo = FALSE)
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-7-1.pdf}
 
-Let's make a little table of just deaths.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Now let's \textbf{really} have some fun. Let's illustrate death rates relative to confirmed cases. Why is this more challenging than anything we've done so far in this lab? We're going to have to make this data \textbf{tidy}.
+\end{enumerate}
+
+One way to play this game.
+
+Let's make a little table of just date, country, and deaths (with a meaningful variable name), and then count observations by coutry just to make sure eveything looks nice.
 
 \begin{verbatim}
 #>         date country deaths
@@ -1014,11 +1001,6 @@ Let's make a little table of just deaths.
 Let's make a little table of just confirmed cases.
 
 \begin{verbatim}
-#>     country   n
-#> 1    Russia 748
-#> 2     Spain 748
-#> 3        US 748
-#> 4 Venezuela 748
 #>         date country confirmed
 #> 1 2020-01-22  Russia         0
 #> 2 2020-01-23  Russia         0
@@ -1026,6 +1008,11 @@ Let's make a little table of just confirmed cases.
 #> 4 2020-01-25  Russia         0
 #> 5 2020-01-26  Russia         0
 #> 6 2020-01-27  Russia         0
+#>     country   n
+#> 1    Russia 748
+#> 2     Spain 748
+#> 3        US 748
+#> 4 Venezuela 748
 \end{verbatim}
 
 Let's join these together. I use \texttt{left\_join}.
@@ -1045,20 +1032,28 @@ Let's join these together. I use \texttt{left\_join}.
 #> 4 Venezuela 748
 \end{verbatim}
 
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-10-1.pdf}
+Let's add some cumulative statistics as well.
 
 \begin{verbatim}
-#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-#>       0   16728   97790  132138  240231  358016    2120
-#>         date province country lat long      type   cases
-#> 1 2022-01-10     <NA>      US  40 -100 confirmed 1369637
-#>   uid iso2 iso3 code3 combined_key population
-#> 1 840   US  USA   840           US  329466283
-#>   continent_name continent_code
-#> 1  North America             NA
+#>         date country deaths confirmed cumulative_cases
+#> 1 2020-01-22  Russia      0         0                0
+#> 2 2020-01-23  Russia      0         0                0
+#> 3 2020-01-24  Russia      0         0                0
+#> 4 2020-01-25  Russia      0         0                0
+#> 5 2020-01-26  Russia      0         0                0
+#> 6 2020-01-27  Russia      0         0                0
+#>   cumulative_deaths rate
+#> 1                 0    0
+#> 2                 0    0
+#> 3                 0    0
+#> 4                 0    0
+#> 5                 0    0
+#> 6                 0    0
 \end{verbatim}
 
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-10-2.pdf} \includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-10-3.pdf}
+Now we can plot some more fun stuff.
+
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-13-1.pdf}
 
 \begin{verbatim}
 #>       date              country              deaths      
@@ -1087,7 +1082,7 @@ Let's join these together. I use \texttt{left\_join}.
 #>  NA's   :4
 \end{verbatim}
 
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-10-4.pdf}
+\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-13-2.pdf}
 
   \bibliography{book.bib,packages.bib}
 
