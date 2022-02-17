@@ -6,7 +6,7 @@
 ]{book}
 \title{BADM 372 Applied Analytics}
 \author{BADM 372}
-\date{2022-02-09}
+\date{2022-02-17}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -916,7 +916,7 @@ For example, what does this summary let us know?
 \begin{Highlighting}[]
 \FunctionTok{summary}\NormalTok{(coronavirus}\SpecialCharTok{$}\NormalTok{cases)}
 \CommentTok{\#\textgreater{}      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. }
-\CommentTok{\#\textgreater{} {-}30974748         0         0       651        30   1369637}
+\CommentTok{\#\textgreater{} {-}30974748         0         0       669        29   1368563}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1001,10 +1001,10 @@ Let's make a little table of just date, country, and deaths (with a meaningful v
 #> 5 2020-01-26  Russia      0
 #> 6 2020-01-27  Russia      0
 #>     country   n
-#> 1    Russia 748
-#> 2     Spain 745
-#> 3        US 748
-#> 4 Venezuela 747
+#> 1    Russia 757
+#> 2     Spain 754
+#> 3        US 757
+#> 4 Venezuela 756
 \end{verbatim}
 
 Let's make a little table of just confirmed cases.
@@ -1018,10 +1018,10 @@ Let's make a little table of just confirmed cases.
 #> 5 2020-01-26  Russia         0
 #> 6 2020-01-27  Russia         0
 #>     country   n
-#> 1    Russia 748
-#> 2     Spain 748
-#> 3        US 748
-#> 4 Venezuela 748
+#> 1    Russia 757
+#> 2     Spain 757
+#> 3        US 757
+#> 4 Venezuela 757
 \end{verbatim}
 
 Let's join these together. I use \texttt{left\_join}.
@@ -1035,10 +1035,10 @@ Let's join these together. I use \texttt{left\_join}.
 #> 5 2020-01-26  Russia      0         0
 #> 6 2020-01-27  Russia      0         0
 #>     country   n
-#> 1    Russia 748
-#> 2     Spain 748
-#> 3        US 748
-#> 4 Venezuela 748
+#> 1    Russia 757
+#> 2     Spain 757
+#> 3        US 757
+#> 4 Venezuela 757
 \end{verbatim}
 
 Let's add some cumulative statistics as well.
@@ -1066,32 +1066,270 @@ Now we can plot some more fun stuff.
 
 \begin{verbatim}
 #>       date              country              deaths      
-#>  Min.   :2020-01-22   Length:2992        Min.   :   0.0  
-#>  1st Qu.:2020-07-26   Class :character   1st Qu.:   5.0  
-#>  Median :2021-01-29   Mode  :character   Median : 123.0  
-#>  Mean   :2021-01-29                      Mean   : 447.5  
-#>  3rd Qu.:2021-08-04                      3rd Qu.: 633.0  
-#>  Max.   :2022-02-07                      Max.   :4442.0  
+#>  Min.   :2020-01-22   Length:3028        Min.   :   0.0  
+#>  1st Qu.:2020-07-29   Class :character   1st Qu.:   5.0  
+#>  Median :2021-02-03   Mode  :character   Median : 126.0  
+#>  Mean   :2021-02-03                      Mean   : 452.7  
+#>  3rd Qu.:2021-08-11                      3rd Qu.: 639.2  
+#>  Max.   :2022-02-16                      Max.   :4442.0  
 #>                                          NA's   :4       
-#>    confirmed       cumulative_cases    cumulative_deaths
-#>  Min.   : -74937   Min.   :        0   Min.   :     0   
-#>  1st Qu.:    450   1st Qu.: 12782791   1st Qu.: 16728   
-#>  Median :   7723   Median : 23178262   Median : 97790   
-#>  Mean   :  33599   Mean   : 41557773   Mean   :132138   
-#>  3rd Qu.:  27682   3rd Qu.:100031030   3rd Qu.:240231   
-#>  Max.   :1369637   Max.   :100527313   Max.   :358016   
-#>                                        NA's   :2120     
+#>    confirmed         cumulative_cases    cumulative_deaths
+#>  Min.   : -74937.0   Min.   :        0   Min.   :     0   
+#>  1st Qu.:    461.5   1st Qu.: 14445698   1st Qu.: 16977   
+#>  Median :   7814.0   Median : 25190092   Median : 99431   
+#>  Mean   :  34303.5   Mean   : 43523860   Mean   :135068   
+#>  3rd Qu.:  28170.0   3rd Qu.:103362932   3rd Qu.:248203   
+#>  Max.   :1368563.0   Max.   :103870974   Max.   :364273   
+#>                                          NA's   :2147     
 #>       rate          
 #>  Min.   :-0.036576  
-#>  1st Qu.: 0.004592  
-#>  Median : 0.012829  
-#>  Mean   : 0.021843  
-#>  3rd Qu.: 0.023418  
+#>  1st Qu.: 0.004568  
+#>  Median : 0.012750  
+#>  Mean   : 0.021680  
+#>  3rd Qu.: 0.023227  
 #>  Max.   : 3.840391  
 #>  NA's   :4
 \end{verbatim}
 
 \includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-14-2.pdf}
+
+\hypertarget{proect-e1}{%
+\chapter{Proect (E1)}\label{proect-e1}}
+
+\hypertarget{a-project-to-call-your-own}{%
+\section{A project to call your own}\label{a-project-to-call-your-own}}
+
+Pick a dataset, any dataset\ldots{}
+
+\ldots and do something with it. That is your first Analytics 2 project. Make us both proud, in a nutshell. More details below.
+
+\hypertarget{may-be-too-long-but-please-do-read}{%
+\section{May be too long, but please do read}\label{may-be-too-long-but-please-do-read}}
+
+This project for this class will consist of analysis on a dataset of your own
+choosing. \textbf{Please make sure I am ok with your choice.} The dataset may already exist,
+or you may collect your own data using a
+survey or by conducting an experiment. You can choose the data based on your interests
+or based on work in other courses or research projects. The goal of this project is for
+you to demonstrate proficiency in the techniques we have covered in this class (and
+beyond, if you like) and apply them to a novel dataset in a meaningful way.
+
+\hypertarget{data-1}{%
+\section{Data}\label{data-1}}
+
+In order for you to have the greatest chance of success with this project it is important that
+you choose a manageable dataset. This means that the data should be readily accessible and large
+enough that multiple relationships can be explored. As such, your dataset must have at least 50
+observations and between 10 to 20 variables (exceptions can be made but you must speak with me
+first). The dataset's variables should include categorical variables, discrete numerical
+variables, and continuous numerical variables.
+
+All analyses must be done in RStudio. If you are using a dataset that comes in a format that
+we haven't encountered in class, make sure that you are able to load it into RStudio as this
+can be tricky depending on the source. If you are having trouble ask for help before it is too late.
+
+\emph{Reusing datasets from class:} Do not reuse datasets used in examples / homework in the
+class.
+
+\hypertarget{components}{%
+\section{Components}\label{components}}
+
+\hypertarget{project-proposal}{%
+\subsection{Project proposal}\label{project-proposal}}
+
+This is a draft of the introduction section of your project as well as a
+data analysis plan and your dataset. Each section should be no more than 1
+page (excluding figures). You can check a print preview to confirm length.
+
+\begin{quote}
+Your write up and all analysis including visuals must be done using R Markdown.
+\end{quote}
+
+\hypertarget{section-1---introduction}{%
+\subsubsection{Section 1 - Introduction:}\label{section-1---introduction}}
+
+The introduction should introduce your general research
+question and your data (where it came from, how it was collected, what
+are the cases, what are the variables, etc.).
+
+\hypertarget{section-2---data-analysis-plan}{%
+\subsubsection{Section 2 - Data analysis plan:}\label{section-2---data-analysis-plan}}
+
+The data analysis plan should include:
+
+\begin{itemize}
+\tightlist
+\item
+  The outcome (dependent, response, Y) and predictor (independent, explanatory, X)
+  variables you will use to answer your question.
+\item
+  The comparison groups you will use, if applicable.
+\item
+  Very preliminary exploratory data analysis, including some summary statistics and
+  visualizations, along with some explanation on how they help you learn more about your data.
+  (You can add to these later as you work on your project..)
+\item
+  The statistical method(s) that you believe will be useful in answering your question(s).
+  (You can update these later as you work on your project.)
+\item
+  Ideally you will use at least two out of these options: tree methods, linear regression,
+  and classification (like logistic regression).
+\item
+  What results from these specific statistical methods are needed to support your
+  hypothesized answer?
+\end{itemize}
+
+\hypertarget{section-3---data}{%
+\subsubsection{Section 3 - Data:}\label{section-3---data}}
+
+In yuor write up, include enough details that I understand what your raw data looked like
+and included.
+
+\hypertarget{project}{%
+\subsection{Project}\label{project}}
+
+\hypertarget{write-up}{%
+\subsubsection{Write up}\label{write-up}}
+
+After providing the description of your dataset and research question in the
+introduction use the remainder of your write up to showcase how you have arrived at
+an answer / answers to your question using any techniques we have learned in this
+class (and some beyond, if you're feeling adventurous). The goal is not to do an exhaustive
+data analysis i.e., do not calculate every statistic and procedure you have
+learned for every variable, but rather let me know that you are proficient at
+asking meaningful questions and answering them with results of data analysis, that
+you are proficient in using R, and that you are proficient at interpreting and
+presenting the results. Focus on methods that help you begin to answer your research
+questions. You do not have to apply every statistical procedure we learned.
+Also pay attention to your presentation. Neatness, coherency, and clarity will count.
+
+Your write up must also include a one to two page conclusion and discussion.
+This will require a summary of what you have learned about your research
+question along with statistical arguments supporting your conclusions. Also
+critique your own methods and provide suggestions for improving your analysis.
+Issues pertaining to the reliability and validity of your data, and
+appropriateness of the statistical analysis should be discussed here. A
+paragraph on what you would do differently if you were able to start over
+with the project or what you would do next if you were going to continue
+work on the project should also be included.
+
+\begin{quote}
+The project is very open ended. You should create some kind of compelling
+visualization(s) of this data in R.
+\end{quote}
+
+There is no limit on what tools or packages you may use, but sticking to packages we learned in class (ISLR and R4DS)
+is required. You do not need to visualize all of the data at once. A single high quality
+visualization will receive a much higher grade than a large number of poor quality
+visualizations.
+
+Before you finalize your write up, make sure your chunks are turned off
+with \texttt{echo\ =\ FALSE}. \textbf{Exception:} If you want to
+highlight something specific about a piece of code, you're welcomed to show
+that portion. {[}See below: I will also want a copy of the raw .Rmd file not just the html output.{]}
+
+You can add sections as you see fit to the project but make sure
+you have a section called Introduction at the beginning and a section called
+Conclusion at the end. The rest is up to you!
+
+\hypertarget{presentation}{%
+\subsubsection{Presentation}\label{presentation}}
+
+10 minutes maximum.
+
+You can use any software you like for your final presentation, including R Markdown
+to create your slides. There isn't a limit to how many slides you can use, just a
+time limit (10 minutes total). Perhaps try \texttt{ioslides} or \texttt{beamer}. Your presentation
+should not just be an account of everything you
+tried (``then we did this, then we did this, etc.''), instead it should convey what
+choices you made, and why, and what you found.
+
+\hypertarget{delivarables}{%
+\subsubsection{Delivarables}\label{delivarables}}
+
+Your submission should include
+
+\begin{itemize}
+\tightlist
+\item
+  RMarkdown file (formatted to clearly present all of your code and results)
+\item
+  HTML file
+\item
+  Dataset(s) (in csv or RData format, in a \texttt{/data} folder)
+\item
+  Presentation (if using Keynote/PowerPoint/Google Slides, export to PDF and put in repo, in a \texttt{/presentation} folder)
+\end{itemize}
+
+Style and format does count for this assignment, so please take the time to make
+sure everything looks good and your data and code are properly formated.
+
+\hypertarget{grading}{%
+\section{Grading}\label{grading}}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Total & 100 pts \\
+\midrule
+\endhead
+Introduction & 20 pts \\
+Data analysis plan & 20 pts \\
+Data Methods and code quality & 50 pts \\
+Organization & 10 pts \\
+\bottomrule
+\end{longtable}
+
+Grading of the project will take into account the following:
+
+\begin{itemize}
+\tightlist
+\item
+  Content - What is the quality of research and/or policy question and relevancy
+  of data to those questions?
+\item
+  Correctness - Are statistical procedures carried out and explained correctly?
+\item
+  Writing and Presentation - What is the quality of the statistical presentation,
+  writing, and explanations?
+\item
+  Creativity and Critical Thought - Is the project carefully thought out? Are the
+  limitations carefully considered? Does it appear that time and effort went into
+  the planning and implementation of the project?
+\end{itemize}
+
+A general breakdown of scoring is as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  90\%-100\% - Outstanding effort. Student understands how to apply all statistical
+  concepts, can put the results into a cogent argument, can identify weaknesses in
+  the argument, and can clearly communicate the results to others.
+\item
+  80\%-89\% - Good effort. Student understands most of the concepts, puts together
+  an adequate argument, identifies some weaknesses of their argument, and communicates
+  most results clearly to others.
+\item
+  70\%-79\% - Passing effort. Student has misunderstanding of concepts in several
+  areas, has some trouble putting results together in a cogent argument, and communication
+  of results is sometimes unclear.
+\item
+  60\%-69\% - Struggling effort. Student is making some effort, but has misunderstanding
+  of many concepts and is unable to put together a cogent argument. Communication
+  of results is unclear.
+\item
+  Below 60\% - Student is not making a sufficient effort.
+\end{itemize}
+
+\textbf{Late penalty:}
+
+\begin{itemize}
+\tightlist
+\item
+  Late, but within 24 hours of due date/time: -20\% (only applies to written portion, there is no option to do your presentation later)
+\item
+  Any later: no credit
+\end{itemize}
 
   \bibliography{book.bib,packages.bib}
 

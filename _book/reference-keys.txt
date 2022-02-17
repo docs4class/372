@@ -33,3 +33,17 @@ excercises-using-the-data-sets-mpg-or-diamonds
 palmerpenguins
 lab-3-coronavirus-visualization-data-wrangling-and-dates
 lets-look-like-applied-analytics-superstars-and-make-some-neat-visuals.
+proect-e1
+a-project-to-call-your-own
+may-be-too-long-but-please-do-read
+data-1
+components
+project-proposal
+section-1---introduction
+section-2---data-analysis-plan
+section-3---data
+project
+write-up
+presentation
+delivarables
+grading

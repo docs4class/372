@@ -49,6 +49,7 @@
 <li><a class="" href="lab-2-pretty-pictures.html"><span class="header-section-number">8</span> Lab 2: Pretty pictures!</a></li>
 <li><a class="" href="lab-2-ggplot-without-dsbox.html"><span class="header-section-number">9</span> Lab 2 – ggplot without dsbox</a></li>
 <li><a class="active" href="lab-3-coronavirus-visualization-data-wrangling-and-dates.html"><span class="header-section-number">10</span> Lab 3: coronavirus visualization, data wrangling, and dates</a></li>
+<li><a class="" href="proect-e1.html"><span class="header-section-number">11</span> Proect (E1)</a></li>
 </ul>
 
         <div class="book-extra">
@@ -100,7 +101,7 @@
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">cases</span><span class="op">)</span>
 <span class="co">#&gt;      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. </span>
-<span class="co">#&gt; -30974748         0         0       651        30   1369637</span></code></pre></div>
+<span class="co">#&gt; -30974748         0         0       669        29   1368563</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>Can you create a visual showing the cases over time for Russia, Spain, US, and Venezuela?
 Also, why might <code>filter(cases &gt;= 0)</code> be worth using?</li>
@@ -141,10 +142,10 @@ Also, why might <code>filter(cases &gt;= 0)</code> be worth using?</li>
 #&gt; 5 2020-01-26  Russia      0
 #&gt; 6 2020-01-27  Russia      0
 #&gt;     country   n
-#&gt; 1    Russia 748
-#&gt; 2     Spain 745
-#&gt; 3        US 748
-#&gt; 4 Venezuela 747</code></pre>
+#&gt; 1    Russia 757
+#&gt; 2     Spain 754
+#&gt; 3        US 757
+#&gt; 4 Venezuela 756</code></pre>
 <p>Let’s make a little table of just confirmed cases.</p>
 <pre><code>#&gt;         date country confirmed
 #&gt; 1 2020-01-22  Russia         0
@@ -154,10 +155,10 @@ Also, why might <code>filter(cases &gt;= 0)</code> be worth using?</li>
 #&gt; 5 2020-01-26  Russia         0
 #&gt; 6 2020-01-27  Russia         0
 #&gt;     country   n
-#&gt; 1    Russia 748
-#&gt; 2     Spain 748
-#&gt; 3        US 748
-#&gt; 4 Venezuela 748</code></pre>
+#&gt; 1    Russia 757
+#&gt; 2     Spain 757
+#&gt; 3        US 757
+#&gt; 4 Venezuela 757</code></pre>
 <p>Let’s join these together. I use <code>left_join</code>.</p>
 <pre><code>#&gt;         date country deaths confirmed
 #&gt; 1 2020-01-22  Russia      0         0
@@ -167,10 +168,10 @@ Also, why might <code>filter(cases &gt;= 0)</code> be worth using?</li>
 #&gt; 5 2020-01-26  Russia      0         0
 #&gt; 6 2020-01-27  Russia      0         0
 #&gt;     country   n
-#&gt; 1    Russia 748
-#&gt; 2     Spain 748
-#&gt; 3        US 748
-#&gt; 4 Venezuela 748</code></pre>
+#&gt; 1    Russia 757
+#&gt; 2     Spain 757
+#&gt; 3        US 757
+#&gt; 4 Venezuela 757</code></pre>
 <p>Let’s add some cumulative statistics as well.</p>
 <pre><code>#&gt;         date country deaths confirmed cumulative_cases
 #&gt; 1 2020-01-22  Russia      0         0                0
@@ -189,27 +190,27 @@ Also, why might <code>filter(cases &gt;= 0)</code> be worth using?</li>
 <p>Now we can plot some more fun stuff.</p>
 <div class="inline-figure"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
 <pre><code>#&gt;       date              country              deaths      
-#&gt;  Min.   :2020-01-22   Length:2992        Min.   :   0.0  
-#&gt;  1st Qu.:2020-07-26   Class :character   1st Qu.:   5.0  
-#&gt;  Median :2021-01-29   Mode  :character   Median : 123.0  
-#&gt;  Mean   :2021-01-29                      Mean   : 447.5  
-#&gt;  3rd Qu.:2021-08-04                      3rd Qu.: 633.0  
-#&gt;  Max.   :2022-02-07                      Max.   :4442.0  
+#&gt;  Min.   :2020-01-22   Length:3028        Min.   :   0.0  
+#&gt;  1st Qu.:2020-07-29   Class :character   1st Qu.:   5.0  
+#&gt;  Median :2021-02-03   Mode  :character   Median : 126.0  
+#&gt;  Mean   :2021-02-03                      Mean   : 452.7  
+#&gt;  3rd Qu.:2021-08-11                      3rd Qu.: 639.2  
+#&gt;  Max.   :2022-02-16                      Max.   :4442.0  
 #&gt;                                          NA's   :4       
-#&gt;    confirmed       cumulative_cases    cumulative_deaths
-#&gt;  Min.   : -74937   Min.   :        0   Min.   :     0   
-#&gt;  1st Qu.:    450   1st Qu.: 12782791   1st Qu.: 16728   
-#&gt;  Median :   7723   Median : 23178262   Median : 97790   
-#&gt;  Mean   :  33599   Mean   : 41557773   Mean   :132138   
-#&gt;  3rd Qu.:  27682   3rd Qu.:100031030   3rd Qu.:240231   
-#&gt;  Max.   :1369637   Max.   :100527313   Max.   :358016   
-#&gt;                                        NA's   :2120     
+#&gt;    confirmed         cumulative_cases    cumulative_deaths
+#&gt;  Min.   : -74937.0   Min.   :        0   Min.   :     0   
+#&gt;  1st Qu.:    461.5   1st Qu.: 14445698   1st Qu.: 16977   
+#&gt;  Median :   7814.0   Median : 25190092   Median : 99431   
+#&gt;  Mean   :  34303.5   Mean   : 43523860   Mean   :135068   
+#&gt;  3rd Qu.:  28170.0   3rd Qu.:103362932   3rd Qu.:248203   
+#&gt;  Max.   :1368563.0   Max.   :103870974   Max.   :364273   
+#&gt;                                          NA's   :2147     
 #&gt;       rate          
 #&gt;  Min.   :-0.036576  
-#&gt;  1st Qu.: 0.004592  
-#&gt;  Median : 0.012829  
-#&gt;  Mean   : 0.021843  
-#&gt;  3rd Qu.: 0.023418  
+#&gt;  1st Qu.: 0.004568  
+#&gt;  Median : 0.012750  
+#&gt;  Mean   : 0.021680  
+#&gt;  3rd Qu.: 0.023227  
 #&gt;  Max.   : 3.840391  
 #&gt;  NA's   :4</code></pre>
 <div class="inline-figure"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-14-2.png" width="672"></div>
@@ -218,7 +219,7 @@ Also, why might <code>filter(cases &gt;= 0)</code> be worth using?</li>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="lab-2-ggplot-without-dsbox.html"><span class="header-section-number">9</span> Lab 2 – ggplot without dsbox</a></div>
-<div class="empty"></div>
+<div class="next"><a href="proect-e1.html"><span class="header-section-number">11</span> Proect (E1)</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -241,7 +242,7 @@ Also, why might <code>filter(cases &gt;= 0)</code> be worth using?</li>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-02-09.</p>
+    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-02-17.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

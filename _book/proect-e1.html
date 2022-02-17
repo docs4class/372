@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 11 Proect (E1) | BADM 372 Applied Analytics</title>
+<meta name="author" content="BADM 372">
+<meta name="description" content="11.1 A project to call your own Pick a dataset, any dataset… …and do something with it. That is your first Analytics 2 project. Make us both proud, in a nutshell. More details below.  11.2 May be...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 11 Proect (E1) | BADM 372 Applied Analytics">
+<meta property="og:type" content="book">
+<meta property="og:description" content="11.1 A project to call your own Pick a dataset, any dataset… …and do something with it. That is your first Analytics 2 project. Make us both proud, in a nutshell. More details below.  11.2 May be...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 11 Proect (E1) | BADM 372 Applied Analytics">
+<meta name="twitter:description" content="11.1 A project to call your own Pick a dataset, any dataset… …and do something with it. That is your first Analytics 2 project. Make us both proud, in a nutshell. More details below.  11.2 May be...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">BADM 372 Applied Analytics</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> About this course</a></li>
+<li><a class="" href="syllabus.html"><span class="header-section-number">2</span> Syllabus</a></li>
+<li><a class="" href="our-class-rhythm.html"><span class="header-section-number">3</span> Our Class Rhythm</a></li>
+<li><a class="" href="end-in-mind.html"><span class="header-section-number">4</span> End in Mind</a></li>
+<li><a class="" href="schedule.html"><span class="header-section-number">5</span> Schedule</a></li>
+<li><a class="" href="lab-1-excercises.html"><span class="header-section-number">6</span> Lab 1 Excercises</a></li>
+<li><a class="" href="lab-1-in-rmarkdown.html"><span class="header-section-number">7</span> Lab 1 in Rmarkdown</a></li>
+<li><a class="" href="lab-2-pretty-pictures.html"><span class="header-section-number">8</span> Lab 2: Pretty pictures!</a></li>
+<li><a class="" href="lab-2-ggplot-without-dsbox.html"><span class="header-section-number">9</span> Lab 2 – ggplot without dsbox</a></li>
+<li><a class="" href="lab-3-coronavirus-visualization-data-wrangling-and-dates.html"><span class="header-section-number">10</span> Lab 3: coronavirus visualization, data wrangling, and dates</a></li>
+<li><a class="active" href="proect-e1.html"><span class="header-section-number">11</span> Proect (E1)</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="proect-e1" class="section level1" number="11">
+<h1>
+<span class="header-section-number">11</span> Proect (E1)<a class="anchor" aria-label="anchor" href="#proect-e1"><i class="fas fa-link"></i></a>
+</h1>
+<div id="a-project-to-call-your-own" class="section level2" number="11.1">
+<h2>
+<span class="header-section-number">11.1</span> A project to call your own<a class="anchor" aria-label="anchor" href="#a-project-to-call-your-own"><i class="fas fa-link"></i></a>
+</h2>
+<p>Pick a dataset, any dataset…</p>
+<p>…and do something with it. That is your first Analytics 2 project. Make us both proud, in a nutshell. More details below.</p>
+</div>
+<div id="may-be-too-long-but-please-do-read" class="section level2" number="11.2">
+<h2>
+<span class="header-section-number">11.2</span> May be too long, but please do read<a class="anchor" aria-label="anchor" href="#may-be-too-long-but-please-do-read"><i class="fas fa-link"></i></a>
+</h2>
+<p>This project for this class will consist of analysis on a dataset of your own
+choosing. <strong>Please make sure I am ok with your choice.</strong> The dataset may already exist,
+or you may collect your own data using a
+survey or by conducting an experiment. You can choose the data based on your interests
+or based on work in other courses or research projects. The goal of this project is for
+you to demonstrate proficiency in the techniques we have covered in this class (and
+beyond, if you like) and apply them to a novel dataset in a meaningful way.</p>
+</div>
+<div id="data-1" class="section level2" number="11.3">
+<h2>
+<span class="header-section-number">11.3</span> Data<a class="anchor" aria-label="anchor" href="#data-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>In order for you to have the greatest chance of success with this project it is important that
+you choose a manageable dataset. This means that the data should be readily accessible and large
+enough that multiple relationships can be explored. As such, your dataset must have at least 50
+observations and between 10 to 20 variables (exceptions can be made but you must speak with me
+first). The dataset’s variables should include categorical variables, discrete numerical
+variables, and continuous numerical variables.</p>
+<p>All analyses must be done in RStudio. If you are using a dataset that comes in a format that
+we haven’t encountered in class, make sure that you are able to load it into RStudio as this
+can be tricky depending on the source. If you are having trouble ask for help before it is too late.</p>
+<p><em>Reusing datasets from class:</em> Do not reuse datasets used in examples / homework in the
+class.</p>
+</div>
+<div id="components" class="section level2" number="11.4">
+<h2>
+<span class="header-section-number">11.4</span> Components<a class="anchor" aria-label="anchor" href="#components"><i class="fas fa-link"></i></a>
+</h2>
+<div id="project-proposal" class="section level3" number="11.4.1">
+<h3>
+<span class="header-section-number">11.4.1</span> Project proposal<a class="anchor" aria-label="anchor" href="#project-proposal"><i class="fas fa-link"></i></a>
+</h3>
+<p>This is a draft of the introduction section of your project as well as a
+data analysis plan and your dataset. Each section should be no more than 1
+page (excluding figures). You can check a print preview to confirm length.</p>
+<blockquote>
+<p>Your write up and all analysis including visuals must be done using R Markdown.</p>
+</blockquote>
+<div id="section-1---introduction" class="section level4" number="11.4.1.1">
+<h4>
+<span class="header-section-number">11.4.1.1</span> Section 1 - Introduction:<a class="anchor" aria-label="anchor" href="#section-1---introduction"><i class="fas fa-link"></i></a>
+</h4>
+<p>The introduction should introduce your general research
+question and your data (where it came from, how it was collected, what
+are the cases, what are the variables, etc.).</p>
+</div>
+<div id="section-2---data-analysis-plan" class="section level4" number="11.4.1.2">
+<h4>
+<span class="header-section-number">11.4.1.2</span> Section 2 - Data analysis plan:<a class="anchor" aria-label="anchor" href="#section-2---data-analysis-plan"><i class="fas fa-link"></i></a>
+</h4>
+<p>The data analysis plan should include:</p>
+<ul>
+<li>The outcome (dependent, response, Y) and predictor (independent, explanatory, X)
+variables you will use to answer your question.</li>
+<li>The comparison groups you will use, if applicable.</li>
+<li>Very preliminary exploratory data analysis, including some summary statistics and
+visualizations, along with some explanation on how they help you learn more about your data.
+(You can add to these later as you work on your project..)</li>
+<li>The statistical method(s) that you believe will be useful in answering your question(s).
+(You can update these later as you work on your project.)</li>
+<li>Ideally you will use at least two out of these options: tree methods, linear regression,
+and classification (like logistic regression).</li>
+<li>What results from these specific statistical methods are needed to support your
+hypothesized answer?</li>
+</ul>
+</div>
+<div id="section-3---data" class="section level4" number="11.4.1.3">
+<h4>
+<span class="header-section-number">11.4.1.3</span> Section 3 - Data:<a class="anchor" aria-label="anchor" href="#section-3---data"><i class="fas fa-link"></i></a>
+</h4>
+<p>In yuor write up, include enough details that I understand what your raw data looked like
+and included.</p>
+</div>
+</div>
+<div id="project" class="section level3" number="11.4.2">
+<h3>
+<span class="header-section-number">11.4.2</span> Project<a class="anchor" aria-label="anchor" href="#project"><i class="fas fa-link"></i></a>
+</h3>
+<div id="write-up" class="section level4" number="11.4.2.1">
+<h4>
+<span class="header-section-number">11.4.2.1</span> Write up<a class="anchor" aria-label="anchor" href="#write-up"><i class="fas fa-link"></i></a>
+</h4>
+<p>After providing the description of your dataset and research question in the
+introduction use the remainder of your write up to showcase how you have arrived at
+an answer / answers to your question using any techniques we have learned in this
+class (and some beyond, if you’re feeling adventurous). The goal is not to do an exhaustive
+data analysis i.e., do not calculate every statistic and procedure you have
+learned for every variable, but rather let me know that you are proficient at
+asking meaningful questions and answering them with results of data analysis, that
+you are proficient in using R, and that you are proficient at interpreting and
+presenting the results. Focus on methods that help you begin to answer your research
+questions. You do not have to apply every statistical procedure we learned.
+Also pay attention to your presentation. Neatness, coherency, and clarity will count.</p>
+<p>Your write up must also include a one to two page conclusion and discussion.
+This will require a summary of what you have learned about your research
+question along with statistical arguments supporting your conclusions. Also
+critique your own methods and provide suggestions for improving your analysis.
+Issues pertaining to the reliability and validity of your data, and
+appropriateness of the statistical analysis should be discussed here. A
+paragraph on what you would do differently if you were able to start over
+with the project or what you would do next if you were going to continue
+work on the project should also be included.</p>
+<blockquote>
+<p>The project is very open ended. You should create some kind of compelling
+visualization(s) of this data in R.</p>
+</blockquote>
+<p>There is no limit on what tools or packages you may use, but sticking to packages we learned in class (ISLR and R4DS)
+is required. You do not need to visualize all of the data at once. A single high quality
+visualization will receive a much higher grade than a large number of poor quality
+visualizations.</p>
+<p>Before you finalize your write up, make sure your chunks are turned off
+with <code>echo = FALSE</code>. <strong>Exception:</strong> If you want to
+highlight something specific about a piece of code, you’re welcomed to show
+that portion. [See below: I will also want a copy of the raw .Rmd file not just the html output.]</p>
+<p>You can add sections as you see fit to the project but make sure
+you have a section called Introduction at the beginning and a section called
+Conclusion at the end. The rest is up to you!</p>
+</div>
+<div id="presentation" class="section level4" number="11.4.2.2">
+<h4>
+<span class="header-section-number">11.4.2.2</span> Presentation<a class="anchor" aria-label="anchor" href="#presentation"><i class="fas fa-link"></i></a>
+</h4>
+<p>10 minutes maximum.</p>
+<p>You can use any software you like for your final presentation, including R Markdown
+to create your slides. There isn’t a limit to how many slides you can use, just a
+time limit (10 minutes total). Perhaps try <code>ioslides</code> or <code>beamer</code>. Your presentation
+should not just be an account of everything you
+tried (“then we did this, then we did this, etc.”), instead it should convey what
+choices you made, and why, and what you found.</p>
+</div>
+<div id="delivarables" class="section level4" number="11.4.2.3">
+<h4>
+<span class="header-section-number">11.4.2.3</span> Delivarables<a class="anchor" aria-label="anchor" href="#delivarables"><i class="fas fa-link"></i></a>
+</h4>
+<p>Your submission should include</p>
+<ul>
+<li>RMarkdown file (formatted to clearly present all of your code and results)</li>
+<li>HTML file</li>
+<li>Dataset(s) (in csv or RData format, in a <code>/data</code> folder)</li>
+<li>Presentation (if using Keynote/PowerPoint/Google Slides, export to PDF and put in repo, in a <code>/presentation</code> folder)</li>
+</ul>
+<p>Style and format does count for this assignment, so please take the time to make
+sure everything looks good and your data and code are properly formated.</p>
+</div>
+</div>
+</div>
+<div id="grading" class="section level2" number="11.5">
+<h2>
+<span class="header-section-number">11.5</span> Grading<a class="anchor" aria-label="anchor" href="#grading"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Total</th>
+<th>100 pts</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Introduction</td>
+<td>20 pts</td>
+</tr>
+<tr class="even">
+<td>Data analysis plan</td>
+<td>20 pts</td>
+</tr>
+<tr class="odd">
+<td>Data Methods and code quality</td>
+<td>50 pts</td>
+</tr>
+<tr class="even">
+<td>Organization</td>
+<td>10 pts</td>
+</tr>
+</tbody>
+</table></div>
+<p>Grading of the project will take into account the following:</p>
+<ul>
+<li>Content - What is the quality of research and/or policy question and relevancy
+of data to those questions?</li>
+<li>Correctness - Are statistical procedures carried out and explained correctly?</li>
+<li>Writing and Presentation - What is the quality of the statistical presentation,
+writing, and explanations?</li>
+<li>Creativity and Critical Thought - Is the project carefully thought out? Are the
+limitations carefully considered? Does it appear that time and effort went into
+the planning and implementation of the project?</li>
+</ul>
+<p>A general breakdown of scoring is as follows:</p>
+<ul>
+<li>90%-100% - Outstanding effort. Student understands how to apply all statistical
+concepts, can put the results into a cogent argument, can identify weaknesses in
+the argument, and can clearly communicate the results to others.</li>
+<li>80%-89% - Good effort. Student understands most of the concepts, puts together
+an adequate argument, identifies some weaknesses of their argument, and communicates
+most results clearly to others.</li>
+<li>70%-79% - Passing effort. Student has misunderstanding of concepts in several
+areas, has some trouble putting results together in a cogent argument, and communication
+of results is sometimes unclear.</li>
+<li>60%-69% - Struggling effort. Student is making some effort, but has misunderstanding
+of many concepts and is unable to put together a cogent argument. Communication
+of results is unclear.</li>
+<li>Below 60% - Student is not making a sufficient effort.</li>
+</ul>
+<p><strong>Late penalty:</strong></p>
+<ul>
+<li>Late, but within 24 hours of due date/time: -20% (only applies to written portion, there is no option to do your presentation later)</li>
+<li>Any later: no credit</li>
+</ul>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="lab-3-coronavirus-visualization-data-wrangling-and-dates.html"><span class="header-section-number">10</span> Lab 3: coronavirus visualization, data wrangling, and dates</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#proect-e1"><span class="header-section-number">11</span> Proect (E1)</a></li>
+<li><a class="nav-link" href="#a-project-to-call-your-own"><span class="header-section-number">11.1</span> A project to call your own</a></li>
+<li><a class="nav-link" href="#may-be-too-long-but-please-do-read"><span class="header-section-number">11.2</span> May be too long, but please do read</a></li>
+<li><a class="nav-link" href="#data-1"><span class="header-section-number">11.3</span> Data</a></li>
+<li>
+<a class="nav-link" href="#components"><span class="header-section-number">11.4</span> Components</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#project-proposal"><span class="header-section-number">11.4.1</span> Project proposal</a></li>
+<li><a class="nav-link" href="#project"><span class="header-section-number">11.4.2</span> Project</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#grading"><span class="header-section-number">11.5</span> Grading</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/110-project.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/110-project.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-02-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
