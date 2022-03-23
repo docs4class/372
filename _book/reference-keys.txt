@@ -47,3 +47,5 @@ write-up
 presentation
 delivarables
 grading
+linear-regression
+exercises

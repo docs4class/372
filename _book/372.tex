@@ -6,7 +6,7 @@
 ]{book}
 \title{BADM 372 Applied Analytics}
 \author{BADM 372}
-\date{2022-02-17}
+\date{2022-03-23}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -1330,6 +1330,182 @@ A general breakdown of scoring is as follows:
 \item
   Any later: no credit
 \end{itemize}
+
+\hypertarget{linear-regression}{%
+\chapter{Linear Regression}\label{linear-regression}}
+
+Your resource for this is ISLR chapter 3: linear regression.
+
+\hypertarget{exercises}{%
+\section{Exercises}\label{exercises}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Make sure you can define the terms below outbound, in your own words, so that they make sense both to you and to someone else (me?). Actually practice saying and defining these terms outloud until your answers make sense:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  least squares approach
+\item
+  confidence interval
+\item
+  p-value
+\item
+  R\textsuperscript{2}
+\item
+  Adjusted R\textsuperscript{2}
+\item
+  qualitative predictor
+\item
+  collinearity
+\item
+  KNN
+\item
+  Residual standard error
+\item
+  F-statistic
+\item
+  Explain the point o Fihure 3.1
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  In \texttt{m1}, below, which variables are significant predictors of Balance? How do you know?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{"ISLR"}\NormalTok{)}
+\FunctionTok{data}\NormalTok{(Credit)}
+\FunctionTok{attach}\NormalTok{(Credit)}
+\FunctionTok{head}\NormalTok{(Credit)}
+\CommentTok{\#\textgreater{}   ID  Income Limit Rating Cards Age Education Gender}
+\CommentTok{\#\textgreater{} 1  1  14.891  3606    283     2  34        11   Male}
+\CommentTok{\#\textgreater{} 2  2 106.025  6645    483     3  82        15 Female}
+\CommentTok{\#\textgreater{} 3  3 104.593  7075    514     4  71        11   Male}
+\CommentTok{\#\textgreater{} 4  4 148.924  9504    681     3  36        11 Female}
+\CommentTok{\#\textgreater{} 5  5  55.882  4897    357     2  68        16   Male}
+\CommentTok{\#\textgreater{} 6  6  80.180  8047    569     4  77        10   Male}
+\CommentTok{\#\textgreater{}   Student Married Ethnicity Balance}
+\CommentTok{\#\textgreater{} 1      No     Yes Caucasian     333}
+\CommentTok{\#\textgreater{} 2     Yes     Yes     Asian     903}
+\CommentTok{\#\textgreater{} 3      No      No     Asian     580}
+\CommentTok{\#\textgreater{} 4      No      No     Asian     964}
+\CommentTok{\#\textgreater{} 5      No     Yes Caucasian     331}
+\CommentTok{\#\textgreater{} 6      No      No Caucasian    1151}
+\NormalTok{m1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Balance }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Age }\SpecialCharTok{+}\NormalTok{ Income }\SpecialCharTok{+}\NormalTok{ Education, }\AttributeTok{data =}\NormalTok{ Credit)}
+\FunctionTok{summary}\NormalTok{(m1)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Call:}
+\CommentTok{\#\textgreater{} lm(formula = Balance \textasciitilde{} Age + Income + Education, data = Credit)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residuals:}
+\CommentTok{\#\textgreater{}     Min      1Q  Median      3Q     Max }
+\CommentTok{\#\textgreater{} {-}867.14 {-}343.14  {-}49.44  316.55 1080.56 }
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Coefficients:}
+\CommentTok{\#\textgreater{}             Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\textgreater{} (Intercept) 348.8115   112.6895   3.095  0.00211 ** }
+\CommentTok{\#\textgreater{} Age          {-}2.1863     1.2004  {-}1.821  0.06930 .  }
+\CommentTok{\#\textgreater{} Income        6.2380     0.5877  10.614  \textless{} 2e{-}16 ***}
+\CommentTok{\#\textgreater{} Education     0.8058     6.5254   0.123  0.90179    }
+\CommentTok{\#\textgreater{} {-}{-}{-}}
+\CommentTok{\#\textgreater{} Signif. codes:  }
+\CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residual standard error: 407.2 on 396 degrees of freedom}
+\CommentTok{\#\textgreater{} Multiple R{-}squared:  0.2215, Adjusted R{-}squared:  0.2156 }
+\CommentTok{\#\textgreater{} F{-}statistic: 37.56 on 3 and 396 DF,  p{-}value: \textless{} 2.2e{-}16}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  How ``good'' is the model created in \texttt{m1}? How do you know?
+\item
+  Add more \texttt{Credit} variables to model \texttt{m1}. Can you find two other variables that have extremely high collinearity? What are they? How do you know that they have high collinearity? Why does this make sense given what each of the variables mean?
+\item
+  Based on the model below, what would you predict the balance to be for an individual who is 40, has an income of \$100,000, 16 years of education, is Asian and not a student?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Balance }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Age }\SpecialCharTok{+}\NormalTok{ Income }\SpecialCharTok{+}\NormalTok{ Education }\SpecialCharTok{+}\NormalTok{ Ethnicity }\SpecialCharTok{+}\NormalTok{ Student, }\AttributeTok{data =}\NormalTok{ Credit)}
+\FunctionTok{summary}\NormalTok{(m2)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Call:}
+\CommentTok{\#\textgreater{} lm(formula = Balance \textasciitilde{} Age + Income + Education + Ethnicity + }
+\CommentTok{\#\textgreater{}     Student, data = Credit)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residuals:}
+\CommentTok{\#\textgreater{}     Min      1Q  Median      3Q     Max }
+\CommentTok{\#\textgreater{} {-}818.77 {-}322.14  {-}54.52  315.67  781.45 }
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Coefficients:}
+\CommentTok{\#\textgreater{}                    Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\textgreater{} (Intercept)        336.6241   115.6311   2.911  0.00381 ** }
+\CommentTok{\#\textgreater{} Age                 {-}1.9756     1.1595  {-}1.704  0.08922 .  }
+\CommentTok{\#\textgreater{} Income               6.1491     0.5666  10.853  \textless{} 2e{-}16 ***}
+\CommentTok{\#\textgreater{} Education           {-}1.7606     6.3060  {-}0.279  0.78024    }
+\CommentTok{\#\textgreater{} EthnicityAsian     {-}14.2547    55.5240  {-}0.257  0.79752    }
+\CommentTok{\#\textgreater{} EthnicityCaucasian   8.8839    48.3276   0.184  0.85424    }
+\CommentTok{\#\textgreater{} StudentYes         382.0498    65.6854   5.816 1.25e{-}08 ***}
+\CommentTok{\#\textgreater{} {-}{-}{-}}
+\CommentTok{\#\textgreater{} Signif. codes:  }
+\CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residual standard error: 392.2 on 393 degrees of freedom}
+\CommentTok{\#\textgreater{} Multiple R{-}squared:  0.2833, Adjusted R{-}squared:  0.2723 }
+\CommentTok{\#\textgreater{} F{-}statistic: 25.89 on 6 and 393 DF,  p{-}value: \textless{} 2.2e{-}16}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Interpret this model and its output, especially the coefficients \texttt{Income:Education\ \ \ 0.3149}:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m3 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Balance }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Income}\SpecialCharTok{*}\NormalTok{Education, }\AttributeTok{data =}\NormalTok{ Credit)}
+\FunctionTok{summary}\NormalTok{(m3)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Call:}
+\CommentTok{\#\textgreater{} lm(formula = Balance \textasciitilde{} Income * Education, data = Credit)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residuals:}
+\CommentTok{\#\textgreater{}     Min      1Q  Median      3Q     Max }
+\CommentTok{\#\textgreater{} {-}858.07 {-}349.99  {-}56.12  304.51 1083.93 }
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Coefficients:}
+\CommentTok{\#\textgreater{}                  Estimate Std. Error t value Pr(\textgreater{}|t|)   }
+\CommentTok{\#\textgreater{} (Intercept)      435.4599   147.1000   2.960  0.00326 **}
+\CommentTok{\#\textgreater{} Income             1.8168     2.4727   0.735  0.46294   }
+\CommentTok{\#\textgreater{} Education        {-}13.9887    10.5931  {-}1.321  0.18741   }
+\CommentTok{\#\textgreater{} Income:Education   0.3149     0.1788   1.761  0.07902 . }
+\CommentTok{\#\textgreater{} {-}{-}{-}}
+\CommentTok{\#\textgreater{} Signif. codes:  }
+\CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residual standard error: 407.3 on 396 degrees of freedom}
+\CommentTok{\#\textgreater{} Multiple R{-}squared:  0.2211, Adjusted R{-}squared:  0.2152 }
+\CommentTok{\#\textgreater{} F{-}statistic: 37.47 on 3 and 396 DF,  p{-}value: \textless{} 2.2e{-}16}
+\end{Highlighting}
+\end{Shaded}
+
 
   \bibliography{book.bib,packages.bib}
 

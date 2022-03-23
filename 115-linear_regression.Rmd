@@ -1,0 +1,54 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Linear Regression
+
+Your resource for this is ISLR chapter 3: linear regression.
+
+## Exercises
+
+1. Make sure you can define the terms below outbound, in your own words, so that they make sense both to you and to someone else (me?). Actually practice saying and defining these terms outloud until your answers make sense:
+
+- least squares approach
+- confidence interval
+- p-value
+- R^2^
+- Adjusted R^2^
+- qualitative predictor
+- collinearity
+- KNN
+- Residual standard error
+- F-statistic
+- Explain the point o Fihure 3.1
+
+2. In `m1`, below, which variables are significant predictors of Balance?  How do you know?
+
+```{r load-packages, message=FALSE, warning=FALSE}
+library("ISLR")
+data(Credit)
+attach(Credit)
+head(Credit)
+m1 <- lm(Balance ~ Age + Income + Education, data = Credit)
+summary(m1)
+```
+
+3. How "good" is the model created in `m1`?  How do you know?
+4. Add more `Credit` variables to model `m1`.  Can you find two other variables that have extremely high collinearity?  What are they?  How do you know that they have high collinearity?  Why does this make sense given what each of the variables mean?
+5. Based on the model below, what would you predict the balance to be for an individual who is 40, has an income of $100,000, 16 years of education, is Asian and not a student? 
+
+```{r}
+m2 <- lm(Balance ~ Age + Income + Education + Ethnicity + Student, data = Credit)
+summary(m2)
+```
+
+6. Interpret this model and its output, especially the coefficients `Income:Education   0.3149`:
+
+```{r}
+m3 <- lm(Balance ~ Income*Education, data = Credit)
+summary(m3)
+```
+
+```{r}
+```

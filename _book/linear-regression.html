@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 12 Linear Regression | BADM 372 Applied Analytics</title>
+<meta name="author" content="BADM 372">
+<meta name="description" content="Your resource for this is ISLR chapter 3: linear regression.  12.1 Exercises Make sure you can define the terms below outbound, in your own words, so that they make sense both to you and to...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 12 Linear Regression | BADM 372 Applied Analytics">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Your resource for this is ISLR chapter 3: linear regression.  12.1 Exercises Make sure you can define the terms below outbound, in your own words, so that they make sense both to you and to...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 12 Linear Regression | BADM 372 Applied Analytics">
+<meta name="twitter:description" content="Your resource for this is ISLR chapter 3: linear regression.  12.1 Exercises Make sure you can define the terms below outbound, in your own words, so that they make sense both to you and to...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">BADM 372 Applied Analytics</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> About this course</a></li>
+<li><a class="" href="syllabus.html"><span class="header-section-number">2</span> Syllabus</a></li>
+<li><a class="" href="our-class-rhythm.html"><span class="header-section-number">3</span> Our Class Rhythm</a></li>
+<li><a class="" href="end-in-mind.html"><span class="header-section-number">4</span> End in Mind</a></li>
+<li><a class="" href="schedule.html"><span class="header-section-number">5</span> Schedule</a></li>
+<li><a class="" href="lab-1-excercises.html"><span class="header-section-number">6</span> Lab 1 Excercises</a></li>
+<li><a class="" href="lab-1-in-rmarkdown.html"><span class="header-section-number">7</span> Lab 1 in Rmarkdown</a></li>
+<li><a class="" href="lab-2-pretty-pictures.html"><span class="header-section-number">8</span> Lab 2: Pretty pictures!</a></li>
+<li><a class="" href="lab-2-ggplot-without-dsbox.html"><span class="header-section-number">9</span> Lab 2 – ggplot without dsbox</a></li>
+<li><a class="" href="lab-3-coronavirus-visualization-data-wrangling-and-dates.html"><span class="header-section-number">10</span> Lab 3: coronavirus visualization, data wrangling, and dates</a></li>
+<li><a class="" href="proect-e1.html"><span class="header-section-number">11</span> Proect (E1)</a></li>
+<li><a class="active" href="linear-regression.html"><span class="header-section-number">12</span> Linear Regression</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="linear-regression" class="section level1" number="12">
+<h1>
+<span class="header-section-number">12</span> Linear Regression<a class="anchor" aria-label="anchor" href="#linear-regression"><i class="fas fa-link"></i></a>
+</h1>
+<p>Your resource for this is ISLR chapter 3: linear regression.</p>
+<div id="exercises" class="section level2" number="12.1">
+<h2>
+<span class="header-section-number">12.1</span> Exercises<a class="anchor" aria-label="anchor" href="#exercises"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li>Make sure you can define the terms below outbound, in your own words, so that they make sense both to you and to someone else (me?). Actually practice saying and defining these terms outloud until your answers make sense:</li>
+</ol>
+<ul>
+<li>least squares approach</li>
+<li>confidence interval</li>
+<li>p-value</li>
+<li>R<sup>2</sup>
+</li>
+<li>Adjusted R<sup>2</sup>
+</li>
+<li>qualitative predictor</li>
+<li>collinearity</li>
+<li>KNN</li>
+<li>Residual standard error</li>
+<li>F-statistic</li>
+<li>Explain the point o Fihure 3.1</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>In <code>m1</code>, below, which variables are significant predictors of Balance? How do you know?</li>
+</ol>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://www.statlearning.com">"ISLR"</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">Credit</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/attach.html">attach</a></span><span class="op">(</span><span class="va">Credit</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Credit</span><span class="op">)</span>
+<span class="co">#&gt;   ID  Income Limit Rating Cards Age Education Gender</span>
+<span class="co">#&gt; 1  1  14.891  3606    283     2  34        11   Male</span>
+<span class="co">#&gt; 2  2 106.025  6645    483     3  82        15 Female</span>
+<span class="co">#&gt; 3  3 104.593  7075    514     4  71        11   Male</span>
+<span class="co">#&gt; 4  4 148.924  9504    681     3  36        11 Female</span>
+<span class="co">#&gt; 5  5  55.882  4897    357     2  68        16   Male</span>
+<span class="co">#&gt; 6  6  80.180  8047    569     4  77        10   Male</span>
+<span class="co">#&gt;   Student Married Ethnicity Balance</span>
+<span class="co">#&gt; 1      No     Yes Caucasian     333</span>
+<span class="co">#&gt; 2     Yes     Yes     Asian     903</span>
+<span class="co">#&gt; 3      No      No     Asian     580</span>
+<span class="co">#&gt; 4      No      No     Asian     964</span>
+<span class="co">#&gt; 5      No     Yes Caucasian     331</span>
+<span class="co">#&gt; 6      No      No Caucasian    1151</span>
+<span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Balance</span> <span class="op">~</span> <span class="va">Age</span> <span class="op">+</span> <span class="va">Income</span> <span class="op">+</span> <span class="va">Education</span>, data <span class="op">=</span> <span class="va">Credit</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; lm(formula = Balance ~ Age + Income + Education, data = Credit)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residuals:</span>
+<span class="co">#&gt;     Min      1Q  Median      3Q     Max </span>
+<span class="co">#&gt; -867.14 -343.14  -49.44  316.55 1080.56 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="co">#&gt; (Intercept) 348.8115   112.6895   3.095  0.00211 ** </span>
+<span class="co">#&gt; Age          -2.1863     1.2004  -1.821  0.06930 .  </span>
+<span class="co">#&gt; Income        6.2380     0.5877  10.614  &lt; 2e-16 ***</span>
+<span class="co">#&gt; Education     0.8058     6.5254   0.123  0.90179    </span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  </span>
+<span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residual standard error: 407.2 on 396 degrees of freedom</span>
+<span class="co">#&gt; Multiple R-squared:  0.2215, Adjusted R-squared:  0.2156 </span>
+<span class="co">#&gt; F-statistic: 37.56 on 3 and 396 DF,  p-value: &lt; 2.2e-16</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>How “good” is the model created in <code>m1</code>? How do you know?</li>
+<li>Add more <code>Credit</code> variables to model <code>m1</code>. Can you find two other variables that have extremely high collinearity? What are they? How do you know that they have high collinearity? Why does this make sense given what each of the variables mean?</li>
+<li>Based on the model below, what would you predict the balance to be for an individual who is 40, has an income of $100,000, 16 years of education, is Asian and not a student?</li>
+</ol>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Balance</span> <span class="op">~</span> <span class="va">Age</span> <span class="op">+</span> <span class="va">Income</span> <span class="op">+</span> <span class="va">Education</span> <span class="op">+</span> <span class="va">Ethnicity</span> <span class="op">+</span> <span class="va">Student</span>, data <span class="op">=</span> <span class="va">Credit</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; lm(formula = Balance ~ Age + Income + Education + Ethnicity + </span>
+<span class="co">#&gt;     Student, data = Credit)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residuals:</span>
+<span class="co">#&gt;     Min      1Q  Median      3Q     Max </span>
+<span class="co">#&gt; -818.77 -322.14  -54.52  315.67  781.45 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;                    Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="co">#&gt; (Intercept)        336.6241   115.6311   2.911  0.00381 ** </span>
+<span class="co">#&gt; Age                 -1.9756     1.1595  -1.704  0.08922 .  </span>
+<span class="co">#&gt; Income               6.1491     0.5666  10.853  &lt; 2e-16 ***</span>
+<span class="co">#&gt; Education           -1.7606     6.3060  -0.279  0.78024    </span>
+<span class="co">#&gt; EthnicityAsian     -14.2547    55.5240  -0.257  0.79752    </span>
+<span class="co">#&gt; EthnicityCaucasian   8.8839    48.3276   0.184  0.85424    </span>
+<span class="co">#&gt; StudentYes         382.0498    65.6854   5.816 1.25e-08 ***</span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  </span>
+<span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residual standard error: 392.2 on 393 degrees of freedom</span>
+<span class="co">#&gt; Multiple R-squared:  0.2833, Adjusted R-squared:  0.2723 </span>
+<span class="co">#&gt; F-statistic: 25.89 on 6 and 393 DF,  p-value: &lt; 2.2e-16</span></code></pre></div>
+<ol start="6" style="list-style-type: decimal">
+<li>Interpret this model and its output, especially the coefficients <code>Income:Education   0.3149</code>:</li>
+</ol>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">m3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Balance</span> <span class="op">~</span> <span class="va">Income</span><span class="op">*</span><span class="va">Education</span>, data <span class="op">=</span> <span class="va">Credit</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">m3</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; lm(formula = Balance ~ Income * Education, data = Credit)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residuals:</span>
+<span class="co">#&gt;     Min      1Q  Median      3Q     Max </span>
+<span class="co">#&gt; -858.07 -349.99  -56.12  304.51 1083.93 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;                  Estimate Std. Error t value Pr(&gt;|t|)   </span>
+<span class="co">#&gt; (Intercept)      435.4599   147.1000   2.960  0.00326 **</span>
+<span class="co">#&gt; Income             1.8168     2.4727   0.735  0.46294   </span>
+<span class="co">#&gt; Education        -13.9887    10.5931  -1.321  0.18741   </span>
+<span class="co">#&gt; Income:Education   0.3149     0.1788   1.761  0.07902 . </span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  </span>
+<span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residual standard error: 407.3 on 396 degrees of freedom</span>
+<span class="co">#&gt; Multiple R-squared:  0.2211, Adjusted R-squared:  0.2152 </span>
+<span class="co">#&gt; F-statistic: 37.47 on 3 and 396 DF,  p-value: &lt; 2.2e-16</span></code></pre></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="proect-e1.html"><span class="header-section-number">11</span> Proect (E1)</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#linear-regression"><span class="header-section-number">12</span> Linear Regression</a></li>
+<li><a class="nav-link" href="#exercises"><span class="header-section-number">12.1</span> Exercises</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/115-linear_regression.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/115-linear_regression.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-03-23.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
