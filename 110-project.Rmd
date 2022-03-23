@@ -1,4 +1,4 @@
-# Proect (E1)
+# Project (E1)
 
 ## A project to call your own
 

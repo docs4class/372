@@ -7,7 +7,7 @@ Your resource for this is ISLR chapter 3: linear regression.
 
 ## Exercises
 
-1. Make sure you can define the terms below outbound, in your own words, so that they make sense both to you and to someone else (me?). Actually practice saying and defining these terms outloud until your answers make sense:
+1. Make sure you can define the terms below **outloud**, in your own words, so that they make sense both to you and to someone else (me?). Actually practice saying and defining these terms **outloud** until your answers make sense:
 
 - least squares approach
 - confidence interval
@@ -19,7 +19,7 @@ Your resource for this is ISLR chapter 3: linear regression.
 - KNN
 - Residual standard error
 - F-statistic
-- Explain the point o Fihure 3.1
+- Explain the point of Figure 3.1
 
 2. In `m1`, below, which variables are significant predictors of Balance?  How do you know?
 
@@ -102,7 +102,6 @@ summary(m2)
 #> Multiple R-squared:  0.2833,	Adjusted R-squared:  0.2723 
 #> F-statistic: 25.89 on 6 and 393 DF,  p-value: < 2.2e-16
 ```
-
 6. Interpret this model and its output, especially the coefficients `Income:Education   0.3149`:
 
 

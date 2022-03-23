@@ -1093,8 +1093,8 @@ Now we can plot some more fun stuff.
 
 \includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-14-2.pdf}
 
-\hypertarget{proect-e1}{%
-\chapter{Proect (E1)}\label{proect-e1}}
+\hypertarget{project-e1}{%
+\chapter{Project (E1)}\label{project-e1}}
 
 \hypertarget{a-project-to-call-your-own}{%
 \section{A project to call your own}\label{a-project-to-call-your-own}}
@@ -1331,6 +1331,659 @@ A general breakdown of scoring is as follows:
   Any later: no credit
 \end{itemize}
 
+\hypertarget{functions}{%
+\chapter{Functions}\label{functions}}
+
+\hypertarget{writing-functions}{%
+\section{Writing Functions}\label{writing-functions}}
+
+\hypertarget{fahrenheit-to-kelvin}{%
+\subsection{Fahrenheit to Kelvin}\label{fahrenheit-to-kelvin}}
+
+\(k = ((f - 32) * (5 / 9)) + 273.15\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{((}\DecValTok{32} \SpecialCharTok{{-}} \DecValTok{32}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{5} \SpecialCharTok{/} \DecValTok{9}\NormalTok{)) }\SpecialCharTok{+} \FloatTok{273.15}
+\CommentTok{\#\textgreater{} [1] 273.15}
+\NormalTok{((}\DecValTok{212} \SpecialCharTok{{-}} \DecValTok{32}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{5} \SpecialCharTok{/} \DecValTok{9}\NormalTok{)) }\SpecialCharTok{+} \FloatTok{273.15}
+\CommentTok{\#\textgreater{} [1] 373.15}
+\NormalTok{((}\SpecialCharTok{{-}}\DecValTok{42} \SpecialCharTok{{-}} \DecValTok{32}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{5} \SpecialCharTok{/} \DecValTok{9}\NormalTok{)) }\SpecialCharTok{+} \FloatTok{273.15}
+\CommentTok{\#\textgreater{} [1] 232.0389}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f\_k }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(f\_temp) \{}
+\NormalTok{    ((f\_temp }\SpecialCharTok{{-}} \DecValTok{32}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{5} \SpecialCharTok{/} \DecValTok{9}\NormalTok{)) }\SpecialCharTok{+} \FloatTok{273.15}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{f\_k}\NormalTok{(}\DecValTok{32}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 273.15}
+\FunctionTok{f\_k}\NormalTok{(}\DecValTok{212}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 373.15}
+\FunctionTok{f\_k}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{42}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 232.0389}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{kelvin-to-celsius}{%
+\subsection{Kelvin to Celsius}\label{kelvin-to-celsius}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{k\_c }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(temp\_k) \{}
+\NormalTok{    temp\_c }\OtherTok{\textless{}{-}}\NormalTok{ temp\_k }\SpecialCharTok{{-}} \FloatTok{273.15}
+    \FunctionTok{return}\NormalTok{(temp\_c)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{k\_c}\NormalTok{(}\DecValTok{0}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] {-}273.15}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{fahrenheit-to-celsius}{%
+\subsection{Fahrenheit to Celsius}\label{fahrenheit-to-celsius}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f\_c }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(temp\_f) \{}
+\NormalTok{    temp\_k }\OtherTok{\textless{}{-}} \FunctionTok{f\_k}\NormalTok{(temp\_f)}
+\NormalTok{    temp\_c }\OtherTok{\textless{}{-}} \FunctionTok{k\_c}\NormalTok{(temp\_k)}
+    \FunctionTok{return}\NormalTok{(temp\_c)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{f\_c}\NormalTok{(}\DecValTok{32}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 0}
+\FunctionTok{f\_c}\NormalTok{(}\DecValTok{212}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 100}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{testing-functions}{%
+\section{Testing Functions}\label{testing-functions}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(testthat)}
+\NormalTok{testthat}\SpecialCharTok{::}\FunctionTok{expect\_equal}\NormalTok{(}\FunctionTok{f\_c}\NormalTok{(}\DecValTok{32}\NormalTok{), }\DecValTok{0}\NormalTok{)}
+\NormalTok{testthat}\SpecialCharTok{::}\FunctionTok{expect\_equal}\NormalTok{(}\FunctionTok{f\_c}\NormalTok{(}\DecValTok{212}\NormalTok{), }\DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise}{%
+\section{Exercise}\label{exercise}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  What happens if you use \texttt{NA}, \texttt{Inf}, \texttt{-Inf} in your function?
+\item
+  What are some better names to give the functions we wrote?
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  How would you name these functions in a package?
+\end{itemize}
+
+\hypertarget{checking-values}{%
+\section{Checking values}\label{checking-values}}
+
+Calculating weighted means
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mean\_wt }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, w) \{}
+  \FunctionTok{sum}\NormalTok{(x }\SpecialCharTok{*}\NormalTok{ w) }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(w)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean\_wt}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 4.333333}
+\end{Highlighting}
+\end{Shaded}
+
+If you expect the lengths to be the same,
+then you should test for it in the function
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean\_wt}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 7.666667}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mean\_wt }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, w) \{}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(x) }\SpecialCharTok{!=} \FunctionTok{length}\NormalTok{(w)) \{}
+    \FunctionTok{stop}\NormalTok{(}\StringTok{"\textasciigrave{}x\textasciigrave{} and \textasciigrave{}w\textasciigrave{} should be the same length"}\NormalTok{)}
+\NormalTok{  \}}
+  \FunctionTok{sum}\NormalTok{(x }\SpecialCharTok{*}\NormalTok{ w) }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(w)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean\_wt}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\textgreater{} Error in mean\_wt(1:6, 1:3): \textasciigrave{}x\textasciigrave{} and \textasciigrave{}w\textasciigrave{} should be the same length}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dot-dot-dot}{%
+\section{dot-dot-dot \ldots{}}\label{dot-dot-dot}}
+
+Use it to pass on arguments to another function inside.
+
+But you can also use it to force named arguments in your function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum\_3 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y, z) \{}
+  \FunctionTok{return}\NormalTok{(x }\SpecialCharTok{+}\NormalTok{ y }\SpecialCharTok{+}\NormalTok{ z)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum\_3}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 6}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum\_3 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y, ..., z) \{}
+  \FunctionTok{return}\NormalTok{(x }\SpecialCharTok{+}\NormalTok{ y }\SpecialCharTok{+}\NormalTok{ z)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum\_3}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\AttributeTok{z =} \DecValTok{3}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 6}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum\_3}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\AttributeTok{z =} \DecValTok{3}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 6}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{conditionals}{%
+\chapter{Conditionals}\label{conditionals}}
+
+\hypertarget{if-statements}{%
+\section{if statements}\label{if-statements}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# make a modification to this function}
+\NormalTok{k\_c }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(temp\_k) \{}
+    \ControlFlowTok{if}\NormalTok{ (temp\_k }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{) \{}
+        \FunctionTok{warning}\NormalTok{(}\StringTok{\textquotesingle{}you passed in a negative Kelvin number\textquotesingle{}}\NormalTok{)}
+        \CommentTok{\# stop()}
+        \FunctionTok{return}\NormalTok{(}\ConstantTok{NA}\NormalTok{)}
+\NormalTok{    \}}
+\NormalTok{    temp\_c }\OtherTok{\textless{}{-}}\NormalTok{ temp\_k }\SpecialCharTok{{-}} \FloatTok{273.15}
+    \FunctionTok{return}\NormalTok{(temp\_c)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{k\_c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{9}\NormalTok{)}
+\CommentTok{\#\textgreater{} Warning in k\_c({-}9): you passed in a negative Kelvin number}
+\CommentTok{\#\textgreater{} [1] NA}
+\end{Highlighting}
+\end{Shaded}
+
+Our current function does not deal with missing numbers
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{k\_c}\NormalTok{(}\ConstantTok{NA}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Error in if (temp_k < 0) { : missing value where TRUE/FALSE needed
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{k\_c}\NormalTok{(}\DecValTok{0}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] {-}273.15}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{if-else-statements}{%
+\section{If else statements}\label{if-else-statements}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{k\_c }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(temp\_k) \{}
+    \ControlFlowTok{if}\NormalTok{ (temp\_k }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{) \{}
+        \FunctionTok{warning}\NormalTok{(}\StringTok{\textquotesingle{}you passed in a negative Kelvin number\textquotesingle{}}\NormalTok{)}
+        \CommentTok{\# stop()}
+        \FunctionTok{return}\NormalTok{(}\ConstantTok{NA}\NormalTok{)}
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{        temp\_c }\OtherTok{\textless{}{-}}\NormalTok{ temp\_k }\SpecialCharTok{{-}} \FloatTok{273.15}
+        \FunctionTok{return}\NormalTok{(temp\_c)}
+\NormalTok{    \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{k\_c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{9}\NormalTok{)}
+\CommentTok{\#\textgreater{} Warning in k\_c({-}9): you passed in a negative Kelvin number}
+\CommentTok{\#\textgreater{} [1] NA}
+\end{Highlighting}
+\end{Shaded}
+
+Our current function does not deal with missing numbers
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{k\_c}\NormalTok{(}\ConstantTok{NA}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{k\_c}\NormalTok{(}\DecValTok{0}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] {-}273.15}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dealing-with-na}{%
+\section{Dealing with NA}\label{dealing-with-na}}
+
+Re-write our function to work with missing values.
+
+Note you need to make the \texttt{NA} check first.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{k\_c }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(temp\_k) \{}
+    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{is.na}\NormalTok{(temp\_k)) \{}
+        \FunctionTok{return}\NormalTok{(}\ConstantTok{NA}\NormalTok{)}
+\NormalTok{    \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (temp\_k }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{) \{}
+        \FunctionTok{warning}\NormalTok{(}\StringTok{\textquotesingle{}you passed in a negative Kelvin number\textquotesingle{}}\NormalTok{)}
+        \CommentTok{\# stop()}
+        \FunctionTok{return}\NormalTok{(}\ConstantTok{NA}\NormalTok{)}
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{        temp\_c }\OtherTok{\textless{}{-}}\NormalTok{ temp\_k }\SpecialCharTok{{-}} \FloatTok{273.15}
+        \FunctionTok{return}\NormalTok{(temp\_c)}
+\NormalTok{    \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{k\_c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{9}\NormalTok{)}
+\CommentTok{\#\textgreater{} Warning in k\_c({-}9): you passed in a negative Kelvin number}
+\CommentTok{\#\textgreater{} [1] NA}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{k\_c}\NormalTok{(}\ConstantTok{NA}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] NA}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{k\_c}\NormalTok{(}\DecValTok{0}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] {-}273.15}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{)) \{\}}
+\CommentTok{\#\textgreater{} Warning in if (c(TRUE, FALSE)) \{: the condition has length \textgreater{}}
+\CommentTok{\#\textgreater{} 1 and only the first element will be used}
+\CommentTok{\#\textgreater{} NULL}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (}\ConstantTok{NA}\NormalTok{) \{\}}
+\CommentTok{\#\textgreater{} Error in if (NA) \{: missing value where TRUE/FALSE needed}
+\end{Highlighting}
+\end{Shaded}
+
+use \texttt{\&\&} and \texttt{\textbar{}\textbar{}} to short-circuit the boolean comparisons.
+This will also guarantee a value of length \texttt{1L}.
+\texttt{==} is also vectorized, should use \texttt{identical()} or \texttt{all.equal()}.
+
+\texttt{identical} is very strict. Doesn't corece types.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{identical}\NormalTok{(0L, }\DecValTok{0}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{all.equal} has ability to set tolerances.
+
+\texttt{all.equal}: compare R objects x and y testing `near equality'. If they are different, comparison is still made to some extent, and a report of the differences is returned. Do not use all.equal directly in if expressions---either use isTRUE(all.equal(\ldots.)) or identical if appropriate.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{all.equal}\NormalTok{(0L, }\DecValTok{0}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{isTRUE}\NormalTok{(}\FunctionTok{all.equal}\NormalTok{(0L, }\DecValTok{0}\NormalTok{))) \{}\FunctionTok{print}\NormalTok{(}\StringTok{"Hello"}\NormalTok{)\}}
+\CommentTok{\#\textgreater{} [1] "Hello"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{fizzbuzz}{%
+\section{Fizzbuzz}\label{fizzbuzz}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fizzbuzz }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+  \CommentTok{\# these two lines check that x is a valid input}
+  \FunctionTok{stopifnot}\NormalTok{(}\FunctionTok{length}\NormalTok{(x) }\SpecialCharTok{==} \DecValTok{1}\NormalTok{)}
+  \FunctionTok{stopifnot}\NormalTok{(}\FunctionTok{is.numeric}\NormalTok{(x))}
+  \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\NormalTok{(x }\SpecialCharTok{\%\%} \DecValTok{3}\NormalTok{) }\SpecialCharTok{\&\&} \SpecialCharTok{!}\NormalTok{(x }\SpecialCharTok{\%\%} \DecValTok{5}\NormalTok{)) \{}
+    \StringTok{"fizzbuzz"}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\NormalTok{(x }\SpecialCharTok{\%\%} \DecValTok{3}\NormalTok{)) \{}
+    \StringTok{"fizz"}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\NormalTok{(x }\SpecialCharTok{\%\%} \DecValTok{5}\NormalTok{)) \{}
+    \StringTok{"buzz"}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \CommentTok{\# ensure that the function returns a character vector}
+    \FunctionTok{as.character}\NormalTok{(x)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fizzbuzz}\NormalTok{(}\DecValTok{6}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] "fizz"}
+\end{Highlighting}
+\end{Shaded}
+
+Check modulo 3 only once
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fizzbuzz2 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+  \CommentTok{\# these two lines check that x is a valid input}
+  \FunctionTok{stopifnot}\NormalTok{(}\FunctionTok{length}\NormalTok{(x) }\SpecialCharTok{==} \DecValTok{1}\NormalTok{)}
+  \FunctionTok{stopifnot}\NormalTok{(}\FunctionTok{is.numeric}\NormalTok{(x))}
+  \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\NormalTok{(x }\SpecialCharTok{\%\%} \DecValTok{3}\NormalTok{)) \{}
+    \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\NormalTok{(x }\SpecialCharTok{\%\%} \DecValTok{5}\NormalTok{)) \{}
+      \StringTok{"fizzbuzz"}
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
+      \StringTok{"fizz"}
+\NormalTok{    \}}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\NormalTok{(x }\SpecialCharTok{\%\%} \DecValTok{5}\NormalTok{)) \{}
+    \StringTok{"buzz"}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \CommentTok{\# ensure that the function returns a character vector}
+    \FunctionTok{as.character}\NormalTok{(x)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fizzbuzz}\NormalTok{(}\DecValTok{6}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] "fizz"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{vectorized-conditionals}{%
+\subsection{Vectorized conditionals}\label{vectorized-conditionals}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Attaching package: \textquotesingle{}dplyr\textquotesingle{}}
+\CommentTok{\#\textgreater{} The following object is masked from \textquotesingle{}package:testthat\textquotesingle{}:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}     matches}
+\CommentTok{\#\textgreater{} The following objects are masked from \textquotesingle{}package:stats\textquotesingle{}:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}     filter, lag}
+\CommentTok{\#\textgreater{} The following objects are masked from \textquotesingle{}package:base\textquotesingle{}:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}     intersect, setdiff, setequal, union}
+\NormalTok{fizzbuzz\_vec }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{case\_when}\NormalTok{(}
+    \SpecialCharTok{!}\NormalTok{(x }\SpecialCharTok{\%\%} \DecValTok{3}\NormalTok{) }\SpecialCharTok{\&} \SpecialCharTok{!}\NormalTok{(x }\SpecialCharTok{\%\%} \DecValTok{5}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"fizzbuzz"}\NormalTok{,}
+    \SpecialCharTok{!}\NormalTok{(x }\SpecialCharTok{\%\%} \DecValTok{3}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"fizz"}\NormalTok{,}
+    \SpecialCharTok{!}\NormalTok{(x }\SpecialCharTok{\%\%} \DecValTok{5}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"buzz"}\NormalTok{,}
+    \ConstantTok{TRUE} \SpecialCharTok{\textasciitilde{}} \FunctionTok{as.character}\NormalTok{(x)}
+\NormalTok{  )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fizzbuzz}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\CommentTok{\#\textgreater{} Error in fizzbuzz(1:10): length(x) == 1 is not TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fizzbuzz\_vec}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\CommentTok{\#\textgreater{}  [1] "1"    "2"    "fizz" "4"    "buzz" "fizz" "7"    "8"   }
+\CommentTok{\#\textgreater{}  [9] "fizz" "buzz"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{multiple-conditions}{%
+\subsection{Multiple conditions}\label{multiple-conditions}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (this) \{}
+  \CommentTok{\# do that}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (that) \{}
+  \CommentTok{\# do something else}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \CommentTok{\# }
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{switch}{%
+\subsubsection{switch}\label{switch}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{calc\_op }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y, op) \{}
+  \ControlFlowTok{switch}\NormalTok{(op,}
+         \AttributeTok{plus =}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y,}
+         \AttributeTok{minus =}\NormalTok{ x }\SpecialCharTok{{-}}\NormalTok{ y,}
+         \AttributeTok{times =}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ y,}
+         \AttributeTok{divide =}\NormalTok{ x }\SpecialCharTok{/}\NormalTok{ y,}
+         \FunctionTok{stop}\NormalTok{(}\StringTok{"Unknown op!"}\NormalTok{)}
+\NormalTok{  )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{calc\_op}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\StringTok{"times"}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 200}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{calc\_op}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\StringTok{"divide"}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 0.5}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{cut}{%
+\subsubsection{cut}\label{cut}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{describe\_temp }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(temp) \{}
+  \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{0}\NormalTok{) \{}
+    \StringTok{"freezing"}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{10}\NormalTok{) \{}
+    \StringTok{"cold"}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{20}\NormalTok{) \{}
+    \StringTok{"cool"}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{30}\NormalTok{) \{ }
+    \StringTok{"warm"}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \StringTok{"hot"}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{describe\_temp}\NormalTok{(}\DecValTok{16}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] "cool"}
+\end{Highlighting}
+\end{Shaded}
+
+Current function can't handle vectors
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{describe\_temp}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{, }\DecValTok{61}\NormalTok{))}
+\CommentTok{\#\textgreater{} Warning in if (temp \textless{}= 0) \{: the condition has length \textgreater{} 1}
+\CommentTok{\#\textgreater{} and only the first element will be used}
+\CommentTok{\#\textgreater{} Warning in if (temp \textless{}= 10) \{: the condition has length \textgreater{} 1}
+\CommentTok{\#\textgreater{} and only the first element will be used}
+\CommentTok{\#\textgreater{} Warning in if (temp \textless{}= 20) \{: the condition has length \textgreater{} 1}
+\CommentTok{\#\textgreater{} and only the first element will be used}
+\CommentTok{\#\textgreater{} [1] "cool"}
+\end{Highlighting}
+\end{Shaded}
+
+How cut works:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{values }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\DecValTok{10}\SpecialCharTok{:}\DecValTok{10}
+\NormalTok{values}
+\CommentTok{\#\textgreater{}  [1] {-}10  {-}9  {-}8  {-}7  {-}6  {-}5  {-}4  {-}3  {-}2  {-}1   0   1   2   3}
+\CommentTok{\#\textgreater{} [15]   4   5   6   7   8   9  10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut}\NormalTok{(values, }\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\ConstantTok{Inf}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{7}\NormalTok{, }\ConstantTok{Inf}\NormalTok{))}
+\CommentTok{\#\textgreater{}  [1] ({-}Inf,{-}5] ({-}Inf,{-}5] ({-}Inf,{-}5] ({-}Inf,{-}5] ({-}Inf,{-}5]}
+\CommentTok{\#\textgreater{}  [6] ({-}Inf,{-}5] ({-}5,{-}1]   ({-}5,{-}1]   ({-}5,{-}1]   ({-}5,{-}1]  }
+\CommentTok{\#\textgreater{} [11] ({-}1,1]    ({-}1,1]    (1,7]     (1,7]     (1,7]    }
+\CommentTok{\#\textgreater{} [16] (1,7]     (1,7]     (1,7]     (7, Inf]  (7, Inf] }
+\CommentTok{\#\textgreater{} [21] (7, Inf] }
+\CommentTok{\#\textgreater{} Levels: ({-}Inf,{-}5] ({-}5,{-}1] ({-}1,1] (1,7] (7, Inf]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut}\NormalTok{(values, }\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\ConstantTok{Inf}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{7}\NormalTok{, }\ConstantTok{Inf}\NormalTok{), }\AttributeTok{labels =}\NormalTok{ LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{], }\AttributeTok{right =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#\textgreater{}  [1] A A A A A A B B B B C C D D D D D D E E E}
+\CommentTok{\#\textgreater{} Levels: A B C D E}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut}\NormalTok{(values, }\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\ConstantTok{Inf}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{7}\NormalTok{, }\ConstantTok{Inf}\NormalTok{), }\AttributeTok{labels =}\NormalTok{ LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{], }\AttributeTok{right =} \ConstantTok{FALSE}\NormalTok{)}
+\CommentTok{\#\textgreater{}  [1] A A A A A B B B B C C D D D D D D E E E E}
+\CommentTok{\#\textgreater{} Levels: A B C D E}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise-1}{%
+\section{Exercise}\label{exercise-1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Rewrite the function using \texttt{cut}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{describe\_temp }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(temp) \{}
+  \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{0}\NormalTok{) \{}
+    \StringTok{"freezing"}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{10}\NormalTok{) \{}
+    \StringTok{"cold"}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{20}\NormalTok{) \{}
+    \StringTok{"cool"}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{30}\NormalTok{) \{}
+    \StringTok{"warm"}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \StringTok{"hot"}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  How do you indicate \texttt{\textless{}} and \texttt{\textless{}=}?
+\end{enumerate}
+
 \hypertarget{linear-regression}{%
 \chapter{Linear Regression}\label{linear-regression}}
 
@@ -1343,7 +1996,7 @@ Your resource for this is ISLR chapter 3: linear regression.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Make sure you can define the terms below outbound, in your own words, so that they make sense both to you and to someone else (me?). Actually practice saying and defining these terms outloud until your answers make sense:
+  Make sure you can define the terms below \textbf{outloud}, in your own words, so that they make sense both to you and to someone else (me?). Actually practice saying and defining these terms \textbf{outloud} until your answers make sense:
 \end{enumerate}
 
 \begin{itemize}
@@ -1369,7 +2022,7 @@ Your resource for this is ISLR chapter 3: linear regression.
 \item
   F-statistic
 \item
-  Explain the point o Fihure 3.1
+  Explain the point of Figure 3.1
 \end{itemize}
 
 \begin{enumerate}
