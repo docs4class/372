@@ -49,7 +49,7 @@ For example, what does this summary let us know?
 ```r
 summary(coronavirus$cases)
 #>      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-#> -30974748         0         0       669        29   1368563
+#> -30974748         0         0       732        28   1382110
 ```
 
 1. Can you create a visual showing the cases over time for Russia, Spain, US, and Venezuela?
@@ -103,10 +103,10 @@ Let's make a little table of just date, country, and deaths (with a meaningful v
 #> 5 2020-01-26  Russia      0
 #> 6 2020-01-27  Russia      0
 #>     country   n
-#> 1    Russia 757
-#> 2     Spain 754
-#> 3        US 757
-#> 4 Venezuela 756
+#> 1    Russia 797
+#> 2     Spain 795
+#> 3        US 796
+#> 4 Venezuela 796
 ```
 
 Let's make a little table of just confirmed cases.
@@ -121,10 +121,10 @@ Let's make a little table of just confirmed cases.
 #> 5 2020-01-26  Russia         0
 #> 6 2020-01-27  Russia         0
 #>     country   n
-#> 1    Russia 757
-#> 2     Spain 757
-#> 3        US 757
-#> 4 Venezuela 757
+#> 1    Russia 797
+#> 2     Spain 797
+#> 3        US 797
+#> 4 Venezuela 797
 ```
 
 Let's join these together. I use `left_join`.  
@@ -140,10 +140,10 @@ Let's join these together. I use `left_join`.
 #> 5 2020-01-26  Russia      0         0
 #> 6 2020-01-27  Russia      0         0
 #>     country   n
-#> 1    Russia 757
-#> 2     Spain 757
-#> 3        US 757
-#> 4 Venezuela 757
+#> 1    Russia 797
+#> 2     Spain 797
+#> 3        US 797
+#> 4 Venezuela 797
 ```
 
 Let's add some cumulative statistics as well.
@@ -173,28 +173,28 @@ Now we can plot some more fun stuff.
 
 ```
 #>       date              country              deaths      
-#>  Min.   :2020-01-22   Length:3028        Min.   :   0.0  
-#>  1st Qu.:2020-07-29   Class :character   1st Qu.:   5.0  
-#>  Median :2021-02-03   Mode  :character   Median : 126.0  
-#>  Mean   :2021-02-03                      Mean   : 452.7  
-#>  3rd Qu.:2021-08-11                      3rd Qu.: 639.2  
-#>  Max.   :2022-02-16                      Max.   :4442.0  
+#>  Min.   :2020-01-22   Length:3188        Min.   :   0.0  
+#>  1st Qu.:2020-08-08   Class :character   1st Qu.:   5.0  
+#>  Median :2021-02-23   Mode  :character   Median : 130.0  
+#>  Mean   :2021-02-23                      Mean   : 455.6  
+#>  3rd Qu.:2021-09-10                      3rd Qu.: 649.0  
+#>  Max.   :2022-03-28                      Max.   :4443.0  
 #>                                          NA's   :4       
 #>    confirmed         cumulative_cases    cumulative_deaths
-#>  Min.   : -74937.0   Min.   :        0   Min.   :     0   
-#>  1st Qu.:    461.5   1st Qu.: 14445698   1st Qu.: 16977   
-#>  Median :   7814.0   Median : 25190092   Median : 99431   
-#>  Mean   :  34303.5   Mean   : 43523860   Mean   :135068   
-#>  3rd Qu.:  28170.0   3rd Qu.:103362932   3rd Qu.:248203   
-#>  Max.   :1368563.0   Max.   :103870974   Max.   :364273   
-#>                                          NA's   :2147     
-#>       rate          
-#>  Min.   :-0.036576  
-#>  1st Qu.: 0.004568  
-#>  Median : 0.012750  
-#>  Mean   : 0.021680  
-#>  3rd Qu.: 0.023227  
-#>  Max.   : 3.840391  
+#>  Min.   : -74347.0   Min.   :        0   Min.   :     0   
+#>  1st Qu.:    448.2   1st Qu.: 17525184   1st Qu.: 17939   
+#>  Median :   8122.0   Median : 28976860   Median :106783   
+#>  Mean   :  34345.2   Mean   : 47603009   Mean   :147740   
+#>  3rd Qu.:  29716.0   3rd Qu.:108972345   3rd Qu.:283815   
+#>  Max.   :1382110.0   Max.   :109492514   Max.   :389099   
+#>                                          NA's   :2267     
+#>       rate         
+#>  Min.   :-0.03658  
+#>  1st Qu.: 0.00455  
+#>  Median : 0.01264  
+#>  Mean   : 0.02123  
+#>  3rd Qu.: 0.02292  
+#>  Max.   : 3.84039  
 #>  NA's   :4
 ```
 
