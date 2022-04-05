@@ -4,10 +4,6 @@
 %
 \documentclass[
 ]{book}
-\title{BADM 372 Applied Analytics}
-\author{BADM 372}
-\date{2022-03-29}
-
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{iftex}
@@ -118,6 +114,10 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
+
+\title{BADM 372 Applied Analytics}
+\author{BADM 372}
+\date{2022-04-05}
 
 \begin{document}
 \maketitle
@@ -331,9 +331,15 @@ This is a tentative schedule, and it will change. \textbf{BUT} I will do my very
 \section*{Spring 2022}\label{spring-2022}}
 \addcontentsline{toc}{section}{Spring 2022}
 
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.4667}}@{}}
 \toprule
-Date & Topic \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Date
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Topic
+\end{minipage} \\
 \midrule
 \endhead
 Monday, January 10, 2022 & Intro and A1 review \\
@@ -613,18 +619,18 @@ Via google: \url{https://stackoverflow.com/questions/22353633/filter-for-complet
 
 \begin{verbatim}
 #> # A tibble: 29 x 14
-#>    name        height  mass hair_color  skin_color eye_color
-#>    <chr>        <int> <dbl> <chr>       <chr>      <chr>    
-#>  1 Luke Skywa~    172    77 blond       fair       blue     
-#>  2 Darth Vader    202   136 none        white      yellow   
-#>  3 Leia Organa    150    49 brown       light      brown    
-#>  4 Owen Lars      178   120 brown, grey light      blue     
-#>  5 Beru White~    165    75 brown       light      blue     
-#>  6 Biggs Dark~    183    84 black       light      brown    
-#>  7 Obi-Wan Ke~    182    77 auburn, wh~ fair       blue-gray
-#>  8 Anakin Sky~    188    84 blond       fair       blue     
-#>  9 Chewbacca      228   112 brown       unknown    blue     
-#> 10 Han Solo       180    80 brown       fair       brown    
+#>    name         height  mass hair_color skin_color eye_color
+#>    <chr>         <int> <dbl> <chr>      <chr>      <chr>    
+#>  1 Luke Skywal~    172    77 blond      fair       blue     
+#>  2 Darth Vader     202   136 none       white      yellow   
+#>  3 Leia Organa     150    49 brown      light      brown    
+#>  4 Owen Lars       178   120 brown, gr~ light      blue     
+#>  5 Beru Whites~    165    75 brown      light      blue     
+#>  6 Biggs Darkl~    183    84 black      light      brown    
+#>  7 Obi-Wan Ken~    182    77 auburn, w~ fair       blue-gray
+#>  8 Anakin Skyw~    188    84 blond      fair       blue     
+#>  9 Chewbacca       228   112 brown      unknown    blue     
+#> 10 Han Solo        180    80 brown      fair       brown    
 #> # ... with 19 more rows, and 8 more variables:
 #> #   birth_year <dbl>, sex <chr>, gender <chr>,
 #> #   homeworld <chr>, species <chr>, films <list>,
@@ -916,7 +922,7 @@ For example, what does this summary let us know?
 \begin{Highlighting}[]
 \FunctionTok{summary}\NormalTok{(coronavirus}\SpecialCharTok{$}\NormalTok{cases)}
 \CommentTok{\#\textgreater{}      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. }
-\CommentTok{\#\textgreater{} {-}30974748         0         0       732        28   1382110}
+\CommentTok{\#\textgreater{} {-}30974748         0         0       471        35   1123456}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1001,10 +1007,10 @@ Let's make a little table of just date, country, and deaths (with a meaningful v
 #> 5 2020-01-26  Russia      0
 #> 6 2020-01-27  Russia      0
 #>     country   n
-#> 1    Russia 797
-#> 2     Spain 795
-#> 3        US 796
-#> 4 Venezuela 796
+#> 1    Russia 631
+#> 2     Spain 629
+#> 3        US 631
+#> 4 Venezuela 630
 \end{verbatim}
 
 Let's make a little table of just confirmed cases.
@@ -1018,10 +1024,10 @@ Let's make a little table of just confirmed cases.
 #> 5 2020-01-26  Russia         0
 #> 6 2020-01-27  Russia         0
 #>     country   n
-#> 1    Russia 797
-#> 2     Spain 797
-#> 3        US 797
-#> 4 Venezuela 797
+#> 1    Russia 631
+#> 2     Spain 631
+#> 3        US 631
+#> 4 Venezuela 631
 \end{verbatim}
 
 Let's join these together. I use \texttt{left\_join}.
@@ -1035,10 +1041,10 @@ Let's join these together. I use \texttt{left\_join}.
 #> 5 2020-01-26  Russia      0         0
 #> 6 2020-01-27  Russia      0         0
 #>     country   n
-#> 1    Russia 797
-#> 2     Spain 797
-#> 3        US 797
-#> 4 Venezuela 797
+#> 1    Russia 631
+#> 2     Spain 631
+#> 3        US 631
+#> 4 Venezuela 631
 \end{verbatim}
 
 Let's add some cumulative statistics as well.
@@ -1066,29 +1072,29 @@ Now we can plot some more fun stuff.
 
 \begin{verbatim}
 #>       date              country              deaths      
-#>  Min.   :2020-01-22   Length:3188        Min.   :   0.0  
-#>  1st Qu.:2020-08-08   Class :character   1st Qu.:   5.0  
-#>  Median :2021-02-23   Mode  :character   Median : 130.0  
-#>  Mean   :2021-02-23                      Mean   : 455.6  
-#>  3rd Qu.:2021-09-10                      3rd Qu.: 649.0  
-#>  Max.   :2022-03-28                      Max.   :4443.0  
-#>                                          NA's   :4       
-#>    confirmed         cumulative_cases    cumulative_deaths
-#>  Min.   : -74347.0   Min.   :        0   Min.   :     0   
-#>  1st Qu.:    448.2   1st Qu.: 17525184   1st Qu.: 17939   
-#>  Median :   8122.0   Median : 28976860   Median :106783   
-#>  Mean   :  34345.2   Mean   : 47603009   Mean   :147740   
-#>  3rd Qu.:  29716.0   3rd Qu.:108972345   3rd Qu.:283815   
-#>  Max.   :1382110.0   Max.   :109492514   Max.   :389099   
-#>                                          NA's   :2267     
-#>       rate         
-#>  Min.   :-0.03658  
-#>  1st Qu.: 0.00455  
-#>  Median : 0.01264  
-#>  Mean   : 0.02123  
-#>  3rd Qu.: 0.02292  
-#>  Max.   : 3.84039  
-#>  NA's   :4
+#>  Min.   :2020-01-22   Length:2524        Min.   :   0.0  
+#>  1st Qu.:2020-06-27   Class :character   1st Qu.:   4.0  
+#>  Median :2020-12-02   Mode  :character   Median : 115.0  
+#>  Mean   :2020-12-02                      Mean   : 407.9  
+#>  3rd Qu.:2021-05-09                      3rd Qu.: 526.0  
+#>  Max.   :2021-10-13                      Max.   :4460.0  
+#>                                          NA's   :3       
+#>    confirmed        cumulative_cases   cumulative_deaths
+#>  Min.   :-74347.0   Min.   :       0   Min.   :     0   
+#>  1st Qu.:   418.8   1st Qu.: 7742899   1st Qu.: 13566   
+#>  Median :  6501.0   Median :12723106   Median : 72982   
+#>  Mean   : 22897.5   Mean   :25127794   Mean   : 90759   
+#>  3rd Qu.: 23351.0   3rd Qu.:57407255   3rd Qu.:163245   
+#>  Max.   :303008.0   Max.   :57793207   Max.   :244190   
+#>                                        NA's   :1769     
+#>       rate          
+#>  Min.   :-0.036576  
+#>  1st Qu.: 0.006006  
+#>  Median : 0.013469  
+#>  Mean   : 0.023459  
+#>  3rd Qu.: 0.024058  
+#>  Max.   : 3.840391  
+#>  NA's   :3
 \end{verbatim}
 
 \includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-14-2.pdf}
@@ -1669,22 +1675,6 @@ Note you need to make the \texttt{NA} check first.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{)) \{\}}
-\CommentTok{\#\textgreater{} Warning in if (c(TRUE, FALSE)) \{: the condition has length \textgreater{}}
-\CommentTok{\#\textgreater{} 1 and only the first element will be used}
-\CommentTok{\#\textgreater{} NULL}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{ (}\ConstantTok{NA}\NormalTok{) \{\}}
-\CommentTok{\#\textgreater{} Error in if (NA) \{: missing value where TRUE/FALSE needed}
-\end{Highlighting}
-\end{Shaded}
-
 use \texttt{\&\&} and \texttt{\textbar{}\textbar{}} to short-circuit the boolean comparisons.
 This will also guarantee a value of length \texttt{1L}.
 \texttt{==} is also vectorized, should use \texttt{identical()} or \texttt{all.equal()}.
@@ -1834,155 +1824,6 @@ Check modulo 3 only once
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
-
-\hypertarget{switch}{%
-\subsubsection{switch}\label{switch}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{calc\_op }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y, op) \{}
-  \ControlFlowTok{switch}\NormalTok{(op,}
-         \AttributeTok{plus =}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y,}
-         \AttributeTok{minus =}\NormalTok{ x }\SpecialCharTok{{-}}\NormalTok{ y,}
-         \AttributeTok{times =}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ y,}
-         \AttributeTok{divide =}\NormalTok{ x }\SpecialCharTok{/}\NormalTok{ y,}
-         \FunctionTok{stop}\NormalTok{(}\StringTok{"Unknown op!"}\NormalTok{)}
-\NormalTok{  )}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{calc\_op}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\StringTok{"times"}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] 200}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{calc\_op}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\StringTok{"divide"}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] 0.5}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{cut}{%
-\subsubsection{cut}\label{cut}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{describe\_temp }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(temp) \{}
-  \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{0}\NormalTok{) \{}
-    \StringTok{"freezing"}
-\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{10}\NormalTok{) \{}
-    \StringTok{"cold"}
-\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{20}\NormalTok{) \{}
-    \StringTok{"cool"}
-\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{30}\NormalTok{) \{ }
-    \StringTok{"warm"}
-\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
-    \StringTok{"hot"}
-\NormalTok{  \}}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{describe\_temp}\NormalTok{(}\DecValTok{16}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] "cool"}
-\end{Highlighting}
-\end{Shaded}
-
-Current function can't handle vectors
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{describe\_temp}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{, }\DecValTok{61}\NormalTok{))}
-\CommentTok{\#\textgreater{} Warning in if (temp \textless{}= 0) \{: the condition has length \textgreater{} 1}
-\CommentTok{\#\textgreater{} and only the first element will be used}
-\CommentTok{\#\textgreater{} Warning in if (temp \textless{}= 10) \{: the condition has length \textgreater{} 1}
-\CommentTok{\#\textgreater{} and only the first element will be used}
-\CommentTok{\#\textgreater{} Warning in if (temp \textless{}= 20) \{: the condition has length \textgreater{} 1}
-\CommentTok{\#\textgreater{} and only the first element will be used}
-\CommentTok{\#\textgreater{} [1] "cool"}
-\end{Highlighting}
-\end{Shaded}
-
-How cut works:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{values }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\DecValTok{10}\SpecialCharTok{:}\DecValTok{10}
-\NormalTok{values}
-\CommentTok{\#\textgreater{}  [1] {-}10  {-}9  {-}8  {-}7  {-}6  {-}5  {-}4  {-}3  {-}2  {-}1   0   1   2   3}
-\CommentTok{\#\textgreater{} [15]   4   5   6   7   8   9  10}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{cut}\NormalTok{(values, }\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\ConstantTok{Inf}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{7}\NormalTok{, }\ConstantTok{Inf}\NormalTok{))}
-\CommentTok{\#\textgreater{}  [1] ({-}Inf,{-}5] ({-}Inf,{-}5] ({-}Inf,{-}5] ({-}Inf,{-}5] ({-}Inf,{-}5]}
-\CommentTok{\#\textgreater{}  [6] ({-}Inf,{-}5] ({-}5,{-}1]   ({-}5,{-}1]   ({-}5,{-}1]   ({-}5,{-}1]  }
-\CommentTok{\#\textgreater{} [11] ({-}1,1]    ({-}1,1]    (1,7]     (1,7]     (1,7]    }
-\CommentTok{\#\textgreater{} [16] (1,7]     (1,7]     (1,7]     (7, Inf]  (7, Inf] }
-\CommentTok{\#\textgreater{} [21] (7, Inf] }
-\CommentTok{\#\textgreater{} Levels: ({-}Inf,{-}5] ({-}5,{-}1] ({-}1,1] (1,7] (7, Inf]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{cut}\NormalTok{(values, }\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\ConstantTok{Inf}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{7}\NormalTok{, }\ConstantTok{Inf}\NormalTok{), }\AttributeTok{labels =}\NormalTok{ LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{], }\AttributeTok{right =} \ConstantTok{TRUE}\NormalTok{)}
-\CommentTok{\#\textgreater{}  [1] A A A A A A B B B B C C D D D D D D E E E}
-\CommentTok{\#\textgreater{} Levels: A B C D E}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{cut}\NormalTok{(values, }\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\ConstantTok{Inf}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{7}\NormalTok{, }\ConstantTok{Inf}\NormalTok{), }\AttributeTok{labels =}\NormalTok{ LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{], }\AttributeTok{right =} \ConstantTok{FALSE}\NormalTok{)}
-\CommentTok{\#\textgreater{}  [1] A A A A A B B B B C C D D D D D D E E E E}
-\CommentTok{\#\textgreater{} Levels: A B C D E}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{exercise-1}{%
-\section{Exercise}\label{exercise-1}}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Rewrite the function using \texttt{cut}
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{describe\_temp }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(temp) \{}
-  \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{0}\NormalTok{) \{}
-    \StringTok{"freezing"}
-\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{10}\NormalTok{) \{}
-    \StringTok{"cold"}
-\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{20}\NormalTok{) \{}
-    \StringTok{"cool"}
-\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (temp }\SpecialCharTok{\textless{}=} \DecValTok{30}\NormalTok{) \{}
-    \StringTok{"warm"}
-\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
-    \StringTok{"hot"}
-\NormalTok{  \}}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  How do you indicate \texttt{\textless{}} and \texttt{\textless{}=}?
-\end{enumerate}
 
 \hypertarget{linear-regression}{%
 \chapter{Linear Regression}\label{linear-regression}}
@@ -2159,6 +2000,93 @@ Your resource for this is ISLR chapter 3: linear regression.
 \end{Highlighting}
 \end{Shaded}
 
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  What's going on here?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{options}\NormalTok{(}\AttributeTok{scipen=}\DecValTok{999}\NormalTok{)}
+\FunctionTok{options}\NormalTok{(}\AttributeTok{digits=}\DecValTok{3}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(ISLR)}
+\FunctionTok{data}\NormalTok{(}\StringTok{"Credit"}\NormalTok{)}
+\FunctionTok{attach}\NormalTok{(Credit)}
+\CommentTok{\#\textgreater{} The following objects are masked from Credit (pos = 3):}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}     Age, Balance, Cards, Education, Ethnicity,}
+\CommentTok{\#\textgreater{}     Gender, ID, Income, Limit, Married, Rating,}
+\CommentTok{\#\textgreater{}     Student}
+\NormalTok{?Credit}
+\CommentTok{\#\textgreater{} starting httpd help server ...}
+\CommentTok{\#\textgreater{}  done}
+\NormalTok{m1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Balance}\SpecialCharTok{\textasciitilde{}}\NormalTok{Income}\SpecialCharTok{+}\NormalTok{Education)}
+\FunctionTok{summary}\NormalTok{(m1)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Call:}
+\CommentTok{\#\textgreater{} lm(formula = Balance \textasciitilde{} Income + Education)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residuals:}
+\CommentTok{\#\textgreater{}    Min     1Q Median     3Q    Max }
+\CommentTok{\#\textgreater{} {-}806.2 {-}349.7  {-}53.4  330.4 1103.4 }
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Coefficients:}
+\CommentTok{\#\textgreater{}             Estimate Std. Error t value            Pr(\textgreater{}|t|)}
+\CommentTok{\#\textgreater{} (Intercept)  236.975     94.767    2.50               0.013}
+\CommentTok{\#\textgreater{} Income         6.050      0.580   10.43 \textless{}0.0000000000000002}
+\CommentTok{\#\textgreater{} Education      0.703      6.544    0.11               0.914}
+\CommentTok{\#\textgreater{}                }
+\CommentTok{\#\textgreater{} (Intercept) *  }
+\CommentTok{\#\textgreater{} Income      ***}
+\CommentTok{\#\textgreater{} Education      }
+\CommentTok{\#\textgreater{} {-}{-}{-}}
+\CommentTok{\#\textgreater{} Signif. codes:  }
+\CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residual standard error: 408 on 397 degrees of freedom}
+\CommentTok{\#\textgreater{} Multiple R{-}squared:  0.215,  Adjusted R{-}squared:  0.211 }
+\CommentTok{\#\textgreater{} F{-}statistic: 54.4 on 2 and 397 DF,  p{-}value: \textless{}0.0000000000000002}
+\FloatTok{236.975}\SpecialCharTok{+}\NormalTok{(}\FloatTok{6.050} \SpecialCharTok{*}\DecValTok{100}\NormalTok{)}\SpecialCharTok{+}\NormalTok{(}\FloatTok{0.703}\SpecialCharTok{*}\DecValTok{12}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 850}
+\FunctionTok{predict}\NormalTok{(m1, }\AttributeTok{newdata =} \FunctionTok{list}\NormalTok{(}\AttributeTok{Income =} \DecValTok{100}\NormalTok{, }\AttributeTok{Education =} \DecValTok{12}\NormalTok{))}
+\CommentTok{\#\textgreater{}   1 }
+\CommentTok{\#\textgreater{} 850}
+
+\NormalTok{m2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Balance}\SpecialCharTok{\textasciitilde{}}\NormalTok{Income}\SpecialCharTok{*}\NormalTok{Education)}
+\FunctionTok{summary}\NormalTok{(m2)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Call:}
+\CommentTok{\#\textgreater{} lm(formula = Balance \textasciitilde{} Income * Education)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residuals:}
+\CommentTok{\#\textgreater{}    Min     1Q Median     3Q    Max }
+\CommentTok{\#\textgreater{} {-}858.1 {-}350.0  {-}56.1  304.5 1083.9 }
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Coefficients:}
+\CommentTok{\#\textgreater{}                  Estimate Std. Error t value Pr(\textgreater{}|t|)   }
+\CommentTok{\#\textgreater{} (Intercept)       435.460    147.100    2.96   0.0033 **}
+\CommentTok{\#\textgreater{} Income              1.817      2.473    0.73   0.4629   }
+\CommentTok{\#\textgreater{} Education         {-}13.989     10.593   {-}1.32   0.1874   }
+\CommentTok{\#\textgreater{} Income:Education    0.315      0.179    1.76   0.0790 . }
+\CommentTok{\#\textgreater{} {-}{-}{-}}
+\CommentTok{\#\textgreater{} Signif. codes:  }
+\CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residual standard error: 407 on 396 degrees of freedom}
+\CommentTok{\#\textgreater{} Multiple R{-}squared:  0.221,  Adjusted R{-}squared:  0.215 }
+\CommentTok{\#\textgreater{} F{-}statistic: 37.5 on 3 and 396 DF,  p{-}value: \textless{}0.0000000000000002}
+
+\FloatTok{435.460}\SpecialCharTok{+}\NormalTok{(}\FloatTok{1.817}\SpecialCharTok{*}\DecValTok{100}\NormalTok{)}\SpecialCharTok{+}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{13.989}\SpecialCharTok{*}\DecValTok{12}\NormalTok{)}\SpecialCharTok{+}\NormalTok{(}\FloatTok{0.315}\SpecialCharTok{*}\DecValTok{100}\SpecialCharTok{*}\DecValTok{12}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 827}
+\FunctionTok{predict}\NormalTok{(m2, }\AttributeTok{newdata =} \FunctionTok{list}\NormalTok{(}\AttributeTok{Income =} \DecValTok{100}\NormalTok{, }\AttributeTok{Education =} \DecValTok{12}\NormalTok{))}
+\CommentTok{\#\textgreater{}   1 }
+\CommentTok{\#\textgreater{} 827}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{tree-based-methods}{%
 \chapter{Tree-Based Methods}\label{tree-based-methods}}
 
@@ -2192,6 +2120,851 @@ Make sure you can exlain the terms/ideas/figures below \textbf{outloud}, in your
 \item
   Bayesian additive regression trees
 \end{itemize}
+
+\hypertarget{chapter-8-lab-decision-trees}{%
+\chapter{Chapter 8 Lab: Decision Trees}\label{chapter-8-lab-decision-trees}}
+
+**Check out this Video: StatsLearning Lect10 R trees A 111213
+
+Or Click Here: \href{https://www.youtube.com/watch?v=YPz2J5lHeVM\&list=PLAOUn-KLSAVOqj5TG8E1HTb8Txwxe6OtV\&index=6}{Here!!!}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\DocumentationTok{\#\# Fitting Classification Trees}
+
+\DocumentationTok{\#\#\#}
+\FunctionTok{library}\NormalTok{(tree)}
+\DocumentationTok{\#\#\#}
+\FunctionTok{library}\NormalTok{(ISLR2)}
+\FunctionTok{attach}\NormalTok{(Carseats)}
+\NormalTok{High }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(Sales }\SpecialCharTok{\textless{}=} \DecValTok{8}\NormalTok{, }\StringTok{"No"}\NormalTok{, }\StringTok{"Yes"}\NormalTok{))}
+\DocumentationTok{\#\#\#}
+\NormalTok{Carseats }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(Carseats, High)}
+\DocumentationTok{\#\#\#}
+\NormalTok{tree.carseats }\OtherTok{\textless{}{-}} \FunctionTok{tree}\NormalTok{(High }\SpecialCharTok{\textasciitilde{}}\NormalTok{ . }\SpecialCharTok{{-}}\NormalTok{ Sales, Carseats)}
+\DocumentationTok{\#\#\#}
+\FunctionTok{summary}\NormalTok{(tree.carseats)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Classification tree:}
+\CommentTok{\#\textgreater{} tree(formula = High \textasciitilde{} . {-} Sales, data = Carseats)}
+\CommentTok{\#\textgreater{} Variables actually used in tree construction:}
+\CommentTok{\#\textgreater{} [1] "ShelveLoc"   "Price"       "Income"      "CompPrice"  }
+\CommentTok{\#\textgreater{} [5] "Population"  "Advertising" "Age"         "US"         }
+\CommentTok{\#\textgreater{} Number of terminal nodes:  27 }
+\CommentTok{\#\textgreater{} Residual mean deviance:  0.4575 = 170.7 / 373 }
+\CommentTok{\#\textgreater{} Misclassification error rate: 0.09 = 36 / 400}
+\DocumentationTok{\#\#\#}
+\FunctionTok{plot}\NormalTok{(tree.carseats)}
+\FunctionTok{text}\NormalTok{(tree.carseats, }\AttributeTok{pretty =} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{119-ch_8_lab_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#}
+\NormalTok{tree.carseats}
+\CommentTok{\#\textgreater{} node), split, n, deviance, yval, (yprob)}
+\CommentTok{\#\textgreater{}       * denotes terminal node}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   1) root 400 541.500 No ( 0.59000 0.41000 )  }
+\CommentTok{\#\textgreater{}     2) ShelveLoc: Bad,Medium 315 390.600 No ( 0.68889 0.31111 )  }
+\CommentTok{\#\textgreater{}       4) Price \textless{} 92.5 46  56.530 Yes ( 0.30435 0.69565 )  }
+\CommentTok{\#\textgreater{}         8) Income \textless{} 57 10  12.220 No ( 0.70000 0.30000 )  }
+\CommentTok{\#\textgreater{}          16) CompPrice \textless{} 110.5 5   0.000 No ( 1.00000 0.00000 ) *}
+\CommentTok{\#\textgreater{}          17) CompPrice \textgreater{} 110.5 5   6.730 Yes ( 0.40000 0.60000 ) *}
+\CommentTok{\#\textgreater{}         9) Income \textgreater{} 57 36  35.470 Yes ( 0.19444 0.80556 )  }
+\CommentTok{\#\textgreater{}          18) Population \textless{} 207.5 16  21.170 Yes ( 0.37500 0.62500 ) *}
+\CommentTok{\#\textgreater{}          19) Population \textgreater{} 207.5 20   7.941 Yes ( 0.05000 0.95000 ) *}
+\CommentTok{\#\textgreater{}       5) Price \textgreater{} 92.5 269 299.800 No ( 0.75465 0.24535 )  }
+\CommentTok{\#\textgreater{}        10) Advertising \textless{} 13.5 224 213.200 No ( 0.81696 0.18304 )  }
+\CommentTok{\#\textgreater{}          20) CompPrice \textless{} 124.5 96  44.890 No ( 0.93750 0.06250 )  }
+\CommentTok{\#\textgreater{}            40) Price \textless{} 106.5 38  33.150 No ( 0.84211 0.15789 )  }
+\CommentTok{\#\textgreater{}              80) Population \textless{} 177 12  16.300 No ( 0.58333 0.41667 )  }
+\CommentTok{\#\textgreater{}               160) Income \textless{} 60.5 6   0.000 No ( 1.00000 0.00000 ) *}
+\CommentTok{\#\textgreater{}               161) Income \textgreater{} 60.5 6   5.407 Yes ( 0.16667 0.83333 ) *}
+\CommentTok{\#\textgreater{}              81) Population \textgreater{} 177 26   8.477 No ( 0.96154 0.03846 ) *}
+\CommentTok{\#\textgreater{}            41) Price \textgreater{} 106.5 58   0.000 No ( 1.00000 0.00000 ) *}
+\CommentTok{\#\textgreater{}          21) CompPrice \textgreater{} 124.5 128 150.200 No ( 0.72656 0.27344 )  }
+\CommentTok{\#\textgreater{}            42) Price \textless{} 122.5 51  70.680 Yes ( 0.49020 0.50980 )  }
+\CommentTok{\#\textgreater{}              84) ShelveLoc: Bad 11   6.702 No ( 0.90909 0.09091 ) *}
+\CommentTok{\#\textgreater{}              85) ShelveLoc: Medium 40  52.930 Yes ( 0.37500 0.62500 )  }
+\CommentTok{\#\textgreater{}               170) Price \textless{} 109.5 16   7.481 Yes ( 0.06250 0.93750 ) *}
+\CommentTok{\#\textgreater{}               171) Price \textgreater{} 109.5 24  32.600 No ( 0.58333 0.41667 )  }
+\CommentTok{\#\textgreater{}                 342) Age \textless{} 49.5 13  16.050 Yes ( 0.30769 0.69231 ) *}
+\CommentTok{\#\textgreater{}                 343) Age \textgreater{} 49.5 11   6.702 No ( 0.90909 0.09091 ) *}
+\CommentTok{\#\textgreater{}            43) Price \textgreater{} 122.5 77  55.540 No ( 0.88312 0.11688 )  }
+\CommentTok{\#\textgreater{}              86) CompPrice \textless{} 147.5 58  17.400 No ( 0.96552 0.03448 ) *}
+\CommentTok{\#\textgreater{}              87) CompPrice \textgreater{} 147.5 19  25.010 No ( 0.63158 0.36842 )  }
+\CommentTok{\#\textgreater{}               174) Price \textless{} 147 12  16.300 Yes ( 0.41667 0.58333 )  }
+\CommentTok{\#\textgreater{}                 348) CompPrice \textless{} 152.5 7   5.742 Yes ( 0.14286 0.85714 ) *}
+\CommentTok{\#\textgreater{}                 349) CompPrice \textgreater{} 152.5 5   5.004 No ( 0.80000 0.20000 ) *}
+\CommentTok{\#\textgreater{}               175) Price \textgreater{} 147 7   0.000 No ( 1.00000 0.00000 ) *}
+\CommentTok{\#\textgreater{}        11) Advertising \textgreater{} 13.5 45  61.830 Yes ( 0.44444 0.55556 )  }
+\CommentTok{\#\textgreater{}          22) Age \textless{} 54.5 25  25.020 Yes ( 0.20000 0.80000 )  }
+\CommentTok{\#\textgreater{}            44) CompPrice \textless{} 130.5 14  18.250 Yes ( 0.35714 0.64286 )  }
+\CommentTok{\#\textgreater{}              88) Income \textless{} 100 9  12.370 No ( 0.55556 0.44444 ) *}
+\CommentTok{\#\textgreater{}              89) Income \textgreater{} 100 5   0.000 Yes ( 0.00000 1.00000 ) *}
+\CommentTok{\#\textgreater{}            45) CompPrice \textgreater{} 130.5 11   0.000 Yes ( 0.00000 1.00000 ) *}
+\CommentTok{\#\textgreater{}          23) Age \textgreater{} 54.5 20  22.490 No ( 0.75000 0.25000 )  }
+\CommentTok{\#\textgreater{}            46) CompPrice \textless{} 122.5 10   0.000 No ( 1.00000 0.00000 ) *}
+\CommentTok{\#\textgreater{}            47) CompPrice \textgreater{} 122.5 10  13.860 No ( 0.50000 0.50000 )  }
+\CommentTok{\#\textgreater{}              94) Price \textless{} 125 5   0.000 Yes ( 0.00000 1.00000 ) *}
+\CommentTok{\#\textgreater{}              95) Price \textgreater{} 125 5   0.000 No ( 1.00000 0.00000 ) *}
+\CommentTok{\#\textgreater{}     3) ShelveLoc: Good 85  90.330 Yes ( 0.22353 0.77647 )  }
+\CommentTok{\#\textgreater{}       6) Price \textless{} 135 68  49.260 Yes ( 0.11765 0.88235 )  }
+\CommentTok{\#\textgreater{}        12) US: No 17  22.070 Yes ( 0.35294 0.64706 )  }
+\CommentTok{\#\textgreater{}          24) Price \textless{} 109 8   0.000 Yes ( 0.00000 1.00000 ) *}
+\CommentTok{\#\textgreater{}          25) Price \textgreater{} 109 9  11.460 No ( 0.66667 0.33333 ) *}
+\CommentTok{\#\textgreater{}        13) US: Yes 51  16.880 Yes ( 0.03922 0.96078 ) *}
+\CommentTok{\#\textgreater{}       7) Price \textgreater{} 135 17  22.070 No ( 0.64706 0.35294 )  }
+\CommentTok{\#\textgreater{}        14) Income \textless{} 46 6   0.000 No ( 1.00000 0.00000 ) *}
+\CommentTok{\#\textgreater{}        15) Income \textgreater{} 46 11  15.160 Yes ( 0.45455 0.54545 ) *}
+\DocumentationTok{\#\#\#}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\NormalTok{train }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(Carseats), }\DecValTok{200}\NormalTok{)}
+\NormalTok{Carseats.test }\OtherTok{\textless{}{-}}\NormalTok{ Carseats[}\SpecialCharTok{{-}}\NormalTok{train, ]}
+\NormalTok{High.test }\OtherTok{\textless{}{-}}\NormalTok{ High[}\SpecialCharTok{{-}}\NormalTok{train]}
+\NormalTok{tree.carseats }\OtherTok{\textless{}{-}} \FunctionTok{tree}\NormalTok{(High }\SpecialCharTok{\textasciitilde{}}\NormalTok{ . }\SpecialCharTok{{-}}\NormalTok{ Sales, Carseats,}
+                      \AttributeTok{subset =}\NormalTok{ train)}
+\NormalTok{tree.pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(tree.carseats, Carseats.test,}
+                     \AttributeTok{type =} \StringTok{"class"}\NormalTok{)}
+\FunctionTok{table}\NormalTok{(tree.pred, High.test)}
+\CommentTok{\#\textgreater{}          High.test}
+\CommentTok{\#\textgreater{} tree.pred  No Yes}
+\CommentTok{\#\textgreater{}       No  104  33}
+\CommentTok{\#\textgreater{}       Yes  13  50}
+\NormalTok{(}\DecValTok{104} \SpecialCharTok{+} \DecValTok{50}\NormalTok{) }\SpecialCharTok{/} \DecValTok{200}
+\CommentTok{\#\textgreater{} [1] 0.77}
+\DocumentationTok{\#\#\#}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{7}\NormalTok{)}
+\NormalTok{cv.carseats }\OtherTok{\textless{}{-}} \FunctionTok{cv.tree}\NormalTok{(tree.carseats, }\AttributeTok{FUN =}\NormalTok{ prune.misclass)}
+\FunctionTok{names}\NormalTok{(cv.carseats)}
+\CommentTok{\#\textgreater{} [1] "size"   "dev"    "k"      "method"}
+\NormalTok{cv.carseats}
+\CommentTok{\#\textgreater{} $size}
+\CommentTok{\#\textgreater{} [1] 21 19 14  9  8  5  3  2  1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $dev}
+\CommentTok{\#\textgreater{} [1] 75 75 75 74 82 83 83 85 82}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $k}
+\CommentTok{\#\textgreater{} [1] {-}Inf  0.0  1.0  1.4  2.0  3.0  4.0  9.0 18.0}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $method}
+\CommentTok{\#\textgreater{} [1] "misclass"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} attr(,"class")}
+\CommentTok{\#\textgreater{} [1] "prune"         "tree.sequence"}
+\DocumentationTok{\#\#\#}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(cv.carseats}\SpecialCharTok{$}\NormalTok{size, cv.carseats}\SpecialCharTok{$}\NormalTok{dev, }\AttributeTok{type =} \StringTok{"b"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(cv.carseats}\SpecialCharTok{$}\NormalTok{k, cv.carseats}\SpecialCharTok{$}\NormalTok{dev, }\AttributeTok{type =} \StringTok{"b"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{119-ch_8_lab_files/figure-latex/unnamed-chunk-1-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#}
+\NormalTok{prune.carseats }\OtherTok{\textless{}{-}} \FunctionTok{prune.misclass}\NormalTok{(tree.carseats, }\AttributeTok{best =} \DecValTok{9}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(prune.carseats)}
+\FunctionTok{text}\NormalTok{(prune.carseats, }\AttributeTok{pretty =} \DecValTok{0}\NormalTok{)}
+\DocumentationTok{\#\#\#}
+\NormalTok{tree.pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(prune.carseats, Carseats.test,}
+                     \AttributeTok{type =} \StringTok{"class"}\NormalTok{)}
+\FunctionTok{table}\NormalTok{(tree.pred, High.test)}
+\CommentTok{\#\textgreater{}          High.test}
+\CommentTok{\#\textgreater{} tree.pred No Yes}
+\CommentTok{\#\textgreater{}       No  97  25}
+\CommentTok{\#\textgreater{}       Yes 20  58}
+\NormalTok{(}\DecValTok{97} \SpecialCharTok{+} \DecValTok{58}\NormalTok{) }\SpecialCharTok{/} \DecValTok{200}
+\CommentTok{\#\textgreater{} [1] 0.775}
+\DocumentationTok{\#\#\#}
+\NormalTok{prune.carseats }\OtherTok{\textless{}{-}} \FunctionTok{prune.misclass}\NormalTok{(tree.carseats, }\AttributeTok{best =} \DecValTok{14}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(prune.carseats)}
+\FunctionTok{text}\NormalTok{(prune.carseats, }\AttributeTok{pretty =} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{119-ch_8_lab_files/figure-latex/unnamed-chunk-1-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tree.pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(prune.carseats, Carseats.test,}
+                     \AttributeTok{type =} \StringTok{"class"}\NormalTok{)}
+\FunctionTok{table}\NormalTok{(tree.pred, High.test)}
+\CommentTok{\#\textgreater{}          High.test}
+\CommentTok{\#\textgreater{} tree.pred  No Yes}
+\CommentTok{\#\textgreater{}       No  102  31}
+\CommentTok{\#\textgreater{}       Yes  15  52}
+\NormalTok{(}\DecValTok{102} \SpecialCharTok{+} \DecValTok{52}\NormalTok{) }\SpecialCharTok{/} \DecValTok{200}
+\CommentTok{\#\textgreater{} [1] 0.77}
+
+\DocumentationTok{\#\# Fitting Regression Trees}
+
+\DocumentationTok{\#\#\#}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{train }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(Boston), }\FunctionTok{nrow}\NormalTok{(Boston) }\SpecialCharTok{/} \DecValTok{2}\NormalTok{)}
+\NormalTok{tree.boston }\OtherTok{\textless{}{-}} \FunctionTok{tree}\NormalTok{(medv }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., Boston, }\AttributeTok{subset =}\NormalTok{ train)}
+\FunctionTok{summary}\NormalTok{(tree.boston)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Regression tree:}
+\CommentTok{\#\textgreater{} tree(formula = medv \textasciitilde{} ., data = Boston, subset = train)}
+\CommentTok{\#\textgreater{} Variables actually used in tree construction:}
+\CommentTok{\#\textgreater{} [1] "rm"    "lstat" "crim"  "age"  }
+\CommentTok{\#\textgreater{} Number of terminal nodes:  7 }
+\CommentTok{\#\textgreater{} Residual mean deviance:  10.38 = 2555 / 246 }
+\CommentTok{\#\textgreater{} Distribution of residuals:}
+\CommentTok{\#\textgreater{}     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. }
+\CommentTok{\#\textgreater{} {-}10.1800  {-}1.7770  {-}0.1775   0.0000   1.9230  16.5800}
+\DocumentationTok{\#\#\#}
+\FunctionTok{plot}\NormalTok{(tree.boston)}
+\FunctionTok{text}\NormalTok{(tree.boston, }\AttributeTok{pretty =} \DecValTok{0}\NormalTok{)}
+\DocumentationTok{\#\#\#}
+\NormalTok{cv.boston }\OtherTok{\textless{}{-}} \FunctionTok{cv.tree}\NormalTok{(tree.boston)}
+\FunctionTok{plot}\NormalTok{(cv.boston}\SpecialCharTok{$}\NormalTok{size, cv.boston}\SpecialCharTok{$}\NormalTok{dev, }\AttributeTok{type =} \StringTok{"b"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{119-ch_8_lab_files/figure-latex/unnamed-chunk-1-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#}
+\NormalTok{prune.boston }\OtherTok{\textless{}{-}} \FunctionTok{prune.tree}\NormalTok{(tree.boston, }\AttributeTok{best =} \DecValTok{5}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(prune.boston)}
+\FunctionTok{text}\NormalTok{(prune.boston, }\AttributeTok{pretty =} \DecValTok{0}\NormalTok{)}
+\DocumentationTok{\#\#\#}
+\NormalTok{yhat }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(tree.boston, }\AttributeTok{newdata =}\NormalTok{ Boston[}\SpecialCharTok{{-}}\NormalTok{train, ])}
+\NormalTok{boston.test }\OtherTok{\textless{}{-}}\NormalTok{ Boston[}\SpecialCharTok{{-}}\NormalTok{train, }\StringTok{"medv"}\NormalTok{]}
+\FunctionTok{plot}\NormalTok{(yhat, boston.test)}
+\FunctionTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{119-ch_8_lab_files/figure-latex/unnamed-chunk-1-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{((yhat }\SpecialCharTok{{-}}\NormalTok{ boston.test)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 35.28688}
+
+\DocumentationTok{\#\# Bagging and Random Forests}
+
+\DocumentationTok{\#\#\#}
+\FunctionTok{library}\NormalTok{(randomForest)}
+\CommentTok{\#\textgreater{} randomForest 4.7{-}1}
+\CommentTok{\#\textgreater{} Type rfNews() to see new features/changes/bug fixes.}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{bag.boston }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(medv }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ Boston,}
+                           \AttributeTok{subset =}\NormalTok{ train, }\AttributeTok{mtry =} \DecValTok{12}\NormalTok{, }\AttributeTok{importance =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{bag.boston}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Call:}
+\CommentTok{\#\textgreater{}  randomForest(formula = medv \textasciitilde{} ., data = Boston, mtry = 12, importance = TRUE,      subset = train) }
+\CommentTok{\#\textgreater{}                Type of random forest: regression}
+\CommentTok{\#\textgreater{}                      Number of trees: 500}
+\CommentTok{\#\textgreater{} No. of variables tried at each split: 12}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}           Mean of squared residuals: 11.40162}
+\CommentTok{\#\textgreater{}                     \% Var explained: 85.17}
+\DocumentationTok{\#\#\#}
+\NormalTok{yhat.bag }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(bag.boston, }\AttributeTok{newdata =}\NormalTok{ Boston[}\SpecialCharTok{{-}}\NormalTok{train, ])}
+\FunctionTok{plot}\NormalTok{(yhat.bag, boston.test)}
+\FunctionTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{((yhat.bag }\SpecialCharTok{{-}}\NormalTok{ boston.test)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 23.41916}
+\DocumentationTok{\#\#\#}
+\NormalTok{bag.boston }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(medv }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ Boston,}
+                           \AttributeTok{subset =}\NormalTok{ train, }\AttributeTok{mtry =} \DecValTok{12}\NormalTok{, }\AttributeTok{ntree =} \DecValTok{25}\NormalTok{)}
+\NormalTok{yhat.bag }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(bag.boston, }\AttributeTok{newdata =}\NormalTok{ Boston[}\SpecialCharTok{{-}}\NormalTok{train, ])}
+\FunctionTok{mean}\NormalTok{((yhat.bag }\SpecialCharTok{{-}}\NormalTok{ boston.test)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 25.75055}
+\DocumentationTok{\#\#\#}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{rf.boston }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(medv }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ Boston,}
+                          \AttributeTok{subset =}\NormalTok{ train, }\AttributeTok{mtry =} \DecValTok{6}\NormalTok{, }\AttributeTok{importance =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{yhat.rf }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf.boston, }\AttributeTok{newdata =}\NormalTok{ Boston[}\SpecialCharTok{{-}}\NormalTok{train, ])}
+\FunctionTok{mean}\NormalTok{((yhat.rf }\SpecialCharTok{{-}}\NormalTok{ boston.test)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 20.06644}
+\DocumentationTok{\#\#\#}
+\FunctionTok{importance}\NormalTok{(rf.boston)}
+\CommentTok{\#\textgreater{}           \%IncMSE IncNodePurity}
+\CommentTok{\#\textgreater{} crim    19.435587    1070.42307}
+\CommentTok{\#\textgreater{} zn       3.091630      82.19257}
+\CommentTok{\#\textgreater{} indus    6.140529     590.09536}
+\CommentTok{\#\textgreater{} chas     1.370310      36.70356}
+\CommentTok{\#\textgreater{} nox     13.263466     859.97091}
+\CommentTok{\#\textgreater{} rm      35.094741    8270.33906}
+\CommentTok{\#\textgreater{} age     15.144821     634.31220}
+\CommentTok{\#\textgreater{} dis      9.163776     684.87953}
+\CommentTok{\#\textgreater{} rad      4.793720      83.18719}
+\CommentTok{\#\textgreater{} tax      4.410714     292.20949}
+\CommentTok{\#\textgreater{} ptratio  8.612780     902.20190}
+\CommentTok{\#\textgreater{} lstat   28.725343    5813.04833}
+\DocumentationTok{\#\#\#}
+\FunctionTok{varImpPlot}\NormalTok{(rf.boston)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{119-ch_8_lab_files/figure-latex/unnamed-chunk-1-6.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\DocumentationTok{\#\# Boosting}
+
+\DocumentationTok{\#\#\#}
+\FunctionTok{library}\NormalTok{(gbm)}
+\CommentTok{\#\textgreater{} Loaded gbm 2.1.8}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{119-ch_8_lab_files/figure-latex/unnamed-chunk-1-7.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{boost.boston }\OtherTok{\textless{}{-}} \FunctionTok{gbm}\NormalTok{(medv }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ Boston[train, ],}
+                    \AttributeTok{distribution =} \StringTok{"gaussian"}\NormalTok{, }\AttributeTok{n.trees =} \DecValTok{5000}\NormalTok{,}
+                    \AttributeTok{interaction.depth =} \DecValTok{4}\NormalTok{)}
+\DocumentationTok{\#\#\#}
+\FunctionTok{summary}\NormalTok{(boost.boston)}
+\CommentTok{\#\textgreater{}             var     rel.inf}
+\CommentTok{\#\textgreater{} rm           rm 44.48249588}
+\CommentTok{\#\textgreater{} lstat     lstat 32.70281223}
+\CommentTok{\#\textgreater{} crim       crim  4.85109954}
+\CommentTok{\#\textgreater{} dis         dis  4.48693083}
+\CommentTok{\#\textgreater{} nox         nox  3.75222394}
+\CommentTok{\#\textgreater{} age         age  3.19769210}
+\CommentTok{\#\textgreater{} ptratio ptratio  2.81354826}
+\CommentTok{\#\textgreater{} tax         tax  1.54417603}
+\CommentTok{\#\textgreater{} indus     indus  1.03384666}
+\CommentTok{\#\textgreater{} rad         rad  0.87625748}
+\CommentTok{\#\textgreater{} zn           zn  0.16220479}
+\CommentTok{\#\textgreater{} chas       chas  0.09671228}
+\DocumentationTok{\#\#\#}
+\FunctionTok{plot}\NormalTok{(boost.boston, }\AttributeTok{i =} \StringTok{"rm"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(boost.boston, }\AttributeTok{i =} \StringTok{"lstat"}\NormalTok{)}
+\DocumentationTok{\#\#\#}
+\NormalTok{yhat.boost }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(boost.boston,}
+                      \AttributeTok{newdata =}\NormalTok{ Boston[}\SpecialCharTok{{-}}\NormalTok{train, ], }\AttributeTok{n.trees =} \DecValTok{5000}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{((yhat.boost }\SpecialCharTok{{-}}\NormalTok{ boston.test)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 18.39057}
+\DocumentationTok{\#\#\#}
+\NormalTok{boost.boston }\OtherTok{\textless{}{-}} \FunctionTok{gbm}\NormalTok{(medv }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ Boston[train, ],}
+                    \AttributeTok{distribution =} \StringTok{"gaussian"}\NormalTok{, }\AttributeTok{n.trees =} \DecValTok{5000}\NormalTok{,}
+                    \AttributeTok{interaction.depth =} \DecValTok{4}\NormalTok{, }\AttributeTok{shrinkage =} \FloatTok{0.2}\NormalTok{, }\AttributeTok{verbose =}\NormalTok{ F)}
+\NormalTok{yhat.boost }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(boost.boston,}
+                      \AttributeTok{newdata =}\NormalTok{ Boston[}\SpecialCharTok{{-}}\NormalTok{train, ], }\AttributeTok{n.trees =} \DecValTok{5000}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{((yhat.boost }\SpecialCharTok{{-}}\NormalTok{ boston.test)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 16.54778}
+
+\DocumentationTok{\#\# Bayesian Additive Regression Trees}
+
+\DocumentationTok{\#\#\#}
+\FunctionTok{library}\NormalTok{(BART)}
+\CommentTok{\#\textgreater{} Loading required package: nlme}
+\CommentTok{\#\textgreater{} Loading required package: nnet}
+\CommentTok{\#\textgreater{} Loading required package: survival}
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ Boston[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{]}
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ Boston[, }\StringTok{"medv"}\NormalTok{]}
+\NormalTok{xtrain }\OtherTok{\textless{}{-}}\NormalTok{ x[train, ]}
+\NormalTok{ytrain }\OtherTok{\textless{}{-}}\NormalTok{ y[train]}
+\NormalTok{xtest }\OtherTok{\textless{}{-}}\NormalTok{ x[}\SpecialCharTok{{-}}\NormalTok{train, ]}
+\NormalTok{ytest }\OtherTok{\textless{}{-}}\NormalTok{ y[}\SpecialCharTok{{-}}\NormalTok{train]}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{bartfit }\OtherTok{\textless{}{-}} \FunctionTok{gbart}\NormalTok{(xtrain, ytrain, }\AttributeTok{x.test =}\NormalTok{ xtest)}
+\CommentTok{\#\textgreater{} *****Calling gbart: type=1}
+\CommentTok{\#\textgreater{} *****Data:}
+\CommentTok{\#\textgreater{} data:n,p,np: 253, 12, 253}
+\CommentTok{\#\textgreater{} y1,yn: 0.213439, {-}5.486561}
+\CommentTok{\#\textgreater{} x1,x[n*p]: 0.109590, 20.080000}
+\CommentTok{\#\textgreater{} xp1,xp[np*p]: 0.027310, 7.880000}
+\CommentTok{\#\textgreater{} *****Number of Trees: 200}
+\CommentTok{\#\textgreater{} *****Number of Cut Points: 100 ... 100}
+\CommentTok{\#\textgreater{} *****burn,nd,thin: 100,1000,1}
+\CommentTok{\#\textgreater{} *****Prior:beta,alpha,tau,nu,lambda,offset: 2,0.95,0.795495,3,3.71636,21.7866}
+\CommentTok{\#\textgreater{} *****sigma: 4.367914}
+\CommentTok{\#\textgreater{} *****w (weights): 1.000000 ... 1.000000}
+\CommentTok{\#\textgreater{} *****Dirichlet:sparse,theta,omega,a,b,rho,augment: 0,0,1,0.5,1,12,0}
+\CommentTok{\#\textgreater{} *****printevery: 100}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} MCMC}
+\CommentTok{\#\textgreater{} done 0 (out of 1100)}
+\CommentTok{\#\textgreater{} done 100 (out of 1100)}
+\CommentTok{\#\textgreater{} done 200 (out of 1100)}
+\CommentTok{\#\textgreater{} done 300 (out of 1100)}
+\CommentTok{\#\textgreater{} done 400 (out of 1100)}
+\CommentTok{\#\textgreater{} done 500 (out of 1100)}
+\CommentTok{\#\textgreater{} done 600 (out of 1100)}
+\CommentTok{\#\textgreater{} done 700 (out of 1100)}
+\CommentTok{\#\textgreater{} done 800 (out of 1100)}
+\CommentTok{\#\textgreater{} done 900 (out of 1100)}
+\CommentTok{\#\textgreater{} done 1000 (out of 1100)}
+\CommentTok{\#\textgreater{} time: 7s}
+\CommentTok{\#\textgreater{} trcnt,tecnt: 1000,1000}
+\DocumentationTok{\#\#\#}
+\NormalTok{yhat.bart }\OtherTok{\textless{}{-}}\NormalTok{ bartfit}\SpecialCharTok{$}\NormalTok{yhat.test.mean}
+\FunctionTok{mean}\NormalTok{((ytest }\SpecialCharTok{{-}}\NormalTok{ yhat.bart)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 15.94718}
+\DocumentationTok{\#\#\#}
+\NormalTok{ord }\OtherTok{\textless{}{-}} \FunctionTok{order}\NormalTok{(bartfit}\SpecialCharTok{$}\NormalTok{varcount.mean, }\AttributeTok{decreasing =}\NormalTok{ T)}
+\NormalTok{bartfit}\SpecialCharTok{$}\NormalTok{varcount.mean[ord]}
+\CommentTok{\#\textgreater{}     nox   lstat     tax     rad      rm   indus    chas }
+\CommentTok{\#\textgreater{}  22.952  21.329  21.250  20.781  19.890  19.825  19.051 }
+\CommentTok{\#\textgreater{} ptratio     age      zn     dis    crim }
+\CommentTok{\#\textgreater{}  18.976  18.274  15.952  14.457  11.007}
+\DocumentationTok{\#\#\#}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{119-ch_8_lab_files/figure-latex/unnamed-chunk-1-8.pdf}
+
+\hypertarget{trees-9-the-oj-dataset}{%
+\chapter{Trees \#9 The OJ Dataset}\label{trees-9-the-oj-dataset}}
+
+This problem involves the OJ data set which is part of the ISLR package.
+
+\begin{verbatim}
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dplyr}\SpecialCharTok{::}\FunctionTok{glimpse}\NormalTok{(OJ)}
+\CommentTok{\#\textgreater{} Rows: 1,070}
+\CommentTok{\#\textgreater{} Columns: 18}
+\CommentTok{\#\textgreater{} $ Purchase       \textless{}fct\textgreater{} CH, CH, CH, MM, CH, CH, CH, CH, CH,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ WeekofPurchase \textless{}dbl\textgreater{} 237, 239, 245, 227, 228, 230, 232, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ StoreID        \textless{}dbl\textgreater{} 1, 1, 1, 1, 7, 7, 7, 7, 7, 7, 7, 7,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ PriceCH        \textless{}dbl\textgreater{} 1.75, 1.75, 1.86, 1.69, 1.69, 1.69,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ PriceMM        \textless{}dbl\textgreater{} 1.99, 1.99, 2.09, 1.69, 1.69, 1.99,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ DiscCH         \textless{}dbl\textgreater{} 0.00, 0.00, 0.17, 0.00, 0.00, 0.00,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ DiscMM         \textless{}dbl\textgreater{} 0.00, 0.30, 0.00, 0.00, 0.00, 0.00,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ SpecialCH      \textless{}dbl\textgreater{} 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ SpecialMM      \textless{}dbl\textgreater{} 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ LoyalCH        \textless{}dbl\textgreater{} 0.500000, 0.600000, 0.680000, 0.400\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ SalePriceMM    \textless{}dbl\textgreater{} 1.99, 1.69, 2.09, 1.69, 1.69, 1.99,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ SalePriceCH    \textless{}dbl\textgreater{} 1.75, 1.75, 1.69, 1.69, 1.69, 1.69,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ PriceDiff      \textless{}dbl\textgreater{} 0.24, {-}0.06, 0.40, 0.00, 0.00, 0.30\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ Store7         \textless{}fct\textgreater{} No, No, No, No, Yes, Yes, Yes, Yes,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ PctDiscMM      \textless{}dbl\textgreater{} 0.000000, 0.150754, 0.000000, 0.000\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ PctDiscCH      \textless{}dbl\textgreater{} 0.000000, 0.000000, 0.091398, 0.000\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ ListPriceDiff  \textless{}dbl\textgreater{} 0.24, 0.24, 0.23, 0.00, 0.00, 0.30,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ STORE          \textless{}dbl\textgreater{} 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,\textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  train/test Split
+\end{enumerate}
+
+Q: Create a training set containing a random sample of 800 observations, and a test set containing the remaining observations.
+
+A: Since this is my first time seeing this dataset, here is my quick overview: The OJ dataset contains 1,070 purchases of two brands of orange juice (`Citrus Hill' or `Minute Maid'), captured in the values of the Purchase variable (CH or MM). The remaining 17 predictors are characteristics of the customer, product, store, etc. Throughout this question we are basically tasked with predicting which orange juice the customer purchased based on these statistics.
+
+I create train and test below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\NormalTok{train\_index }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(OJ), }\DecValTok{800}\NormalTok{)}
+\NormalTok{train }\OtherTok{\textless{}{-}}\NormalTok{ OJ[train\_index, ]}
+\NormalTok{test }\OtherTok{\textless{}{-}}\NormalTok{ OJ[}\SpecialCharTok{{-}}\NormalTok{train\_index, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Classification Tree
+\end{enumerate}
+
+Q: Fit a tree to the training data, with Purchase as the response and the other variables as predictors. Use the summary() function to produce summary statistics about the tree, and describe the results obtained. What is the training error rate? How many terminal nodes does the tree have?
+
+A: The classification tree has 7 terminal nodes and a training error rate of 18.38\%.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tree\_model }\OtherTok{\textless{}{-}} \FunctionTok{tree}\NormalTok{(Purchase }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., train)}
+\FunctionTok{summary}\NormalTok{(tree\_model)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Classification tree:}
+\CommentTok{\#\textgreater{} tree(formula = Purchase \textasciitilde{} ., data = train)}
+\CommentTok{\#\textgreater{} Variables actually used in tree construction:}
+\CommentTok{\#\textgreater{} [1] "LoyalCH"       "PriceDiff"     "ListPriceDiff"}
+\CommentTok{\#\textgreater{} Number of terminal nodes:  9 }
+\CommentTok{\#\textgreater{} Residual mean deviance:  0.7347 = 581.1 / 791 }
+\CommentTok{\#\textgreater{} Misclassification error rate: 0.1662 = 133 / 800}
+\end{Highlighting}
+\end{Shaded}
+
+Despite there being 17 predictors in the dataset, only three were used in splits. These were:
+
+\begin{verbatim}
+LoyalCH - Customer brand loyalty for CH
+PriceDiff - Sale price of MM less sale price of CH
+DiscCH - Discount offered for CH
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  tree() - Text Interpretation
+\end{enumerate}
+
+Q: Type in the name of the tree object in order to get a detailed text output. Pick one of the terminal nodes, and interpret the information displayed.
+
+A: I print the text output below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tree\_model}
+\CommentTok{\#\textgreater{} node), split, n, deviance, yval, (yprob)}
+\CommentTok{\#\textgreater{}       * denotes terminal node}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}  1) root 800 1068.00 CH ( 0.61250 0.38750 )  }
+\CommentTok{\#\textgreater{}    2) LoyalCH \textless{} 0.5036 346  412.40 MM ( 0.28324 0.71676 )  }
+\CommentTok{\#\textgreater{}      4) LoyalCH \textless{} 0.280875 164  125.50 MM ( 0.12805 0.87195 )  }
+\CommentTok{\#\textgreater{}        8) LoyalCH \textless{} 0.0356415 56   10.03 MM ( 0.01786 0.98214 ) *}
+\CommentTok{\#\textgreater{}        9) LoyalCH \textgreater{} 0.0356415 108  103.50 MM ( 0.18519 0.81481 ) *}
+\CommentTok{\#\textgreater{}      5) LoyalCH \textgreater{} 0.280875 182  248.00 MM ( 0.42308 0.57692 )  }
+\CommentTok{\#\textgreater{}       10) PriceDiff \textless{} 0.05 71   67.60 MM ( 0.18310 0.81690 ) *}
+\CommentTok{\#\textgreater{}       11) PriceDiff \textgreater{} 0.05 111  151.30 CH ( 0.57658 0.42342 ) *}
+\CommentTok{\#\textgreater{}    3) LoyalCH \textgreater{} 0.5036 454  362.00 CH ( 0.86344 0.13656 )  }
+\CommentTok{\#\textgreater{}      6) PriceDiff \textless{} {-}0.39 31   40.32 MM ( 0.35484 0.64516 )  }
+\CommentTok{\#\textgreater{}       12) LoyalCH \textless{} 0.638841 10    0.00 MM ( 0.00000 1.00000 ) *}
+\CommentTok{\#\textgreater{}       13) LoyalCH \textgreater{} 0.638841 21   29.06 CH ( 0.52381 0.47619 ) *}
+\CommentTok{\#\textgreater{}      7) PriceDiff \textgreater{} {-}0.39 423  273.70 CH ( 0.90071 0.09929 )  }
+\CommentTok{\#\textgreater{}       14) LoyalCH \textless{} 0.705326 135  143.00 CH ( 0.77778 0.22222 )  }
+\CommentTok{\#\textgreater{}         28) ListPriceDiff \textless{} 0.255 67   89.49 CH ( 0.61194 0.38806 ) *}
+\CommentTok{\#\textgreater{}         29) ListPriceDiff \textgreater{} 0.255 68   30.43 CH ( 0.94118 0.05882 ) *}
+\CommentTok{\#\textgreater{}       15) LoyalCH \textgreater{} 0.705326 288   99.77 CH ( 0.95833 0.04167 ) *}
+\end{Highlighting}
+\end{Shaded}
+
+Choosing node 11), which is a terminal node as it is marked by a *:
+
+First the root node: 1) root 800 1064.00 CH ( 0.61750 0.38250 )
+
+This means that, at the root node, there are 800 observations, the deviance is 1064.00, the overall prediction is CH and the split is 61.75\% CH vs 38.25\% MM.
+
+We can see that, from the root node, three splits take place to produce the terminal node labelled by 11):
+
+\begin{verbatim}
+A split at LoyalCH = 0.5036
+A split at LoyalCH = 0.142213
+A split at PriceDiff = 0.235
+
+ 1) root 800 1064.00 CH ( 0.61750 0.38250 )  
+   2) LoyalCH < 0.5036 354  435.50 MM ( 0.30508 0.69492 )  
+     4) LoyalCH < 0.142213 100   45.39 MM ( 0.06000 0.94000 ) *
+     5) LoyalCH > 0.142213 254  342.20 MM ( 0.40157 0.59843 )  
+      10) PriceDiff < 0.235 136  153.00 MM ( 0.25000 0.75000 ) *
+      11) PriceDiff > 0.235 118  160.80 CH ( 0.57627 0.42373 ) *
+\end{verbatim}
+
+Node 11) is therefore the subset of purchases where 0.142213 \textless{} LoyalCH \textless{} 0.5036 and PriceDiff \textgreater{} 0.235. The overall prediction is CH, and the node seems quite impure with 57.627\% CH vs 42.373\% MM.
+
+There are 118 observations in the node, and from the percentages above we know that 68/118 are CH and 50/118 are MM (demonstrated below).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{train }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(LoyalCH }\SpecialCharTok{\textless{}} \FloatTok{0.5036}\NormalTok{, }
+\NormalTok{         LoyalCH }\SpecialCharTok{\textgreater{}} \FloatTok{0.142213}\NormalTok{, }
+\NormalTok{         PriceDiff }\SpecialCharTok{\textgreater{}} \FloatTok{0.235}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Purchase) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{table}\NormalTok{()}
+\CommentTok{\#\textgreater{} Purchase}
+\CommentTok{\#\textgreater{} CH MM }
+\CommentTok{\#\textgreater{} 57 54}
+\end{Highlighting}
+\end{Shaded}
+
+Based on the formula on page 325 for the overall deviance of a classification tree \[ (−2∑m∑knmklog(p^mk))\] where the overall deviance sum is over m regions (terminal nodes). We calculate can the deviance of node 11) only using the code below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialCharTok{{-}}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{68} \SpecialCharTok{*} \FunctionTok{log}\NormalTok{(}\DecValTok{68}\SpecialCharTok{/}\DecValTok{118}\NormalTok{) }\SpecialCharTok{+} \DecValTok{50} \SpecialCharTok{*} \FunctionTok{log}\NormalTok{(}\DecValTok{50}\SpecialCharTok{/}\DecValTok{118}\NormalTok{))}
+\CommentTok{\#\textgreater{} [1] 160.8262}
+\end{Highlighting}
+\end{Shaded}
+
+tree() reports the number as 160.80, and testing with other nodes revealed this is because it's rounding the result to 4 significant figures.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Plotting
+\end{enumerate}
+
+Q: Create a plot of the tree, and interpret the results.
+
+A:
+LoyalCH is certainly the most important variable (the top 3 nodes all split on this variable), followed by PriceDiff and DiscCH. We can see node 11) is the third terminal node (from left → right).
+
+LoyalCH ranges from 0 to 1, so the first split sends those less loyal to Citrus Hill (CH) orange juice to the left and those more loyal to the right:
+
+plot(tree\_model)
+text(tree\_model, pretty = 0, cex = 0.7)
+
+Those that scored lowest in Citrus Hill loyalty (LoyalCH \textless{} 0.142213) were predicted to buy Minute Maid (MM), which isn't surprising. Those that were slightly more loyal to CH (0.142213 \textless{} LoyalCH \textless{} 0.5036) would still buy MM if it wasn't too much more expensive (PriceDiff \textless{} 0.235), but if the price difference is large enough (CH was much cheaper) they could end up purchasing CH.
+
+Those on the far-right terminal node are the most loyal to CH (LoyalCH \textgreater{} 0.705699), so it should be unsurprising that this is their predicted purchase. Those with slightly lower brand loyalty (0.5036 \textless{} LoyalCH \textless{} 0.705699) would still purchase CH if it was much cheaper (PriceDiff \textgreater{} 0.25), or if it wasn't but was sufficiently discounted (PriceDiff \textless{} 0.25 \& DiscCH \textgreater{} 0.15). For those cases where CH wasn't much cheaper (PriceDiff \textless{} 0.25) and wasn't sufficiently discounted (DiscCH \textless{} 0.15), the predicted purchase actually ended up being MM.
+
+This was a much more detailed explanation, but this could be summarized at a much higher level in the following way: people go with the brand they are more loyal towards, but there are some edge cases (based on discounts and the prices relative to one another) that can sway people against their usual brand loyalties.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Test Error
+\end{enumerate}
+
+Q: Predict the response on the test data, and produce a confusion matrix comparing the test labels to the predicted test labels. What is the test error rate?
+
+A:
+
+Here is the confusion matrix for the unpruned regression tree:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(tree\_model, test, }\AttributeTok{type =} \StringTok{"class"}\NormalTok{)}
+\FunctionTok{table}\NormalTok{(test\_pred, }\AttributeTok{test\_actual =}\NormalTok{ test}\SpecialCharTok{$}\NormalTok{Purchase)}
+\CommentTok{\#\textgreater{}          test\_actual}
+\CommentTok{\#\textgreater{} test\_pred  CH  MM}
+\CommentTok{\#\textgreater{}        CH 148  32}
+\CommentTok{\#\textgreater{}        MM  15  75}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{test_actual}{%
+\section{test\_actual}\label{test_actual}}
+
+\hypertarget{test_pred-ch-mm}{%
+\section{test\_pred CH MM}\label{test_pred-ch-mm}}
+
+\hypertarget{ch-125-32}{%
+\section{CH 125 32}\label{ch-125-32}}
+
+\hypertarget{mm-34-79}{%
+\section{MM 34 79}\label{mm-34-79}}
+
+The test error rate corresponding to it:
+
+1 - mean(test\_pred == test\$Purchase)
+
+\hypertarget{section}{%
+\section{{[}1{]} 0.2444444}\label{section}}
+
+CH was the most common orange juice in train so, for comparison, a baseline classifier (that predicted CH for all observations in test) would have the following error rate:
+
+1 - mean(test\$Purchase == ``CH'')
+
+\hypertarget{section-1}{%
+\section{{[}1{]} 0.4111111}\label{section-1}}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Cost-Complexity Pruning
+\end{enumerate}
+
+Q: Apply the cv.tree() function to the training set in order to determine the optimal tree size.
+
+A:
+
+Since our goal appears to be low test error, I specify FUN = prune.misclass. This indicates that we want the classification error rate to guide the cross-validation and pruning process, rather than the default for the cv.tree() function, which is deviance.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\NormalTok{cv\_tree\_model }\OtherTok{\textless{}{-}} \FunctionTok{cv.tree}\NormalTok{(tree\_model, }\AttributeTok{K =} \DecValTok{10}\NormalTok{, }\AttributeTok{FUN =}\NormalTok{ prune.misclass)}
+\NormalTok{cv\_tree\_model}
+\CommentTok{\#\textgreater{} $size}
+\CommentTok{\#\textgreater{} [1] 9 6 5 3 2 1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $dev}
+\CommentTok{\#\textgreater{} [1] 149 149 149 173 172 310}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $k}
+\CommentTok{\#\textgreater{} [1]  {-}Inf   0.0   1.0   8.5   9.0 150.0}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $method}
+\CommentTok{\#\textgreater{} [1] "misclass"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} attr(,"class")}
+\CommentTok{\#\textgreater{} [1] "prune"         "tree.sequence"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  CV Error Plot
+\end{enumerate}
+
+Q: Produce a plot with tree size on the x-axis and cross-validated classification error rate on the y-axis.
+
+A:
+
+The plot is below. Note that cv\_tree\_model\(size is the number of terminal nodes (so 1 means it is just the root node with no splits), and cv_tree_model\)dev gives the total number of errors made from the out-of-fold predictions during cross-validation (only because we specified FUN = prune.misclass - omitting this would mean this reports the deviance). From this we can obtain the cross-validation error rate.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{size =}\NormalTok{ cv\_tree\_model}\SpecialCharTok{$}\NormalTok{size, }\AttributeTok{CV\_Error =}\NormalTok{ cv\_tree\_model}\SpecialCharTok{$}\NormalTok{dev }\SpecialCharTok{/} \FunctionTok{nrow}\NormalTok{(train)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{min\_CV\_Error =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{min}\NormalTok{(CV\_Error) }\SpecialCharTok{==}\NormalTok{ CV\_Error)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ size, }\AttributeTok{y =}\NormalTok{ CV\_Error)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{col =} \StringTok{"grey55"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{2}\NormalTok{, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{col =} \FunctionTok{factor}\NormalTok{(min\_CV\_Error))) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{7}\NormalTok{), }\AttributeTok{minor\_breaks =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{percent\_format}\NormalTok{()) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"deepskyblue3"}\NormalTok{, }\StringTok{"green"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"OJ Dataset {-} Classification Tree"}\NormalTok{,}
+       \AttributeTok{subtitle =} \StringTok{"Selecting tree \textquotesingle{}size\textquotesingle{} (\# of terminal nodes) using cross{-}validation"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Tree Size"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"CV Error"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{121-trees_no_9_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  Best Tree - CV Error
+\end{enumerate}
+
+Q: Which tree size corresponds to the lowest cross-validated classification error rate?
+
+A:
+
+Of the sequence of trees generated, trees of sizes 4 and 7 have the same cross-validation error. It makes sense to select the more parsimonious model here with 4 terminal nodes.
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\tightlist
+\item
+  Best Tree - Selecting
+\end{enumerate}
+
+Q: Produce a pruned tree corresponding to the optimal tree size obtained using cross-validation. If cross-validation does not lead to selection of a pruned tree, then create a pruned tree with five terminal nodes.
+
+A:
+
+I produce the tree with 4 terminal nodes. Interestingly we have the same cross-validation error as the full tree with 7 terminal nodes, but have only split on LoyalCH to achieve this. This would have the added benefit of simplifying the interpretation in part (d).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pruned\_tree\_model }\OtherTok{\textless{}{-}} \FunctionTok{prune.tree}\NormalTok{(tree\_model, }\AttributeTok{best =} \DecValTok{4}\NormalTok{)}
+\NormalTok{pruned\_tree\_model}
+\CommentTok{\#\textgreater{} node), split, n, deviance, yval, (yprob)}
+\CommentTok{\#\textgreater{}       * denotes terminal node}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} 1) root 800 1068.00 CH ( 0.61250 0.38750 )  }
+\CommentTok{\#\textgreater{}   2) LoyalCH \textless{} 0.5036 346  412.40 MM ( 0.28324 0.71676 )  }
+\CommentTok{\#\textgreater{}     4) LoyalCH \textless{} 0.280875 164  125.50 MM ( 0.12805 0.87195 ) *}
+\CommentTok{\#\textgreater{}     5) LoyalCH \textgreater{} 0.280875 182  248.00 MM ( 0.42308 0.57692 ) *}
+\CommentTok{\#\textgreater{}   3) LoyalCH \textgreater{} 0.5036 454  362.00 CH ( 0.86344 0.13656 )  }
+\CommentTok{\#\textgreater{}     6) PriceDiff \textless{} {-}0.39 31   40.32 MM ( 0.35484 0.64516 ) *}
+\CommentTok{\#\textgreater{}     7) PriceDiff \textgreater{} {-}0.39 423  273.70 CH ( 0.90071 0.09929 ) *}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  Training Error Comparison
+\end{enumerate}
+
+Q: Compare the training error rates between the pruned and unpruned trees. Which is higher?
+
+A:
+Here is the training error for the unpruned tree (7 terminal nodes):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{predict}\NormalTok{(tree\_model, }\AttributeTok{type =} \StringTok{"class"}\NormalTok{) }\SpecialCharTok{!=}\NormalTok{ train}\SpecialCharTok{$}\NormalTok{Purchase)}
+\CommentTok{\#\textgreater{} [1] 0.16625}
+\end{Highlighting}
+\end{Shaded}
+
+The same for the pruned tree (4 terminal nodes):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{predict}\NormalTok{(pruned\_tree\_model, }\AttributeTok{type =} \StringTok{"class"}\NormalTok{) }\SpecialCharTok{!=}\NormalTok{ train}\SpecialCharTok{$}\NormalTok{Purchase)}
+\CommentTok{\#\textgreater{} [1] 0.18875}
+\end{Highlighting}
+\end{Shaded}
+
+The training error for the pruned tree is higher. This isn't surprising - we would expect the training error of a tree to monotonically decrease as its flexibility (number of splits) increases.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{10}
+\tightlist
+\item
+  Test Error Comparison
+\end{enumerate}
+
+Q: Compare the test error rates between the pruned and unpruned trees. Which is higher?
+
+A:
+
+The test error for the unpruned tree:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{predict}\NormalTok{(tree\_model, }\AttributeTok{type =} \StringTok{"class"}\NormalTok{, }\AttributeTok{newdata =}\NormalTok{ test) }\SpecialCharTok{!=}\NormalTok{ test}\SpecialCharTok{$}\NormalTok{Purchase)}
+\CommentTok{\#\textgreater{} [1] 0.1740741}
+\end{Highlighting}
+\end{Shaded}
+
+The same for the pruned tree:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{predict}\NormalTok{(pruned\_tree\_model, }\AttributeTok{type =} \StringTok{"class"}\NormalTok{, }\AttributeTok{newdata =}\NormalTok{ test) }\SpecialCharTok{!=}\NormalTok{ test}\SpecialCharTok{$}\NormalTok{Purchase)}
+\CommentTok{\#\textgreater{} [1] 0.2}
+\end{Highlighting}
+\end{Shaded}
+
+Now the order has reversed and the error is higher for the unpruned tree.
+
+It is interesting that the cross-validation errors were in fact equal but the test error is noticeably lower for the simpler tree. A lot of this probably comes from random variability when working with a small dataset; using a different random state for the CV folds and train/test split would likely change all of these results (particularly because decision trees are such high-variance approaches).
 
   \bibliography{book.bib,packages.bib}
 

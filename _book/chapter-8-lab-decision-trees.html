@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 16 Chapter 8 Lab: Decision Trees | BADM 372 Applied Analytics</title>
+<meta name="author" content="BADM 372">
+<meta name="description" content="**Check out this Video: StatsLearning Lect10 R trees A 111213 Or Click Here: Here!!! ## Fitting Classification Trees ### library(tree) ### library(ISLR2) attach(Carseats) High &lt;-...">
+<meta name="generator" content="bookdown 0.25 with bs4_book()">
+<meta property="og:title" content="Chapter 16 Chapter 8 Lab: Decision Trees | BADM 372 Applied Analytics">
+<meta property="og:type" content="book">
+<meta property="og:description" content="**Check out this Video: StatsLearning Lect10 R trees A 111213 Or Click Here: Here!!! ## Fitting Classification Trees ### library(tree) ### library(ISLR2) attach(Carseats) High &lt;-...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 16 Chapter 8 Lab: Decision Trees | BADM 372 Applied Analytics">
+<meta name="twitter:description" content="**Check out this Video: StatsLearning Lect10 R trees A 111213 Or Click Here: Here!!! ## Fitting Classification Trees ### library(tree) ### library(ISLR2) attach(Carseats) High &lt;-...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">BADM 372 Applied Analytics</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> About this course</a></li>
+<li><a class="" href="syllabus.html"><span class="header-section-number">2</span> Syllabus</a></li>
+<li><a class="" href="our-class-rhythm.html"><span class="header-section-number">3</span> Our Class Rhythm</a></li>
+<li><a class="" href="end-in-mind.html"><span class="header-section-number">4</span> End in Mind</a></li>
+<li><a class="" href="schedule.html"><span class="header-section-number">5</span> Schedule</a></li>
+<li><a class="" href="lab-1-excercises.html"><span class="header-section-number">6</span> Lab 1 Excercises</a></li>
+<li><a class="" href="lab-1-in-rmarkdown.html"><span class="header-section-number">7</span> Lab 1 in Rmarkdown</a></li>
+<li><a class="" href="lab-2-pretty-pictures.html"><span class="header-section-number">8</span> Lab 2: Pretty pictures!</a></li>
+<li><a class="" href="lab-2-ggplot-without-dsbox.html"><span class="header-section-number">9</span> Lab 2 – ggplot without dsbox</a></li>
+<li><a class="" href="lab-3-coronavirus-visualization-data-wrangling-and-dates.html"><span class="header-section-number">10</span> Lab 3: coronavirus visualization, data wrangling, and dates</a></li>
+<li><a class="" href="project-e1.html"><span class="header-section-number">11</span> Project (E1)</a></li>
+<li><a class="" href="functions.html"><span class="header-section-number">12</span> Functions</a></li>
+<li><a class="" href="conditionals.html"><span class="header-section-number">13</span> Conditionals</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">14</span> Linear Regression</a></li>
+<li><a class="" href="tree-based-methods.html"><span class="header-section-number">15</span> Tree-Based Methods</a></li>
+<li><a class="active" href="chapter-8-lab-decision-trees.html"><span class="header-section-number">16</span> Chapter 8 Lab: Decision Trees</a></li>
+<li><a class="" href="trees-9-the-oj-dataset.html"><span class="header-section-number">17</span> Trees #9 The OJ Dataset</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="chapter-8-lab-decision-trees" class="section level1" number="16">
+<h1>
+<span class="header-section-number">16</span> Chapter 8 Lab: Decision Trees<a class="anchor" aria-label="anchor" href="#chapter-8-lab-decision-trees"><i class="fas fa-link"></i></a>
+</h1>
+<p>**Check out this Video: StatsLearning Lect10 R trees A 111213</p>
+<p>Or Click Here: <a href="https://www.youtube.com/watch?v=YPz2J5lHeVM&amp;list=PLAOUn-KLSAVOqj5TG8E1HTb8Txwxe6OtV&amp;index=6">Here!!!</a></p>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="co">## Fitting Classification Trees</span>
+
+<span class="co">###</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span>
+<span class="co">###</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.statlearning.com">ISLR2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/attach.html">attach</a></span><span class="op">(</span><span class="va">Carseats</span><span class="op">)</span>
+<span class="va">High</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Sales</span> <span class="op">&lt;=</span> <span class="fl">8</span>, <span class="st">"No"</span>, <span class="st">"Yes"</span><span class="op">)</span><span class="op">)</span>
+<span class="co">###</span>
+<span class="va">Carseats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">Carseats</span>, <span class="va">High</span><span class="op">)</span>
+<span class="co">###</span>
+<span class="va">tree.carseats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tree/man/tree.html">tree</a></span><span class="op">(</span><span class="va">High</span> <span class="op">~</span> <span class="va">.</span> <span class="op">-</span> <span class="va">Sales</span>, <span class="va">Carseats</span><span class="op">)</span>
+<span class="co">###</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">tree.carseats</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Classification tree:</span>
+<span class="co">#&gt; tree(formula = High ~ . - Sales, data = Carseats)</span>
+<span class="co">#&gt; Variables actually used in tree construction:</span>
+<span class="co">#&gt; [1] "ShelveLoc"   "Price"       "Income"      "CompPrice"  </span>
+<span class="co">#&gt; [5] "Population"  "Advertising" "Age"         "US"         </span>
+<span class="co">#&gt; Number of terminal nodes:  27 </span>
+<span class="co">#&gt; Residual mean deviance:  0.4575 = 170.7 / 373 </span>
+<span class="co">#&gt; Misclassification error rate: 0.09 = 36 / 400</span>
+<span class="co">###</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">tree.carseats</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="va">tree.carseats</span>, pretty <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="119-ch_8_lab_files/figure-html/unnamed-chunk-1-1.png" width="672"></div>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">###</span>
+<span class="va">tree.carseats</span>
+<span class="co">#&gt; node), split, n, deviance, yval, (yprob)</span>
+<span class="co">#&gt;       * denotes terminal node</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;   1) root 400 541.500 No ( 0.59000 0.41000 )  </span>
+<span class="co">#&gt;     2) ShelveLoc: Bad,Medium 315 390.600 No ( 0.68889 0.31111 )  </span>
+<span class="co">#&gt;       4) Price &lt; 92.5 46  56.530 Yes ( 0.30435 0.69565 )  </span>
+<span class="co">#&gt;         8) Income &lt; 57 10  12.220 No ( 0.70000 0.30000 )  </span>
+<span class="co">#&gt;          16) CompPrice &lt; 110.5 5   0.000 No ( 1.00000 0.00000 ) *</span>
+<span class="co">#&gt;          17) CompPrice &gt; 110.5 5   6.730 Yes ( 0.40000 0.60000 ) *</span>
+<span class="co">#&gt;         9) Income &gt; 57 36  35.470 Yes ( 0.19444 0.80556 )  </span>
+<span class="co">#&gt;          18) Population &lt; 207.5 16  21.170 Yes ( 0.37500 0.62500 ) *</span>
+<span class="co">#&gt;          19) Population &gt; 207.5 20   7.941 Yes ( 0.05000 0.95000 ) *</span>
+<span class="co">#&gt;       5) Price &gt; 92.5 269 299.800 No ( 0.75465 0.24535 )  </span>
+<span class="co">#&gt;        10) Advertising &lt; 13.5 224 213.200 No ( 0.81696 0.18304 )  </span>
+<span class="co">#&gt;          20) CompPrice &lt; 124.5 96  44.890 No ( 0.93750 0.06250 )  </span>
+<span class="co">#&gt;            40) Price &lt; 106.5 38  33.150 No ( 0.84211 0.15789 )  </span>
+<span class="co">#&gt;              80) Population &lt; 177 12  16.300 No ( 0.58333 0.41667 )  </span>
+<span class="co">#&gt;               160) Income &lt; 60.5 6   0.000 No ( 1.00000 0.00000 ) *</span>
+<span class="co">#&gt;               161) Income &gt; 60.5 6   5.407 Yes ( 0.16667 0.83333 ) *</span>
+<span class="co">#&gt;              81) Population &gt; 177 26   8.477 No ( 0.96154 0.03846 ) *</span>
+<span class="co">#&gt;            41) Price &gt; 106.5 58   0.000 No ( 1.00000 0.00000 ) *</span>
+<span class="co">#&gt;          21) CompPrice &gt; 124.5 128 150.200 No ( 0.72656 0.27344 )  </span>
+<span class="co">#&gt;            42) Price &lt; 122.5 51  70.680 Yes ( 0.49020 0.50980 )  </span>
+<span class="co">#&gt;              84) ShelveLoc: Bad 11   6.702 No ( 0.90909 0.09091 ) *</span>
+<span class="co">#&gt;              85) ShelveLoc: Medium 40  52.930 Yes ( 0.37500 0.62500 )  </span>
+<span class="co">#&gt;               170) Price &lt; 109.5 16   7.481 Yes ( 0.06250 0.93750 ) *</span>
+<span class="co">#&gt;               171) Price &gt; 109.5 24  32.600 No ( 0.58333 0.41667 )  </span>
+<span class="co">#&gt;                 342) Age &lt; 49.5 13  16.050 Yes ( 0.30769 0.69231 ) *</span>
+<span class="co">#&gt;                 343) Age &gt; 49.5 11   6.702 No ( 0.90909 0.09091 ) *</span>
+<span class="co">#&gt;            43) Price &gt; 122.5 77  55.540 No ( 0.88312 0.11688 )  </span>
+<span class="co">#&gt;              86) CompPrice &lt; 147.5 58  17.400 No ( 0.96552 0.03448 ) *</span>
+<span class="co">#&gt;              87) CompPrice &gt; 147.5 19  25.010 No ( 0.63158 0.36842 )  </span>
+<span class="co">#&gt;               174) Price &lt; 147 12  16.300 Yes ( 0.41667 0.58333 )  </span>
+<span class="co">#&gt;                 348) CompPrice &lt; 152.5 7   5.742 Yes ( 0.14286 0.85714 ) *</span>
+<span class="co">#&gt;                 349) CompPrice &gt; 152.5 5   5.004 No ( 0.80000 0.20000 ) *</span>
+<span class="co">#&gt;               175) Price &gt; 147 7   0.000 No ( 1.00000 0.00000 ) *</span>
+<span class="co">#&gt;        11) Advertising &gt; 13.5 45  61.830 Yes ( 0.44444 0.55556 )  </span>
+<span class="co">#&gt;          22) Age &lt; 54.5 25  25.020 Yes ( 0.20000 0.80000 )  </span>
+<span class="co">#&gt;            44) CompPrice &lt; 130.5 14  18.250 Yes ( 0.35714 0.64286 )  </span>
+<span class="co">#&gt;              88) Income &lt; 100 9  12.370 No ( 0.55556 0.44444 ) *</span>
+<span class="co">#&gt;              89) Income &gt; 100 5   0.000 Yes ( 0.00000 1.00000 ) *</span>
+<span class="co">#&gt;            45) CompPrice &gt; 130.5 11   0.000 Yes ( 0.00000 1.00000 ) *</span>
+<span class="co">#&gt;          23) Age &gt; 54.5 20  22.490 No ( 0.75000 0.25000 )  </span>
+<span class="co">#&gt;            46) CompPrice &lt; 122.5 10   0.000 No ( 1.00000 0.00000 ) *</span>
+<span class="co">#&gt;            47) CompPrice &gt; 122.5 10  13.860 No ( 0.50000 0.50000 )  </span>
+<span class="co">#&gt;              94) Price &lt; 125 5   0.000 Yes ( 0.00000 1.00000 ) *</span>
+<span class="co">#&gt;              95) Price &gt; 125 5   0.000 No ( 1.00000 0.00000 ) *</span>
+<span class="co">#&gt;     3) ShelveLoc: Good 85  90.330 Yes ( 0.22353 0.77647 )  </span>
+<span class="co">#&gt;       6) Price &lt; 135 68  49.260 Yes ( 0.11765 0.88235 )  </span>
+<span class="co">#&gt;        12) US: No 17  22.070 Yes ( 0.35294 0.64706 )  </span>
+<span class="co">#&gt;          24) Price &lt; 109 8   0.000 Yes ( 0.00000 1.00000 ) *</span>
+<span class="co">#&gt;          25) Price &gt; 109 9  11.460 No ( 0.66667 0.33333 ) *</span>
+<span class="co">#&gt;        13) US: Yes 51  16.880 Yes ( 0.03922 0.96078 ) *</span>
+<span class="co">#&gt;       7) Price &gt; 135 17  22.070 No ( 0.64706 0.35294 )  </span>
+<span class="co">#&gt;        14) Income &lt; 46 6   0.000 No ( 1.00000 0.00000 ) *</span>
+<span class="co">#&gt;        15) Income &gt; 46 11  15.160 Yes ( 0.45455 0.54545 ) *</span>
+<span class="co">###</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
+<span class="va">train</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">Carseats</span><span class="op">)</span>, <span class="fl">200</span><span class="op">)</span>
+<span class="va">Carseats.test</span> <span class="op">&lt;-</span> <span class="va">Carseats</span><span class="op">[</span><span class="op">-</span><span class="va">train</span>, <span class="op">]</span>
+<span class="va">High.test</span> <span class="op">&lt;-</span> <span class="va">High</span><span class="op">[</span><span class="op">-</span><span class="va">train</span><span class="op">]</span>
+<span class="va">tree.carseats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tree/man/tree.html">tree</a></span><span class="op">(</span><span class="va">High</span> <span class="op">~</span> <span class="va">.</span> <span class="op">-</span> <span class="va">Sales</span>, <span class="va">Carseats</span>,
+                      subset <span class="op">=</span> <span class="va">train</span><span class="op">)</span>
+<span class="va">tree.pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">tree.carseats</span>, <span class="va">Carseats.test</span>,
+                     type <span class="op">=</span> <span class="st">"class"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">tree.pred</span>, <span class="va">High.test</span><span class="op">)</span>
+<span class="co">#&gt;          High.test</span>
+<span class="co">#&gt; tree.pred  No Yes</span>
+<span class="co">#&gt;       No  104  33</span>
+<span class="co">#&gt;       Yes  13  50</span>
+<span class="op">(</span><span class="fl">104</span> <span class="op">+</span> <span class="fl">50</span><span class="op">)</span> <span class="op">/</span> <span class="fl">200</span>
+<span class="co">#&gt; [1] 0.77</span>
+<span class="co">###</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span>
+<span class="va">cv.carseats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tree/man/cv.tree.html">cv.tree</a></span><span class="op">(</span><span class="va">tree.carseats</span>, FUN <span class="op">=</span> <span class="va">prune.misclass</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">cv.carseats</span><span class="op">)</span>
+<span class="co">#&gt; [1] "size"   "dev"    "k"      "method"</span>
+<span class="va">cv.carseats</span>
+<span class="co">#&gt; $size</span>
+<span class="co">#&gt; [1] 21 19 14  9  8  5  3  2  1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $dev</span>
+<span class="co">#&gt; [1] 75 75 75 74 82 83 83 85 82</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $k</span>
+<span class="co">#&gt; [1] -Inf  0.0  1.0  1.4  2.0  3.0  4.0  9.0 18.0</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $method</span>
+<span class="co">#&gt; [1] "misclass"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; attr(,"class")</span>
+<span class="co">#&gt; [1] "prune"         "tree.sequence"</span>
+<span class="co">###</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cv.carseats</span><span class="op">$</span><span class="va">size</span>, <span class="va">cv.carseats</span><span class="op">$</span><span class="va">dev</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cv.carseats</span><span class="op">$</span><span class="va">k</span>, <span class="va">cv.carseats</span><span class="op">$</span><span class="va">dev</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="119-ch_8_lab_files/figure-html/unnamed-chunk-1-2.png" width="672"></div>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">###</span>
+<span class="va">prune.carseats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tree/man/prune.tree.html">prune.misclass</a></span><span class="op">(</span><span class="va">tree.carseats</span>, best <span class="op">=</span> <span class="fl">9</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">prune.carseats</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="va">prune.carseats</span>, pretty <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
+<span class="co">###</span>
+<span class="va">tree.pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">prune.carseats</span>, <span class="va">Carseats.test</span>,
+                     type <span class="op">=</span> <span class="st">"class"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">tree.pred</span>, <span class="va">High.test</span><span class="op">)</span>
+<span class="co">#&gt;          High.test</span>
+<span class="co">#&gt; tree.pred No Yes</span>
+<span class="co">#&gt;       No  97  25</span>
+<span class="co">#&gt;       Yes 20  58</span>
+<span class="op">(</span><span class="fl">97</span> <span class="op">+</span> <span class="fl">58</span><span class="op">)</span> <span class="op">/</span> <span class="fl">200</span>
+<span class="co">#&gt; [1] 0.775</span>
+<span class="co">###</span>
+<span class="va">prune.carseats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tree/man/prune.tree.html">prune.misclass</a></span><span class="op">(</span><span class="va">tree.carseats</span>, best <span class="op">=</span> <span class="fl">14</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">prune.carseats</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="va">prune.carseats</span>, pretty <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="119-ch_8_lab_files/figure-html/unnamed-chunk-1-3.png" width="672"></div>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tree.pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">prune.carseats</span>, <span class="va">Carseats.test</span>,
+                     type <span class="op">=</span> <span class="st">"class"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">tree.pred</span>, <span class="va">High.test</span><span class="op">)</span>
+<span class="co">#&gt;          High.test</span>
+<span class="co">#&gt; tree.pred  No Yes</span>
+<span class="co">#&gt;       No  102  31</span>
+<span class="co">#&gt;       Yes  15  52</span>
+<span class="op">(</span><span class="fl">102</span> <span class="op">+</span> <span class="fl">52</span><span class="op">)</span> <span class="op">/</span> <span class="fl">200</span>
+<span class="co">#&gt; [1] 0.77</span>
+
+<span class="co">## Fitting Regression Trees</span>
+
+<span class="co">###</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">train</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">Boston</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">Boston</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span>
+<span class="va">tree.boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tree/man/tree.html">tree</a></span><span class="op">(</span><span class="va">medv</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">Boston</span>, subset <span class="op">=</span> <span class="va">train</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">tree.boston</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Regression tree:</span>
+<span class="co">#&gt; tree(formula = medv ~ ., data = Boston, subset = train)</span>
+<span class="co">#&gt; Variables actually used in tree construction:</span>
+<span class="co">#&gt; [1] "rm"    "lstat" "crim"  "age"  </span>
+<span class="co">#&gt; Number of terminal nodes:  7 </span>
+<span class="co">#&gt; Residual mean deviance:  10.38 = 2555 / 246 </span>
+<span class="co">#&gt; Distribution of residuals:</span>
+<span class="co">#&gt;     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. </span>
+<span class="co">#&gt; -10.1800  -1.7770  -0.1775   0.0000   1.9230  16.5800</span>
+<span class="co">###</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">tree.boston</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="va">tree.boston</span>, pretty <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
+<span class="co">###</span>
+<span class="va">cv.boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tree/man/cv.tree.html">cv.tree</a></span><span class="op">(</span><span class="va">tree.boston</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cv.boston</span><span class="op">$</span><span class="va">size</span>, <span class="va">cv.boston</span><span class="op">$</span><span class="va">dev</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="119-ch_8_lab_files/figure-html/unnamed-chunk-1-4.png" width="672"></div>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">###</span>
+<span class="va">prune.boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tree/man/prune.tree.html">prune.tree</a></span><span class="op">(</span><span class="va">tree.boston</span>, best <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">prune.boston</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="va">prune.boston</span>, pretty <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
+<span class="co">###</span>
+<span class="va">yhat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">tree.boston</span>, newdata <span class="op">=</span> <span class="va">Boston</span><span class="op">[</span><span class="op">-</span><span class="va">train</span>, <span class="op">]</span><span class="op">)</span>
+<span class="va">boston.test</span> <span class="op">&lt;-</span> <span class="va">Boston</span><span class="op">[</span><span class="op">-</span><span class="va">train</span>, <span class="st">"medv"</span><span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">yhat</span>, <span class="va">boston.test</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="119-ch_8_lab_files/figure-html/unnamed-chunk-1-5.png" width="672"></div>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">yhat</span> <span class="op">-</span> <span class="va">boston.test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; [1] 35.28688</span>
+
+<span class="co">## Bagging and Random Forests</span>
+
+<span class="co">###</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.stat.berkeley.edu/~breiman/RandomForests/">randomForest</a></span><span class="op">)</span>
+<span class="co">#&gt; randomForest 4.7-1</span>
+<span class="co">#&gt; Type rfNews() to see new features/changes/bug fixes.</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">bag.boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span><span class="op">(</span><span class="va">medv</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">Boston</span>,
+                           subset <span class="op">=</span> <span class="va">train</span>, mtry <span class="op">=</span> <span class="fl">12</span>, importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">bag.boston</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt;  randomForest(formula = medv ~ ., data = Boston, mtry = 12, importance = TRUE,      subset = train) </span>
+<span class="co">#&gt;                Type of random forest: regression</span>
+<span class="co">#&gt;                      Number of trees: 500</span>
+<span class="co">#&gt; No. of variables tried at each split: 12</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;           Mean of squared residuals: 11.40162</span>
+<span class="co">#&gt;                     % Var explained: 85.17</span>
+<span class="co">###</span>
+<span class="va">yhat.bag</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">bag.boston</span>, newdata <span class="op">=</span> <span class="va">Boston</span><span class="op">[</span><span class="op">-</span><span class="va">train</span>, <span class="op">]</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">yhat.bag</span>, <span class="va">boston.test</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">yhat.bag</span> <span class="op">-</span> <span class="va">boston.test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; [1] 23.41916</span>
+<span class="co">###</span>
+<span class="va">bag.boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span><span class="op">(</span><span class="va">medv</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">Boston</span>,
+                           subset <span class="op">=</span> <span class="va">train</span>, mtry <span class="op">=</span> <span class="fl">12</span>, ntree <span class="op">=</span> <span class="fl">25</span><span class="op">)</span>
+<span class="va">yhat.bag</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">bag.boston</span>, newdata <span class="op">=</span> <span class="va">Boston</span><span class="op">[</span><span class="op">-</span><span class="va">train</span>, <span class="op">]</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">yhat.bag</span> <span class="op">-</span> <span class="va">boston.test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; [1] 25.75055</span>
+<span class="co">###</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">rf.boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span><span class="op">(</span><span class="va">medv</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">Boston</span>,
+                          subset <span class="op">=</span> <span class="va">train</span>, mtry <span class="op">=</span> <span class="fl">6</span>, importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">yhat.rf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">rf.boston</span>, newdata <span class="op">=</span> <span class="va">Boston</span><span class="op">[</span><span class="op">-</span><span class="va">train</span>, <span class="op">]</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">yhat.rf</span> <span class="op">-</span> <span class="va">boston.test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; [1] 20.06644</span>
+<span class="co">###</span>
+<span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/importance.html">importance</a></span><span class="op">(</span><span class="va">rf.boston</span><span class="op">)</span>
+<span class="co">#&gt;           %IncMSE IncNodePurity</span>
+<span class="co">#&gt; crim    19.435587    1070.42307</span>
+<span class="co">#&gt; zn       3.091630      82.19257</span>
+<span class="co">#&gt; indus    6.140529     590.09536</span>
+<span class="co">#&gt; chas     1.370310      36.70356</span>
+<span class="co">#&gt; nox     13.263466     859.97091</span>
+<span class="co">#&gt; rm      35.094741    8270.33906</span>
+<span class="co">#&gt; age     15.144821     634.31220</span>
+<span class="co">#&gt; dis      9.163776     684.87953</span>
+<span class="co">#&gt; rad      4.793720      83.18719</span>
+<span class="co">#&gt; tax      4.410714     292.20949</span>
+<span class="co">#&gt; ptratio  8.612780     902.20190</span>
+<span class="co">#&gt; lstat   28.725343    5813.04833</span>
+<span class="co">###</span>
+<span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/varImpPlot.html">varImpPlot</a></span><span class="op">(</span><span class="va">rf.boston</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="119-ch_8_lab_files/figure-html/unnamed-chunk-1-6.png" width="672"></div>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="co">## Boosting</span>
+
+<span class="co">###</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/gbm-developers/gbm">gbm</a></span><span class="op">)</span>
+<span class="co">#&gt; Loaded gbm 2.1.8</span></code></pre></div>
+<div class="inline-figure"><img src="119-ch_8_lab_files/figure-html/unnamed-chunk-1-7.png" width="672"></div>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">boost.boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gbm/man/gbm.html">gbm</a></span><span class="op">(</span><span class="va">medv</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">Boston</span><span class="op">[</span><span class="va">train</span>, <span class="op">]</span>,
+                    distribution <span class="op">=</span> <span class="st">"gaussian"</span>, n.trees <span class="op">=</span> <span class="fl">5000</span>,
+                    interaction.depth <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
+<span class="co">###</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">boost.boston</span><span class="op">)</span>
+<span class="co">#&gt;             var     rel.inf</span>
+<span class="co">#&gt; rm           rm 44.48249588</span>
+<span class="co">#&gt; lstat     lstat 32.70281223</span>
+<span class="co">#&gt; crim       crim  4.85109954</span>
+<span class="co">#&gt; dis         dis  4.48693083</span>
+<span class="co">#&gt; nox         nox  3.75222394</span>
+<span class="co">#&gt; age         age  3.19769210</span>
+<span class="co">#&gt; ptratio ptratio  2.81354826</span>
+<span class="co">#&gt; tax         tax  1.54417603</span>
+<span class="co">#&gt; indus     indus  1.03384666</span>
+<span class="co">#&gt; rad         rad  0.87625748</span>
+<span class="co">#&gt; zn           zn  0.16220479</span>
+<span class="co">#&gt; chas       chas  0.09671228</span>
+<span class="co">###</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">boost.boston</span>, i <span class="op">=</span> <span class="st">"rm"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">boost.boston</span>, i <span class="op">=</span> <span class="st">"lstat"</span><span class="op">)</span>
+<span class="co">###</span>
+<span class="va">yhat.boost</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">boost.boston</span>,
+                      newdata <span class="op">=</span> <span class="va">Boston</span><span class="op">[</span><span class="op">-</span><span class="va">train</span>, <span class="op">]</span>, n.trees <span class="op">=</span> <span class="fl">5000</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">yhat.boost</span> <span class="op">-</span> <span class="va">boston.test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; [1] 18.39057</span>
+<span class="co">###</span>
+<span class="va">boost.boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gbm/man/gbm.html">gbm</a></span><span class="op">(</span><span class="va">medv</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">Boston</span><span class="op">[</span><span class="va">train</span>, <span class="op">]</span>,
+                    distribution <span class="op">=</span> <span class="st">"gaussian"</span>, n.trees <span class="op">=</span> <span class="fl">5000</span>,
+                    interaction.depth <span class="op">=</span> <span class="fl">4</span>, shrinkage <span class="op">=</span> <span class="fl">0.2</span>, verbose <span class="op">=</span> <span class="cn">F</span><span class="op">)</span>
+<span class="va">yhat.boost</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">boost.boston</span>,
+                      newdata <span class="op">=</span> <span class="va">Boston</span><span class="op">[</span><span class="op">-</span><span class="va">train</span>, <span class="op">]</span>, n.trees <span class="op">=</span> <span class="fl">5000</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">yhat.boost</span> <span class="op">-</span> <span class="va">boston.test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; [1] 16.54778</span>
+
+<span class="co">## Bayesian Additive Regression Trees</span>
+
+<span class="co">###</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">BART</span><span class="op">)</span>
+<span class="co">#&gt; Loading required package: nlme</span>
+<span class="co">#&gt; Loading required package: nnet</span>
+<span class="co">#&gt; Loading required package: survival</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="va">Boston</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">12</span><span class="op">]</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="va">Boston</span><span class="op">[</span>, <span class="st">"medv"</span><span class="op">]</span>
+<span class="va">xtrain</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">[</span><span class="va">train</span>, <span class="op">]</span>
+<span class="va">ytrain</span> <span class="op">&lt;-</span> <span class="va">y</span><span class="op">[</span><span class="va">train</span><span class="op">]</span>
+<span class="va">xtest</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">[</span><span class="op">-</span><span class="va">train</span>, <span class="op">]</span>
+<span class="va">ytest</span> <span class="op">&lt;-</span> <span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">train</span><span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">bartfit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BART/man/gbart.html">gbart</a></span><span class="op">(</span><span class="va">xtrain</span>, <span class="va">ytrain</span>, x.test <span class="op">=</span> <span class="va">xtest</span><span class="op">)</span>
+<span class="co">#&gt; *****Calling gbart: type=1</span>
+<span class="co">#&gt; *****Data:</span>
+<span class="co">#&gt; data:n,p,np: 253, 12, 253</span>
+<span class="co">#&gt; y1,yn: 0.213439, -5.486561</span>
+<span class="co">#&gt; x1,x[n*p]: 0.109590, 20.080000</span>
+<span class="co">#&gt; xp1,xp[np*p]: 0.027310, 7.880000</span>
+<span class="co">#&gt; *****Number of Trees: 200</span>
+<span class="co">#&gt; *****Number of Cut Points: 100 ... 100</span>
+<span class="co">#&gt; *****burn,nd,thin: 100,1000,1</span>
+<span class="co">#&gt; *****Prior:beta,alpha,tau,nu,lambda,offset: 2,0.95,0.795495,3,3.71636,21.7866</span>
+<span class="co">#&gt; *****sigma: 4.367914</span>
+<span class="co">#&gt; *****w (weights): 1.000000 ... 1.000000</span>
+<span class="co">#&gt; *****Dirichlet:sparse,theta,omega,a,b,rho,augment: 0,0,1,0.5,1,12,0</span>
+<span class="co">#&gt; *****printevery: 100</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; MCMC</span>
+<span class="co">#&gt; done 0 (out of 1100)</span>
+<span class="co">#&gt; done 100 (out of 1100)</span>
+<span class="co">#&gt; done 200 (out of 1100)</span>
+<span class="co">#&gt; done 300 (out of 1100)</span>
+<span class="co">#&gt; done 400 (out of 1100)</span>
+<span class="co">#&gt; done 500 (out of 1100)</span>
+<span class="co">#&gt; done 600 (out of 1100)</span>
+<span class="co">#&gt; done 700 (out of 1100)</span>
+<span class="co">#&gt; done 800 (out of 1100)</span>
+<span class="co">#&gt; done 900 (out of 1100)</span>
+<span class="co">#&gt; done 1000 (out of 1100)</span>
+<span class="co">#&gt; time: 4s</span>
+<span class="co">#&gt; trcnt,tecnt: 1000,1000</span>
+<span class="co">###</span>
+<span class="va">yhat.bart</span> <span class="op">&lt;-</span> <span class="va">bartfit</span><span class="op">$</span><span class="va">yhat.test.mean</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">ytest</span> <span class="op">-</span> <span class="va">yhat.bart</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; [1] 15.94718</span>
+<span class="co">###</span>
+<span class="va">ord</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">bartfit</span><span class="op">$</span><span class="va">varcount.mean</span>, decreasing <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
+<span class="va">bartfit</span><span class="op">$</span><span class="va">varcount.mean</span><span class="op">[</span><span class="va">ord</span><span class="op">]</span>
+<span class="co">#&gt;     nox   lstat     tax     rad      rm   indus    chas </span>
+<span class="co">#&gt;  22.952  21.329  21.250  20.781  19.890  19.825  19.051 </span>
+<span class="co">#&gt; ptratio     age      zn     dis    crim </span>
+<span class="co">#&gt;  18.976  18.274  15.952  14.457  11.007</span>
+<span class="co">###</span></code></pre></div>
+<div class="inline-figure"><img src="119-ch_8_lab_files/figure-html/unnamed-chunk-1-8.png" width="672"></div>
+
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="tree-based-methods.html"><span class="header-section-number">15</span> Tree-Based Methods</a></div>
+<div class="next"><a href="trees-9-the-oj-dataset.html"><span class="header-section-number">17</span> Trees #9 The OJ Dataset</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#chapter-8-lab-decision-trees"><span class="header-section-number">16</span> Chapter 8 Lab: Decision Trees</a></li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/119-ch_8_lab.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/119-ch_8_lab.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-04-05.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

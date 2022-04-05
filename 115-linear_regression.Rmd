@@ -49,5 +49,23 @@ m3 <- lm(Balance ~ Income*Education, data = Credit)
 summary(m3)
 ```
 
+7. What's going on here?
+
 ```{r}
+options(scipen=999)
+options(digits=3)
+library(ISLR)
+data("Credit")
+attach(Credit)
+?Credit
+m1 <- lm(Balance~Income+Education)
+summary(m1)
+236.975+(6.050 *100)+(0.703*12)
+predict(m1, newdata = list(Income = 100, Education = 12))
+
+m2 <- lm(Balance~Income*Education)
+summary(m2)
+
+435.460+(1.817*100)+(-13.989*12)+(0.315*100*12)
+predict(m2, newdata = list(Income = 100, Education = 12))
 ```

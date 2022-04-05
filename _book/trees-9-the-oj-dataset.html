@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 17 Trees #9 The OJ Dataset | BADM 372 Applied Analytics</title>
+<meta name="author" content="BADM 372">
+<meta name="description" content="This problem involves the OJ data set which is part of the ISLR package. #&gt; #&gt; Attaching package: 'dplyr' #&gt; The following objects are masked from 'package:stats': #&gt; #&gt;   filter, lag #&gt; The...">
+<meta name="generator" content="bookdown 0.25 with bs4_book()">
+<meta property="og:title" content="Chapter 17 Trees #9 The OJ Dataset | BADM 372 Applied Analytics">
+<meta property="og:type" content="book">
+<meta property="og:description" content="This problem involves the OJ data set which is part of the ISLR package. #&gt; #&gt; Attaching package: 'dplyr' #&gt; The following objects are masked from 'package:stats': #&gt; #&gt;   filter, lag #&gt; The...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 17 Trees #9 The OJ Dataset | BADM 372 Applied Analytics">
+<meta name="twitter:description" content="This problem involves the OJ data set which is part of the ISLR package. #&gt; #&gt; Attaching package: 'dplyr' #&gt; The following objects are masked from 'package:stats': #&gt; #&gt;   filter, lag #&gt; The...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">BADM 372 Applied Analytics</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> About this course</a></li>
+<li><a class="" href="syllabus.html"><span class="header-section-number">2</span> Syllabus</a></li>
+<li><a class="" href="our-class-rhythm.html"><span class="header-section-number">3</span> Our Class Rhythm</a></li>
+<li><a class="" href="end-in-mind.html"><span class="header-section-number">4</span> End in Mind</a></li>
+<li><a class="" href="schedule.html"><span class="header-section-number">5</span> Schedule</a></li>
+<li><a class="" href="lab-1-excercises.html"><span class="header-section-number">6</span> Lab 1 Excercises</a></li>
+<li><a class="" href="lab-1-in-rmarkdown.html"><span class="header-section-number">7</span> Lab 1 in Rmarkdown</a></li>
+<li><a class="" href="lab-2-pretty-pictures.html"><span class="header-section-number">8</span> Lab 2: Pretty pictures!</a></li>
+<li><a class="" href="lab-2-ggplot-without-dsbox.html"><span class="header-section-number">9</span> Lab 2 – ggplot without dsbox</a></li>
+<li><a class="" href="lab-3-coronavirus-visualization-data-wrangling-and-dates.html"><span class="header-section-number">10</span> Lab 3: coronavirus visualization, data wrangling, and dates</a></li>
+<li><a class="" href="project-e1.html"><span class="header-section-number">11</span> Project (E1)</a></li>
+<li><a class="" href="functions.html"><span class="header-section-number">12</span> Functions</a></li>
+<li><a class="" href="conditionals.html"><span class="header-section-number">13</span> Conditionals</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">14</span> Linear Regression</a></li>
+<li><a class="" href="tree-based-methods.html"><span class="header-section-number">15</span> Tree-Based Methods</a></li>
+<li><a class="" href="chapter-8-lab-decision-trees.html"><span class="header-section-number">16</span> Chapter 8 Lab: Decision Trees</a></li>
+<li><a class="active" href="trees-9-the-oj-dataset.html"><span class="header-section-number">17</span> Trees #9 The OJ Dataset</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="trees-9-the-oj-dataset" class="section level1" number="17">
+<h1>
+<span class="header-section-number">17</span> Trees #9 The OJ Dataset<a class="anchor" aria-label="anchor" href="#trees-9-the-oj-dataset"><i class="fas fa-link"></i></a>
+</h1>
+<p>This problem involves the OJ data set which is part of the ISLR package.</p>
+<pre><code>#&gt; 
+#&gt; Attaching package: 'dplyr'
+#&gt; The following objects are masked from 'package:stats':
+#&gt; 
+#&gt;     filter, lag
+#&gt; The following objects are masked from 'package:base':
+#&gt; 
+#&gt;     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">OJ</span><span class="op">)</span>
+<span class="co">#&gt; Rows: 1,070</span>
+<span class="co">#&gt; Columns: 18</span>
+<span class="co">#&gt; $ Purchase       &lt;fct&gt; CH, CH, CH, MM, CH, CH, CH, CH, CH,…</span>
+<span class="co">#&gt; $ WeekofPurchase &lt;dbl&gt; 237, 239, 245, 227, 228, 230, 232, …</span>
+<span class="co">#&gt; $ StoreID        &lt;dbl&gt; 1, 1, 1, 1, 7, 7, 7, 7, 7, 7, 7, 7,…</span>
+<span class="co">#&gt; $ PriceCH        &lt;dbl&gt; 1.75, 1.75, 1.86, 1.69, 1.69, 1.69,…</span>
+<span class="co">#&gt; $ PriceMM        &lt;dbl&gt; 1.99, 1.99, 2.09, 1.69, 1.69, 1.99,…</span>
+<span class="co">#&gt; $ DiscCH         &lt;dbl&gt; 0.00, 0.00, 0.17, 0.00, 0.00, 0.00,…</span>
+<span class="co">#&gt; $ DiscMM         &lt;dbl&gt; 0.00, 0.30, 0.00, 0.00, 0.00, 0.00,…</span>
+<span class="co">#&gt; $ SpecialCH      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,…</span>
+<span class="co">#&gt; $ SpecialMM      &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0,…</span>
+<span class="co">#&gt; $ LoyalCH        &lt;dbl&gt; 0.500000, 0.600000, 0.680000, 0.400…</span>
+<span class="co">#&gt; $ SalePriceMM    &lt;dbl&gt; 1.99, 1.69, 2.09, 1.69, 1.69, 1.99,…</span>
+<span class="co">#&gt; $ SalePriceCH    &lt;dbl&gt; 1.75, 1.75, 1.69, 1.69, 1.69, 1.69,…</span>
+<span class="co">#&gt; $ PriceDiff      &lt;dbl&gt; 0.24, -0.06, 0.40, 0.00, 0.00, 0.30…</span>
+<span class="co">#&gt; $ Store7         &lt;fct&gt; No, No, No, No, Yes, Yes, Yes, Yes,…</span>
+<span class="co">#&gt; $ PctDiscMM      &lt;dbl&gt; 0.000000, 0.150754, 0.000000, 0.000…</span>
+<span class="co">#&gt; $ PctDiscCH      &lt;dbl&gt; 0.000000, 0.000000, 0.091398, 0.000…</span>
+<span class="co">#&gt; $ ListPriceDiff  &lt;dbl&gt; 0.24, 0.24, 0.23, 0.00, 0.00, 0.30,…</span>
+<span class="co">#&gt; $ STORE          &lt;dbl&gt; 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,…</span></code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li>train/test Split</li>
+</ol>
+<p>Q: Create a training set containing a random sample of 800 observations, and a test set containing the remaining observations.</p>
+<p>A: Since this is my first time seeing this dataset, here is my quick overview: The OJ dataset contains 1,070 purchases of two brands of orange juice (‘Citrus Hill’ or ‘Minute Maid’), captured in the values of the Purchase variable (CH or MM). The remaining 17 predictors are characteristics of the customer, product, store, etc. Throughout this question we are basically tasked with predicting which orange juice the customer purchased based on these statistics.</p>
+<p>I create train and test below.</p>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>
+<span class="va">train_index</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">OJ</span><span class="op">)</span>, <span class="fl">800</span><span class="op">)</span>
+<span class="va">train</span> <span class="op">&lt;-</span> <span class="va">OJ</span><span class="op">[</span><span class="va">train_index</span>, <span class="op">]</span>
+<span class="va">test</span> <span class="op">&lt;-</span> <span class="va">OJ</span><span class="op">[</span><span class="op">-</span><span class="va">train_index</span>, <span class="op">]</span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Classification Tree</li>
+</ol>
+<p>Q: Fit a tree to the training data, with Purchase as the response and the other variables as predictors. Use the summary() function to produce summary statistics about the tree, and describe the results obtained. What is the training error rate? How many terminal nodes does the tree have?</p>
+<p>A: The classification tree has 7 terminal nodes and a training error rate of 18.38%.</p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tree_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tree/man/tree.html">tree</a></span><span class="op">(</span><span class="va">Purchase</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">tree_model</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Classification tree:</span>
+<span class="co">#&gt; tree(formula = Purchase ~ ., data = train)</span>
+<span class="co">#&gt; Variables actually used in tree construction:</span>
+<span class="co">#&gt; [1] "LoyalCH"       "PriceDiff"     "ListPriceDiff"</span>
+<span class="co">#&gt; Number of terminal nodes:  9 </span>
+<span class="co">#&gt; Residual mean deviance:  0.7347 = 581.1 / 791 </span>
+<span class="co">#&gt; Misclassification error rate: 0.1662 = 133 / 800</span></code></pre></div>
+<p>Despite there being 17 predictors in the dataset, only three were used in splits. These were:</p>
+<pre><code>LoyalCH - Customer brand loyalty for CH
+PriceDiff - Sale price of MM less sale price of CH
+DiscCH - Discount offered for CH</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>tree() - Text Interpretation</li>
+</ol>
+<p>Q: Type in the name of the tree object in order to get a detailed text output. Pick one of the terminal nodes, and interpret the information displayed.</p>
+<p>A: I print the text output below.</p>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tree_model</span>
+<span class="co">#&gt; node), split, n, deviance, yval, (yprob)</span>
+<span class="co">#&gt;       * denotes terminal node</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;  1) root 800 1068.00 CH ( 0.61250 0.38750 )  </span>
+<span class="co">#&gt;    2) LoyalCH &lt; 0.5036 346  412.40 MM ( 0.28324 0.71676 )  </span>
+<span class="co">#&gt;      4) LoyalCH &lt; 0.280875 164  125.50 MM ( 0.12805 0.87195 )  </span>
+<span class="co">#&gt;        8) LoyalCH &lt; 0.0356415 56   10.03 MM ( 0.01786 0.98214 ) *</span>
+<span class="co">#&gt;        9) LoyalCH &gt; 0.0356415 108  103.50 MM ( 0.18519 0.81481 ) *</span>
+<span class="co">#&gt;      5) LoyalCH &gt; 0.280875 182  248.00 MM ( 0.42308 0.57692 )  </span>
+<span class="co">#&gt;       10) PriceDiff &lt; 0.05 71   67.60 MM ( 0.18310 0.81690 ) *</span>
+<span class="co">#&gt;       11) PriceDiff &gt; 0.05 111  151.30 CH ( 0.57658 0.42342 ) *</span>
+<span class="co">#&gt;    3) LoyalCH &gt; 0.5036 454  362.00 CH ( 0.86344 0.13656 )  </span>
+<span class="co">#&gt;      6) PriceDiff &lt; -0.39 31   40.32 MM ( 0.35484 0.64516 )  </span>
+<span class="co">#&gt;       12) LoyalCH &lt; 0.638841 10    0.00 MM ( 0.00000 1.00000 ) *</span>
+<span class="co">#&gt;       13) LoyalCH &gt; 0.638841 21   29.06 CH ( 0.52381 0.47619 ) *</span>
+<span class="co">#&gt;      7) PriceDiff &gt; -0.39 423  273.70 CH ( 0.90071 0.09929 )  </span>
+<span class="co">#&gt;       14) LoyalCH &lt; 0.705326 135  143.00 CH ( 0.77778 0.22222 )  </span>
+<span class="co">#&gt;         28) ListPriceDiff &lt; 0.255 67   89.49 CH ( 0.61194 0.38806 ) *</span>
+<span class="co">#&gt;         29) ListPriceDiff &gt; 0.255 68   30.43 CH ( 0.94118 0.05882 ) *</span>
+<span class="co">#&gt;       15) LoyalCH &gt; 0.705326 288   99.77 CH ( 0.95833 0.04167 ) *</span></code></pre></div>
+<p>Choosing node 11), which is a terminal node as it is marked by a *:</p>
+<p>First the root node: 1) root 800 1064.00 CH ( 0.61750 0.38250 )</p>
+<p>This means that, at the root node, there are 800 observations, the deviance is 1064.00, the overall prediction is CH and the split is 61.75% CH vs 38.25% MM.</p>
+<p>We can see that, from the root node, three splits take place to produce the terminal node labelled by 11):</p>
+<pre><code>A split at LoyalCH = 0.5036
+A split at LoyalCH = 0.142213
+A split at PriceDiff = 0.235
+
+ 1) root 800 1064.00 CH ( 0.61750 0.38250 )  
+   2) LoyalCH &lt; 0.5036 354  435.50 MM ( 0.30508 0.69492 )  
+     4) LoyalCH &lt; 0.142213 100   45.39 MM ( 0.06000 0.94000 ) *
+     5) LoyalCH &gt; 0.142213 254  342.20 MM ( 0.40157 0.59843 )  
+      10) PriceDiff &lt; 0.235 136  153.00 MM ( 0.25000 0.75000 ) *
+      11) PriceDiff &gt; 0.235 118  160.80 CH ( 0.57627 0.42373 ) *</code></pre>
+<p>Node 11) is therefore the subset of purchases where 0.142213 &lt; LoyalCH &lt; 0.5036 and PriceDiff &gt; 0.235. The overall prediction is CH, and the node seems quite impure with 57.627% CH vs 42.373% MM.</p>
+<p>There are 118 observations in the node, and from the percentages above we know that 68/118 are CH and 50/118 are MM (demonstrated below).</p>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">train</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">LoyalCH</span> <span class="op">&lt;</span> <span class="fl">0.5036</span>, 
+         <span class="va">LoyalCH</span> <span class="op">&gt;</span> <span class="fl">0.142213</span>, 
+         <span class="va">PriceDiff</span> <span class="op">&gt;</span> <span class="fl">0.235</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Purchase</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; Purchase</span>
+<span class="co">#&gt; CH MM </span>
+<span class="co">#&gt; 57 54</span></code></pre></div>
+<p>Based on the formula on page 325 for the overall deviance of a classification tree <span class="math display">\[ (−2∑m∑knmklog(p^mk))\]</span> where the overall deviance sum is over m regions (terminal nodes). We calculate can the deviance of node 11) only using the code below:</p>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">-</span><span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">68</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">68</span><span class="op">/</span><span class="fl">118</span><span class="op">)</span> <span class="op">+</span> <span class="fl">50</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">50</span><span class="op">/</span><span class="fl">118</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] 160.8262</span></code></pre></div>
+<p>tree() reports the number as 160.80, and testing with other nodes revealed this is because it’s rounding the result to 4 significant figures.</p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Plotting</li>
+</ol>
+<p>Q: Create a plot of the tree, and interpret the results.</p>
+<p>A:
+LoyalCH is certainly the most important variable (the top 3 nodes all split on this variable), followed by PriceDiff and DiscCH. We can see node 11) is the third terminal node (from left → right).</p>
+<p>LoyalCH ranges from 0 to 1, so the first split sends those less loyal to Citrus Hill (CH) orange juice to the left and those more loyal to the right:</p>
+<p>plot(tree_model)
+text(tree_model, pretty = 0, cex = 0.7)</p>
+<p>Those that scored lowest in Citrus Hill loyalty (LoyalCH &lt; 0.142213) were predicted to buy Minute Maid (MM), which isn’t surprising. Those that were slightly more loyal to CH (0.142213 &lt; LoyalCH &lt; 0.5036) would still buy MM if it wasn’t too much more expensive (PriceDiff &lt; 0.235), but if the price difference is large enough (CH was much cheaper) they could end up purchasing CH.</p>
+<p>Those on the far-right terminal node are the most loyal to CH (LoyalCH &gt; 0.705699), so it should be unsurprising that this is their predicted purchase. Those with slightly lower brand loyalty (0.5036 &lt; LoyalCH &lt; 0.705699) would still purchase CH if it was much cheaper (PriceDiff &gt; 0.25), or if it wasn’t but was sufficiently discounted (PriceDiff &lt; 0.25 &amp; DiscCH &gt; 0.15). For those cases where CH wasn’t much cheaper (PriceDiff &lt; 0.25) and wasn’t sufficiently discounted (DiscCH &lt; 0.15), the predicted purchase actually ended up being MM.</p>
+<p>This was a much more detailed explanation, but this could be summarized at a much higher level in the following way: people go with the brand they are more loyal towards, but there are some edge cases (based on discounts and the prices relative to one another) that can sway people against their usual brand loyalties.</p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Test Error</li>
+</ol>
+<p>Q: Predict the response on the test data, and produce a confusion matrix comparing the test labels to the predicted test labels. What is the test error rate?</p>
+<p>A:</p>
+<p>Here is the confusion matrix for the unpruned regression tree:</p>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">test_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">tree_model</span>, <span class="va">test</span>, type <span class="op">=</span> <span class="st">"class"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">test_pred</span>, test_actual <span class="op">=</span> <span class="va">test</span><span class="op">$</span><span class="va">Purchase</span><span class="op">)</span>
+<span class="co">#&gt;          test_actual</span>
+<span class="co">#&gt; test_pred  CH  MM</span>
+<span class="co">#&gt;        CH 148  32</span>
+<span class="co">#&gt;        MM  15  75</span></code></pre></div>
+<div id="test_actual" class="section level2" number="17.1">
+<h2>
+<span class="header-section-number">17.1</span> test_actual<a class="anchor" aria-label="anchor" href="#test_actual"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="test_pred-ch-mm" class="section level2" number="17.2">
+<h2>
+<span class="header-section-number">17.2</span> test_pred CH MM<a class="anchor" aria-label="anchor" href="#test_pred-ch-mm"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="ch-125-32" class="section level2" number="17.3">
+<h2>
+<span class="header-section-number">17.3</span> CH 125 32<a class="anchor" aria-label="anchor" href="#ch-125-32"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="mm-34-79" class="section level2" number="17.4">
+<h2>
+<span class="header-section-number">17.4</span> MM 34 79<a class="anchor" aria-label="anchor" href="#mm-34-79"><i class="fas fa-link"></i></a>
+</h2>
+<p>The test error rate corresponding to it:</p>
+<p>1 - mean(test_pred == test$Purchase)</p>
+</div>
+<div id="section" class="section level2" number="17.5">
+<h2>
+<span class="header-section-number">17.5</span> [1] 0.2444444<a class="anchor" aria-label="anchor" href="#section"><i class="fas fa-link"></i></a>
+</h2>
+<p>CH was the most common orange juice in train so, for comparison, a baseline classifier (that predicted CH for all observations in test) would have the following error rate:</p>
+<p>1 - mean(test$Purchase == “CH”)</p>
+</div>
+<div id="section-1" class="section level2" number="17.6">
+<h2>
+<span class="header-section-number">17.6</span> [1] 0.4111111<a class="anchor" aria-label="anchor" href="#section-1"><i class="fas fa-link"></i></a>
+</h2>
+<ol start="6" style="list-style-type: lower-alpha">
+<li>Cost-Complexity Pruning</li>
+</ol>
+<p>Q: Apply the cv.tree() function to the training set in order to determine the optimal tree size.</p>
+<p>A:</p>
+<p>Since our goal appears to be low test error, I specify FUN = prune.misclass. This indicates that we want the classification error rate to guide the cross-validation and pruning process, rather than the default for the cv.tree() function, which is deviance.</p>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
+<span class="va">cv_tree_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tree/man/cv.tree.html">cv.tree</a></span><span class="op">(</span><span class="va">tree_model</span>, K <span class="op">=</span> <span class="fl">10</span>, FUN <span class="op">=</span> <span class="va">prune.misclass</span><span class="op">)</span>
+<span class="va">cv_tree_model</span>
+<span class="co">#&gt; $size</span>
+<span class="co">#&gt; [1] 9 6 5 3 2 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $dev</span>
+<span class="co">#&gt; [1] 149 149 149 173 172 310</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $k</span>
+<span class="co">#&gt; [1]  -Inf   0.0   1.0   8.5   9.0 150.0</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $method</span>
+<span class="co">#&gt; [1] "misclass"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; attr(,"class")</span>
+<span class="co">#&gt; [1] "prune"         "tree.sequence"</span></code></pre></div>
+<ol start="7" style="list-style-type: lower-alpha">
+<li>CV Error Plot</li>
+</ol>
+<p>Q: Produce a plot with tree size on the x-axis and cross-validated classification error rate on the y-axis.</p>
+<p>A:</p>
+<p>The plot is below. Note that cv_tree_model<span class="math inline">\(size is the number of terminal nodes (so 1 means it is just the root node with no splits), and cv_tree_model\)</span>dev gives the total number of errors made from the out-of-fold predictions during cross-validation (only because we specified FUN = prune.misclass - omitting this would mean this reports the deviance). From this we can obtain the cross-validation error rate.</p>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>size <span class="op">=</span> <span class="va">cv_tree_model</span><span class="op">$</span><span class="va">size</span>, CV_Error <span class="op">=</span> <span class="va">cv_tree_model</span><span class="op">$</span><span class="va">dev</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">train</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>min_CV_Error <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">CV_Error</span><span class="op">)</span> <span class="op">==</span> <span class="va">CV_Error</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">size</span>, y <span class="op">=</span> <span class="va">CV_Error</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"grey55"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">min_CV_Error</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">7</span><span class="op">)</span>, minor_breaks <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html">percent_format</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"deepskyblue3"</span>, <span class="st">"green"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"OJ Dataset - Classification Tree"</span>,
+       subtitle <span class="op">=</span> <span class="st">"Selecting tree 'size' (# of terminal nodes) using cross-validation"</span>,
+       x <span class="op">=</span> <span class="st">"Tree Size"</span>,
+       y <span class="op">=</span> <span class="st">"CV Error"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="121-trees_no_9_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
+<ol start="8" style="list-style-type: lower-alpha">
+<li>Best Tree - CV Error</li>
+</ol>
+<p>Q: Which tree size corresponds to the lowest cross-validated classification error rate?</p>
+<p>A:</p>
+<p>Of the sequence of trees generated, trees of sizes 4 and 7 have the same cross-validation error. It makes sense to select the more parsimonious model here with 4 terminal nodes.</p>
+<ol style="list-style-type: lower-roman">
+<li>Best Tree - Selecting</li>
+</ol>
+<p>Q: Produce a pruned tree corresponding to the optimal tree size obtained using cross-validation. If cross-validation does not lead to selection of a pruned tree, then create a pruned tree with five terminal nodes.</p>
+<p>A:</p>
+<p>I produce the tree with 4 terminal nodes. Interestingly we have the same cross-validation error as the full tree with 7 terminal nodes, but have only split on LoyalCH to achieve this. This would have the added benefit of simplifying the interpretation in part (d).</p>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pruned_tree_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tree/man/prune.tree.html">prune.tree</a></span><span class="op">(</span><span class="va">tree_model</span>, best <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
+<span class="va">pruned_tree_model</span>
+<span class="co">#&gt; node), split, n, deviance, yval, (yprob)</span>
+<span class="co">#&gt;       * denotes terminal node</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; 1) root 800 1068.00 CH ( 0.61250 0.38750 )  </span>
+<span class="co">#&gt;   2) LoyalCH &lt; 0.5036 346  412.40 MM ( 0.28324 0.71676 )  </span>
+<span class="co">#&gt;     4) LoyalCH &lt; 0.280875 164  125.50 MM ( 0.12805 0.87195 ) *</span>
+<span class="co">#&gt;     5) LoyalCH &gt; 0.280875 182  248.00 MM ( 0.42308 0.57692 ) *</span>
+<span class="co">#&gt;   3) LoyalCH &gt; 0.5036 454  362.00 CH ( 0.86344 0.13656 )  </span>
+<span class="co">#&gt;     6) PriceDiff &lt; -0.39 31   40.32 MM ( 0.35484 0.64516 ) *</span>
+<span class="co">#&gt;     7) PriceDiff &gt; -0.39 423  273.70 CH ( 0.90071 0.09929 ) *</span></code></pre></div>
+<ol start="10" style="list-style-type: lower-alpha">
+<li>Training Error Comparison</li>
+</ol>
+<p>Q: Compare the training error rates between the pruned and unpruned trees. Which is higher?</p>
+<p>A:
+Here is the training error for the unpruned tree (7 terminal nodes):</p>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">tree_model</span>, type <span class="op">=</span> <span class="st">"class"</span><span class="op">)</span> <span class="op">!=</span> <span class="va">train</span><span class="op">$</span><span class="va">Purchase</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.16625</span></code></pre></div>
+<p>The same for the pruned tree (4 terminal nodes):</p>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">pruned_tree_model</span>, type <span class="op">=</span> <span class="st">"class"</span><span class="op">)</span> <span class="op">!=</span> <span class="va">train</span><span class="op">$</span><span class="va">Purchase</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.18875</span></code></pre></div>
+<p>The training error for the pruned tree is higher. This isn’t surprising - we would expect the training error of a tree to monotonically decrease as its flexibility (number of splits) increases.</p>
+<ol start="11" style="list-style-type: lower-alpha">
+<li>Test Error Comparison</li>
+</ol>
+<p>Q: Compare the test error rates between the pruned and unpruned trees. Which is higher?</p>
+<p>A:</p>
+<p>The test error for the unpruned tree:</p>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">tree_model</span>, type <span class="op">=</span> <span class="st">"class"</span>, newdata <span class="op">=</span> <span class="va">test</span><span class="op">)</span> <span class="op">!=</span> <span class="va">test</span><span class="op">$</span><span class="va">Purchase</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.1740741</span></code></pre></div>
+<p>The same for the pruned tree:</p>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">pruned_tree_model</span>, type <span class="op">=</span> <span class="st">"class"</span>, newdata <span class="op">=</span> <span class="va">test</span><span class="op">)</span> <span class="op">!=</span> <span class="va">test</span><span class="op">$</span><span class="va">Purchase</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.2</span></code></pre></div>
+<p>Now the order has reversed and the error is higher for the unpruned tree.</p>
+<p>It is interesting that the cross-validation errors were in fact equal but the test error is noticeably lower for the simpler tree. A lot of this probably comes from random variability when working with a small dataset; using a different random state for the CV folds and train/test split would likely change all of these results (particularly because decision trees are such high-variance approaches).</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="chapter-8-lab-decision-trees.html"><span class="header-section-number">16</span> Chapter 8 Lab: Decision Trees</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#trees-9-the-oj-dataset"><span class="header-section-number">17</span> Trees #9 The OJ Dataset</a></li>
+<li><a class="nav-link" href="#test_actual"><span class="header-section-number">17.1</span> test_actual</a></li>
+<li><a class="nav-link" href="#test_pred-ch-mm"><span class="header-section-number">17.2</span> test_pred CH MM</a></li>
+<li><a class="nav-link" href="#ch-125-32"><span class="header-section-number">17.3</span> CH 125 32</a></li>
+<li><a class="nav-link" href="#mm-34-79"><span class="header-section-number">17.4</span> MM 34 79</a></li>
+<li><a class="nav-link" href="#section"><span class="header-section-number">17.5</span> [1] 0.2444444</a></li>
+<li><a class="nav-link" href="#section-1"><span class="header-section-number">17.6</span> [1] 0.4111111</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/121-trees_no_9.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/121-trees_no_9.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-04-05.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

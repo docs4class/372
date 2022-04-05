@@ -63,9 +63,14 @@ dealing-with-na
 fizzbuzz
 vectorized-conditionals
 multiple-conditions
-switch
-cut
-exercise-1
 linear-regression
 exercises
 tree-based-methods
+chapter-8-lab-decision-trees
+trees-9-the-oj-dataset
+test_actual
+test_pred-ch-mm
+ch-125-32
+mm-34-79
+section
+section-1

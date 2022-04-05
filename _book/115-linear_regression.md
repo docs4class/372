@@ -131,4 +131,82 @@ summary(m3)
 #> F-statistic: 37.47 on 3 and 396 DF,  p-value: < 2.2e-16
 ```
 
+7. What's going on here?
 
+
+```r
+options(scipen=999)
+options(digits=3)
+library(ISLR)
+data("Credit")
+attach(Credit)
+#> The following objects are masked from Credit (pos = 3):
+#> 
+#>     Age, Balance, Cards, Education, Ethnicity,
+#>     Gender, ID, Income, Limit, Married, Rating,
+#>     Student
+?Credit
+#> starting httpd help server ...
+#>  done
+m1 <- lm(Balance~Income+Education)
+summary(m1)
+#> 
+#> Call:
+#> lm(formula = Balance ~ Income + Education)
+#> 
+#> Residuals:
+#>    Min     1Q Median     3Q    Max 
+#> -806.2 -349.7  -53.4  330.4 1103.4 
+#> 
+#> Coefficients:
+#>             Estimate Std. Error t value            Pr(>|t|)
+#> (Intercept)  236.975     94.767    2.50               0.013
+#> Income         6.050      0.580   10.43 <0.0000000000000002
+#> Education      0.703      6.544    0.11               0.914
+#>                
+#> (Intercept) *  
+#> Income      ***
+#> Education      
+#> ---
+#> Signif. codes:  
+#> 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#> 
+#> Residual standard error: 408 on 397 degrees of freedom
+#> Multiple R-squared:  0.215,	Adjusted R-squared:  0.211 
+#> F-statistic: 54.4 on 2 and 397 DF,  p-value: <0.0000000000000002
+236.975+(6.050 *100)+(0.703*12)
+#> [1] 850
+predict(m1, newdata = list(Income = 100, Education = 12))
+#>   1 
+#> 850
+
+m2 <- lm(Balance~Income*Education)
+summary(m2)
+#> 
+#> Call:
+#> lm(formula = Balance ~ Income * Education)
+#> 
+#> Residuals:
+#>    Min     1Q Median     3Q    Max 
+#> -858.1 -350.0  -56.1  304.5 1083.9 
+#> 
+#> Coefficients:
+#>                  Estimate Std. Error t value Pr(>|t|)   
+#> (Intercept)       435.460    147.100    2.96   0.0033 **
+#> Income              1.817      2.473    0.73   0.4629   
+#> Education         -13.989     10.593   -1.32   0.1874   
+#> Income:Education    0.315      0.179    1.76   0.0790 . 
+#> ---
+#> Signif. codes:  
+#> 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#> 
+#> Residual standard error: 407 on 396 degrees of freedom
+#> Multiple R-squared:  0.221,	Adjusted R-squared:  0.215 
+#> F-statistic: 37.5 on 3 and 396 DF,  p-value: <0.0000000000000002
+
+435.460+(1.817*100)+(-13.989*12)+(0.315*100*12)
+#> [1] 827
+predict(m2, newdata = list(Income = 100, Education = 12))
+#>   1 
+#> 827
+```
