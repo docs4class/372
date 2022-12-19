@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 9 Lab 2 – ggplot without dsbox | BADM 372 Applied Analytics</title>
+<title>Chapter 7 Lab 2 – ggplot without dsbox | BADM 372 Applied Analytics</title>
 <meta name="author" content="BADM 372">
-<meta name="description" content="9.1 Excercises using the data sets mpg or diamonds Create these figures using the data sets mpg or diamonds as needed:    9.2 palmerpenguins palmerpenguins is a realtively new package on CRAN, so...">
+<meta name="description" content="7.1 Excercises using the data sets mpg or diamonds Create these figures using the data sets mpg or diamonds as needed:    7.2 palmerpenguins palmerpenguins is a realtively new package on CRAN, so...">
 <meta name="generator" content="bookdown 0.25 with bs4_book()">
-<meta property="og:title" content="Chapter 9 Lab 2 – ggplot without dsbox | BADM 372 Applied Analytics">
+<meta property="og:title" content="Chapter 7 Lab 2 – ggplot without dsbox | BADM 372 Applied Analytics">
 <meta property="og:type" content="book">
-<meta property="og:description" content="9.1 Excercises using the data sets mpg or diamonds Create these figures using the data sets mpg or diamonds as needed:    9.2 palmerpenguins palmerpenguins is a realtively new package on CRAN, so...">
+<meta property="og:description" content="7.1 Excercises using the data sets mpg or diamonds Create these figures using the data sets mpg or diamonds as needed:    7.2 palmerpenguins palmerpenguins is a realtively new package on CRAN, so...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 9 Lab 2 – ggplot without dsbox | BADM 372 Applied Analytics">
-<meta name="twitter:description" content="9.1 Excercises using the data sets mpg or diamonds Create these figures using the data sets mpg or diamonds as needed:    9.2 palmerpenguins palmerpenguins is a realtively new package on CRAN, so...">
+<meta name="twitter:title" content="Chapter 7 Lab 2 – ggplot without dsbox | BADM 372 Applied Analytics">
+<meta name="twitter:description" content="7.1 Excercises using the data sets mpg or diamonds Create these figures using the data sets mpg or diamonds as needed:    7.2 palmerpenguins palmerpenguins is a realtively new package on CRAN, so...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -45,21 +45,18 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html"><span class="header-section-number">1</span> About this course</a></li>
 <li><a class="" href="syllabus.html"><span class="header-section-number">2</span> Syllabus</a></li>
-<li><a class="" href="our-class-rhythm.html"><span class="header-section-number">3</span> Our Class Rhythm</a></li>
-<li><a class="" href="end-in-mind.html"><span class="header-section-number">4</span> End in Mind</a></li>
-<li><a class="" href="schedule.html"><span class="header-section-number">5</span> Schedule</a></li>
-<li><a class="" href="lab-1-excercises.html"><span class="header-section-number">6</span> Lab 1 Excercises</a></li>
-<li><a class="" href="lab-1-in-rmarkdown.html"><span class="header-section-number">7</span> Lab 1 in Rmarkdown</a></li>
-<li><a class="" href="lab-2-pretty-pictures.html"><span class="header-section-number">8</span> Lab 2: Pretty pictures!</a></li>
-<li><a class="active" href="lab-2-ggplot-without-dsbox.html"><span class="header-section-number">9</span> Lab 2 – ggplot without dsbox</a></li>
-<li><a class="" href="lab-3-coronavirus-visualization-data-wrangling-and-dates.html"><span class="header-section-number">10</span> Lab 3: coronavirus visualization, data wrangling, and dates</a></li>
-<li><a class="" href="project-e1.html"><span class="header-section-number">11</span> Project (E1)</a></li>
-<li><a class="" href="functions.html"><span class="header-section-number">12</span> Functions</a></li>
-<li><a class="" href="conditionals.html"><span class="header-section-number">13</span> Conditionals</a></li>
-<li><a class="" href="linear-regression.html"><span class="header-section-number">14</span> Linear Regression</a></li>
-<li><a class="" href="tree-based-methods.html"><span class="header-section-number">15</span> Tree-Based Methods</a></li>
-<li><a class="" href="chapter-8-lab-decision-trees.html"><span class="header-section-number">16</span> Chapter 8 Lab: Decision Trees</a></li>
-<li><a class="" href="trees-9-the-oj-dataset.html"><span class="header-section-number">17</span> Trees #9 The OJ Dataset</a></li>
+<li><a class="" href="schedule.html"><span class="header-section-number">3</span> Schedule</a></li>
+<li><a class="" href="lab-1-excercises.html"><span class="header-section-number">4</span> Lab 1 Excercises</a></li>
+<li><a class="" href="lab-2-in-rmarkdown.html"><span class="header-section-number">5</span> Lab 2 in Rmarkdown</a></li>
+<li><a class="" href="lab-3-pretty-pictures.html"><span class="header-section-number">6</span> Lab 3: Pretty pictures!</a></li>
+<li><a class="active" href="lab-2-ggplot-without-dsbox.html"><span class="header-section-number">7</span> Lab 2 – ggplot without dsbox</a></li>
+<li><a class="" href="lab-4-coronavirus-visualization-data-wrangling-and-dates.html"><span class="header-section-number">8</span> Lab 4: coronavirus visualization, data wrangling, and dates</a></li>
+<li><a class="" href="functions.html"><span class="header-section-number">9</span> Functions</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
+<li><a class="" href="tree-based-methods.html"><span class="header-section-number">11</span> Tree-Based Methods</a></li>
+<li><a class="" href="chapter-8-lab-decision-trees.html"><span class="header-section-number">12</span> Chapter 8 Lab: Decision Trees</a></li>
+<li><a class="" href="trees-9-the-oj-dataset.html"><span class="header-section-number">13</span> Trees #9 The OJ Dataset</a></li>
+<li><a class="" href="project-e1.html"><span class="header-section-number">14</span> Project (E1)</a></li>
 </ul>
 
         <div class="book-extra">
@@ -67,13 +64,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lab-2-ggplot-without-dsbox" class="section level1" number="9">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lab-2-ggplot-without-dsbox" class="section level1" number="7">
 <h1>
-<span class="header-section-number">9</span> Lab 2 – ggplot without <code>dsbox</code><a class="anchor" aria-label="anchor" href="#lab-2-ggplot-without-dsbox"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7</span> Lab 2 – ggplot without <code>dsbox</code><a class="anchor" aria-label="anchor" href="#lab-2-ggplot-without-dsbox"><i class="fas fa-link"></i></a>
 </h1>
-<div id="excercises-using-the-data-sets-mpg-or-diamonds" class="section level2" number="9.1">
+<div id="excercises-using-the-data-sets-mpg-or-diamonds" class="section level2" number="7.1">
 <h2>
-<span class="header-section-number">9.1</span> Excercises using the data sets <code>mpg</code> or <code>diamonds</code><a class="anchor" aria-label="anchor" href="#excercises-using-the-data-sets-mpg-or-diamonds"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.1</span> Excercises using the data sets <code>mpg</code> or <code>diamonds</code><a class="anchor" aria-label="anchor" href="#excercises-using-the-data-sets-mpg-or-diamonds"><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: decimal">
 <li>Create these figures using the data sets <code>mpg</code> or <code>diamonds</code> as needed:</li>
@@ -82,9 +79,9 @@
 <div class="inline-figure"><img src="103-ggplot_Lab_no_dsbox_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
 <div class="inline-figure"><img src="103-ggplot_Lab_no_dsbox_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
 </div>
-<div id="palmerpenguins" class="section level2" number="9.2">
+<div id="palmerpenguins" class="section level2" number="7.2">
 <h2>
-<span class="header-section-number">9.2</span> palmerpenguins<a class="anchor" aria-label="anchor" href="#palmerpenguins"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.2</span> palmerpenguins<a class="anchor" aria-label="anchor" href="#palmerpenguins"><i class="fas fa-link"></i></a>
 </h2>
 <p><code>palmerpenguins</code> is a realtively new package on CRAN, so you can install it from CRAN instead of Github.</p>
 <p>Install it like a normal package. After successful installation, you can find out that there are two datasets attached with the package – penguins and penguins_raw. You can check out their help page (?penguins_raw and ?penguins_raw) to understand more about respective datasets.</p>
@@ -103,14 +100,14 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="lab-2-pretty-pictures.html"><span class="header-section-number">8</span> Lab 2: Pretty pictures!</a></div>
-<div class="next"><a href="lab-3-coronavirus-visualization-data-wrangling-and-dates.html"><span class="header-section-number">10</span> Lab 3: coronavirus visualization, data wrangling, and dates</a></div>
+<div class="prev"><a href="lab-3-pretty-pictures.html"><span class="header-section-number">6</span> Lab 3: Pretty pictures!</a></div>
+<div class="next"><a href="lab-4-coronavirus-visualization-data-wrangling-and-dates.html"><span class="header-section-number">8</span> Lab 4: coronavirus visualization, data wrangling, and dates</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#lab-2-ggplot-without-dsbox"><span class="header-section-number">9</span> Lab 2 – ggplot without dsbox</a></li>
-<li><a class="nav-link" href="#excercises-using-the-data-sets-mpg-or-diamonds"><span class="header-section-number">9.1</span> Excercises using the data sets mpg or diamonds</a></li>
-<li><a class="nav-link" href="#palmerpenguins"><span class="header-section-number">9.2</span> palmerpenguins</a></li>
+<li><a class="nav-link" href="#lab-2-ggplot-without-dsbox"><span class="header-section-number">7</span> Lab 2 – ggplot without dsbox</a></li>
+<li><a class="nav-link" href="#excercises-using-the-data-sets-mpg-or-diamonds"><span class="header-section-number">7.1</span> Excercises using the data sets mpg or diamonds</a></li>
+<li><a class="nav-link" href="#palmerpenguins"><span class="header-section-number">7.2</span> palmerpenguins</a></li>
 </ul>
 
       <div class="book-extra">
@@ -128,7 +125,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-04-05.</p>
+    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-12-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

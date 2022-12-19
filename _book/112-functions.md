@@ -164,7 +164,7 @@ sum_3(1, 2, z = 3)
 #> [1] 6
 ```
 
-# Conditionals
+## Conditionals
 
 ## if statements
 

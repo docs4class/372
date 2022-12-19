@@ -1,0 +1,182 @@
+# Project (E1)
+
+## A project to call your own
+
+Pick a dataset, any dataset...
+
+...and do something with it. That is your first Analytics 2 project.  Make us both proud, in a nutshell. More details below.
+
+
+## May be too long, but please do read
+
+This project for this class will consist of analysis on a dataset of your own 
+choosing. **Please make sure I am ok with your choice.**  The dataset may already exist, 
+or you may collect your own data using a 
+survey or by conducting an experiment. You can choose the data based on your interests 
+or based on work in other courses or research projects. The goal of this project is for 
+you to demonstrate proficiency in the techniques we have covered in this class (and 
+beyond, if you like) and apply them to a novel dataset in a meaningful way.
+
+## Data
+
+In order for you to have the greatest chance of success with this project it is important that 
+you choose a manageable dataset. This means that the data should be readily accessible and large 
+enough that multiple relationships can be explored. As such, your dataset must have at least 50 
+observations and between 10 to 20 variables (exceptions can be made but you must speak with me 
+first). The dataset’s variables should include categorical variables, discrete numerical 
+variables, and continuous numerical variables.
+
+All analyses must be done in RStudio. If you are using a dataset that comes in a format that 
+we haven't encountered in class, make sure that you are able to load it into RStudio as this 
+can be tricky depending on the source. If you are having trouble ask for help before it is too late.
+
+*Reusing datasets from class:* Do not reuse datasets used in examples / homework in the
+class.
+
+## Components
+
+### Project proposal
+
+This is a draft of the introduction section of your project as well as a 
+data analysis plan and your dataset. Each section should be no more than 1 
+page (excluding figures). You can check a print preview to confirm length. 
+
+> Your write up and all analysis including visuals must be done using R Markdown.
+
+#### Section 1 - Introduction: 
+
+The introduction should introduce your general research 
+question and your data (where it came from, how it was collected, what 
+are the cases, what are the variables, etc.).
+
+#### Section 2 - Data analysis plan: 
+
+The data analysis plan should include:
+
+- The outcome (dependent, response, Y) and predictor (independent, explanatory, X) 
+variables you will use to answer your question.
+- The comparison groups you will use, if applicable.
+- Very preliminary exploratory data analysis, including some summary statistics and 
+visualizations, along with some explanation on how they help you learn more about your data.
+(You can add to these later as you work on your project..)
+- The statistical method(s) that you believe will be useful in answering your question(s). 
+(You can update these later as you work on your project.)
+- Ideally you will use at least two out of these options: tree methods, linear regression, 
+and classification (like logistic regression).
+-  What results from these specific statistical methods are needed to support your 
+hypothesized answer?
+
+#### Section 3 - Data: 
+
+In yuor write up, include enough details that I understand what your raw data looked like 
+and included.
+
+### Project
+
+#### Write up
+
+After providing the description of your dataset and research question in the 
+introduction use the remainder of your write up to showcase how you have arrived at 
+an answer / answers to your question using any techniques we have learned in this
+class (and some beyond, if you're feeling adventurous). The goal is not to do an exhaustive 
+data analysis i.e., do not calculate every statistic and procedure you have 
+learned for every variable, but rather let me know that you are proficient at 
+asking meaningful questions and answering them with results of data analysis, that
+you are proficient in using R, and that you are proficient at interpreting and 
+presenting the results. Focus on methods that help you begin to answer your research 
+questions. You do not have to apply every statistical procedure we learned.
+Also pay attention to your presentation. Neatness, coherency, and clarity will count.
+
+Your write up must also include a one to two page conclusion and discussion. 
+This will require a summary of what you have learned about your research 
+question along with statistical arguments supporting your conclusions. Also 
+critique your own methods and provide suggestions for improving your analysis. 
+Issues pertaining to the reliability and validity of your data, and 
+appropriateness of the statistical analysis should be discussed here. A 
+paragraph on what you would do differently if you were able to start over 
+with the project or what you would do next if you were going to continue 
+work on the project should also be included.
+
+> The project is very open ended. You should create some kind of compelling 
+visualization(s) of this data in R. 
+
+There is no limit on what tools or packages you may use, but sticking to packages we learned in class (ISLR and R4DS)
+is required. You do not need to visualize all of the data at once. A single high quality 
+visualization will receive a much higher grade than a large number of poor quality 
+visualizations.
+
+Before you finalize your write up, make sure your chunks are turned off 
+with `echo = FALSE`.   **Exception:** If you want to 
+highlight something specific about a piece of code, you're welcomed to show 
+that portion. [See below: I will also want a copy of the raw .Rmd file not just the html output.] 
+
+You can add sections as you see fit to the project but make sure 
+you have a section called Introduction at the beginning and a section called 
+Conclusion at the end. The rest is up to you!
+
+#### Presentation
+
+10 minutes maximum.
+
+You can use any software you like for your final presentation, including R Markdown
+to create your slides. There isn't a limit to how many slides you can use, just a 
+time limit (10 minutes total). Perhaps try `ioslides` or `beamer`.   Your presentation 
+should not just be an account of everything you 
+tried ("then we did this, then we did this, etc."), instead it should convey what 
+choices you made, and why, and what you found.
+
+#### Delivarables
+
+Your submission should include
+
+* RMarkdown file (formatted to clearly present all of your code and results) 
+* HTML file
+* Dataset(s) (in csv or RData format, in a `/data` folder)
+* Presentation (if using Keynote/PowerPoint/Google Slides, export to PDF and put in repo, in a `/presentation` folder)
+
+Style and format does count for this assignment, so please take the time to make 
+sure everything looks good and your data and code are properly formated.
+
+
+## Grading
+
+Total                                                   | 100 pts
+--------------------------------------------------------|--------
+Introduction                                            | 20 pts
+Data analysis plan                                      | 20 pts
+Data Methods and code quality                           | 50 pts
+Organization                                            | 10 pts
+
+
+
+Grading of the project will take into account the following:
+
+- Content - What is the quality of research and/or policy question and relevancy 
+of data to those questions?
+- Correctness - Are statistical procedures carried out and explained correctly?
+- Writing and Presentation - What is the quality of the statistical presentation, 
+writing, and explanations?
+- Creativity and Critical Thought - Is the project carefully thought out? Are the 
+limitations carefully considered? Does it appear that time and effort went into 
+the planning and implementation of the project?
+
+A general breakdown of scoring is as follows:
+
+- 90%-100% - Outstanding effort. Student understands how to apply all statistical 
+concepts, can put the results into a cogent argument, can identify weaknesses in 
+the argument, and can clearly communicate the results to others.
+- 80%-89% - Good effort. Student understands most of the concepts, puts together 
+an adequate argument, identifies some weaknesses of their argument, and communicates 
+most results clearly to others.
+- 70%-79% - Passing effort. Student has misunderstanding of concepts in several 
+areas, has some trouble putting results together in a cogent argument, and communication 
+of results is sometimes unclear.
+- 60%-69% - Struggling effort. Student is making some effort, but has misunderstanding 
+of many concepts and is unable to put together a cogent argument. Communication 
+of results is unclear.
+- Below 60% - Student is not making a sufficient effort.
+
+**Late penalty:**
+
+- Late, but within 24 hours of due date/time: -20% (only applies to written portion, there is no option to do your presentation later)
+- Any later: no credit 

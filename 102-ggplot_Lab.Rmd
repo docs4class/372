@@ -1,4 +1,4 @@
-# Lab 2: Pretty pictures!
+# Lab 3: Pretty pictures!
 
 > Please make sure you have read and understood R4DS Chapter 
 on data visulization.  Also check out the *Data 

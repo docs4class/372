@@ -1,4 +1,4 @@
-# Lab 1 in Rmarkdown
+# Lab 2 in Rmarkdown
 
 ## R Markdown
 

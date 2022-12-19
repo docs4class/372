@@ -1,4 +1,4 @@
-# Lab 3: `coronavirus` visualization, data wrangling, and dates
+# Lab 4: `coronavirus` visualization, data wrangling, and dates
 
 The package is available on GitHub [here](https://github.com/RamiKrispin/coronavirus) and is updated daily.
 

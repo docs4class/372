@@ -102,25 +102,3 @@ I am a Presby First+ Advocate. I am here to support our current first-generation
 I am a Presby First+ Advocate. I am committed to supporting first-generation students at Presbyterian College. At Presbyterian College, first-generation students are those in which neither parent nor legal guardian graduated from a four-year higher education institution with a bachelor's degree. If you are a first-generation college student, please contact me anytime or visit me during my office hours. For more information about support for first-generation college students on our campus visit our Presby First+ webpage.
 
 
-# Our Class Rhythm
-
-::: {.rmdimportant}
-
-**Monday:** Wrap up previous topic and introduce what you've pre-read about.  Chat.  Play.  Work some examples.  Make sure the topics applies to real-life.
-
-**Wednesday:**  Work more examples.  Chat as needed.  **Live our best lives.  :)**.  
-
-**Friday:** Apply what we've learned -- demonstrate your mastery (typically in the form of a quiz, lab, or assignment).  Rinse.  Repeat.
-
-:::
-
-
-# End in Mind
-
-::: {.rmdimportant}
-
-**Dana Simmons:** "Can you predict which students will enroll at PC?"
-
-**Christina Miller:** ??? Well, can you? ???
-
-:::

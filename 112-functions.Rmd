@@ -131,7 +131,7 @@ sum_3(1, 2, z = 3)
 sum_3(1, 2, z = 3)
 ```
 
-# Conditionals
+## Conditionals
 
 ## if statements
 
