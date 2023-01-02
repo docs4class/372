@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 13 Trees #9 The OJ Dataset | BADM 372 Applied Analytics</title>
+<title>Chapter 14 Trees #9 The OJ Dataset | BADM 372 Applied Analytics</title>
 <meta name="author" content="BADM 372">
 <meta name="description" content="This problem involves the OJ data set which is part of the ISLR package. #&gt; #&gt; Attaching package: 'dplyr' #&gt; The following objects are masked from 'package:stats': #&gt; #&gt;   filter, lag #&gt; The...">
 <meta name="generator" content="bookdown 0.25 with bs4_book()">
-<meta property="og:title" content="Chapter 13 Trees #9 The OJ Dataset | BADM 372 Applied Analytics">
+<meta property="og:title" content="Chapter 14 Trees #9 The OJ Dataset | BADM 372 Applied Analytics">
 <meta property="og:type" content="book">
 <meta property="og:description" content="This problem involves the OJ data set which is part of the ISLR package. #&gt; #&gt; Attaching package: 'dplyr' #&gt; The following objects are masked from 'package:stats': #&gt; #&gt;   filter, lag #&gt; The...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 13 Trees #9 The OJ Dataset | BADM 372 Applied Analytics">
+<meta name="twitter:title" content="Chapter 14 Trees #9 The OJ Dataset | BADM 372 Applied Analytics">
 <meta name="twitter:description" content="This problem involves the OJ data set which is part of the ISLR package. #&gt; #&gt; Attaching package: 'dplyr' #&gt; The following objects are masked from 'package:stats': #&gt; #&gt;   filter, lag #&gt; The...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -53,10 +53,11 @@
 <li><a class="" href="lab-4-coronavirus-visualization-data-wrangling-and-dates.html"><span class="header-section-number">8</span> Lab 4: coronavirus visualization, data wrangling, and dates</a></li>
 <li><a class="" href="functions.html"><span class="header-section-number">9</span> Functions</a></li>
 <li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
-<li><a class="" href="tree-based-methods.html"><span class="header-section-number">11</span> Tree-Based Methods</a></li>
-<li><a class="" href="chapter-8-lab-decision-trees.html"><span class="header-section-number">12</span> Chapter 8 Lab: Decision Trees</a></li>
-<li><a class="active" href="trees-9-the-oj-dataset.html"><span class="header-section-number">13</span> Trees #9 The OJ Dataset</a></li>
-<li><a class="" href="project-e1.html"><span class="header-section-number">14</span> Project (E1)</a></li>
+<li><a class="" href="logistic-regression.html"><span class="header-section-number">11</span> Logistic Regression</a></li>
+<li><a class="" href="tree-based-methods.html"><span class="header-section-number">12</span> Tree-Based Methods</a></li>
+<li><a class="" href="chapter-8-lab-decision-trees.html"><span class="header-section-number">13</span> Chapter 8 Lab: Decision Trees</a></li>
+<li><a class="active" href="trees-9-the-oj-dataset.html"><span class="header-section-number">14</span> Trees #9 The OJ Dataset</a></li>
+<li><a class="" href="project-e1.html"><span class="header-section-number">15</span> Project (E1)</a></li>
 </ul>
 
         <div class="book-extra">
@@ -64,9 +65,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="trees-9-the-oj-dataset" class="section level1" number="13">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="trees-9-the-oj-dataset" class="section level1" number="14">
 <h1>
-<span class="header-section-number">13</span> Trees #9 The OJ Dataset<a class="anchor" aria-label="anchor" href="#trees-9-the-oj-dataset"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14</span> Trees #9 The OJ Dataset<a class="anchor" aria-label="anchor" href="#trees-9-the-oj-dataset"><i class="fas fa-link"></i></a>
 </h1>
 <p>This problem involves the OJ data set which is part of the ISLR package.</p>
 <pre><code>#&gt; 
@@ -213,38 +214,38 @@ text(tree_model, pretty = 0, cex = 0.7)</p>
 <span class="co">#&gt; test_pred  CH  MM</span>
 <span class="co">#&gt;        CH 148  32</span>
 <span class="co">#&gt;        MM  15  75</span></code></pre></div>
-<div id="test_actual" class="section level2" number="13.1">
+<div id="test_actual" class="section level2" number="14.1">
 <h2>
-<span class="header-section-number">13.1</span> test_actual<a class="anchor" aria-label="anchor" href="#test_actual"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.1</span> test_actual<a class="anchor" aria-label="anchor" href="#test_actual"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="test_pred-ch-mm" class="section level2" number="13.2">
+<div id="test_pred-ch-mm" class="section level2" number="14.2">
 <h2>
-<span class="header-section-number">13.2</span> test_pred CH MM<a class="anchor" aria-label="anchor" href="#test_pred-ch-mm"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2</span> test_pred CH MM<a class="anchor" aria-label="anchor" href="#test_pred-ch-mm"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="ch-125-32" class="section level2" number="13.3">
+<div id="ch-125-32" class="section level2" number="14.3">
 <h2>
-<span class="header-section-number">13.3</span> CH 125 32<a class="anchor" aria-label="anchor" href="#ch-125-32"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3</span> CH 125 32<a class="anchor" aria-label="anchor" href="#ch-125-32"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="mm-34-79" class="section level2" number="13.4">
+<div id="mm-34-79" class="section level2" number="14.4">
 <h2>
-<span class="header-section-number">13.4</span> MM 34 79<a class="anchor" aria-label="anchor" href="#mm-34-79"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4</span> MM 34 79<a class="anchor" aria-label="anchor" href="#mm-34-79"><i class="fas fa-link"></i></a>
 </h2>
 <p>The test error rate corresponding to it:</p>
 <p>1 - mean(test_pred == test$Purchase)</p>
 </div>
-<div id="section" class="section level2" number="13.5">
+<div id="section" class="section level2" number="14.5">
 <h2>
-<span class="header-section-number">13.5</span> [1] 0.2444444<a class="anchor" aria-label="anchor" href="#section"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.5</span> [1] 0.2444444<a class="anchor" aria-label="anchor" href="#section"><i class="fas fa-link"></i></a>
 </h2>
 <p>CH was the most common orange juice in train so, for comparison, a baseline classifier (that predicted CH for all observations in test) would have the following error rate:</p>
 <p>1 - mean(test$Purchase == “CH”)</p>
 </div>
-<div id="section-1" class="section level2" number="13.6">
+<div id="section-1" class="section level2" number="14.6">
 <h2>
-<span class="header-section-number">13.6</span> [1] 0.4111111<a class="anchor" aria-label="anchor" href="#section-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.6</span> [1] 0.4111111<a class="anchor" aria-label="anchor" href="#section-1"><i class="fas fa-link"></i></a>
 </h2>
 <ol start="6" style="list-style-type: lower-alpha">
 <li>Cost-Complexity Pruning</li>
@@ -349,18 +350,18 @@ Here is the training error for the unpruned tree (7 terminal nodes):</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="chapter-8-lab-decision-trees.html"><span class="header-section-number">12</span> Chapter 8 Lab: Decision Trees</a></div>
-<div class="next"><a href="project-e1.html"><span class="header-section-number">14</span> Project (E1)</a></div>
+<div class="prev"><a href="chapter-8-lab-decision-trees.html"><span class="header-section-number">13</span> Chapter 8 Lab: Decision Trees</a></div>
+<div class="next"><a href="project-e1.html"><span class="header-section-number">15</span> Project (E1)</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#trees-9-the-oj-dataset"><span class="header-section-number">13</span> Trees #9 The OJ Dataset</a></li>
-<li><a class="nav-link" href="#test_actual"><span class="header-section-number">13.1</span> test_actual</a></li>
-<li><a class="nav-link" href="#test_pred-ch-mm"><span class="header-section-number">13.2</span> test_pred CH MM</a></li>
-<li><a class="nav-link" href="#ch-125-32"><span class="header-section-number">13.3</span> CH 125 32</a></li>
-<li><a class="nav-link" href="#mm-34-79"><span class="header-section-number">13.4</span> MM 34 79</a></li>
-<li><a class="nav-link" href="#section"><span class="header-section-number">13.5</span> [1] 0.2444444</a></li>
-<li><a class="nav-link" href="#section-1"><span class="header-section-number">13.6</span> [1] 0.4111111</a></li>
+<li><a class="nav-link" href="#trees-9-the-oj-dataset"><span class="header-section-number">14</span> Trees #9 The OJ Dataset</a></li>
+<li><a class="nav-link" href="#test_actual"><span class="header-section-number">14.1</span> test_actual</a></li>
+<li><a class="nav-link" href="#test_pred-ch-mm"><span class="header-section-number">14.2</span> test_pred CH MM</a></li>
+<li><a class="nav-link" href="#ch-125-32"><span class="header-section-number">14.3</span> CH 125 32</a></li>
+<li><a class="nav-link" href="#mm-34-79"><span class="header-section-number">14.4</span> MM 34 79</a></li>
+<li><a class="nav-link" href="#section"><span class="header-section-number">14.5</span> [1] 0.2444444</a></li>
+<li><a class="nav-link" href="#section-1"><span class="header-section-number">14.6</span> [1] 0.4111111</a></li>
 </ul>
 
       <div class="book-extra">
@@ -378,7 +379,7 @@ Here is the training error for the unpruned tree (7 terminal nodes):</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-12-19.</p>
+    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2023-01-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

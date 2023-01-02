@@ -1,0 +1,8 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Logistic Regression
+
+Your resource for this is ISLR Chapter 4: Classification.

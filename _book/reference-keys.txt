@@ -49,6 +49,7 @@ vectorized-conditionals
 multiple-conditions
 linear-regression
 exercises
+logistic-regression
 tree-based-methods
 chapter-8-lab-decision-trees
 trees-9-the-oj-dataset

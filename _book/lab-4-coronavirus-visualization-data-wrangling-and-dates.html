@@ -53,10 +53,11 @@
 <li><a class="active" href="lab-4-coronavirus-visualization-data-wrangling-and-dates.html"><span class="header-section-number">8</span> Lab 4: coronavirus visualization, data wrangling, and dates</a></li>
 <li><a class="" href="functions.html"><span class="header-section-number">9</span> Functions</a></li>
 <li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
-<li><a class="" href="tree-based-methods.html"><span class="header-section-number">11</span> Tree-Based Methods</a></li>
-<li><a class="" href="chapter-8-lab-decision-trees.html"><span class="header-section-number">12</span> Chapter 8 Lab: Decision Trees</a></li>
-<li><a class="" href="trees-9-the-oj-dataset.html"><span class="header-section-number">13</span> Trees #9 The OJ Dataset</a></li>
-<li><a class="" href="project-e1.html"><span class="header-section-number">14</span> Project (E1)</a></li>
+<li><a class="" href="logistic-regression.html"><span class="header-section-number">11</span> Logistic Regression</a></li>
+<li><a class="" href="tree-based-methods.html"><span class="header-section-number">12</span> Tree-Based Methods</a></li>
+<li><a class="" href="chapter-8-lab-decision-trees.html"><span class="header-section-number">13</span> Chapter 8 Lab: Decision Trees</a></li>
+<li><a class="" href="trees-9-the-oj-dataset.html"><span class="header-section-number">14</span> Trees #9 The OJ Dataset</a></li>
+<li><a class="" href="project-e1.html"><span class="header-section-number">15</span> Project (E1)</a></li>
 </ul>
 
         <div class="book-extra">
@@ -108,7 +109,7 @@
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">cases</span><span class="op">)</span>
 <span class="co">#&gt;      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. </span>
-<span class="co">#&gt; -30974748         0         0       471        35   1123456</span></code></pre></div>
+<span class="co">#&gt; -30974748         0         0       739        22   1383897</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>Can you create a visual showing the cases over time for Russia, Spain, US, and Venezuela?
 Also, why might <code>filter(cases &gt;= 0)</code> be worth using?</li>
@@ -149,10 +150,10 @@ Also, why might <code>filter(cases &gt;= 0)</code> be worth using?</li>
 #&gt; 5 2020-01-26  Russia      0
 #&gt; 6 2020-01-27  Russia      0
 #&gt;     country   n
-#&gt; 1    Russia 631
-#&gt; 2     Spain 629
-#&gt; 3        US 631
-#&gt; 4 Venezuela 630</code></pre>
+#&gt; 1    Russia 884
+#&gt; 2     Spain 880
+#&gt; 3        US 883
+#&gt; 4 Venezuela 883</code></pre>
 <p>Let’s make a little table of just confirmed cases.</p>
 <pre><code>#&gt;         date country confirmed
 #&gt; 1 2020-01-22  Russia         0
@@ -162,10 +163,10 @@ Also, why might <code>filter(cases &gt;= 0)</code> be worth using?</li>
 #&gt; 5 2020-01-26  Russia         0
 #&gt; 6 2020-01-27  Russia         0
 #&gt;     country   n
-#&gt; 1    Russia 631
-#&gt; 2     Spain 631
-#&gt; 3        US 631
-#&gt; 4 Venezuela 631</code></pre>
+#&gt; 1    Russia 884
+#&gt; 2     Spain 884
+#&gt; 3        US 884
+#&gt; 4 Venezuela 884</code></pre>
 <p>Let’s join these together. I use <code>left_join</code>.</p>
 <pre><code>#&gt;         date country deaths confirmed
 #&gt; 1 2020-01-22  Russia      0         0
@@ -175,10 +176,10 @@ Also, why might <code>filter(cases &gt;= 0)</code> be worth using?</li>
 #&gt; 5 2020-01-26  Russia      0         0
 #&gt; 6 2020-01-27  Russia      0         0
 #&gt;     country   n
-#&gt; 1    Russia 631
-#&gt; 2     Spain 631
-#&gt; 3        US 631
-#&gt; 4 Venezuela 631</code></pre>
+#&gt; 1    Russia 884
+#&gt; 2     Spain 884
+#&gt; 3        US 884
+#&gt; 4 Venezuela 884</code></pre>
 <p>Let’s add some cumulative statistics as well.</p>
 <pre><code>#&gt;         date country deaths confirmed cumulative_cases
 #&gt; 1 2020-01-22  Russia      0         0                0
@@ -197,29 +198,29 @@ Also, why might <code>filter(cases &gt;= 0)</code> be worth using?</li>
 <p>Now we can plot some more fun stuff.</p>
 <div class="inline-figure"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
 <pre><code>#&gt;       date              country              deaths      
-#&gt;  Min.   :2020-01-22   Length:2524        Min.   :   0.0  
-#&gt;  1st Qu.:2020-06-27   Class :character   1st Qu.:   4.0  
-#&gt;  Median :2020-12-02   Mode  :character   Median : 115.0  
-#&gt;  Mean   :2020-12-02                      Mean   : 407.9  
-#&gt;  3rd Qu.:2021-05-09                      3rd Qu.: 526.0  
-#&gt;  Max.   :2021-10-13                      Max.   :4460.0  
-#&gt;                                          NA's   :3       
-#&gt;    confirmed        cumulative_cases   cumulative_deaths
-#&gt;  Min.   :-74347.0   Min.   :       0   Min.   :     0   
-#&gt;  1st Qu.:   418.8   1st Qu.: 7742899   1st Qu.: 13566   
-#&gt;  Median :  6501.0   Median :12723106   Median : 72982   
-#&gt;  Mean   : 22897.5   Mean   :25127794   Mean   : 90759   
-#&gt;  3rd Qu.: 23351.0   3rd Qu.:57407255   3rd Qu.:163245   
-#&gt;  Max.   :303008.0   Max.   :57793207   Max.   :244190   
-#&gt;                                        NA's   :1769     
+#&gt;  Min.   :2020-01-22   Length:3536        Min.   :   0.0  
+#&gt;  1st Qu.:2020-08-29   Class :character   1st Qu.:   4.0  
+#&gt;  Median :2021-04-07   Mode  :character   Median : 115.0  
+#&gt;  Mean   :2021-04-07                      Mean   : 426.0  
+#&gt;  3rd Qu.:2021-11-14                      3rd Qu.: 575.5  
+#&gt;  Max.   :2022-06-23                      Max.   :4415.0  
+#&gt;                                          NA's   :6       
+#&gt;    confirmed         cumulative_cases    cumulative_deaths
+#&gt;  Min.   : -74347.0   Min.   :        0   Min.   :     0   
+#&gt;  1st Qu.:    388.8   1st Qu.: 18140893   1st Qu.: 20587   
+#&gt;  Median :   7469.0   Median : 30754528   Median :122606   
+#&gt;  Mean   :  33381.6   Mean   : 52262197   Mean   :168373   
+#&gt;  3rd Qu.:  29701.2   3rd Qu.:117512148   3rd Qu.:334969   
+#&gt;  Max.   :1383897.0   Max.   :118037488   Max.   :401762   
+#&gt;                                          NA's   :2528     
 #&gt;       rate          
 #&gt;  Min.   :-0.036576  
-#&gt;  1st Qu.: 0.006006  
-#&gt;  Median : 0.013469  
-#&gt;  Mean   : 0.023459  
-#&gt;  3rd Qu.: 0.024058  
+#&gt;  1st Qu.: 0.003513  
+#&gt;  Median : 0.012243  
+#&gt;  Mean   : 0.020419  
+#&gt;  3rd Qu.: 0.021811  
 #&gt;  Max.   : 3.840391  
-#&gt;  NA's   :3</code></pre>
+#&gt;  NA's   :6</code></pre>
 <div class="inline-figure"><img src="105-coronavirus_lab_files/figure-html/unnamed-chunk-14-2.png" width="672"></div>
 
 </div>
@@ -249,7 +250,7 @@ Also, why might <code>filter(cases &gt;= 0)</code> be worth using?</li>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2022-12-19.</p>
+    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2023-01-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
