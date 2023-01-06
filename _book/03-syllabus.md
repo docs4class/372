@@ -32,18 +32,24 @@ This course will be focused on both understanding and applying key business anal
 
 ## Performance Evaluation (Grading)
 
-- Quizzes and Assignments - 40%
+- Labs, Quizzes and Assignments - 40%
 - Exam 1 - 20%
 - Exam 2 - 20%
 - Final Exam - 20%
+
+### Missed Exams/Assignments  = ZERO
+
+Arrangements for missed or late assignments must be made **PRIOR** to the exam or due date or the student may receive a ZERO grade for the exam or assignment.  See attendance and quiz sections below for more details.
+
+- **Missed Quizzes and Assignments cannot be made up later.  Be present.**  
 
 ### Exams
 
 Exams will cover assigned chapters in the textbook, other assigned readings, lectures, class exercises, class discussions, videos, and guest speakers. I will typically allocate time prior to each exam to clearly identify the body of knowledge each test will cover and to answer questions about the format and objectives of the exam.
 
 
-### Quizzes -- **DON'T MISS CLASS**
-- The average of all quizzes and assignments will comprise the Quizzes and Assignments - 40% portion of your final grade
+### Labs/Quizzes -- **DON'T MISS CLASS**
+- The average of all labs, quizzes and assignments will comprise the Quizzes and Assignments - 40% portion of your final grade
 - Quizzes and Assignments are designed to prepare you for your exams and to ensure you stay up with the course material
 - **Missed Quizzes and Assignments cannot be made up later.  Be present.**  
 

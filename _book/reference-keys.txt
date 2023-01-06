@@ -3,8 +3,9 @@ syllabus
 course-objectives-and-learning-outcomes
 text-and-resources
 performance-evaluation-grading
+missed-examsassignments-zero
 exams
-quizzes-dont-miss-class
+labsquizzes-dont-miss-class
 final-average
 class-participation
 phones
