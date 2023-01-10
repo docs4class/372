@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 11 Tree-Based Methods | BADM 372 Applied Analytics</title>
+<title>Chapter 6 All Variables Considered: | BADM 372 Applied Analytics</title>
 <meta name="author" content="BADM 372">
-<meta name="description" content="Your resource for this is ISLR Chapter 8: Tree-Based Methods. Make sure you can exlain the terms/ideas/figures below outloud, in your own words, so that they make sense both to you and to someone...">
+<meta name="description" content="#&gt; # A tibble: 1 × 14 #&gt;  name height mass hair_color skin_color eye_color #&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt; #&gt; 1   0   6  28     5     0     0 #&gt; # … with 8 more variables: birth_year...">
 <meta name="generator" content="bookdown 0.25 with bs4_book()">
-<meta property="og:title" content="Chapter 11 Tree-Based Methods | BADM 372 Applied Analytics">
+<meta property="og:title" content="Chapter 6 All Variables Considered: | BADM 372 Applied Analytics">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Your resource for this is ISLR Chapter 8: Tree-Based Methods. Make sure you can exlain the terms/ideas/figures below outloud, in your own words, so that they make sense both to you and to someone...">
+<meta property="og:description" content="#&gt; # A tibble: 1 × 14 #&gt;  name height mass hair_color skin_color eye_color #&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt; #&gt; 1   0   6  28     5     0     0 #&gt; # … with 8 more variables: birth_year...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 11 Tree-Based Methods | BADM 372 Applied Analytics">
-<meta name="twitter:description" content="Your resource for this is ISLR Chapter 8: Tree-Based Methods. Make sure you can exlain the terms/ideas/figures below outloud, in your own words, so that they make sense both to you and to someone...">
+<meta name="twitter:title" content="Chapter 6 All Variables Considered: | BADM 372 Applied Analytics">
+<meta name="twitter:description" content="#&gt; # A tibble: 1 × 14 #&gt;  name height mass hair_color skin_color eye_color #&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt; #&gt; 1   0   6  28     5     0     0 #&gt; # … with 8 more variables: birth_year...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -48,12 +48,12 @@
 <li><a class="" href="schedule.html"><span class="header-section-number">3</span> Schedule</a></li>
 <li><a class="" href="lab-1-excercises.html"><span class="header-section-number">4</span> Lab 1 Excercises</a></li>
 <li><a class="" href="lab-2-in-rmarkdown.html"><span class="header-section-number">5</span> Lab 2 in Rmarkdown</a></li>
-<li><a class="" href="all-variables-considered.html"><span class="header-section-number">6</span> All Variables Considered:</a></li>
+<li><a class="active" href="all-variables-considered.html"><span class="header-section-number">6</span> All Variables Considered:</a></li>
 <li><a class="" href="lab-2-ggplot-without-dsbox.html"><span class="header-section-number">7</span> Lab 2 – ggplot without dsbox</a></li>
 <li><a class="" href="functions.html"><span class="header-section-number">8</span> Functions</a></li>
 <li><a class="" href="linear-regression.html"><span class="header-section-number">9</span> Linear Regression</a></li>
 <li><a class="" href="logistic-regression.html"><span class="header-section-number">10</span> Logistic Regression</a></li>
-<li><a class="active" href="tree-based-methods.html"><span class="header-section-number">11</span> Tree-Based Methods</a></li>
+<li><a class="" href="tree-based-methods.html"><span class="header-section-number">11</span> Tree-Based Methods</a></li>
 <li><a class="" href="chapter-8-lab-decision-trees.html"><span class="header-section-number">12</span> Chapter 8 Lab: Decision Trees</a></li>
 <li><a class="" href="trees-9-the-oj-dataset.html"><span class="header-section-number">13</span> Trees #9 The OJ Dataset</a></li>
 <li><a class="" href="project-e1.html"><span class="header-section-number">14</span> Project (E1)</a></li>
@@ -64,38 +64,30 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="tree-based-methods" class="section level1" number="11">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="all-variables-considered" class="section level1" number="6">
 <h1>
-<span class="header-section-number">11</span> Tree-Based Methods<a class="anchor" aria-label="anchor" href="#tree-based-methods"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6</span> All Variables Considered:<a class="anchor" aria-label="anchor" href="#all-variables-considered"><i class="fas fa-link"></i></a>
 </h1>
-<p>Your resource for this is ISLR Chapter 8: Tree-Based Methods.</p>
-<p>Make sure you can exlain the terms/ideas/figures below <strong>outloud</strong>, in your own words, so that they make sense both to you and to someone else (me?). Actually practice exlaining the terms/ideas/figures <strong>outloud</strong> until your answers make sense:</p>
-<ul>
-<li>Regression vs. classification trees</li>
-<li>Understand Figure 8.1, Figure 8.2, Algorithm 8.1, Figure 8.3, Figure 8.4, Figure 8.5, Figure 8.6, Figure 8.7</li>
-<li>Be able to explain the +’s and -’s of trees (see section 8.1.4)</li>
-<li>Understand “combining a large number of trees
-can often result in dramatic improvements in prediction accuracy, at the expense of some loss in interpretation.”</li>
-<li>top-down, greedy approach (aka recursive binary splitting)</li>
-<li>tree pruning and subtrees</li>
-<li>cost complexity pruning (aka weakest link pruning)</li>
-<li>bagging</li>
-<li>random forests</li>
-<li>boosting</li>
-<li>Bayesian additive regression trees</li>
-</ul>
+<pre><code>#&gt; # A tibble: 1 × 14
+#&gt;    name height  mass hair_color skin_color eye_color
+#&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt;      &lt;int&gt;      &lt;int&gt;     &lt;int&gt;
+#&gt; 1     0      6    28          5          0         0
+#&gt; # … with 8 more variables: birth_year &lt;int&gt;, sex &lt;int&gt;,
+#&gt; #   gender &lt;int&gt;, homeworld &lt;int&gt;, species &lt;int&gt;,
+#&gt; #   films &lt;int&gt;, vehicles &lt;int&gt;, starships &lt;int&gt;</code></pre>
+
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="logistic-regression.html"><span class="header-section-number">10</span> Logistic Regression</a></div>
-<div class="next"><a href="chapter-8-lab-decision-trees.html"><span class="header-section-number">12</span> Chapter 8 Lab: Decision Trees</a></div>
+<div class="prev"><a href="lab-2-in-rmarkdown.html"><span class="header-section-number">5</span> Lab 2 in Rmarkdown</a></div>
+<div class="next"><a href="lab-2-ggplot-without-dsbox.html"><span class="header-section-number">7</span> Lab 2 – ggplot without dsbox</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#tree-based-methods"><span class="header-section-number">11</span> Tree-Based Methods</a></li></ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#all-variables-considered"><span class="header-section-number">6</span> All Variables Considered:</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/117-trees.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/117-trees.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/101-a1.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/101-a1.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

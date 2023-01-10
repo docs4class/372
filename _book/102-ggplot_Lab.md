@@ -37,11 +37,11 @@ library(dsbox)
 ## Excercises
 1. Create these figures using the data sets `mpg` or `diamonds` as needed:
 
-![](102-ggplot_Lab_files/figure-epub3/unnamed-chunk-2-1.png)<!-- -->
+![](102-ggplot_Lab_files/figure-latex/unnamed-chunk-2-1.pdf)<!-- --> 
 
-![](102-ggplot_Lab_files/figure-epub3/unnamed-chunk-3-1.png)<!-- -->
+![](102-ggplot_Lab_files/figure-latex/unnamed-chunk-3-1.pdf)<!-- --> 
 
-![](102-ggplot_Lab_files/figure-epub3/unnamed-chunk-4-1.png)<!-- -->
+![](102-ggplot_Lab_files/figure-latex/unnamed-chunk-4-1.pdf)<!-- --> 
 
 
 
@@ -99,7 +99,7 @@ You can find descriptions of each of the variables in the help file for the data
 #> (stat_bin).
 ```
 
-![](102-ggplot_Lab_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
+![](102-ggplot_Lab_files/figure-latex/unnamed-chunk-6-1.pdf)<!-- --> 
 
 6. Create a similar visualization, this time showing the distribution of review scores (`review_scores_rating`) across neighborhoods. In your answer, include a brief interpretation of how Airbnb guests rate properties in general and how the neighborhoods compare to each other in terms of their ratings.
 

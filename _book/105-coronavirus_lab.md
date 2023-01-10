@@ -55,21 +55,21 @@ summary(coronavirus$cases)
 1. Can you create a visual showing the cases over time for Russia, Spain, US, and Venezuela?
 Also, why might `filter(cases >= 0)` be worth using? 
 
-![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-3-1.png)<!-- -->
+![](105-coronavirus_lab_files/figure-latex/unnamed-chunk-3-1.pdf)<!-- --> 
 
 2. Can you show deaths over time for Russia, Spain, US, and Venezuela?  And can you play with your geoms and make something neat?
 
-![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-4-1.png)<!-- -->
+![](105-coronavirus_lab_files/figure-latex/unnamed-chunk-4-1.pdf)<!-- --> 
 
 3. Now let's do a plot of COVID rate (# confirmed cases / population).  Something like this. 
 
-![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
+![](105-coronavirus_lab_files/figure-latex/unnamed-chunk-5-1.pdf)<!-- --> 
 
 4. What is and **is not** useful about the previous illustration?  
 
 5. Make a chart with cumulative cases.  Something like this:
 
-![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
+![](105-coronavirus_lab_files/figure-latex/unnamed-chunk-6-1.pdf)<!-- --> 
 
 6.  With a little more time and a few extra packages, we **could** make a graph prettier.  Try.
 
@@ -82,7 +82,7 @@ library(lubridate)
 ```
 
 
-![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-8-1.png)<!-- -->
+![](105-coronavirus_lab_files/figure-latex/unnamed-chunk-8-1.pdf)<!-- --> 
 
 
 7. Now let's **really** have some fun.  Let's illustrate death rates relative to confirmed cases.  Why is this more challenging than anything we've done so far in this lab?  We're going to have to make this data **tidy**.  
@@ -169,7 +169,7 @@ Let's add some cumulative statistics as well.
 Now we can plot some more fun stuff.
 
 
-![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-14-1.png)<!-- -->
+![](105-coronavirus_lab_files/figure-latex/unnamed-chunk-14-1.pdf)<!-- --> 
 
 ```
 #>       date              country              deaths      
@@ -198,5 +198,5 @@ Now we can plot some more fun stuff.
 #>  NA's   :6
 ```
 
-![](105-coronavirus_lab_files/figure-epub3/unnamed-chunk-14-2.png)<!-- -->
+![](105-coronavirus_lab_files/figure-latex/unnamed-chunk-14-2.pdf)<!-- --> 
 

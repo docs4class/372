@@ -34,7 +34,7 @@ summary(starwars$height)
   arrange(n))
 ```
 
-4-6. Make a plot of all individuals with mass on the x axis and height on the y axis. Put a best fit line on this plot.  Who is the biggest outlier in this dataset?
+4. Make a plot of all individuals with mass on the x axis and height on the y axis. Put a best fit line on this plot.  Who is the biggest outlier in this dataset?
 
 ```{r echo=FALSE}
 plot(starwars$mass, starwars$height)
@@ -42,6 +42,24 @@ m1 <- lm(height ~ mass, data = starwars)
 abline(m1)
 (starwars %>% select(name, mass, height) %>% filter(mass > 1200))
 ```
+
+5. Make something like this:
+
+## Why I like this class
+### Its awesome
+#### Really Awesome
+##### Super Duper Awesome
+###### Reason 5
+
+
+6. . Make plots like these:
+
+```{r, figures-side, fig.show="hold", out.width="50%"}
+par(mar = c(4, 4, .1, .1))
+plot(cars)
+plot(mpg ~ hp, data = mtcars, pch = 19)
+```
+
 
 7. Calculate BMI for all these individuals. What is the average BMI for all individuals?
 
@@ -88,16 +106,29 @@ starwars %>% filter(!is.na(mass)) %>%
   filter(avg.BMI > 32)
 ```
     
-10. How many individuals have no missing data? Which variables have the most missing data?
+10. How many individuals have no missing data? 
 
 > Via google: https://stackoverflow.com/questions/22353633/filter-for-complete-cases-in-data-frame-using-dplyr-case-wise-deletion
 
-```{r echo=FALSE}
+Single Variable Considered: 
 
-# Single Variable Considered: 
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+
 starwars %>% na.omit
+
+```
+
+Which variables have the most missing data?
+
+> Via google: https://stackoverflow.com/questions/26273663/r-how-to-total-the-number-of-na-in-each-col-of-data-frame
+
 # All Variables Considered:
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
 starwars %>%
   summarise_all(funs(sum(is.na(.))))
 ```
+
+
+
 

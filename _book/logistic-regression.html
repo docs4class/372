@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 11 Logistic Regression | BADM 372 Applied Analytics</title>
+<title>Chapter 10 Logistic Regression | BADM 372 Applied Analytics</title>
 <meta name="author" content="BADM 372">
 <meta name="description" content="Your resource for this is ISLR Chapter 4: Classification.">
 <meta name="generator" content="bookdown 0.25 with bs4_book()">
-<meta property="og:title" content="Chapter 11 Logistic Regression | BADM 372 Applied Analytics">
+<meta property="og:title" content="Chapter 10 Logistic Regression | BADM 372 Applied Analytics">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Your resource for this is ISLR Chapter 4: Classification.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 11 Logistic Regression | BADM 372 Applied Analytics">
+<meta name="twitter:title" content="Chapter 10 Logistic Regression | BADM 372 Applied Analytics">
 <meta name="twitter:description" content="Your resource for this is ISLR Chapter 4: Classification.">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -48,16 +48,15 @@
 <li><a class="" href="schedule.html"><span class="header-section-number">3</span> Schedule</a></li>
 <li><a class="" href="lab-1-excercises.html"><span class="header-section-number">4</span> Lab 1 Excercises</a></li>
 <li><a class="" href="lab-2-in-rmarkdown.html"><span class="header-section-number">5</span> Lab 2 in Rmarkdown</a></li>
-<li><a class="" href="lab-3-pretty-pictures.html"><span class="header-section-number">6</span> Lab 3: Pretty pictures!</a></li>
+<li><a class="" href="all-variables-considered.html"><span class="header-section-number">6</span> All Variables Considered:</a></li>
 <li><a class="" href="lab-2-ggplot-without-dsbox.html"><span class="header-section-number">7</span> Lab 2 – ggplot without dsbox</a></li>
-<li><a class="" href="lab-4-coronavirus-visualization-data-wrangling-and-dates.html"><span class="header-section-number">8</span> Lab 4: coronavirus visualization, data wrangling, and dates</a></li>
-<li><a class="" href="functions.html"><span class="header-section-number">9</span> Functions</a></li>
-<li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
-<li><a class="active" href="logistic-regression.html"><span class="header-section-number">11</span> Logistic Regression</a></li>
-<li><a class="" href="tree-based-methods.html"><span class="header-section-number">12</span> Tree-Based Methods</a></li>
-<li><a class="" href="chapter-8-lab-decision-trees.html"><span class="header-section-number">13</span> Chapter 8 Lab: Decision Trees</a></li>
-<li><a class="" href="trees-9-the-oj-dataset.html"><span class="header-section-number">14</span> Trees #9 The OJ Dataset</a></li>
-<li><a class="" href="project-e1.html"><span class="header-section-number">15</span> Project (E1)</a></li>
+<li><a class="" href="functions.html"><span class="header-section-number">8</span> Functions</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">9</span> Linear Regression</a></li>
+<li><a class="active" href="logistic-regression.html"><span class="header-section-number">10</span> Logistic Regression</a></li>
+<li><a class="" href="tree-based-methods.html"><span class="header-section-number">11</span> Tree-Based Methods</a></li>
+<li><a class="" href="chapter-8-lab-decision-trees.html"><span class="header-section-number">12</span> Chapter 8 Lab: Decision Trees</a></li>
+<li><a class="" href="trees-9-the-oj-dataset.html"><span class="header-section-number">13</span> Trees #9 The OJ Dataset</a></li>
+<li><a class="" href="project-e1.html"><span class="header-section-number">14</span> Project (E1)</a></li>
 </ul>
 
         <div class="book-extra">
@@ -65,19 +64,19 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="logistic-regression" class="section level1" number="11">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="logistic-regression" class="section level1" number="10">
 <h1>
-<span class="header-section-number">11</span> Logistic Regression<a class="anchor" aria-label="anchor" href="#logistic-regression"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10</span> Logistic Regression<a class="anchor" aria-label="anchor" href="#logistic-regression"><i class="fas fa-link"></i></a>
 </h1>
 <p>Your resource for this is ISLR Chapter 4: Classification.</p>
 
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></div>
-<div class="next"><a href="tree-based-methods.html"><span class="header-section-number">12</span> Tree-Based Methods</a></div>
+<div class="prev"><a href="linear-regression.html"><span class="header-section-number">9</span> Linear Regression</a></div>
+<div class="next"><a href="tree-based-methods.html"><span class="header-section-number">11</span> Tree-Based Methods</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#logistic-regression"><span class="header-section-number">11</span> Logistic Regression</a></li></ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#logistic-regression"><span class="header-section-number">10</span> Logistic Regression</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -94,7 +93,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2023-01-06.</p>
+    <p>"<strong>BADM 372 Applied Analytics</strong>" was written by BADM 372. It was last built on 2023-01-10.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

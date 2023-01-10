@@ -117,7 +117,7 @@
 
 \title{BADM 372 Applied Analytics}
 \author{BADM 372}
-\date{2023-01-06}
+\date{2023-01-10}
 
 \begin{document}
 \maketitle
@@ -513,7 +513,13 @@ Use the starwars data (dplyr package) to answer/do:
 #> # ... with 39 more rows
 \end{verbatim}
 
-4-6. Make a plot of all individuals with mass on the x axis and height on the y axis. Put a best fit line on this plot. Who is the biggest outlier in this dataset?
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Make a plot of all individuals with mass on the x axis and height on the y axis. Put a best fit line on this plot. Who is the biggest outlier in this dataset?
+\end{enumerate}
 
 \includegraphics{101-a1_files/figure-latex/unnamed-chunk-5-1.pdf}
 
@@ -523,6 +529,47 @@ Use the starwars data (dplyr package) to answer/do:
 #>   <chr>                 <dbl>  <int>
 #> 1 Jabba Desilijic Tiure  1358    175
 \end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Make something like this:
+\end{enumerate}
+
+\hypertarget{why-i-like-this-class}{%
+\section{Why I like this class}\label{why-i-like-this-class}}
+
+\hypertarget{its-awesome}{%
+\subsection{Its awesome}\label{its-awesome}}
+
+\hypertarget{really-awesome}{%
+\subsubsection{Really Awesome}\label{really-awesome}}
+
+\hypertarget{super-duper-awesome}{%
+\paragraph{Super Duper Awesome}\label{super-duper-awesome}}
+
+\hypertarget{reason-5}{%
+\subparagraph{Reason 5}\label{reason-5}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  . Make plots like these:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, .}\DecValTok{1}\NormalTok{, .}\DecValTok{1}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(cars)}
+\FunctionTok{plot}\NormalTok{(mpg }\SpecialCharTok{\textasciitilde{}}\NormalTok{ hp, }\AttributeTok{data =}\NormalTok{ mtcars, }\AttributeTok{pch =} \DecValTok{19}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=0.5\linewidth]{101-a1_files/figure-latex/figures-side-1} \includegraphics[width=0.5\linewidth]{101-a1_files/figure-latex/figures-side-2}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -607,12 +654,14 @@ Via google: With the metric system, the formula for BMI is weight in kilograms d
 \setcounter{enumi}{9}
 \tightlist
 \item
-  How many individuals have no missing data? Which variables have the most missing data?
+  How many individuals have no missing data?
 \end{enumerate}
 
 \begin{quote}
 Via google: \url{https://stackoverflow.com/questions/22353633/filter-for-complete-cases-in-data-frame-using-dplyr-case-wise-deletion}
 \end{quote}
+
+Single Variable Considered:
 
 \begin{verbatim}
 #> # A tibble: 29 x 14
@@ -632,19 +681,18 @@ Via google: \url{https://stackoverflow.com/questions/22353633/filter-for-complet
 #> #   birth_year <dbl>, sex <chr>, gender <chr>,
 #> #   homeworld <chr>, species <chr>, films <list>,
 #> #   vehicles <list>, starships <list>
-#> Warning: `funs()` was deprecated in dplyr 0.8.0.
-#> Please use a list of either functions or lambdas: 
-#> 
-#>   # Simple named list: 
-#>   list(mean = mean, median = median)
-#> 
-#>   # Auto named with `tibble::lst()`: 
-#>   tibble::lst(mean, median)
-#> 
-#>   # Using lambdas
-#>   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))
-#> This warning is displayed once every 8 hours.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
+\end{verbatim}
+
+Which variables have the most missing data?
+
+\begin{quote}
+Via google: \url{https://stackoverflow.com/questions/26273663/r-how-to-total-the-number-of-na-in-each-col-of-data-frame}
+\end{quote}
+
+\hypertarget{all-variables-considered}{%
+\chapter{All Variables Considered:}\label{all-variables-considered}}
+
+\begin{verbatim}
 #> # A tibble: 1 x 14
 #>    name height  mass hair_color skin_color eye_color
 #>   <int>  <int> <int>      <int>      <int>     <int>
@@ -653,166 +701,6 @@ Via google: \url{https://stackoverflow.com/questions/22353633/filter-for-complet
 #> #   gender <int>, homeworld <int>, species <int>,
 #> #   films <int>, vehicles <int>, starships <int>
 \end{verbatim}
-
-\hypertarget{lab-3-pretty-pictures}{%
-\chapter{Lab 3: Pretty pictures!}\label{lab-3-pretty-pictures}}
-
-\begin{quote}
-Please make sure you have read and understood R4DS Chapter
-on data visulization. Also check out the \emph{Data
-Visualization with ggplot2 Cheat Sheet} from RStudio.
-and
-\end{quote}
-
-\begin{quote}
-\textbf{Think DEEPLY:} Why is being able to generate good data vislization in R important \emph{even} with awesome tools like PowerBI and Tableau around?
-\end{quote}
-
-\hypertarget{ggplot-package-and-code}{%
-\section{ggplot package and code}\label{ggplot-package-and-code}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ \_\_\_, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ \_\_\_)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =}\NormalTok{ \_\_\_) }\SpecialCharTok{+}
-  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{\_\_\_)}
-
-\NormalTok{Let}\StringTok{\textquotesingle{}s deconstruct this code: }
-\StringTok{{-} \textasciigrave{}ggplot()\textasciigrave{} is the function we are using to build our plot, in layers.}
-\StringTok{{-} In the first layer we always define the data frame as the first argument. Then, we define the mappings between the variables in the dataset and the **aes**thetics of the plot (e.g. x and y coordinates, colors, etc.). }
-\StringTok{{-} In the next layer we represent the data with **geom**etric shapes, in this case with a histogram. You should decide what makes a reasonable bin width for the histogram by trying out a few options.}
-\StringTok{{-} In the final layer we facet the data by neighbourhood.}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{packages}{%
-\section{Packages}\label{packages}}
-
-We'll use the \textbf{tidyverse} packages for this analysis, and the data is in the \textbf{dsbox} package. Run the following code in the Console to load these packages.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(tidyverse)}
-\FunctionTok{library}\NormalTok{(dsbox)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{excercises}{%
-\section{Excercises}\label{excercises}}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Create these figures using the data sets \texttt{mpg} or \texttt{diamonds} as needed:
-\end{enumerate}
-
-\includegraphics{102-ggplot_Lab_files/figure-latex/unnamed-chunk-2-1.pdf}
-
-\includegraphics{102-ggplot_Lab_files/figure-latex/unnamed-chunk-3-1.pdf}
-
-\includegraphics{102-ggplot_Lab_files/figure-latex/unnamed-chunk-4-1.pdf}
-
-\hypertarget{airbnb-listings-in-edinburgh}{%
-\section{Airbnb listings in Edinburgh}\label{airbnb-listings-in-edinburgh}}
-
-This data comes from the \texttt{dsbox} package. Recent development in Edinburgh regarding the growth of Airbnb and its impact on the housing market means a better understanding of the Airbnb listings is needed. Using data provided by Airbnb, we can explore how Airbnb availability and prices vary by neighborhood.
-
-The data come from the \href{https://www.kaggle.com/thoroc/edinburgh-inside-airbnb/version/2}{Kaggle database}. It's
-been modified to better serve the goals of this exploration.
-
-\hypertarget{learning-goals}{%
-\subsection{Learning goals}\label{learning-goals}}
-
-The goal of this assignment is not to conduct a thorough analysis of Airbnb listings in Edinburgh (yet?), but instead to give you a chance to practice your workflow, data visualization, and interpretation skills.
-
-\hypertarget{data}{%
-\subsection{Data}\label{data}}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  The dataset you'll be using is called \texttt{edibnb} the data is in the \textbf{dsbox} package. Run \texttt{View(edibnb)} in your Console to view the data in the data viewer. What does each row in the dataset represent?
-\end{enumerate}
-
-\begin{quote}
-\textbf{Hint:} The Markdown, ggplot2, and dplyr Quick Reference sheets has an example of inline R code that might be helpful. You can access it from the Help menu in RStudio.
-\end{quote}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  How many observations (rows) does the dataset have? What interesting data is present? What was the purpose of this data being collected in the first place? Visit the kaggle site if needed.
-\end{enumerate}
-
-Each column represents a variable. We can get a list of the variables in the data frame using the \texttt{names()} function. How else can we find out details of about these variables?
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{names}\NormalTok{(edibnb)}
-\CommentTok{\#\textgreater{}  [1] "id"                   "price"               }
-\CommentTok{\#\textgreater{}  [3] "neighbourhood"        "accommodates"        }
-\CommentTok{\#\textgreater{}  [5] "bathrooms"            "bedrooms"            }
-\CommentTok{\#\textgreater{}  [7] "beds"                 "review\_scores\_rating"}
-\CommentTok{\#\textgreater{}  [9] "number\_of\_reviews"    "listing\_url"}
-\end{Highlighting}
-\end{Shaded}
-
-You can find descriptions of each of the variables in the help file for the dataset, which you can access by running \texttt{?edibnb} in your Console.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
-\item
-  Create a faceted histogram where each facet represents a neighborhood and displays the distribution of Airbnb prices in that neighborhood. Your histogram may be similar (or better! than the example below.)
-\item
-  Create a faceted histogram where each facet represents a neighborhood and displays the distribution of Airbnb prices in that neighborhood. You histogram may be similar (or better! than the example below.)
-\end{enumerate}
-
-\begin{quote}
-\textbf{Note:} The plot will give a warning about some observations with non-finite values for price being removed. Don't worry about the warning, it simply means that 199 listings in the data didn't have prices available, so they can't be plotted.
-\end{quote}
-
-\begin{verbatim}
-#> Warning: Removed 199 rows containing non-finite values
-#> (stat_bin).
-\end{verbatim}
-
-\includegraphics{102-ggplot_Lab_files/figure-latex/unnamed-chunk-6-1.pdf}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{5}
-\item
-  Create a similar visualization, this time showing the distribution of review scores (\texttt{review\_scores\_rating}) across neighborhoods. In your answer, include a brief interpretation of how Airbnb guests rate properties in general and how the neighborhoods compare to each other in terms of their ratings.
-\item
-  Create another informative visualization of your choosing. Be prepared to share it with the class -- although the visualization should need no explaining!
-\end{enumerate}
-
-\hypertarget{instructional-staff-employment-trends}{%
-\section{Instructional staff employment trends}\label{instructional-staff-employment-trends}}
-
-The next dataset is about instructional staff employee hiring trends between 1975 and 2011.
-
-The dataset is called \texttt{instructors} found in \texttt{dsbox}. You can find descriptions of each of the variables in the help file for the dataset, which you can access by running \texttt{?instructors} in your Console.
-
-The American Association of University Professors (AAUP) is a nonprofit membership association of faculty and other academic professionals. \href{https://www.aaup.org/sites/default/files/files/AAUP_Report_InstrStaff-75-11_apr2013.pdf}{This report} compiled by the AAUP shows trends in instructional staff employees between 1975 and 2011, and contains an image very similar to the one given below.
-
-\hypertarget{more-excercises}{%
-\section{More Excercises}\label{more-excercises}}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{7}
-\item
-  Recreate a graph similar to the one above.
-\item
-  Discuss how you would improve upon this visualization if the main objective was to communicate that the proportion of part-time faculty have gone up over time compared to other instructional staff types.Implement the improvements and provide your improved visualization as part of your answer. Also write a few sentences about why you chose to make these improvements and how they address the main goal stated above.
-\end{enumerate}
 
 \hypertarget{lab-2-ggplot-without-dsbox}{%
 \chapter{\texorpdfstring{Lab 2 -- ggplot without \texttt{dsbox}}{Lab 2 -- ggplot without dsbox}}\label{lab-2-ggplot-without-dsbox}}
@@ -863,238 +751,6 @@ Install it like a normal package. After successful installation, you can find ou
 \end{enumerate}
 
 \includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-8-1.pdf} \includegraphics{103-ggplot_Lab_no_dsbox_files/figure-latex/unnamed-chunk-8-2.pdf}
-
-\hypertarget{lab-4-coronavirus-visualization-data-wrangling-and-dates}{%
-\chapter{\texorpdfstring{Lab 4: \texttt{coronavirus} visualization, data wrangling, and dates}{Lab 4: coronavirus visualization, data wrangling, and dates}}\label{lab-4-coronavirus-visualization-data-wrangling-and-dates}}
-
-The package is available on GitHub \href{https://github.com/RamiKrispin/coronavirus}{here} and is updated daily.
-
-\begin{quote}
-I use the \texttt{coronavirus} package and use the \texttt{coronavirus::update\_data()} function to keep the data current. This also has the dates preformatted which can be nice.
-\end{quote}
-
-\hypertarget{lets-look-like-applied-analytics-superstars-and-make-some-neat-visuals.}{%
-\section{Let's look like Applied Analytics Superstars and make some neat visuals.}\label{lets-look-like-applied-analytics-superstars-and-make-some-neat-visuals.}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(coronavirus)}
-\FunctionTok{library}\NormalTok{(dplyr)}
-\FunctionTok{library}\NormalTok{(ggplot2)}
-\end{Highlighting}
-\end{Shaded}
-
-I'd recommend you always start by trying to understand a bit about the data.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{head}\NormalTok{(coronavirus)}
-\CommentTok{\#\textgreater{}         date province country     lat      long      type}
-\CommentTok{\#\textgreater{} 1 2020{-}01{-}22  Alberta  Canada 53.9333 {-}116.5765 confirmed}
-\CommentTok{\#\textgreater{} 2 2020{-}01{-}23  Alberta  Canada 53.9333 {-}116.5765 confirmed}
-\CommentTok{\#\textgreater{} 3 2020{-}01{-}24  Alberta  Canada 53.9333 {-}116.5765 confirmed}
-\CommentTok{\#\textgreater{} 4 2020{-}01{-}25  Alberta  Canada 53.9333 {-}116.5765 confirmed}
-\CommentTok{\#\textgreater{} 5 2020{-}01{-}26  Alberta  Canada 53.9333 {-}116.5765 confirmed}
-\CommentTok{\#\textgreater{} 6 2020{-}01{-}27  Alberta  Canada 53.9333 {-}116.5765 confirmed}
-\CommentTok{\#\textgreater{}   cases   uid iso2 iso3 code3    combined\_key population}
-\CommentTok{\#\textgreater{} 1     0 12401   CA  CAN   124 Alberta, Canada    4413146}
-\CommentTok{\#\textgreater{} 2     0 12401   CA  CAN   124 Alberta, Canada    4413146}
-\CommentTok{\#\textgreater{} 3     0 12401   CA  CAN   124 Alberta, Canada    4413146}
-\CommentTok{\#\textgreater{} 4     0 12401   CA  CAN   124 Alberta, Canada    4413146}
-\CommentTok{\#\textgreater{} 5     0 12401   CA  CAN   124 Alberta, Canada    4413146}
-\CommentTok{\#\textgreater{} 6     0 12401   CA  CAN   124 Alberta, Canada    4413146}
-\CommentTok{\#\textgreater{}   continent\_name continent\_code}
-\CommentTok{\#\textgreater{} 1  North America             NA}
-\CommentTok{\#\textgreater{} 2  North America             NA}
-\CommentTok{\#\textgreater{} 3  North America             NA}
-\CommentTok{\#\textgreater{} 4  North America             NA}
-\CommentTok{\#\textgreater{} 5  North America             NA}
-\CommentTok{\#\textgreater{} 6  North America             NA}
-\end{Highlighting}
-\end{Shaded}
-
-For example, what does this summary let us know?
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{summary}\NormalTok{(coronavirus}\SpecialCharTok{$}\NormalTok{cases)}
-\CommentTok{\#\textgreater{}      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. }
-\CommentTok{\#\textgreater{} {-}30974748         0         0       739        22   1383897}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Can you create a visual showing the cases over time for Russia, Spain, US, and Venezuela?
-  Also, why might \texttt{filter(cases\ \textgreater{}=\ 0)} be worth using?
-\end{enumerate}
-
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-3-1.pdf}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  Can you show deaths over time for Russia, Spain, US, and Venezuela? And can you play with your geoms and make something neat?
-\end{enumerate}
-
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-4-1.pdf}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  Now let's do a plot of COVID rate (\# confirmed cases / population). Something like this.
-\end{enumerate}
-
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-5-1.pdf}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
-\item
-  What is and \textbf{is not} useful about the previous illustration?
-\item
-  Make a chart with cumulative cases. Something like this:
-\end{enumerate}
-
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-6-1.pdf}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{5}
-\tightlist
-\item
-  With a little more time and a few extra packages, we \textbf{could} make a graph prettier. Try.
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(scales)}
-\FunctionTok{library}\NormalTok{(ggrepel)}
-\FunctionTok{library}\NormalTok{(glue)}
-\FunctionTok{library}\NormalTok{(lubridate)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-8-1.pdf}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{6}
-\tightlist
-\item
-  Now let's \textbf{really} have some fun. Let's illustrate death rates relative to confirmed cases. Why is this more challenging than anything we've done so far in this lab? We're going to have to make this data \textbf{tidy}.
-\end{enumerate}
-
-One way to play this game.
-
-Let's make a little table of just date, country, and deaths (with a meaningful variable name), and then count observations by coutry just to make sure eveything looks nice.
-
-\begin{verbatim}
-#>         date country deaths
-#> 1 2020-01-22  Russia      0
-#> 2 2020-01-23  Russia      0
-#> 3 2020-01-24  Russia      0
-#> 4 2020-01-25  Russia      0
-#> 5 2020-01-26  Russia      0
-#> 6 2020-01-27  Russia      0
-#>     country   n
-#> 1    Russia 884
-#> 2     Spain 880
-#> 3        US 883
-#> 4 Venezuela 883
-\end{verbatim}
-
-Let's make a little table of just confirmed cases.
-
-\begin{verbatim}
-#>         date country confirmed
-#> 1 2020-01-22  Russia         0
-#> 2 2020-01-23  Russia         0
-#> 3 2020-01-24  Russia         0
-#> 4 2020-01-25  Russia         0
-#> 5 2020-01-26  Russia         0
-#> 6 2020-01-27  Russia         0
-#>     country   n
-#> 1    Russia 884
-#> 2     Spain 884
-#> 3        US 884
-#> 4 Venezuela 884
-\end{verbatim}
-
-Let's join these together. I use \texttt{left\_join}.
-
-\begin{verbatim}
-#>         date country deaths confirmed
-#> 1 2020-01-22  Russia      0         0
-#> 2 2020-01-23  Russia      0         0
-#> 3 2020-01-24  Russia      0         0
-#> 4 2020-01-25  Russia      0         0
-#> 5 2020-01-26  Russia      0         0
-#> 6 2020-01-27  Russia      0         0
-#>     country   n
-#> 1    Russia 884
-#> 2     Spain 884
-#> 3        US 884
-#> 4 Venezuela 884
-\end{verbatim}
-
-Let's add some cumulative statistics as well.
-
-\begin{verbatim}
-#>         date country deaths confirmed cumulative_cases
-#> 1 2020-01-22  Russia      0         0                0
-#> 2 2020-01-23  Russia      0         0                0
-#> 3 2020-01-24  Russia      0         0                0
-#> 4 2020-01-25  Russia      0         0                0
-#> 5 2020-01-26  Russia      0         0                0
-#> 6 2020-01-27  Russia      0         0                0
-#>   cumulative_deaths rate
-#> 1                 0    0
-#> 2                 0    0
-#> 3                 0    0
-#> 4                 0    0
-#> 5                 0    0
-#> 6                 0    0
-\end{verbatim}
-
-Now we can plot some more fun stuff.
-
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-14-1.pdf}
-
-\begin{verbatim}
-#>       date              country              deaths      
-#>  Min.   :2020-01-22   Length:3536        Min.   :   0.0  
-#>  1st Qu.:2020-08-29   Class :character   1st Qu.:   4.0  
-#>  Median :2021-04-07   Mode  :character   Median : 115.0  
-#>  Mean   :2021-04-07                      Mean   : 426.0  
-#>  3rd Qu.:2021-11-14                      3rd Qu.: 575.5  
-#>  Max.   :2022-06-23                      Max.   :4415.0  
-#>                                          NA's   :6       
-#>    confirmed         cumulative_cases    cumulative_deaths
-#>  Min.   : -74347.0   Min.   :        0   Min.   :     0   
-#>  1st Qu.:    388.8   1st Qu.: 18140893   1st Qu.: 20587   
-#>  Median :   7469.0   Median : 30754528   Median :122606   
-#>  Mean   :  33381.6   Mean   : 52262197   Mean   :168373   
-#>  3rd Qu.:  29701.2   3rd Qu.:117512148   3rd Qu.:334969   
-#>  Max.   :1383897.0   Max.   :118037488   Max.   :401762   
-#>                                          NA's   :2528     
-#>       rate          
-#>  Min.   :-0.036576  
-#>  1st Qu.: 0.003513  
-#>  Median : 0.012243  
-#>  Mean   : 0.020419  
-#>  3rd Qu.: 0.021811  
-#>  Max.   : 3.840391  
-#>  NA's   :6
-\end{verbatim}
-
-\includegraphics{105-coronavirus_lab_files/figure-latex/unnamed-chunk-14-2.pdf}
 
 \hypertarget{functions}{%
 \chapter{Functions}\label{functions}}
@@ -2751,8 +2407,8 @@ or based on work in other courses or research projects. The goal of this project
 you to demonstrate proficiency in the techniques we have covered in this class (and
 beyond, if you like) and apply them to a novel dataset in a meaningful way.
 
-\hypertarget{data-1}{%
-\section{Data}\label{data-1}}
+\hypertarget{data}{%
+\section{Data}\label{data}}
 
 In order for you to have the greatest chance of success with this project it is important that
 you choose a manageable dataset. This means that the data should be readily accessible and large
