@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 4 Lab 1 Excercises | BADM 372 Applied Analytics</title>
 <meta name="author" content="BADM 372">
-<meta name="description" content="Let’s make sure we feel good about BADM 371 material. All open notes/internet/R4DS/etc., but all work must be your own. Use the starwars data (dplyr package) to answer/do: Who is the tallest...">
+<meta name="description" content="Let’s make sure we feel good about BADM 371 material. All open notes/internet/R4DS/etc., but all work must be your own. Use the starwars data (dplyr package) to answer/do: How many individuals...">
 <meta name="generator" content="bookdown 0.25 with bs4_book()">
 <meta property="og:title" content="Chapter 4 Lab 1 Excercises | BADM 372 Applied Analytics">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Let’s make sure we feel good about BADM 371 material. All open notes/internet/R4DS/etc., but all work must be your own. Use the starwars data (dplyr package) to answer/do: Who is the tallest...">
+<meta property="og:description" content="Let’s make sure we feel good about BADM 371 material. All open notes/internet/R4DS/etc., but all work must be your own. Use the starwars data (dplyr package) to answer/do: How many individuals...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 4 Lab 1 Excercises | BADM 372 Applied Analytics">
-<meta name="twitter:description" content="Let’s make sure we feel good about BADM 371 material. All open notes/internet/R4DS/etc., but all work must be your own. Use the starwars data (dplyr package) to answer/do: Who is the tallest...">
+<meta name="twitter:description" content="Let’s make sure we feel good about BADM 371 material. All open notes/internet/R4DS/etc., but all work must be your own. Use the starwars data (dplyr package) to answer/do: How many individuals...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -48,15 +48,6 @@
 <li><a class="" href="schedule.html"><span class="header-section-number">3</span> Schedule</a></li>
 <li><a class="active" href="lab-1-excercises.html"><span class="header-section-number">4</span> Lab 1 Excercises</a></li>
 <li><a class="" href="lab-2-in-rmarkdown.html"><span class="header-section-number">5</span> Lab 2 in Rmarkdown</a></li>
-<li><a class="" href="all-variables-considered.html"><span class="header-section-number">6</span> All Variables Considered:</a></li>
-<li><a class="" href="lab-2-ggplot-without-dsbox.html"><span class="header-section-number">7</span> Lab 2 – ggplot without dsbox</a></li>
-<li><a class="" href="functions.html"><span class="header-section-number">8</span> Functions</a></li>
-<li><a class="" href="linear-regression.html"><span class="header-section-number">9</span> Linear Regression</a></li>
-<li><a class="" href="logistic-regression.html"><span class="header-section-number">10</span> Logistic Regression</a></li>
-<li><a class="" href="tree-based-methods.html"><span class="header-section-number">11</span> Tree-Based Methods</a></li>
-<li><a class="" href="chapter-8-lab-decision-trees.html"><span class="header-section-number">12</span> Chapter 8 Lab: Decision Trees</a></li>
-<li><a class="" href="trees-9-the-oj-dataset.html"><span class="header-section-number">13</span> Trees #9 The OJ Dataset</a></li>
-<li><a class="" href="project-e1.html"><span class="header-section-number">14</span> Project (E1)</a></li>
 </ul>
 
         <div class="book-extra">
@@ -73,16 +64,18 @@
 <div class="rmdimportant">
 <p>Use the starwars data (dplyr package) to answer/do:</p>
 <ol style="list-style-type: decimal">
+<li>How many individuals have no missing data?<br>
+</li>
+<li>Which variables have the most missing data?</li>
 <li>Who is the tallest individual? Shortest?</li>
 <li>How many homeworlds are there?</li>
-<li>Which homeworld has the most individuals? Fewest? Average # of idividuals per homeworld?</li>
+<li>Which homeworld has the most individuals? Fewest?</li>
+<li>What is the average # of individuals per homeworld?</li>
 <li>Make a plot of all individuals with mass on the x axis and height on the y axis.</li>
 <li>Put a best fit line on this plot.</li>
-<li>Who is the biggest outlier in this dataset?</li>
+<li>Who is the biggest outlier in this data set?</li>
 <li>Calculate BMI for all these individuals. What is the average BMI for all individuals?</li>
-<li>What is the average BMI for each homeworld?</li>
-<li>Which homeworlds have the greatest percentage of individuals with BMI’s greater than the average you found in #8 above?</li>
-<li>How many individuals have no missing data? Which variables have the most missing data?</li>
+<li>Which homeworlds have the greatest percentage of individuals with BMI’s greater than the average for each homework? Make sure you are clear about what you do with missing data.</li>
 </ol>
 </div>
 
@@ -117,34 +110,6 @@
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
-</script>
+</footer>
 </body>
 </html>

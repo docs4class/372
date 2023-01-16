@@ -10,17 +10,17 @@ Date | Topic | Due|
 | 	Wednesday, January 11, 2023	| 	Rmarkdown; ioslides	| 		| 
 | 	Friday, January 13, 2023	| 	Lab 2: Rmarkdown	| 	**Lab 1 Due**	| 
 | 	Monday, January 16, 2023	| 	MLK Holiday	| 		| 
-| 	Wednesday, January 18, 2023	| 	ggplot	| 		| 
-| 	Friday, January 20, 2023	| 	Lab 2: ggplot	| 		| 
+| 	Wednesday, January 18, 2023	| 	Rmarkdown & ggplot	| 		| 
+| 	Friday, January 20, 2023	| 	ggplot	| 		| 
 | 	Monday, January 23, 2023	| 	EDA & ggplot;	| 	**Lab 2 Due**	| 
 | 	Wednesday, January 25, 2023	| 	EDA & ggplot	| 		| 
-| 	Friday, January 27, 2023	| 	Lab 2: EDA & ggplot	| 		| 
+| 	Friday, January 27, 2023	| 	Lab 3: EDA & ggplot	| 		| 
 | 	Monday, January 30, 2023	| 	Dates and Times	| 	**Lab 3 Due**	| 
 | 	Wednesday, February 1, 2023	| 	Dates and Times	| 		| 
 | 	Friday, February 3, 2023	| 	Relational Data	| 		| 
 | 	Monday, February 6, 2023	| 	Review	| 	**Lab 4 Due**	| 
 | 	Wednesday, February 8, 2023	| 	** Exam 1**	| 		| 
-| 	Friday, February 10, 2023	| 	Day of Celebtation	| 		| 
+| 	Friday, February 10, 2023	| 	Day of Celebration	| 		| 
 | 	Monday, February 13, 2023	| 	Tidy data from R4DS; Lab 5	| 		| 
 | 	Wednesday, February 15, 2023	| 	SEDSI	| 		| 
 | 	Friday, February 17, 2023	| 	SEDSI	| 		| 
